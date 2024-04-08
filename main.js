@@ -98,46 +98,65 @@ function renderCharacters(){
 
 function renderGame(){
 
-const watchID = navigator.geolocation.watchPosition(position => {
-    const {latitude, longitude} = position.coords;
+    const levelOne = [
+    {
+        "longitude": 12.991713,
+        "latitude": 55.613229,
+        "clue": "Träffa Alex för at få reda på mer om vad som hänt", 
+    },
+]   
 
-    main.innerHTML = `
-    <div class="helpers">
-        <button id="notes">Anteckningar</button>
-        <button id="characters">Karaktärer</button>
-       <div id="map"></div>
-    </div>
-    `;
+    const watchID = navigator.geolocation.watchPosition(position => {
+        const {latitude, longitude} = position.coords;
 
-    console.log(latitude, longitude)
+        main.innerHTML = `
+        <div class="helpers">
+            <button id="notes">Anteckningar</button>
+            <button id="characters">Karaktärer</button>
+           <div id="map"></div>
+        </div>
+        `;
 
-    var map = L.map('map').setView([latitude, longitude], 16);
+        var map = L.map('map').setView([latitude, longitude], 16);
+        var mapContainer = map.getContainer();
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map); 
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map); 
 
-    L.marker([latitude, longitude]).addTo(map)
-        .bindPopup('You are here')
-        .openPopup();
+        L.marker([latitude, longitude]).addTo(map)
+            .bindPopup('You are here')
+            .openPopup();
 
-    //  marker för level 1 
+        levelOne.forEach(level => {
+                   L.marker([level.latitude, level.longitude])
+                    .addTo(map)
+                    .addEventListener("click", () => {
+                        mapContainer.style.zIndex = "-1";
+                        main.innerHTML += `
+                            <div class="temporaryContent">
+                                <div id="topContainer">
+                                <img class="exit" src="media/exit.svg">
+                            </div>
+                            <p>${level.clue}</p>
+                             </div>
+                             `;
+                            main.querySelector(".exit").addEventListener("click", () => {
+                                main.querySelector(".temporaryContent").remove()  
+                                mapContainer.style.zIndex = "auto";                             
+                            })
 
+             })
+        })
+  
 
-    L.marker([55.6104158951711, 12.995665129879914]).addTo(map)
-        .displayTask()
+         document.querySelector("#notes").addEventListener("click", () => {
+             renderNotes()
+         })
 
-    function displayTask(){
-
-    }
-
-    document.querySelector("#notes").addEventListener("click", () => {
-        renderNotes()
-    })
-
-    document.querySelector("#characters").addEventListener("click", () => {
-        renderCharacters()
-    })
+         document.querySelector("#characters").addEventListener("click", () => {
+             renderCharacters()
+         })
 
     })
     

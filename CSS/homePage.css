@@ -17,11 +17,31 @@ main{
     gap: 10px;
 }
 
-/* */
+/* MAP */
 
 #map{
     height: 70vh;
-    width: 80vw;
+    width: 90vw;
+}
+
+
+
+/* .leaflet-popup-content, .leaflet-popup-tip, .leaflet-popup-content { 
+    width:100%;
+    position: absolute;
+    top: 90%;
+    background-color: white;
+
+}*/
+
+.temporaryContent{
+    height: 30vh;
+    width: 90vw;
+    position: absolute;
+    top: 50vh;
+    background-color: white;
+    border: 1px solid black;
+    z-index: 5;
 }
 
 /* CHARACTERS */

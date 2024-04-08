@@ -1,9 +1,10 @@
+import { renderHomepage } from "./main.js";
 import { renderLogin } from "./register_login.js";
 
 
 (function(){
-    if(localStorage.getItem("user")){
-        console.log("inloggad")
+    if(window.localStorage.getItem("user")){
+        renderHomepage()
     } else {
         renderLogin()
     }

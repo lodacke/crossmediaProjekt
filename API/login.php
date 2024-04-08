@@ -26,7 +26,7 @@
                 }
             }
         } 
-        send_SON(["message"=>"Wrong username or password"], 404);
+        sendJSON(["message"=>"Wrong username or password"], 404);
     } else {
         sendJSON(["message"=>"Wrong method"], 405);
     }

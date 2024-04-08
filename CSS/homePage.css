@@ -17,6 +17,13 @@ main{
     gap: 10px;
 }
 
+/* */
+
+#map{
+    height: 70vh;
+    width: 80vw;
+}
+
 /* CHARACTERS */
 
 #containerCharacters{
@@ -44,4 +51,31 @@ main{
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
+}
+
+/* NOTES */
+
+#notesHeader{
+    text-align: center;
+    margin: 0px;
+}
+
+#notesInput{
+    height: 80vh;
+    width: 100%;
+    border: 1px solid black; 
+    border-radius: 10px;
+    padding: 5px; 
+    resize: none; 
+    overflow-y: auto; 
+}
+
+textarea:active{
+    border: none
+}
+
+.inputSave{
+    position: absolute;
+    top: 90%;
+    left: 80%;
 }

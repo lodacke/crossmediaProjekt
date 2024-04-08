@@ -1,38 +1,7 @@
 [
     {
-        "username": "aaa",
-        "password": "aaa"
-    },
-    {
         "username": "a",
-        "password": "a"
-    },
-    {
-        "username": "as",
-        "password": "as"
-    },
-    {
-        "username": "asd",
-        "password": "d"
-    },
-    {
-        "username": "g",
-        "password": "g"
-    },
-    {
-        "username": "dfdf",
-        "password": "dfdf"
-    },
-    {
-        "username": "sd",
-        "password": "sd"
-    },
-    {
-        "username": "fgt",
-        "password": "w"
-    },
-    {
-        "username": "o",
-        "password": "o"
+        "password": "a",
+        "games": []
     }
 ]

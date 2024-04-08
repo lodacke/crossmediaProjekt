@@ -1,5 +1,5 @@
 import { renderHomepage } from "./main.js";
-import { renderLogin } from "./register_login.js";
+import { renderLogin } from "./registerLogin.js";
 
 
 (function(){

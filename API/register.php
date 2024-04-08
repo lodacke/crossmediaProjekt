@@ -32,7 +32,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $newUser = [ 
         "username" => $input["username"],
-        "password" => $input["password"]
+        "password" => $input["password"],
+        "games" => []
     ];
 
     $users[] = $newUser; 

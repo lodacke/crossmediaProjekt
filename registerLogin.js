@@ -97,7 +97,7 @@ export async function renderRegister(){
                 messageDom.textContent = "";
                  window.localStorage.setItem("user", JSON.stringify(data.username));
                 renderHomepage()
-            }, 3000);
+            }, 2000);
      
         }
 

@@ -15,7 +15,7 @@
         
         if(!isset($input["username"],
                 $input["password"])){
-            send_SON(["message"=>"Wrong data"], 401);
+            sendJSON(["message"=>"Wrong data"], 401);
         }
 
         if($users != []){ 

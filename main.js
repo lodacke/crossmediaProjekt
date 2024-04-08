@@ -1,4 +1,5 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
+import { endSession } from "./utilities/endSession.js";
 import { main } from "./utilities/variable.js"
 
 export function renderHomepage(){
@@ -12,7 +13,6 @@ export function renderHomepage(){
     </div>
         <button id="game">Starta spel</button>
         <button id="scoreBoard">Scoreboard</button>
-        <button id="characters">Karaktärerna</button>
         <button id="aboutUs">Om oss</button>       
     </div>
     `;
@@ -23,10 +23,6 @@ export function renderHomepage(){
 
     main.querySelector("#scoreBoard").addEventListener("click", () => {
         renderScoreBoard()
-    })
-
-    main.querySelector("#characters").addEventListener("click", () => {
-        renderCharacters()
     })
 
     main.querySelector("#aboutUs").addEventListener("click", () => {
@@ -97,12 +93,72 @@ function renderCharacters(){
         containerDom.append(characterDom);
     });
 
-    endSession(".exit", renderHomepage)
+    endSession(".exit", renderGame)
 }
 
-function endSession(node, functionCall){
+function renderGame(){
 
-    document.querySelector(`${node}`).addEventListener("click", () => {
-        functionCall()
+const watchID = navigator.geolocation.watchPosition(position => {
+    const {latitude, longitude} = position.coords;
+
+    main.innerHTML = `
+    <div class="helpers">
+        <button id="notes">Anteckningar</button>
+        <button id="characters">Karaktärer</button>
+       <div id="map"></div>
+    </div>
+    `;
+
+    console.log(latitude, longitude)
+
+    var map = L.map('map').setView([latitude, longitude], 16);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map); 
+
+    L.marker([latitude, longitude]).addTo(map)
+        .bindPopup('You are here')
+        .openPopup();
+
+    //  marker för level 1 
+
+
+    L.marker([55.6104158951711, 12.995665129879914]).addTo(map)
+        .displayTask()
+
+    function displayTask(){
+
+    }
+
+    document.querySelector("#notes").addEventListener("click", () => {
+        renderNotes()
     })
+
+    document.querySelector("#characters").addEventListener("click", () => {
+        renderCharacters()
+    })
+
+    })
+    
+}
+
+function renderNotes(){
+
+    let previousContent = window.localStorage.getItem("notes")
+
+    main.innerHTML = `
+    <div id="topContainer">
+        <img class="exit" src="media/exit.svg">
+    </div>
+    <h2 id="notesHeader">Notes</h2>
+    <textarea type="text" id="notesInput">${previousContent}</textarea>
+    `;
+
+    main.querySelector(".exit").addEventListener("click", () => {
+        let textContent = main.querySelector("textarea").value
+        window.localStorage.setItem("notes", textContent)
+    })
+
+    endSession(".exit", renderGame)
 }

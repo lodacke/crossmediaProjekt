@@ -19,29 +19,34 @@ main{
 
 /* MAP */
 
+
 #map{
     height: 70vh;
     width: 90vw;
 }
 
+.leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar{
+    display: none;
+}
 
+.leaflet-control {
+    width: 230%;
+}
 
-/* .leaflet-popup-content, .leaflet-popup-tip, .leaflet-popup-content { 
-    width:100%;
-    position: absolute;
-    top: 90%;
-    background-color: white;
+.levelOne{
+    fill: blue;
+    color: blue;
+}
 
-}*/
 
 .temporaryContent{
-    height: 30vh;
-    width: 90vw;
-    position: absolute;
-    top: 50vh;
+     cursor: pointer;
     background-color: white;
     border: 1px solid black;
-    z-index: 5;
+}
+
+.temporaryContent > p{
+    text-align: center;
 }
 
 /* CHARACTERS */

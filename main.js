@@ -1,6 +1,7 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main } from "./utilities/variable.js"
+import { main } from "./utilities/variable.js";
+import { CustomControl } from "./utilities/variable.js";
 
 export function renderHomepage(){
 
@@ -99,12 +100,12 @@ function renderCharacters(){
 function renderGame(){
 
     const levelOne = [
-    {
+        {
         "longitude": 12.991713,
         "latitude": 55.613229,
         "clue": "Träffa Alex för at få reda på mer om vad som hänt", 
-    },
-]   
+        },
+    ]   
 
     const watchID = navigator.geolocation.watchPosition(position => {
         const {latitude, longitude} = position.coords;
@@ -118,35 +119,50 @@ function renderGame(){
         `;
 
         var map = L.map('map').setView([latitude, longitude], 16);
-        var mapContainer = map.getContainer();
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map); 
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'})
+            .addTo(map); 
 
         L.marker([latitude, longitude]).addTo(map)
             .bindPopup('You are here')
             .openPopup();
 
-        levelOne.forEach(level => {
-                   L.marker([level.latitude, level.longitude])
-                    .addTo(map)
-                    .addEventListener("click", () => {
-                        mapContainer.style.zIndex = "-1";
-                        main.innerHTML += `
-                            <div class="temporaryContent">
-                                <div id="topContainer">
-                                <img class="exit" src="media/exit.svg">
-                            </div>
-                            <p>${level.clue}</p>
-                             </div>
-                             `;
-                            main.querySelector(".exit").addEventListener("click", () => {
-                                main.querySelector(".temporaryContent").remove()  
-                                mapContainer.style.zIndex = "auto";                             
-                            })
+        let customIcon = L.icon({
+            iconUrl: 'icon.png',
+            iconSize: [38, 95],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76],
+            className: 'levelOne' 
+        });
 
-             })
+        const customControlInstance = new CustomControl({ position: 'bottomleft' });
+        customControlInstance.addTo(map);
+
+        levelOne.forEach(level => {
+            L.marker([level.latitude, level.longitude], {icon: customIcon})
+            .addTo(map)
+            .on("click", () => {
+                const container = customControlInstance.getContainer();
+
+                if(container.innerHTML !== ""){
+                    container.innerHTML = ``
+                } else {
+                    container.innerHTML = `
+                    <div class="temporaryContent">
+                        <div id="topContainer">
+                            <button>Jag är här</button>
+                        </div>
+                        <h2>Ledtråd</h2>
+                        <p>${level.clue}</p>
+                    </div>
+                `;
+
+                container.querySelector("button").addEventListener("click",() => {
+                    renderQRscann()
+                    })
+                }
+            })
         })
   
 
@@ -157,9 +173,7 @@ function renderGame(){
          document.querySelector("#characters").addEventListener("click", () => {
              renderCharacters()
          })
-
-    })
-    
+    })    
 }
 
 function renderNotes(){
@@ -180,4 +194,8 @@ function renderNotes(){
     })
 
     endSession(".exit", renderGame)
+}
+
+function renderQRscann(){
+
 }

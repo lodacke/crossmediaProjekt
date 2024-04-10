@@ -1,6 +1,7 @@
 
 export const main = document.querySelector("main");
 
+export const dialog = document.querySelector("dialog")
 
 export const CustomControl = L.Control.extend({
     onAdd: function(map) {

@@ -2,6 +2,7 @@ import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
 import { main } from "./utilities/variable.js";
 import { CustomControl } from "./utilities/variable.js";
+import { dialog } from "./utilities/variable.js";
 
 export function renderHomepage(){
 
@@ -197,5 +198,41 @@ function renderNotes(){
 }
 
 function renderQRscann(){
+    dialog.show()
+    dialog.innerHTML = `
+    <div id="topContainer">
+        <img class="exit" src="media/exit.svg">
+    </div>
+    <div id="reader"></div>
+    <div id="result"></div>
+    `;
 
+    dialog.querySelector("img").addEventListener("click", () => {
+        dialog.close()
+    })
+
+    const scanner = new Html5QrcodeScanner('reader', {
+        qrbox: {
+            width: 250,
+            height: 250
+        }, 
+        fps: 20,
+    });
+
+    scanner.render(success, error)
+
+    function success(result){
+        console.log(result)
+        document.getElementById("result").innerHTML = `
+        <h2>Success</h2>
+        <a href=$${result}> ${result}</a>
+        `;
+
+        scanner.clear()
+        document.getElementById("result").remove()
+    }
+
+    function error(err){
+        console.error(err)
+    }
 }

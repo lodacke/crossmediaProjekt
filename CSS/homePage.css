@@ -1,5 +1,12 @@
+body{
+    border: 1px solid black;
+}
+
 main{
     margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #topContainer{
@@ -17,36 +24,61 @@ main{
     gap: 10px;
 }
 
+#notes{
+    position: absolute;
+    top: 50vh;
+    left: 3vw;
+    z-index: 9999;
+}
+
+#characters{
+    position: absolute;
+    top: 50vh;
+    left: 91vw;
+    z-index: 9999;
+}
+
+#characters, #notes{
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+
+#characters:hover, #notes:hover{
+    transform: scale(1.6);
+    transition-duration: 1s;
+    transform-style: smooth;
+}
+
 /* MAP */
 
 #map{
-    height: 70vh;
-    width: 90vw;
+    height: 90vh;
 }
 
 .leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar{
     display: none;
 }
 
-.leaflet-control {
-    width: 230%;
-}
-
-.levelOne{
-    fill: blue;
-    color: blue;
-}
-
-
 .temporaryContent{
      cursor: pointer;
     background-color: white;
     border: 1px solid black;
+    width: 83.5vw;
+    margin: -10px;
+    height: 200px;
 }
 
-.temporaryContent > p{
-    text-align: center;
+.temporaryContent > .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
+
 
 /* CHARACTERS */
 
@@ -79,6 +111,10 @@ main{
 
 /* NOTES */
 
+dialog, #notesContainer{
+    background-color: none;
+}
+
 #notesHeader{
     text-align: center;
     margin: 0px;
@@ -94,8 +130,8 @@ main{
     overflow-y: auto; 
 }
 
-textarea:active{
-    border: none
+textarea:focus{
+    outline: none;
 }
 
 .inputSave{
@@ -106,16 +142,34 @@ textarea:active{
 
 /* DIALOG */
 
+dialog::backdrop{
+    background-color: blue;
+}
+
 dialog{
     z-index: 9999;
     border: 1px solid black;
     border-radius: 10px;
-    margin-top: 16%;
-    width: 250px;
-    height: 250px;
+    margin-top: 20%;
+    width: 70vw;
+    height: 69%;
 }
 
 /* QR SCANNER */
+
+video{
+    width: auto;
+    height: auto;
+}
+
+#reader{
+    border: none;
+}
+
+#reader__dashboard_section_csr{
+    display: flex;
+    flex-direction: column;
+}
 
 #reader > div > img{
     display: none

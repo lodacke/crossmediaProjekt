@@ -3,6 +3,12 @@ import { endSession } from "./utilities/endSession.js";
 import { main } from "./utilities/variable.js";
 import { CustomControl } from "./utilities/variable.js";
 import { dialog } from "./utilities/variable.js";
+import {parseText} from "./utilities/parse.js";
+
+
+export function renderConversationF(){
+    console.log("inne i konversation")
+}
 
 export function renderHomepage(){
 
@@ -21,6 +27,7 @@ export function renderHomepage(){
 
     main.querySelector("#game").addEventListener("click", () => {
         renderGame()
+         window.location.hash = "#game";
     })
 
     main.querySelector("#scoreBoard").addEventListener("click", () => {
@@ -98,7 +105,7 @@ function renderCharacters(){
     endSession(".exit", renderGame)
 }
 
-function renderGame(){
+export function renderGame(){
 
     const levelOne = [
         {
@@ -113,8 +120,8 @@ function renderGame(){
 
         main.innerHTML = `
         <div class="helpers">
-            <button id="notes">Anteckningar</button>
-            <button id="characters">Karaktärer</button>
+            <button id="notes"><img src="./media/note.svg"></button>
+            <button id="characters"><img src="./media/characters.svg"></button>
            <div id="map"></div>
         </div>
         `;
@@ -130,7 +137,7 @@ function renderGame(){
             .openPopup();
 
         let customIcon = L.icon({
-            iconUrl: 'icon.png',
+            iconUrl: 'media/icon.svg',
             iconSize: [38, 95],
             iconAnchor: [22, 94],
             popupAnchor: [-3, -76],
@@ -147,20 +154,23 @@ function renderGame(){
                 const container = customControlInstance.getContainer();
 
                 if(container.innerHTML !== ""){
-                    container.innerHTML = ``
+                    container.innerHTML = ``;
                 } else {
                     container.innerHTML = `
                     <div class="temporaryContent">
                         <div id="topContainer">
                             <button>Jag är här</button>
                         </div>
-                        <h2>Ledtråd</h2>
-                        <p>${level.clue}</p>
+                        <div class="content">
+                            <h2>Ledtråd</h2>
+                            <p>${level.clue}</p>
+                            </div>
                     </div>
                 `;
 
                 container.querySelector("button").addEventListener("click",() => {
                     renderQRscann()
+                    container.innerHTML = ``
                     })
                 }
             })
@@ -181,7 +191,10 @@ function renderNotes(){
 
     let previousContent = window.localStorage.getItem("notes")
 
-    main.innerHTML = `
+    dialog.show()
+
+    dialog.setAttribute("id", "notesContainer")
+    dialog.innerHTML = `
     <div id="topContainer">
         <img class="exit" src="media/exit.svg">
     </div>
@@ -189,32 +202,30 @@ function renderNotes(){
     <textarea type="text" id="notesInput">${previousContent}</textarea>
     `;
 
-    main.querySelector(".exit").addEventListener("click", () => {
-        let textContent = main.querySelector("textarea").value
+    dialog.querySelector(".exit").addEventListener("click", () => {
+        let textContent = dialog.querySelector("textarea").value
         window.localStorage.setItem("notes", textContent)
+        endSession()
     })
-
-    endSession(".exit", renderGame)
 }
 
 function renderQRscann(){
     dialog.show()
+
     dialog.innerHTML = `
     <div id="topContainer">
         <img class="exit" src="media/exit.svg">
     </div>
     <div id="reader"></div>
-    <div id="result"></div>
     `;
 
-    dialog.querySelector("img").addEventListener("click", () => {
+    dialog.querySelector(".exit").addEventListener("click", () => {
         dialog.close()
     })
-
     const scanner = new Html5QrcodeScanner('reader', {
         qrbox: {
-            width: 250,
-            height: 250
+            width: 300,
+            height: 300,
         }, 
         fps: 20,
     });
@@ -222,17 +233,20 @@ function renderQRscann(){
     scanner.render(success, error)
 
     function success(result){
-        console.log(result)
-        document.getElementById("result").innerHTML = `
-        <h2>Success</h2>
-        <a href=$${result}> ${result}</a>
-        `;
+        const data = parseText(result);
 
+    if (data.type === "function") {
+           
+        eval(`${data.link}()`)
+
+    } else {
+        console.error("Function does not exist:", data);
+    }
         scanner.clear()
-        document.getElementById("result").remove()
     }
 
     function error(err){
         console.error(err)
     }
 }
+

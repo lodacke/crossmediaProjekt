@@ -1,14 +1,7 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main } from "./utilities/variable.js";
-import { CustomControl } from "./utilities/variable.js";
-import { dialog } from "./utilities/variable.js";
-import {parseText} from "./utilities/parse.js";
-
-
-export function renderConversationF(){
-    console.log("inne i konversation")
-}
+import { main, dialog, CustomControl} from "./utilities/variable.js";
+import { renderQRscann } from "./flowConversation.js";
 
 export function renderHomepage(){
 
@@ -192,8 +185,8 @@ function renderNotes(){
     let previousContent = window.localStorage.getItem("notes")
 
     dialog.show()
-
     dialog.setAttribute("id", "notesContainer")
+    
     dialog.innerHTML = `
     <div id="topContainer">
         <img class="exit" src="media/exit.svg">
@@ -209,44 +202,26 @@ function renderNotes(){
     })
 }
 
-function renderQRscann(){
+function renderSettings(){
+
     dialog.show()
+    dialog.setAttribute("id","settings")
 
     dialog.innerHTML = `
-    <div id="topContainer">
+        <h2>Settings</h2>
+          <div id="topContainer">
         <img class="exit" src="media/exit.svg">
-    </div>
-    <div id="reader"></div>
+        </div>
+        <div id="contentSettings">
+            <button>Logout</button>
+        </div>
     `;
 
-    dialog.querySelector(".exit").addEventListener("click", () => {
+    dialog.querySelector("button").addEventListener("click", () => {
+        localStorage.remove("user")
         dialog.close()
     })
-    const scanner = new Html5QrcodeScanner('reader', {
-        qrbox: {
-            width: 300,
-            height: 300,
-        }, 
-        fps: 20,
-    });
 
-    scanner.render(success, error)
-
-    function success(result){
-        const data = parseText(result);
-
-    if (data.type === "function") {
-           
-        eval(`${data.link}()`)
-
-    } else {
-        console.error("Function does not exist:", data);
-    }
-        scanner.clear()
-    }
-
-    function error(err){
-        console.error(err)
-    }
+    endSession()
 }
 

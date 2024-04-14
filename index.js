@@ -1,6 +1,6 @@
 import { renderHomepage } from "./main.js";
 import { renderLogin } from "./registerLogin.js";
-import {renderGame} from "./main.js";
+import {renderGame } from "./main.js";
 
 
 (function(){

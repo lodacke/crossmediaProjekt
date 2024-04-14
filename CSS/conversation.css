@@ -1,0 +1,25 @@
+main{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+#conversationContainer{
+    height: 90%;
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.topC{
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+.topC > img{
+    border-radius: 50%;
+    border: 1px solid;
+    margin: 10px;
+}

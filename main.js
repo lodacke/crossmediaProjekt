@@ -100,11 +100,13 @@ function renderCharacters(){
 
 export function renderGame(){
 
+    swapStyleSheet("CSS/homePage.css")
+
     const levelOne = [
         {
         "longitude": 12.991713,
         "latitude": 55.613229,
-        "clue": "Träffa Alex för at få reda på mer om vad som hänt", 
+        "clue": "Träffa Alex för att få reda på mer om vad som hänt", 
         },
     ]   
 

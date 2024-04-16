@@ -11,6 +11,10 @@ main{
     width: 80%;
     background-color: white;
     border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .topC{
@@ -22,4 +26,45 @@ main{
     border-radius: 50%;
     border: 1px solid;
     margin: 10px;
+}
+.conversation{
+    overflow-y: scroll;
+    scrollbar-width: none;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.conversation > div{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    width: 50%;
+    width: 65%;
+    margin: 10px;
+    align-self: flex-end;
+
+}
+
+.answer{
+    background-color: green;
+    align-self: end;
+}
+
+.question{
+    background-color: orange;
+}
+
+#endC{
+    width: 92%;
+    background-color: black;
+    color: white;
+}
+.controlC{
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid black;
+    padding: 20px;
 }

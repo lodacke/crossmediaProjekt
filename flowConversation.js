@@ -32,6 +32,7 @@ export function renderQRscann(){
     function success(result){
         window.location.hash = "#game";
         const data = parseText(result);
+        console.log(data)
 
     if (data.type === "function") {
 
@@ -51,7 +52,7 @@ export function renderQRscann(){
 }
 
 
-export function renderConversationF(data){
+export function renderConversation(data){
 
     swapStyleSheet("CSS/conversation.css")
 

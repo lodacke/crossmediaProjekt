@@ -1,5 +1,5 @@
 export const conversations = {
-    "F": {
+    "Fredde": {
     start: {
         question: "Nämen hej är du här! Vad gör du här?",
         "option": [

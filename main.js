@@ -106,8 +106,19 @@ export function renderGame(){
         {
         "longitude": 12.991713,
         "latitude": 55.613229,
-        "clue": "Träffa Alex för att få reda på mer om vad som hänt", 
+        "clue": "Träffa Fredde för att få reda på mer om vad som hänt", 
         },
+        {
+            "longitude": 12.979740,
+            "latitude": 55.613506,
+            "clue": "Träffa Alex för att få reda på mer om vad som hänt", 
+        },
+        {
+            "longitude": 12.982415,
+            "latitude": 55.618262,
+            "clue": "Träffa Mickan för att få reda på mer om vad som hänt", 
+        }
+
     ]   
 
     const watchID = navigator.geolocation.watchPosition(position => {

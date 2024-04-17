@@ -10,3 +10,9 @@ export const CustomControl = L.Control.extend({
     return container;
     }
 })
+
+export const globalHolder = {
+    levelOne: [],
+    levelTwo: [],
+    levelThree: []
+};

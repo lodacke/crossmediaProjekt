@@ -2,6 +2,8 @@ import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
 import { main, dialog, CustomControl} from "./utilities/variable.js";
 import { renderQRscann } from "./flowConversation.js";
+import { levelOne, levelTwo } from "./API/qlues.js";
+import { globalHolder } from "./utilities/variable.js";
 
 export function renderHomepage(){
 
@@ -19,7 +21,8 @@ export function renderHomepage(){
     `;
 
     main.querySelector("#game").addEventListener("click", () => {
-        renderGame()
+        const storage = {};
+        renderGame(storage)
          window.location.hash = "#game";
     })
 
@@ -100,26 +103,9 @@ function renderCharacters(){
 
 export function renderGame(){
 
+    console.log(globalHolder["levelOne"].length)
+
     swapStyleSheet("CSS/homePage.css")
-
-    const levelOne = [
-        {
-        "longitude": 12.991713,
-        "latitude": 55.613229,
-        "clue": "Träffa Fredde för att få reda på mer om vad som hänt", 
-        },
-        {
-            "longitude": 12.979740,
-            "latitude": 55.613506,
-            "clue": "Träffa Alex för att få reda på mer om vad som hänt", 
-        },
-        {
-            "longitude": 12.982415,
-            "latitude": 55.618262,
-            "clue": "Träffa Mickan för att få reda på mer om vad som hänt", 
-        }
-
-    ]   
 
     const watchID = navigator.geolocation.watchPosition(position => {
         const {latitude, longitude} = position.coords;
@@ -144,7 +130,7 @@ export function renderGame(){
 
         let customIcon = L.icon({
             iconUrl: 'media/icon.svg',
-            iconSize: [38, 95],
+            iconSize: [32, 92],
             iconAnchor: [22, 94],
             popupAnchor: [-3, -76],
             className: 'levelOne' 
@@ -153,36 +139,6 @@ export function renderGame(){
         const customControlInstance = new CustomControl({ position: 'bottomleft' });
         customControlInstance.addTo(map);
 
-        levelOne.forEach(level => {
-            L.marker([level.latitude, level.longitude], {icon: customIcon})
-            .addTo(map)
-            .on("click", () => {
-                const container = customControlInstance.getContainer();
-
-                if(container.innerHTML !== ""){
-                    container.innerHTML = ``;
-                } else {
-                    container.innerHTML = `
-                    <div class="temporaryContent">
-                        <div id="topContainer">
-                            <button>Jag är här</button>
-                        </div>
-                        <div class="content">
-                            <h2>Ledtråd</h2>
-                            <p>${level.clue}</p>
-                            </div>
-                    </div>
-                `;
-
-                container.querySelector("button").addEventListener("click",() => {
-                    renderQRscann()
-                    container.innerHTML = ``
-                    })
-                }
-            })
-        })
-  
-
          document.querySelector("#notes").addEventListener("click", () => {
              renderNotes()
          })
@@ -190,6 +146,39 @@ export function renderGame(){
          document.querySelector("#characters").addEventListener("click", () => {
              renderCharacters()
          })
+
+        if(globalHolder["levelOne"].length !== 5){
+
+            levelOne.forEach(level => {
+                L.marker([level.latitude, level.longitude], {icon: customIcon})
+                .addTo(map)
+                .on("click", () => {
+                    const container = customControlInstance.getContainer();
+
+                    if(container.innerHTML !== ""){
+                        container.innerHTML = ``;
+                    } else {
+                        container.innerHTML = `
+                        <div class="temporaryContent">
+                            <div id="topContainer">
+                                <button>Jag är här</button>
+                            </div>
+                            <div class="content">
+                                <h2>Ledtråd</h2>
+                                <p>${level.clue}</p>
+                                </div>
+                        </div>
+                    `;
+
+                    container.querySelector("button").addEventListener("click",() => {
+                        renderQRscann()
+                        container.innerHTML = ``
+                        })
+                    }
+                })
+            })
+        }
+
     })    
 }
 

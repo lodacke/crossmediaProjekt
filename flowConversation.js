@@ -3,6 +3,7 @@ import { swapStyleSheet } from "./utilities/cssSwap.js";
 import {parseText} from "./utilities/parse.js";
 import { dialog, main } from "./utilities/variable.js";
 import { renderGame } from "./main.js";
+import { globalHolder } from "./utilities/variable.js";
 
 export function renderQRscann(){
     dialog.show()
@@ -51,7 +52,6 @@ export function renderQRscann(){
     }
 }
 
-
 export function renderConversation(data){
 
     swapStyleSheet("CSS/conversation.css")
@@ -71,7 +71,7 @@ export function renderConversation(data){
     `;
 
     let flow = conversations[data.name]
-
+    let globalLevel = globalHolder[data.level]
     let container = document.querySelector("#conversationContainer");
     container.scrollBottom = container.scrollHeight;
 
@@ -100,6 +100,7 @@ export function renderConversation(data){
                     endDom.innerHTML = `<p>${element.response}</p>`
                     main.querySelector(".conversation").append(endDom)
                     setTimeout(() => {
+                        globalLevel.push(data.name)
                         renderGame();
                     },3000)
                 }

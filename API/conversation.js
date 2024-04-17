@@ -103,7 +103,7 @@ export const conversations = {
 
     end: {}
 
-},
+    },
     "Mickan": {},
 
     "Alex": {
@@ -199,5 +199,5 @@ export const conversations = {
                 }
             ]
         },
-    }
+    },
 }

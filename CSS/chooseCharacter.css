@@ -28,10 +28,9 @@
     height: 100%;
     -webkit-backface-visibility: hidden; 
     backface-visibility: hidden;
-    opacity: 1;
     display: flex;
     align-items: center;
-}
+} 
 
 .frontCard {
     background-color: blue;
@@ -39,8 +38,6 @@
 
 .backCard {
     background-color: orange;
-    opacity: 0;
-    visibility: hidden;
     transform: rotateY(180deg); 
 }
 
@@ -52,24 +49,4 @@
 
 .flippedCard .innerCard {
     transform: rotateY(180deg);
-}
-
-.flippedCard .frontCard {
-    visibility: none;
-    opacity: 0;
-}
-
-.flippedCard .backCard {
-    opacity: 1;
-    visibility: visible;
-    transform: rotateY(0deg); 
-}
-
-@keyframes fadeInAnimation {
-    from {
-        opacity: 0; 
-    }
-    to {
-        opacity: 1; 
-    }
 }

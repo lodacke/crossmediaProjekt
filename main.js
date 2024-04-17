@@ -2,7 +2,7 @@ import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
 import { main, dialog, CustomControl} from "./utilities/variable.js";
 import { renderQRscann } from "./flowConversation.js";
-import { levelOne, levelTwo } from "./API/qlues.js";
+import { levelOne, levelTwo, levelThree } from "./API/qlues.js";
 import { globalHolder } from "./utilities/variable.js";
 
 export function renderHomepage(){
@@ -147,9 +147,17 @@ export function renderGame(){
              renderCharacters()
          })
 
-        if(globalHolder["levelOne"].length !== 5){
+         let level;
 
-            levelOne.forEach(level => {
+        if(globalHolder["levelOne"].length !== 6){
+            level = levelOne;
+        } if(globalHolder["levelTwo"].length !== 6){
+            level = levelThree
+        } else {
+            level = levelTwo
+        }
+
+            level.forEach(level => {
                 L.marker([level.latitude, level.longitude], {icon: customIcon})
                 .addTo(map)
                 .on("click", () => {
@@ -177,7 +185,7 @@ export function renderGame(){
                     }
                 })
             })
-        }
+
 
     })    
 }

@@ -159,22 +159,39 @@ export function chooseCharacter(){
     displayCharacters.forEach(character => {
         let card = document.createElement("div");
         card.classList.add("flipCard");
-       card.innerHTML = `
-       <div class="innerCard">
-            <div class="frontCard">
+        card.setAttribute("id", `char_${character.name}`)
+        card.innerHTML = `
+        <div class="innerCard">
+            <div class="frontCard" id=char_${character.name}>
                 <img src=${character.img}>
                 <h1>${character.name}</h1>
             </div>
-             <div class="backCard">
+             <div class="backCard" id=char_${character.name}>
                 <img src=${character.img}>
                 <p>${character.alibi}</p>
             </div>
-       </div>`
-        card.addEventListener("click", () => {
-            card.classList.toggle("flippedCard")
+       </div>
+       `;
+
+        let toggleControl = true;
+        card.addEventListener("click", (event) => {
+            if(toggleControl === true){
+                card.classList.toggle("flippedCard")
+            }
+            console.log(toggleControl)
+            if(event.target.id === "char_Anette"){
+                toggleControl = false;
+
+                setTimeout(() => {
+                    let levelButton = document.createElement("button");
+                    levelButton.setAttribute("id", "nextLevel")
+                    levelButton.innerText = "Go to next level"
+                    main.querySelector(".content").append(levelButton)
+                }, 3000)
+            }
+
         }) 
         main.querySelector(".content").append(card)
     })
-
 }
 

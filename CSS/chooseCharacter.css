@@ -30,23 +30,36 @@
     backface-visibility: hidden;
     display: flex;
     align-items: center;
+    border: 1px solid black;
 } 
 
 .frontCard {
-    background-color: blue;
+    background-color: black;
+    color:white;
 }
 
 .backCard {
-    background-color: orange;
+    background-color: white;
+    color:black;
     transform: rotateY(180deg); 
 }
 
-.frontCard > img {
+img {
     width: 10%;
     height: 50%;
     margin: 0px 30px 0px 10px;
 }
 
+p {
+    width: 70%;
+}
+
 .flippedCard .innerCard {
     transform: rotateY(180deg);
+}
+
+#nextLevel{
+    position: absolute;
+    top: 5%;
+    left: 72%;
 }

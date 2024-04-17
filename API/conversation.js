@@ -101,9 +101,8 @@ export const conversations = {
         ]
     },
 
-    end: {}
-
     },
+    
     "Mickan": {},
 
     "Alex": {
@@ -200,4 +199,18 @@ export const conversations = {
             ]
         },
     },
+
+    "Ludde": {
+        start: {
+            question: "Hej, jag har inte jättelång tid på mig, vad kan jag hjälpa till med?",
+            "options": [
+                {
+                    text: "Märkte du något konstigt med Fredrik innan du slutade, eller någon händelse?",
+                    response: "Jag jobbade ju hos honom ganska länge… men han blev konstigare och konstigare med tiden. Han har ju alltid haft det bra ställt men han blev så otroligt girig tillslut, jag kände knappt igen honom. Han började umgås med Anette och Ove också, vilket jag aldrig trodde skulle hända! Men de har ju alltid varit imponerade av honom, han är ju som en förebild för dem och ja… de gör ju exakt allt han säger. En händelse var dock märklig… en dag såg jag Fredde på sitt kontor tillsammans med Ove och Alex, jag har aldrig sett Ove så dominant över Fredde innan… det var nästan som att han var rädd för honom… tillslut så fick Alex säga till dem att lugna ner sig och då lyssnade dem direkt. Lite ovanligt att se Alex ha någon form av auktoritet… Men jag kan inte säga mer… du får inte säga till någon att jag berättat detta!"
+                }
+            ]
+        },
+        end : {}
+    }
 }
+

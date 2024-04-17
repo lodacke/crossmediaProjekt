@@ -1,4 +1,5 @@
 import { conversations } from "./API/conversation.js";
+import { characters } from "./API/characters.js"
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import {parseText} from "./utilities/parse.js";
 import { dialog, main } from "./utilities/variable.js";
@@ -72,8 +73,8 @@ export function renderConversation(data){
 
     let flow = conversations[data.name]
     let globalLevel = globalHolder[data.level]
-    let container = document.querySelector("#conversationContainer");
-    container.scrollBottom = container.scrollHeight;
+    let container = main.querySelector("#conversationContainer");
+    main.querySelector(".conversation").scrollTop = "100%";
 
     let currentQuestion = "start";
 
@@ -138,6 +139,42 @@ export function renderConversation(data){
                 }               
             } 
         }
+}
+
+export function chooseCharacter(){
+
+    swapStyleSheet("CSS/chooseCharacter.css");
+
+    main.innerHTML = `
+        <div class="content"></div>
+    `;
+
+    let displayCharacters = []
+    for (let character of characters){
+        if(character.alibi){
+            displayCharacters.push(character)
+        } 
     }
 
+    displayCharacters.forEach(character => {
+        let card = document.createElement("div");
+        card.classList.add("flipCard");
+       card.innerHTML = `
+       <div class="innerCard">
+            <div class="frontCard">
+                <img src=${character.img}>
+                <h1>${character.name}</h1>
+            </div>
+             <div class="backCard">
+                <img src=${character.img}>
+                <p>${character.alibi}</p>
+            </div>
+       </div>`
+        card.addEventListener("click", () => {
+            card.classList.toggle("flippedCard")
+        }) 
+        main.querySelector(".content").append(card)
+    })
+
+}
 

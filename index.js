@@ -1,10 +1,11 @@
 import { renderHomepage } from "./main.js";
 import { renderLogin } from "./registerLogin.js";
 import {renderGame } from "./main.js";
+import { chooseCharacter } from "./gameCenter.js";
 
 
 (function(){
-    if(window.localStorage.getItem("user")){
+    if(window.localStorage.getItem("user")){  
         renderHomepage()
     } else {
         renderLogin()
@@ -13,7 +14,8 @@ import {renderGame } from "./main.js";
 
 window.addEventListener("load", () => {
     if (window.location.hash === "#game") {
-        renderGame();
+        chooseCharacter()
+        //renderGame();
     } else {
         renderHomepage();
     }

@@ -3,5 +3,10 @@
         "username": "a",
         "password": "a",
         "games": []
+    },
+    {
+        "username": "",
+        "password": "",
+        "games": []
     }
 ]

@@ -1,10 +1,83 @@
-main{
+:root {
+    --white: #B5B5B5;
+    --yellow: #E6B400;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, rgba(48, 48, 48, 1) 0%, rgba(21, 21, 21, 1) 100%);
+    height: 100vh;
+}
+
+main {
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding-top: 25%;
 }
 
-label{
-    align-self: left;
+h1 {
+    color: var(--yellow);
+    font-weight: 500;
+    margin-top: 20%;
+}
+
+section {
+    width: 90%;
+    height: 60%;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8vh;
+}
+
+label {
+    color: var(--white);
+    font-size: 16px;
+}
+
+input {
+    background-color: #3D3B3A;
+    border: none;
+    height: 4vh;
+    border-radius: 3px;
+    margin-bottom: 4vh;
+    color: var(--white);
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.linkText {
+    font-size: 18px;
+    color: var(--white);
+    text-align: center;
+}
+
+.linkText a {
+    color: var(--white);
+}
+
+#userMessage {
+    font-size: 18px;
+    color: red;
+    background-color: var(--white);
+    text-align: center;
+    padding: 1vh;
+    border-radius: 3px;
+    opacity: 0;
+}
+
+button {
+    width: 90%;
+    padding: 1.5vh;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: var(--yellow);
+    border: none;
+    border-radius: 5px;
 }

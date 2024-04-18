@@ -1,58 +1,61 @@
-body{
+body {
     border: 1px solid black;
 }
 
-main{
+main {
     margin: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#iconSVG{
+#iconSVG {
     fill: red;
 }
 
-#topContainer{
+#topContainer {
     display: flex;
     justify-content: flex-end;
 }
 
-#topContainer > *{
+#topContainer>* {
     margin: 10px;
 }
 
-#contentHome{
+#contentHome {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.exit{
+.exit {
     cursor: pointer;
 }
 
-#contentHome > button {
+#contentHome>button {
     height: 70px;
     font-size: 20px;
 }
-#notes, #characters{
+
+#notes,
+#characters {
     cursor: pointer;
     position: absolute;
     top: 50vh;
     z-index: 9999;
 }
 
-#notes{
+#notes {
     left: 3vw;
-    
+
 }
 
-#characters{
+#characters {
     left: 91vw;
 }
 
-#characters, #notes{
+#characters,
+#notes {
     color: black;
     background-color: white;
     border: 1px solid black;
@@ -61,7 +64,8 @@ main{
 
 }
 
-#characters:hover, #notes:hover{
+#characters:hover,
+#notes:hover {
     transform: scale(1.6);
     transition-duration: 1s;
     transform-style: smooth;
@@ -69,25 +73,27 @@ main{
 
 /* MAP */
 
-#map{
+#map {
     height: 90vh;
 }
 
-.leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar{
+.leaflet-touch .leaflet-control-attribution,
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
     display: none;
 }
 
 /* Ändrar färg på kartan*/
 
 .leaflet-tile {
-    filter: grayscale(100%) 
-    /* contrast(150%) <-- exempel på andra metoder för att ändra kartans färg */ 
-    /* hue-rotate(360deg) <- exempel på andra metoder för att ändra kartans färg  */ 
-    !important;
+    filter: hue-rotate(330deg) saturate(50%)
+        /* contrast(150%) <-- exempel på andra metoder för att ändra kartans färg */
+        /* hue-rotate(360deg) <- exempel på andra metoder för att ändra kartans färg  */
+         !important;
 }
 
-.temporaryContent{
-     cursor: pointer;
+.temporaryContent {
+    cursor: pointer;
     background-color: white;
     border: 1px solid black;
     width: 83.5vw;
@@ -95,7 +101,7 @@ main{
     height: 200px;
 }
 
-.temporaryContent > .content {
+.temporaryContent>.content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,28 +111,28 @@ main{
 
 /* CHARACTERS */
 
-#containerCharacters{
+#containerCharacters {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.topCharacter{
+.topCharacter {
     display: flex;
 }
 
-.topCharacter > img{
+.topCharacter>img {
     border: 1px solid black;
     border-radius: 50%;
     width: 60px;
     height: 60px;
 }
 
-.topCharacter > h3{
+.topCharacter>h3 {
     margin-left: 10px;
 }
 
-.character{
+.character {
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
@@ -134,7 +140,7 @@ main{
 
 /* NOTES */
 
- #notesContainer{
+#notesContainer {
     background-color: none;
     z-index: 9999;
     border: none;
@@ -142,30 +148,30 @@ main{
     margin-top: 10vh;
 }
 
-#notesHeader{
+#notesHeader {
     text-align: left;
     margin: 0px;
 }
 
-#notesInput{
+#notesInput {
     height: 40vh;
     width: 100%;
-    border: 1px solid black; 
+    border: 1px solid black;
     border-radius: 10px;
-    padding: 10%; 
-    resize: none; 
-    overflow-y: auto; 
+    padding: 10%;
+    resize: none;
+    overflow-y: auto;
 }
 
- #notesContainer > img{
+#notesContainer>img {
     position: absolute;
- }
+}
 
-textarea:focus{
+textarea:focus {
     outline: none;
 }
 
-.inputSave{
+.inputSave {
     position: absolute;
     top: 90%;
     left: 80%;
@@ -173,48 +179,49 @@ textarea:focus{
 
 /* DIALOG */
 
-dialog{
+dialog {
     border: 1px solid black;
     border-radius: 10px;
     z-index: 9999;
 }
 
-dialog::backdrop{
+dialog::backdrop {
     background-color: blue;
 }
 
 
 /* QR SCANNER */
 
-#scannerContainer{
+#scannerContainer {
     margin-top: 40%;
     width: 50vw;
     padding: 0px;
 }
 
 /* funkar inte än */
-#reader > div > div > div> div> button{
+#reader>div>div>div>div>button {
     color: blue
 }
-video{
+
+video {
     width: auto;
     height: auto;
 }
 
-#reader{
+#reader {
     border: none;
 }
 
-#reader__dashboard_section_csr{
+#reader__dashboard_section_csr {
     display: flex;
     flex-direction: column;
 }
 
-#reader > div > img{
+#reader>div>img {
     display: none
 }
 
-#reader__camera_selection{
+#reader__camera_selection {
     display: none;
 }
 

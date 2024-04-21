@@ -2,7 +2,8 @@ body {
     border: 1px solid black;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgba(48, 48, 48, 1) 0%, rgba(21, 21, 21, 1) 100%);
 }
 
 main {
@@ -45,7 +46,7 @@ main {
     cursor: pointer;
     position: absolute;
     top: 50vh;
-    z-index: 9999;
+    z-index: 9998;
 }
 
 #notes {
@@ -120,25 +121,31 @@ main {
     gap: 20px;
 }
 
-.topCharacter {
+#containerCharacters p {
+    text-align: center;
+    color: #A1A1A1;
+    margin-bottom: 60px;
+}
+
+.imgBackground {
+    background-color: #222120;
+    height: 80vw;
+    width: 40vh;
+    border-radius: 20px;
+
     display: flex;
+    justify-content: center;
 }
 
 .topCharacter>img {
-    border: 1px solid black;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 80%;
 }
 
 .topCharacter>h3 {
-    margin-left: 10px;
-}
-
-.character {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 10px;
+    color: #E6B400;
+    margin-top: 20px;
+    margin-bottom: 0;
+    text-align: center;
 }
 
 /* NOTES */

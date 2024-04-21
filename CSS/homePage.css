@@ -79,6 +79,7 @@ main {
 
 #map {
     height: 90vh;
+    border-radius: 10px;
 }
 
 .leaflet-touch .leaflet-control-attribution,

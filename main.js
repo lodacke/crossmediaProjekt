@@ -68,10 +68,11 @@ export function renderGame(){
             .bindPopup('You are here')
             .openPopup();
 
-        let customIcon = L.divIcon({
+    function createCustumIcon (uniqID) {
+            let customIcon = L.divIcon({
              html: `
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="37" viewBox="0 0 30 37">
-                    <g filter="url(#filter0_d_60_31)" id="iconSVG">
+                    <g filter="url(#filter0_d_60_31)" id="iconSVG_${uniqID}">
                     <circle cx="15" cy="11" r="11" fill="black"/>
                         <path d="M15.1308 28.0503L6.36776 17.6064L23.759 17.4947L15.1308 28.0503Z" fill="black"/>
                     </g>
@@ -93,8 +94,10 @@ export function renderGame(){
             iconAnchor: [22, 94],
             shadowAnchor: [5, 45],
             popupAnchor: [-3, -76],
-            className: 'levelOne' 
         });
+        return customIcon
+    }
+
 
         const customControlInstance = new CustomControl({ position: 'bottomleft' });
         customControlInstance.addTo(map);
@@ -118,22 +121,22 @@ export function renderGame(){
         }
 
         level.forEach(level => {
-            L.marker([level.latitude, level.longitude], {icon: customIcon})
+            L.marker([level.latitude, level.longitude], {icon: createCustumIcon(level.name)})
             .addTo(map)
             .on("mouseover", () => {
 
             })
             .on("click", () => {
-                const svgAll = main.querySelectorAll("#iconSVG > *");
+                const svgAll = main.querySelectorAll(`#iconSVG_${level.name} > *`);
                 svgAll.forEach( element => {
                     element.style.fill = "green"
                 })
                 const container = customControlInstance.getContainer();
                 if(container.innerHTML !== ""){
-                const svgAll = main.querySelectorAll("#iconSVG > *");
-                svgAll.forEach( element => {
-                    element.style.fill = "black"
-                })
+                    const svgAll = main.querySelectorAll(`#iconSVG_${level.name} > *`);
+                    svgAll.forEach( element => {
+                        element.style.fill = "black"
+                    })
                     container.innerHTML = ``;
                 } else {
                     container.innerHTML = `

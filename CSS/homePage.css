@@ -97,6 +97,14 @@ main{
     flex-direction: column;
 }
 
+/* for icon */
+
+.leaflet-div-icon{
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
 
 /* CHARACTERS */
 

@@ -141,15 +141,15 @@ export function renderGame() {
                         container.innerHTML = ``;
                     } else {
                         container.innerHTML = `
-                    <div class="temporaryContent">
-                        <div id="topContainer">
-                            <button>Jag är här</button>
-                        </div>
-                        <div class="content">
-                            <h2>Ledtråd</h2>
-                            <p>${level.clue}</p>
+                            <div class="temporaryContent">
+                                <div class="content">
+                                    <h2>LEDTRÅD</h2>
+                                    <p>${level.clue}</p>
+                                </div>
+                                <div id="bottomContainer">
+                                    <button>Jag är här</button>
+                                </div>
                             </div>
-                    </div>
                 `;
 
                         container.querySelector("button").addEventListener("click", () => {
@@ -217,23 +217,28 @@ function renderCharacters() {
 }
 
 function renderSettings() {
-
     dialog.show()
-    dialog.setAttribute("id", "settings")
+    dialog.setAttribute("id", "settingsDialog")
 
     dialog.innerHTML = `
-        <h2>Settings</h2>
-          <div id="topContainer">
-        <img class="exit" src="media/exit.svg">
+        <div id="topContainer">
+            <img class="exit" src="media/exit.svg">
         </div>
+        <h2>SETTINGS</h2>
         <div id="contentSettings">
             <button>Logout</button>
         </div>
     `;
 
+    console.log("hej");
+
     dialog.querySelector("button").addEventListener("click", () => {
         localStorage.remove("user")
         dialog.close()
+    })
+
+    dialog.querySelector(".exit").addEventListener("click", () => {
+        endSession()
     })
 
     endSession()

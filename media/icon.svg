@@ -1,6 +1,6 @@
 <svg width="30" height="37" viewBox="0 0 30 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_60_31)">
-<path id="iconSVG" d="M15.1308 28.0503L6.36776 17.6064L23.759 17.4947L15.1308 28.0503Z" fill="black"/>
+<g filter="url(#filter0_d_60_31)" id="iconSVG">
+<path d="M15.1308 28.0503L6.36776 17.6064L23.759 17.4947L15.1308 28.0503Z" fill="black"/>
 <circle cx="15" cy="11" r="11" fill="black"/>
 </g>
 <defs>

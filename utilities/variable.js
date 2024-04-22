@@ -12,7 +12,7 @@ export const CustomControl = L.Control.extend({
 })
 
 export const globalHolder = {
-    levelOne: ["a", "a", "a", "a", "a", "a"],
+    levelOne: [],
     levelTwo: [],
     levelThree: []
 };

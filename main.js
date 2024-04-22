@@ -41,35 +41,6 @@ export function renderHomepage(){
 
 }
 
-function renderCharacters(){
-
-    main.innerHTML = `
-    <div id="topContainer">
-        <img class="exit" src="media/exit.svg">
-    </div>
-    <div id="containerCharacters">
-    </div>
-    `;
-
-    let containerDom = main.querySelector("#containerCharacters");
-
-    characters.forEach(character => {
-        let characterDom = document.createElement("div");
-        characterDom.classList.add("character");
-
-        characterDom.innerHTML = `
-            <div class="topCharacter">                  
-                <img src="${character.img}" alt="${character.name}">
-                 <h3>${character.name}</h3>
-            </div>
-            <p>${character.description}</p>
-        `;
-        containerDom.append(characterDom);
-    });
-
-    endSession(".exit", renderGame)
-}
-
 export function renderGame(){
 
     console.log(globalHolder["levelOne"].length)
@@ -97,10 +68,30 @@ export function renderGame(){
             .bindPopup('You are here')
             .openPopup();
 
-        let customIcon = L.icon({
-            iconUrl: 'media/icon.svg',
+        let customIcon = L.divIcon({
+             html: `
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="37" viewBox="0 0 30 37">
+                    <g filter="url(#filter0_d_60_31)" id="iconSVG">
+                    <circle cx="15" cy="11" r="11" fill="black"/>
+                        <path d="M15.1308 28.0503L6.36776 17.6064L23.759 17.4947L15.1308 28.0503Z" fill="black"/>
+                    </g>
+                    <defs>
+                        <filter id="filter0_d_60_31" x="0" y="0" width="30" height="36.0503" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset dy="4"/>
+                            <feGaussianBlur stdDeviation="2"/>
+                            <feComposite in2="hardAlpha" operator="out"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_60_31"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_60_31" result="shape"/>
+                        </filter>
+                    </defs>
+                </svg>
+            `,
             iconSize: [32, 92],
             iconAnchor: [22, 94],
+            shadowAnchor: [5, 45],
             popupAnchor: [-3, -76],
             className: 'levelOne' 
         });
@@ -118,44 +109,52 @@ export function renderGame(){
 
          let level;
 
-        if(globalHolder["levelOne"].length !== 6){
-            level = levelOne;
-        } if(globalHolder["levelTwo"].length !== 6){
+        if(globalHolder["levelTwo"].length < 0 && globalHolder["levelTwo"].length <= 6){
+            level = levelTwo;
+        } if(globalHolder["levelThree"].length < 0 && globalHolder["levelThree"].length <= 6){
             level = levelThree
         } else {
-            level = levelTwo
+            level = levelOne
         }
 
-            level.forEach(level => {
-                L.marker([level.latitude, level.longitude], {icon: customIcon})
-                .addTo(map)
-                .on("click", () => {
-                    const container = customControlInstance.getContainer();
+        level.forEach(level => {
+            L.marker([level.latitude, level.longitude], {icon: customIcon})
+            .addTo(map)
+            .on("mouseover", () => {
 
-                    if(container.innerHTML !== ""){
-                        container.innerHTML = ``;
-                    } else {
-                        container.innerHTML = `
-                        <div class="temporaryContent">
-                            <div id="topContainer">
-                                <button>Jag är här</button>
-                            </div>
-                            <div class="content">
-                                <h2>Ledtråd</h2>
-                                <p>${level.clue}</p>
-                                </div>
-                        </div>
-                    `;
-
-                    container.querySelector("button").addEventListener("click",() => {
-                        renderQRscann()
-                        container.innerHTML = ``
-                        })
-                    }
-                })
             })
+            .on("click", () => {
+                const svgAll = main.querySelectorAll("#iconSVG > *");
+                svgAll.forEach( element => {
+                    element.style.fill = "green"
+                })
+                const container = customControlInstance.getContainer();
+                if(container.innerHTML !== ""){
+                const svgAll = main.querySelectorAll("#iconSVG > *");
+                svgAll.forEach( element => {
+                    element.style.fill = "black"
+                })
+                    container.innerHTML = ``;
+                } else {
+                    container.innerHTML = `
+                    <div class="temporaryContent">
+                        <div id="topContainer">
+                            <button>Jag är här</button>
+                        </div>
+                        <div class="content">
+                            <h2>Ledtråd</h2>
+                            <p>${level.clue}</p>
+                            </div>
+                    </div>
+                `;
 
-
+                container.querySelector("button").addEventListener("click", () => {
+                    renderQRscann()
+                    container.innerHTML = ``
+                    })
+                }
+            })
+        })
     })    
 }
 
@@ -179,6 +178,35 @@ function renderNotes(){
         window.localStorage.setItem("notes", textContent)
         endSession()
     })
+}
+
+function renderCharacters(){
+
+    main.innerHTML = `
+    <div id="topContainer">
+        <img class="exit" src="media/exit.svg">
+    </div>
+    <div id="containerCharacters">
+    </div>
+    `;
+
+    let containerDom = main.querySelector("#containerCharacters");
+
+    characters.forEach(character => {
+        let characterDom = document.createElement("div");
+        characterDom.classList.add("character");
+
+        characterDom.innerHTML = `
+            <div class="topCharacter">                  
+                <img src="${character.img}" alt="${character.name}">
+                 <h3>${character.name}</h3>
+            </div>
+            <p>${character.description}</p>
+        `;
+        containerDom.append(characterDom);
+    });
+
+    endSession(".exit", renderGame)
 }
 
 function renderSettings(){

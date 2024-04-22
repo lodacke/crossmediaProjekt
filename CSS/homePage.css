@@ -9,10 +9,6 @@ main{
     justify-content: center;
 }
 
-#iconSVG{
-    fill: red;
-}
-
 #topContainer{
     display: flex;
     justify-content: flex-end;
@@ -219,4 +215,5 @@ video{
 
 /*#settings{
 /*    
-/*}
+/*} */
+

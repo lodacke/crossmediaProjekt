@@ -1,7 +1,7 @@
 import { renderHomepage } from "./main.js";
 import { renderLogin } from "./registerLogin.js";
 import {renderGame } from "./main.js";
-import { chooseCharacter } from "./gameCenter.js";
+//import { chooseCharacter } from "./gameCenter.js";
 
 
 (function(){
@@ -14,8 +14,8 @@ import { chooseCharacter } from "./gameCenter.js";
 
 window.addEventListener("load", () => {
     if (window.location.hash === "#game") {
-        chooseCharacter()
-        //renderGame();
+        //chooseCharacter()
+        renderGame();
     } else {
         renderHomepage();
     }

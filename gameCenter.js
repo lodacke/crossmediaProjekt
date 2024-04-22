@@ -178,7 +178,7 @@ export function chooseCharacter(){
             if(toggleControl === true){
                 card.classList.toggle("flippedCard")
             }
-            console.log(toggleControl)
+            
             if(event.target.id === "char_Anette"){
                 toggleControl = false;
 

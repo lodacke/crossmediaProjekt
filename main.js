@@ -1,6 +1,6 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main, dialog, CustomControl} from "./utilities/variable.js";
+import { main, dialog, CustomControl } from "./utilities/variable.js";
 import { renderQRscann } from "./gameCenter.js";
 import { levelOne, levelTwo, levelThree } from "./API/qlues.js";
 import { characters } from "./API/characters.js";
@@ -41,7 +41,7 @@ export function renderHomepage() {
 
 }
 
-export function renderGame(){
+export function renderGame() {
 
     console.log(globalHolder["levelOne"].length)
 
@@ -69,9 +69,9 @@ export function renderGame(){
             .bindPopup('You are here')
             .openPopup();
 
-    function createCustumIcon (uniqID) {
+        function createCustumIcon(uniqID) {
             let customIcon = L.divIcon({
-             html: `
+                html: `
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="37" viewBox="0 0 30 37">
                     <g filter="url(#filter0_d_60_31)" id="iconSVG_${uniqID}">
                     <circle cx="15" cy="11" r="11" fill="black"/>
@@ -91,13 +91,13 @@ export function renderGame(){
                     </defs>
                 </svg>
             `,
-            iconSize: [32, 92],
-            iconAnchor: [22, 94],
-            shadowAnchor: [5, 45],
-            popupAnchor: [-3, -76],
-        });
-        return customIcon
-    }
+                iconSize: [32, 92],
+                iconAnchor: [22, 94],
+                shadowAnchor: [5, 45],
+                popupAnchor: [-3, -76],
+            });
+            return customIcon
+        }
 
 
         const customControlInstance = new CustomControl({ position: 'bottomleft' });
@@ -111,36 +111,36 @@ export function renderGame(){
             renderCharacters()
         })
 
-         let level;
+        let level;
 
-        if(globalHolder["levelTwo"].length < 0 && globalHolder["levelTwo"].length <= 6){
+        if (globalHolder["levelTwo"].length < 0 && globalHolder["levelTwo"].length <= 6) {
             level = levelTwo;
-        } if(globalHolder["levelThree"].length < 0 && globalHolder["levelThree"].length <= 6){
+        } if (globalHolder["levelThree"].length < 0 && globalHolder["levelThree"].length <= 6) {
             level = levelThree
         } else {
             level = levelOne
         }
 
         level.forEach(level => {
-            L.marker([level.latitude, level.longitude], {icon: createCustumIcon(level.name)})
-            .addTo(map)
-            .on("mouseover", () => {
+            L.marker([level.latitude, level.longitude], { icon: createCustumIcon(level.name) })
+                .addTo(map)
+                .on("mouseover", () => {
 
-            })
-            .on("click", () => {
-                const svgAll = main.querySelectorAll(`#iconSVG_${level.name} > *`);
-                svgAll.forEach( element => {
-                    element.style.fill = "green"
                 })
-                const container = customControlInstance.getContainer();
-                if(container.innerHTML !== ""){
+                .on("click", () => {
                     const svgAll = main.querySelectorAll(`#iconSVG_${level.name} > *`);
-                    svgAll.forEach( element => {
-                        element.style.fill = "black"
+                    svgAll.forEach(element => {
+                        element.style.fill = "green"
                     })
-                    container.innerHTML = ``;
-                } else {
-                    container.innerHTML = `
+                    const container = customControlInstance.getContainer();
+                    if (container.innerHTML !== "") {
+                        const svgAll = main.querySelectorAll(`#iconSVG_${level.name} > *`);
+                        svgAll.forEach(element => {
+                            element.style.fill = "black"
+                        })
+                        container.innerHTML = ``;
+                    } else {
+                        container.innerHTML = `
                     <div class="temporaryContent">
                         <div id="topContainer">
                             <button>Jag är här</button>
@@ -152,14 +152,14 @@ export function renderGame(){
                     </div>
                 `;
 
-                container.querySelector("button").addEventListener("click", () => {
-                    renderQRscann()
-                    container.innerHTML = ``
-                    })
-                }
-            })
+                        container.querySelector("button").addEventListener("click", () => {
+                            renderQRscann()
+                            container.innerHTML = ``
+                        })
+                    }
+                })
         })
-    })    
+    })
 }
 
 function renderNotes() {
@@ -184,7 +184,7 @@ function renderNotes() {
     })
 }
 
-function renderCharacters(){
+function renderCharacters() {
 
     main.innerHTML = `
     <div id="topContainer">
@@ -201,8 +201,11 @@ function renderCharacters(){
         characterDom.classList.add("character");
 
         characterDom.innerHTML = `
-            <div class="topCharacter">                  
-                <img src="${character.img}" alt="${character.name}">
+            <div class="topCharacter">
+                <div class="imgBackground">
+                    <img src="${character.img}" alt="${character.name}">
+                </div>                  
+                
                  <h3>${character.name}</h3>
             </div>
             <p>${character.description}</p>
@@ -213,7 +216,7 @@ function renderCharacters(){
     endSession(".exit", renderGame)
 }
 
-function renderSettings(){
+function renderSettings() {
 
     dialog.show()
     dialog.setAttribute("id", "settings")

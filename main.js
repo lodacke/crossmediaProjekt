@@ -1,8 +1,9 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main, dialog, CustomControl } from "./utilities/variable.js";
-import { renderQRscann } from "./flowConversation.js";
-import { levelOne, levelTwo } from "./API/qlues.js";
+import { main, dialog, CustomControl} from "./utilities/variable.js";
+import { renderQRscann } from "./gameCenter.js";
+import { levelOne, levelTwo, levelThree } from "./API/qlues.js";
+import { characters } from "./API/characters.js";
 import { globalHolder } from "./utilities/variable.js";
 
 export function renderHomepage() {
@@ -40,70 +41,7 @@ export function renderHomepage() {
 
 }
 
-function renderCharacters() {
-
-    main.innerHTML = `
-    <div id="topContainer">
-        <img class="exit" src="media/exit.svg">
-    </div>
-    <div id="containerCharacters">
-    </div>
-    `;
-
-    const characters = [
-        {
-            name: "FREDDAN",
-            img: "media/fredde.png",
-            description: `Freddan 39 år och jobbar som VD och fondförvaltare på banken. Han bor i ett av de flottaste husen i det mycket fashionabla området Solsidan, Saltsjöbaden utanför Stockholm, där han även är uppväxt. Fredde är gift med Mikaela Schiller, som kallas Mickan, och tillsammans har de två barn, Victor och Ebba. Han är bästa vän med Alex Löfström, en barndomsvän som nyligen flyttat tillbaka till Solsidan med sin sambo Anna. Fredde är mycket entusiastisk i det som han engagerar sig i, men handlar oftast först och tänker sen. Han tänker mycket på status och lägger därpå mycket pengar och omsorg.`
-        },
-        {
-            name: "MICKAN",
-            img: "media/mickan.png",
-            description: `Mickan är gift med Fredde Schiller, Solsidans rikaste man. Hon är mammaledig med dottern Ebba men driver även ett företag som designar barnkläder. Mickan är precis som Fredde beroende av sin status i området, och vill vara "The first lady of Saltis", men har sin väninna Lussan att tävla mot. I säsong två återvänder en annan av Freddes barndomskamrater till Saltis, och visar sig vara tillsammans med Lussan, han visar sig även vara rikare än Fredde.`
-        },
-        {
-            name: "ALEX",
-            img: "media/alex.png",
-            description: `Alex är en 39-årig tandläkare, med egen klinik. Han är uppvuxen i Saltsjöbaden utanför Stockholm. I första avsnittet flyttar Alex och sambon (senare gift) Anna Svensson till "Saltis" då han har köpt sitt barndomshem av sin mamma, Margareta Löfström. I den första säsongen väntar han och Anna barn som sedan föds i det sista avsnittet. Alex är konflikträdd och nojig, och bryr sig väldigt mycket om vad andra tycker om honom. Han bor granne med sin bästa vän, och barndomskamrat, Fredde Schiller och hans fru Mikaela.`
-        },
-        {
-            name: "ANETTE",
-            img: "media/anette.png",
-            description: `Anette är lika osympatisk som sin make Ove, och deras äktenskap kan bara beskrivas som en allians mellan två människor som delar samma tvivelaktiga karaktärsdrag.  Precis som Ove är Anette snål och saknar social kompetens, vilket gör henne till en svår person att umgås med för de flesta människor. Parets tillvaro tog en oväntad vändning när Anette fick tillgång till en stor summa pengar som ett resultat av en felaktig investering flera år tidigare. Trots deras nyfunna ekonomiska status, lyckades de inte förbättra sin sociala situation. Anette visar emellertid tecken på att hon tröttnar på sin make, men de lyckas alltid hitta tillbaka till varandra.`
-        },
-        {
-            name: "OVE",
-            img: "media/ove.png",
-            description: `Ove är gammal skolbekant till Fredde och Alex. Ove är notoriskt snål och i total avsaknad av såväl social kompetens som självdistans, vilket resulterar i att han aldrig inser hur han uppfattas av omgivningen, att han beskrivs som en riktig skitstövel, eller att han aldrig är önskvärd eller välkommen. Ove vill ständigt låna prylar av grannarna, utan att lämna tillbaka dem eller själv låna ut något. Tidigare har han lyckats att - på oklart vis - bli ordförande i Saltsjöbadens Golfklubb. Han är gift med den lika osympatiska Annette med vilken han har dottern Marielle. Det var (lustigt nog) Oves och Anettes ide att Alex och Annas son skulle heta "Love". Ett snarlikt namn till "Ove". Trots Oves tämligen burdusa och buffliga stil följde de rådet.`
-        },
-        {
-            name: "ANNA",
-            img: "media/anna.png",
-            description: `Anna är sambo (sedermera gift) med Alex Löfström och jobbar som skådespelerska. I första säsongen är hon ledig från sitt arbete eftersom hon är gravid och i säsong 2 så börjar hon jobba som massör. Anna är inte uppväxt i Saltsjöbaden till skillnad från Alex, och känner sig bitvis utanför och annorlunda än sin väninna Mickan och dennas väninnor. Hon strävar dock för att passa in, men är ibland lite väl verbal och rättfram.`
-        },
-    ]
-    let containerDom = main.querySelector("#containerCharacters");
-
-    characters.forEach(character => {
-        let characterDom = document.createElement("div");
-        characterDom.classList.add("character");
-
-        characterDom.innerHTML = `
-            <div class="topCharacter">
-                <div class="imgBackground">
-                    <img src="${character.img}" alt="${character.name}">  
-                </div>                
-                 <h3>${character.name}</h3>
-            </div>
-            <p>${character.description}</p>
-        `;
-        containerDom.append(characterDom);
-    });
-
-    endSession(".exit", renderGame)
-}
-
-export function renderGame() {
+export function renderGame(){
 
     console.log(globalHolder["levelOne"].length)
 
@@ -131,13 +69,36 @@ export function renderGame() {
             .bindPopup('You are here')
             .openPopup();
 
-        let customIcon = L.icon({
-            iconUrl: 'media/icon.svg',
+    function createCustumIcon (uniqID) {
+            let customIcon = L.divIcon({
+             html: `
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="37" viewBox="0 0 30 37">
+                    <g filter="url(#filter0_d_60_31)" id="iconSVG_${uniqID}">
+                    <circle cx="15" cy="11" r="11" fill="black"/>
+                        <path d="M15.1308 28.0503L6.36776 17.6064L23.759 17.4947L15.1308 28.0503Z" fill="black"/>
+                    </g>
+                    <defs>
+                        <filter id="filter0_d_60_31" x="0" y="0" width="30" height="36.0503" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                            <feOffset dy="4"/>
+                            <feGaussianBlur stdDeviation="2"/>
+                            <feComposite in2="hardAlpha" operator="out"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_60_31"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_60_31" result="shape"/>
+                        </filter>
+                    </defs>
+                </svg>
+            `,
             iconSize: [32, 92],
             iconAnchor: [22, 94],
+            shadowAnchor: [5, 45],
             popupAnchor: [-3, -76],
-            className: 'levelOne'
         });
+        return customIcon
+    }
+
 
         const customControlInstance = new CustomControl({ position: 'bottomleft' });
         customControlInstance.addTo(map);
@@ -150,39 +111,55 @@ export function renderGame() {
             renderCharacters()
         })
 
-        if (globalHolder["levelOne"].length !== 5) {
+         let level;
 
-            levelOne.forEach(level => {
-                L.marker([level.latitude, level.longitude], { icon: customIcon })
-                    .addTo(map)
-                    .on("click", () => {
-                        const container = customControlInstance.getContainer();
-
-                        if (container.innerHTML !== "") {
-                            container.innerHTML = ``;
-                        } else {
-                            container.innerHTML = `
-                        <div class="temporaryContent">
-                            <div id="topContainer">
-                                <button>Jag är här</button>
-                            </div>
-                            <div class="content">
-                                <h2>Ledtråd</h2>
-                                <p>${level.clue}</p>
-                                </div>
-                        </div>
-                    `;
-
-                            container.querySelector("button").addEventListener("click", () => {
-                                renderQRscann()
-                                container.innerHTML = ``
-                            })
-                        }
-                    })
-            })
+        if(globalHolder["levelTwo"].length < 0 && globalHolder["levelTwo"].length <= 6){
+            level = levelTwo;
+        } if(globalHolder["levelThree"].length < 0 && globalHolder["levelThree"].length <= 6){
+            level = levelThree
+        } else {
+            level = levelOne
         }
 
-    })
+        level.forEach(level => {
+            L.marker([level.latitude, level.longitude], {icon: createCustumIcon(level.name)})
+            .addTo(map)
+            .on("mouseover", () => {
+
+            })
+            .on("click", () => {
+                const svgAll = main.querySelectorAll(`#iconSVG_${level.name} > *`);
+                svgAll.forEach( element => {
+                    element.style.fill = "green"
+                })
+                const container = customControlInstance.getContainer();
+                if(container.innerHTML !== ""){
+                    const svgAll = main.querySelectorAll(`#iconSVG_${level.name} > *`);
+                    svgAll.forEach( element => {
+                        element.style.fill = "black"
+                    })
+                    container.innerHTML = ``;
+                } else {
+                    container.innerHTML = `
+                    <div class="temporaryContent">
+                        <div id="topContainer">
+                            <button>Jag är här</button>
+                        </div>
+                        <div class="content">
+                            <h2>Ledtråd</h2>
+                            <p>${level.clue}</p>
+                            </div>
+                    </div>
+                `;
+
+                container.querySelector("button").addEventListener("click", () => {
+                    renderQRscann()
+                    container.innerHTML = ``
+                    })
+                }
+            })
+        })
+    })    
 }
 
 function renderNotes() {
@@ -207,7 +184,36 @@ function renderNotes() {
     })
 }
 
-function renderSettings() {
+function renderCharacters(){
+
+    main.innerHTML = `
+    <div id="topContainer">
+        <img class="exit" src="media/exit.svg">
+    </div>
+    <div id="containerCharacters">
+    </div>
+    `;
+
+    let containerDom = main.querySelector("#containerCharacters");
+
+    characters.forEach(character => {
+        let characterDom = document.createElement("div");
+        characterDom.classList.add("character");
+
+        characterDom.innerHTML = `
+            <div class="topCharacter">                  
+                <img src="${character.img}" alt="${character.name}">
+                 <h3>${character.name}</h3>
+            </div>
+            <p>${character.description}</p>
+        `;
+        containerDom.append(characterDom);
+    });
+
+    endSession(".exit", renderGame)
+}
+
+function renderSettings(){
 
     dialog.show()
     dialog.setAttribute("id", "settings")

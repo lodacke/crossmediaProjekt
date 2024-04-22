@@ -17,7 +17,7 @@ main {
     fill: red;
 }
 
-#topContainer {
+#topContainer{
     display: flex;
     justify-content: flex-end;
 }
@@ -49,9 +49,8 @@ main {
     z-index: 9998;
 }
 
-#notes {
-    left: 3vw;
-
+#notes{
+    left: 3vw;   
 }
 
 #characters {
@@ -111,6 +110,14 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+/* for icon */
+
+.leaflet-div-icon{
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 
@@ -242,4 +249,5 @@ video {
 
 /*#settings{
 /*    
-/*}
+/*} */
+

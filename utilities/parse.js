@@ -6,6 +6,5 @@ export function parseText(text) {
         const [key, value] = pair.split(':').map(item => item.trim());
         result[key] = value;
     });
-    console.log(result)
     return result;
 }

@@ -91,8 +91,8 @@ export function renderGame(){
                     </defs>
                 </svg>
             `,
-            iconSize: [32, 92],
-            iconAnchor: [22, 94],
+            iconSize: [32, 37], 
+            iconAnchor: [15, 18],
             shadowAnchor: [5, 45],
             popupAnchor: [-3, -76],
         });

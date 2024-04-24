@@ -2,11 +2,11 @@ import { conversations } from "./API/conversation.js";
 import { characters } from "./API/characters.js"
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import {parseText} from "./utilities/parse.js";
-import { dialog, main } from "./utilities/variable.js";
+import { dialog, main, globalHolder } from "./utilities/variable.js";
 import { renderGame } from "./main.js";
-import { globalHolder } from "./utilities/variable.js";
+import { styleSVGElement } from "./utilities/styleElement.js";
 
-export function renderQRscann(){
+export function renderQRscann(level){
     dialog.show()
     dialog.setAttribute("id", "scannerContainer")
 
@@ -20,6 +20,7 @@ export function renderQRscann(){
 
     dialog.querySelector(".exit").addEventListener("click", () => {
         dialog.close()
+        styleSVGElement(level, "black")
     })
     const scanner = new Html5QrcodeScanner('reader', {
         qrbox: {
@@ -27,6 +28,7 @@ export function renderQRscann(){
             height: 300,
         }, 
         fps: 20,
+        facingMode: "environment" 
     });
 
     scanner.render(success, error)
@@ -34,13 +36,14 @@ export function renderQRscann(){
     function success(result){
         window.location.hash = "#game";
         const data = parseText(result);
-        console.log(data)
+        
 
     if (data.type === "function") {
 
         dialog.close()  
         const dataString = JSON.stringify(data)
         eval(`${data.link}(${dataString})`)
+        styleSVGElement(level, "green")
 
     } else {
         console.error("Function does not exist:", data);
@@ -101,7 +104,9 @@ export function renderConversation(data){
                     endDom.innerHTML = `<p>${element.response}</p>`
                     main.querySelector(".conversation").append(endDom)
                     setTimeout(() => {
+
                         globalLevel.push(data.name)
+                        styleSVGElement(globalLevel)
                         renderGame();
                     },3000)
                 }
@@ -141,7 +146,13 @@ export function renderConversation(data){
         }
 }
 
-export function chooseCharacter(){
+export function displayIMG(data){
+    swapStyleSheet("CSS/displayIMG.css")
+    
+}
+
+
+export function findLeader(){
 
     swapStyleSheet("CSS/chooseCharacter.css");
 
@@ -178,7 +189,7 @@ export function chooseCharacter(){
             if(toggleControl === true){
                 card.classList.toggle("flippedCard")
             }
-            
+
             if(event.target.id === "char_Anette"){
                 toggleControl = false;
 

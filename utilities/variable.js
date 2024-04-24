@@ -14,5 +14,32 @@ export const CustomControl = L.Control.extend({
 export const globalHolder = {
     levelOne: [],
     levelTwo: [],
-    levelThree: []
+    levelThree: [],
 };
+
+//let sendContainer = JSON.stringify(container)
+//window.localStorage.setItem("globalHolder", sendContainer);
+//export const globalHold = window.localStorage.getItem("globalHolder");
+
+//export const globalHolder = {
+//
+//  get: (entity) => 
+//  {
+//    if (localStorage.getItem(entity) === null) return undefined;
+//    let data = localStorage.getItem(entity);
+//    return JSON.parse(data);
+//  },
+//
+//  set: (entity, value) =>
+//  {
+//    return localStorage.setItem(entity, JSON.stringify(value));
+//  },
+//
+//  reset: () =>
+//  {
+//    localStorage.clear();
+//  },
+//
+//};
+
+

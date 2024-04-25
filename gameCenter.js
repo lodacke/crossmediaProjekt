@@ -1,12 +1,13 @@
 import { conversations } from "./API/conversation.js";
 import { characters } from "./API/characters.js"
 import { swapStyleSheet } from "./utilities/cssSwap.js";
-import {parseText} from "./utilities/parse.js";
+import { parseText } from "./utilities/parse.js";
 import { dialog, main } from "./utilities/variable.js";
 import { renderGame } from "./main.js";
 import { globalHolder } from "./utilities/variable.js";
 
-export function renderQRscann(){
+export function renderQRscann() {
+
     dialog.show()
     dialog.setAttribute("id", "scannerContainer")
 
@@ -25,51 +26,75 @@ export function renderQRscann(){
         qrbox: {
             width: 300,
             height: 300,
-        }, 
+        },
         fps: 20,
     });
 
     scanner.render(success, error)
 
-    function success(result){
+    function success(result) {
         window.location.hash = "#game";
         const data = parseText(result);
         console.log(data)
 
-    if (data.type === "function") {
+        if (data.type === "function") {
 
-        dialog.close()  
-        const dataString = JSON.stringify(data)
-        eval(`${data.link}(${dataString})`)
+            dialog.close()
+            const dataString = JSON.stringify(data)
+            eval(`${data.link}(${dataString})`)
 
-    } else {
-        console.error("Function does not exist:", data);
-    }
+        } else {
+            console.error("Function does not exist:", data);
+        }
         scanner.clear()
     }
 
-    function error(err){
+    function error(err) {
         console.error(err)
     }
 }
 
-export function renderConversation(data){
+export function renderConversation(data) {
 
     swapStyleSheet("CSS/conversation.css")
 
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
     main.innerHTML = `
-    <div id="conversationContainer">
-        <div class="topC">
+    <div class="topC">
+        <div class="leftCol">
             <img src="${data.src}">
-            <h3>Konversation med ${data.name}</h3>
+            <section>
+                <div id="name">${data.name}</div>
+                <div id="status">
+                    <div id="statusCircle"></div>
+                    <div id="online">Online</div>
+                </div>
+            </section>
         </div>
+        <div class="rightCol">
+            <ion-icon name="videocam-outline"></ion-icon>
+            <ion-icon name="call-outline"></ion-icon>
+        </div>
+
+    </div>
+    <div id="conversationContainer">
+        <div id="time">${hours}:${minutes}</div>
         <div class="conversation"></div>
         <div class="controlC">
             <button></button>
             <button class="option"></button>
         </div> 
+        <div id="inputDisplay">
+            <div id="prompt">Välj svar ovan</div>
+            <div id="send"><ion-icon name="send-outline"></ion-icon></div>
+        </div>
     </div>
     `;
+
+    console.log(data.src);
 
     let flow = conversations[data.name]
     let globalLevel = globalHolder[data.level]
@@ -80,7 +105,7 @@ export function renderConversation(data){
 
     renderConversation(currentQuestion)
 
-    function renderConversation(currentQuestion){
+    function renderConversation(currentQuestion) {
 
         let currentFlow = flow[currentQuestion]
         let buttons = main.querySelectorAll("button");
@@ -97,51 +122,51 @@ export function renderConversation(data){
                     renderConversation(element.response);
                 } else {
                     let endDom = document.createElement("div");
-                    endDom.setAttribute("id","endC");
+                    endDom.setAttribute("id", "endC");
                     endDom.innerHTML = `<p>${element.response}</p>`
                     main.querySelector(".conversation").append(endDom)
                     setTimeout(() => {
                         globalLevel.push(data.name)
                         renderGame();
-                    },3000)
+                    }, 3000)
                 }
             };
         }
 
-        for(let key in currentFlow){
+        for (let key in currentFlow) {
 
-                if(key === "option"){
-                    currentFlow[key].forEach((element, index) => {
-                    buttons[index].onclick = clickHandler(element)   
+            if (key === "option") {
+                currentFlow[key].forEach((element, index) => {
+                    buttons[index].onclick = clickHandler(element)
                     buttons[index].innerText = element.text;
-                    });
+                });
 
-                } else {
+            } else {
 
-                  setTimeout(() => {
-                        let questionDom = document.createElement("div");
-                        questionDom.append(document.createElement("p"))
+                setTimeout(() => {
+                    let questionDom = document.createElement("div");
+                    questionDom.append(document.createElement("p"))
 
-                        questionDom.classList.add("question")
-                        for (let i = 0; i < currentFlow[key].length; i++) {
-                            setTimeout(() => {
-                                let span = document.createElement("span");
-                                span.textContent = currentFlow[key][i];
-                                questionDom.querySelector("p").append(span);
-                                }, i * 30); 
-                            }
+                    questionDom.classList.add("question")
+                    for (let i = 0; i < currentFlow[key].length; i++) {
+                        setTimeout(() => {
+                            let span = document.createElement("span");
+                            span.textContent = currentFlow[key][i];
+                            questionDom.querySelector("p").append(span);
+                        }, i * 30);
+                    }
 
-                        main.querySelector(".conversation").append(questionDom)
-                        container.scrollTo(0, container.scrollHeight);
+                    main.querySelector(".conversation").append(questionDom)
+                    container.scrollTo(0, container.scrollHeight);
 
-                  }, 1000)  
+                }, 1000)
 
-                }               
-            } 
+            }
         }
+    }
 }
 
-export function chooseCharacter(){
+export function chooseCharacter() {
 
     swapStyleSheet("CSS/chooseCharacter.css");
 
@@ -150,10 +175,10 @@ export function chooseCharacter(){
     `;
 
     let displayCharacters = []
-    for (let character of characters){
-        if(character.alibi){
+    for (let character of characters) {
+        if (character.alibi) {
             displayCharacters.push(character)
-        } 
+        }
     }
 
     displayCharacters.forEach(character => {
@@ -175,11 +200,11 @@ export function chooseCharacter(){
 
         let toggleControl = true;
         card.addEventListener("click", (event) => {
-            if(toggleControl === true){
+            if (toggleControl === true) {
                 card.classList.toggle("flippedCard")
             }
-            
-            if(event.target.id === "char_Anette"){
+
+            if (event.target.id === "char_Anette") {
                 toggleControl = false;
 
                 setTimeout(() => {
@@ -190,7 +215,7 @@ export function chooseCharacter(){
                 }, 3000)
             }
 
-        }) 
+        })
         main.querySelector(".content").append(card)
     })
 }

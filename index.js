@@ -4,21 +4,19 @@ import { renderGame } from "./main.js";
 //import { chooseCharacter } from "./gameCenter.js";
 
 
-// (function(){
-//     if(window.localStorage.getItem("user")){  
-//         renderHomepage()
-//     } else {
-//         renderLogin()
-//     }
+(function () {
+    if (window.localStorage.getItem("user")) {
+        renderHomepage()
+    } else {
+        renderLogin()
+    }
 
 
-//     window.addEventListener("load", () => {
-//         if (window.location.hash === "#game") {
-//             renderGame();
-//         } else {
-//             renderHomepage();
-//         }
-//     });
-// })()
-
-renderGame()
+    window.addEventListener("load", () => {
+        if (window.location.hash === "#game") {
+            renderGame();
+        } else {
+            renderHomepage();
+        }
+    });
+})()

@@ -162,11 +162,17 @@ main {
 .imgBackground {
     background-color: #222120;
     height: 80vw;
-    width: 40vh;
+    width: 100%;
     border-radius: 20px;
 
     display: flex;
     justify-content: center;
+}
+
+.topCharacter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .topCharacter>img {
@@ -205,6 +211,8 @@ main {
     color: #A1A1A1;
     height: 80%;
     width: 85%;
+    font-size: 16px;
+    line-height: 3vh;
     border: 1px solid black;
     border-radius: 10px;
     padding: 15px;
@@ -242,33 +250,36 @@ dialog::backdrop {
 #scannerContainer {
     position: fixed;
     top: 30%;
+    height: fit-content;
+    width: 60vw;
+    background-color: #0000008a;
 }
 
-/* funkar inte än */
-#reader>div>div>div>div>button {
-    color: blue
-}
-
-video {
-    width: auto;
-    height: auto;
-}
-
-#reader {
-    border: none;
-}
-
-#reader__dashboard_section_csr {
-    display: flex;
-    flex-direction: column;
+#scannerContainer #reader {
+    display: inline;
 }
 
 #reader>div>img {
     display: none
 }
 
-#reader__camera_selection {
-    display: none;
+#reader__dashboard button {
+    margin-bottom: 15px;
+    font-size: 16px;
+    background-color: var(--yellow);
+    padding: 1vh 2.5vh;
+    border-radius: 10px;
+    border: 1px solid var(--white);
+}
+
+#reader__dashboard a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#reader__filescan_input {
+    font-size: 14px;
 }
 
 /* SETTINGS */

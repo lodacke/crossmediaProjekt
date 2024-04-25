@@ -1,39 +1,44 @@
 import { globalHolder } from "./variable.js"
-import {styleSVGElement} from "./styleElement.js"
+import { styleSVGElement } from "./styleElement.js";
 import { levelTwo, levelThree, levelOne } from "../API/qlues.js"
 
 export function levelCount() {
-    let userLevel = levelOne;
 
-    for (let level in globalHolder) {
-        switch (level) {
-            case "levelOne":
-                if (globalHolder["levelOne"].length > 5) {
-                    styleSVGElement(globalHolder[level], "green");
-                    return userLevel = levelOne;
-                } else if(globalHolder["levelOne"].length === 5) {
-                    return userLevel = levelTwo;
-                }
-                break; 
+    if(globalHolder.levels.levelOne){
 
-            case "levelTwo":
-                if (globalHolder["levelTwo"].length > 6 ) {
-                    styleSVGElement(globalHolder[level], "green");
-                    userLevel = levelTwo;
-                } else if(globalHolder["levelTwo"].length === 6 && userLevel !== levelOne) {
-                    return userLevel = levelThree;
-                }
-                break; 
+        console.log(globalHolder.levels.levelOne.length) 
+        console.log(globalHolder.levels.levelOne) 
 
-            case "levelThree":
-                if (globalHolder["levelThree"].length > 3) {
-                    styleSVGElement(globalHolder[level], "green");
-                    return userLevel = levelThree;
-                } else if(globalHolder["levelOne"].length === 3 && userLevel !== levelTwo) {
-                    return userLevel = levelThree;
-                }
-                break; 
+        if (globalHolder.levels.levelOne.length > 5) {
+            
+            styleSVGElement(globalHolder.levels.levelOne, "green");
+            return levelOne;
+
+        } else if (globalHolder.levels.levelOne.length === 5) {
+
+            console.log("true");
+            return levelTwo;
+        }   
+    }
+
+    if(globalHolder.levels.levelTwo){
+        if (globalHolder.levels.levelTwo.length > 6) {
+
+            styleSVGElement(globalHolder.levels.levelTwo, "green");
+            return levelTwo;
+
+        } else if (globalHolder.levels.levelTwo.length === 6) {
+
+            return levelThree;
         }
     }
-    return userLevel;
+    if(globalHolder.levels.levelThree){
+        if (globalHolder.levels.levelThree.length > 3) {
+
+            styleSVGElement(globalHolder.levels.levelThree, "green");
+            return levelThree;
+        }
+    }
+
+    return levelOne;
 }

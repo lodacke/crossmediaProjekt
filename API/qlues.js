@@ -52,6 +52,8 @@ export const levelTwo =
             "name": "imgFindMyIphone",
             "type": "IMG",
             "clue": "Att vara medlem i sekten kräver precision och noggrann planering... Sektens medlemmar är alltid medvetna om var de andra befinner sig, särskilt när det vankas sektmöte! De har ännu inte avslöjat för dig hur de lyckas med det så du måste på annat sätt få reda på var de befinner sig. På Mickans telefon finns en skärmdump som kan ge dig en avgörande ledtråd. Möt upp henne och kolla snabbt på hennes telefon utan att hon märker!", 
+            "img": [ "media/gameIMG/..svg", "media/gameIMG/..svg", "media/gameIMG/..svg"],
+            "img1": "media/gameIMG/..svg",
         },
         {
             "latitude": 55.618262,
@@ -59,6 +61,9 @@ export const levelTwo =
             "name": "imgMeeting",
             "type": "IMG",
             "clue": "I en väl undangömd lokal i västra hamnen samlas högt uppsatta medlemmar till ett hemligt sektmöte där sektens ledare styr med järnhand. Att smyga dig dit kan ge dig ovärderlig information om deras hemligheter. Men var försiktig och göm dig väl... Att bli upptäckt av sekten kan få ödesdigra konsekvenser.", 
+            "img1": "media/gameIMG/...svg",
+            "img2": "media/gameIMG/...svg",
+
         },
         {
             "latitude": 55.614644,

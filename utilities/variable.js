@@ -12,34 +12,23 @@ export const CustomControl = L.Control.extend({
 })
 
 export const globalHolder = {
-    levelOne: [],
-    levelTwo: [],
-    levelThree: [],
+  levels: JSON.parse(localStorage.getItem('levels')) || {}, 
+  get: function(level) {
+    return JSON.parse(localStorage.getItem(level));
+  },
+  set: function(level, data) {
+    localStorage.setItem(level, JSON.stringify(data));
+    this.levels[level] = data; 
+    localStorage.setItem('levels', JSON.stringify(this.levels)); 
+  },
+  push: function(level, value) {
+    let levelData = this.get(level) || [];
+    levelData.push(value);
+    this.set(level, levelData); 
+  },
+  reset: function() {
+    localStorage.clear();
+    this.levels = {}; 
+    localStorage.setItem('levels', JSON.stringify(this.levels)); 
+  }
 };
-
-//let sendContainer = JSON.stringify(container)
-//window.localStorage.setItem("globalHolder", sendContainer);
-//export const globalHold = window.localStorage.getItem("globalHolder");
-
-//export const globalHolder = {
-//
-//  get: (entity) => 
-//  {
-//    if (localStorage.getItem(entity) === null) return undefined;
-//    let data = localStorage.getItem(entity);
-//    return JSON.parse(data);
-//  },
-//
-//  set: (entity, value) =>
-//  {
-//    return localStorage.setItem(entity, JSON.stringify(value));
-//  },
-//
-//  reset: () =>
-//  {
-//    localStorage.clear();
-//  },
-//
-//};
-
-

@@ -1,10 +1,11 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main, dialog, CustomControl, globalHolder } from "./utilities/variable.js";
+import { main, dialog, CustomControl, globalHolder} from "./utilities/variable.js";
 import { renderQRscann, findLeader } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
 import { styleSVGElement } from "./utilities/styleElement.js";
 import { levelCount} from "./utilities/levelCounter.js"
+
 
 export function renderHomepage() {
 
@@ -41,14 +42,18 @@ export function renderHomepage() {
 }
 
 export async function renderGame(){
+
     //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
-// levelOne: "Alex", "Mickan", "Ove", "Anette", "Fredde"
-// levelTwo: "Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"
-    //globalHolder.levelOne.push("Alex", "Mickan", "Ove", "Anette")
-    console.log(globalHolder)
+    let testlevelOne = ["Alex", "Mickan", "Ove", "Anette", "Fredde"];
+    let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
+    
+    //testlevelOne.forEach( level => {
+    //    globalHolder.push("levelOne", level)
+    //})
+
+    console.log(globalHolder.levels)
     let level = levelCount()
     console.log(level)
-   
     swapStyleSheet("CSS/homePage.css")
 
     const watchID = navigator.geolocation.watchPosition(position => {
@@ -62,16 +67,16 @@ export async function renderGame(){
         </div>
         `;
 
-        var map = L.map('map').setView([latitude, longitude], 16);
+        const map = L.map('map').setView([latitude, longitude], 16);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         })
             .addTo(map);
 
-        L.marker([latitude, longitude]).addTo(map)
-            .bindPopup('You are here')
-            .openPopup();
+       // L.marker([latitude, longitude]).addTo(map)
+       //     .bindPopup('You are here')
+       //     .openPopup();
 
         function custumIcon (uniqID) {
                 let customIcon = L.divIcon({
@@ -154,10 +159,10 @@ export async function renderGame(){
                         }
                         container.innerHTML = ``;
                     })
-                }
-            })
-        }) 
-    })  
+                }                
+            })  
+        })  
+    }) 
 }
 
 function renderNotes() {
@@ -232,5 +237,11 @@ function renderSettings(){
     })
 
     endSession()
+}
+
+function renderAboutUs(){
+    main.innerHTML = `
+    <div>
+    </div>`
 }
 

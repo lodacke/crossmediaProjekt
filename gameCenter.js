@@ -14,7 +14,7 @@ export function renderQRscann() {
 
     dialog.innerHTML = `
     <div id="topContainer">
-        <img class="exit" src="media/exit.svg">
+        <ion-icon class="exit" name="close-outline"></ion-icon>
     </div>
     <div id="reader"></div>
     `;

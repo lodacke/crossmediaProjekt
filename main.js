@@ -13,7 +13,7 @@ export function renderHomepage() {
     main.innerHTML = `
     <div id="contentHome">
     <div id="topContainer">
-        <img id="settings" src="media/settings.svg">
+        <ion-icon id="settings" name="settings-outline"></ion-icon>
     </div>
         <button id="game">Starta spel</button>
         <button id="scoreBoard">Scoreboard</button>
@@ -52,8 +52,12 @@ export function renderGame() {
 
         main.innerHTML = `
         <div class="helpers">
-            <button id="notes"><img src="./media/note.svg"></button>
-            <button id="characters"><img src="./media/characters.svg"></button>
+            <button id="notes">
+                <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button id="characters">
+                <ion-icon name="people-outline"></ion-icon>
+            </button>
            <div id="map"></div>
         </div>
         `;
@@ -171,7 +175,7 @@ function renderNotes() {
 
     dialog.innerHTML = `
     <div id="topContainer">
-        <img class="exit" src="media/exit.svg">
+        <ion-icon class="exit" name="close-outline"></ion-icon>
     </div>
     <h2 id="notesHeader">ANTECKNINGAR</h2>
     <textarea type="text" id="notesInput">${previousContent}</textarea>
@@ -188,7 +192,7 @@ function renderCharacters() {
 
     main.innerHTML = `
     <div id="topContainer">
-        <img class="exit" src="media/exit.svg">
+        <ion-icon class="exit" name="close-outline"></ion-icon>
     </div>
     <div id="containerCharacters">
     </div>
@@ -222,7 +226,7 @@ function renderSettings() {
 
     dialog.innerHTML = `
         <div id="topContainer">
-            <img class="exit" src="media/exit.svg">
+            <ion-icon class="exit" name="close-outline"></ion-icon>
         </div>
         <h2>SETTINGS</h2>
         <div id="contentSettings">

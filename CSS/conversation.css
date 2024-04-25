@@ -12,7 +12,7 @@ main {
 
 ion-icon {
     color: #B5B5B5;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .topC {
@@ -59,8 +59,8 @@ ion-icon {
     align-items: center;
 }
 
-.topC .rightCol ion-icon:last-of-type {
-    font-size: 35px;
+.topC .rightCol ion-icon:first-of-type {
+    font-size: 40px;
 }
 
 #conversationContainer {
@@ -172,5 +172,5 @@ ion-icon {
 
 #inputDisplay #send ion-icon {
     color: black;
-    font-size: 18px;
+    font-size: 20px;
 }

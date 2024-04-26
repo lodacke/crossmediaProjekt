@@ -349,3 +349,10 @@ export function findLeader(){
     })
 }
 
+export function renderAnalogChallange(code){
+    main.innerHTML = `
+        <div>
+        </div>
+    `;
+}
+

@@ -122,7 +122,8 @@ export function renderConversation(data) {
                 answerDom.innerHTML = `<p>${element.text}</p>`;
                 main.querySelector(".conversation").append(answerDom);
 
-                if (["one", "two", "three", "four", "five", "six", "seven", "eight"].includes(element.response)) {
+                if (element.response === "one", "two", "three", "four", "five", "six", "seven", "eight") {
+                    console.log(element.response)
                     renderConversation(element.response);
                 }
                 if(element.end){
@@ -155,18 +156,18 @@ export function renderConversation(data) {
                         renderGame();
                     }, spanLength)
 
-                } else {
-                    
+                } if(element.lastMessage) {
+                    console.log(element.response)
                     let endDom = document.createElement("div");
                     endDom.setAttribute("id", "endC");
-                    endDom.innerHTML = `<p>${element.response}</p>`
+                    endDom.innerHTML = `<p>${element.lastMessage}</p>`
                     main.querySelector(".conversation").append(endDom)
                     setTimeout(() => {
 
                         globalHolder.push(data.level, data.name)
                         styleSVGElement(data.level)
                         renderGame();
-                    }, spanLength)
+                    }, 3000)
                 }
             };
         }

@@ -123,7 +123,6 @@ export function renderConversation(data) {
                 main.querySelector(".conversation").append(answerDom);
 
                 if (element.response === "one", "two", "three", "four", "five", "six", "seven", "eight") {
-                    console.log(element.response)
                     renderConversation(element.response);
                 }
                 if(element.end){
@@ -151,13 +150,11 @@ export function renderConversation(data) {
                         container.scrollTo(0, container.scrollHeight);
                 }, 1000) 
                 setTimeout(() => {
-                        console.log(data.level)
                         globalHolder.push(data.level, data.name) 
                         renderGame();
                     }, spanLength)
 
                 } if(element.lastMessage) {
-                    console.log(element.response)
                     let endDom = document.createElement("div");
                     endDom.setAttribute("id", "endC");
                     endDom.innerHTML = `<p>${element.lastMessage}</p>`

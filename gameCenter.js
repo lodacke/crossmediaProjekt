@@ -2,12 +2,12 @@ import { conversations } from "./API/conversation.js";
 import { levelTwo, levelThree } from "./API/qlues.js";
 import { characters } from "./API/characters.js"
 import { swapStyleSheet } from "./utilities/cssSwap.js";
-import {parseText} from "./utilities/parse.js";
+import { parseText } from "./utilities/parse.js";
 import { dialog, globalHolder, main } from "./utilities/variable.js";
 import { renderGame } from "./main.js";
 import { styleSVGElement } from "./utilities/styleElement.js";
 
-export function renderQRscann(level){
+export function renderQRscann(level) {
     console.log(level)
     dialog.show()
     dialog.setAttribute("id", "scannerContainer")
@@ -39,14 +39,14 @@ export function renderQRscann(level){
     function success(result) {
         window.location.hash = "#game";
         const data = parseText(result);
-        
+
 
         if (data.type === "function") {
 
-        dialog.close()  
-        const dataString = JSON.stringify(data)
-        eval(`${data.link}(${dataString})`)
-        styleSVGElement(level, "green")
+            dialog.close()
+            const dataString = JSON.stringify(data)
+            eval(`${data.link}(${dataString})`)
+            styleSVGElement(level, "green")
 
         } else {
             console.error("Function does not exist:", data);
@@ -125,7 +125,7 @@ export function renderConversation(data) {
                 if (element.response === "one", "two", "three", "four", "five", "six", "seven", "eight") {
                     renderConversation(element.response);
                 }
-                if(element.end){
+                if (element.end) {
 
                     let spanLength = element.end.length * 30 + 2000;
                     buttons.forEach(button => {
@@ -142,19 +142,19 @@ export function renderConversation(data) {
                                 let span = document.createElement("span");
                                 span.textContent = element.end[i];
                                 closingDom.querySelector("p").append(span);
-                                }, i * 30); 
-                            }
-                            
+                            }, i * 30);
+                        }
+
 
                         main.querySelector(".conversation").append(closingDom)
                         container.scrollTo(0, container.scrollHeight);
-                }, 1000) 
-                setTimeout(() => {
-                        globalHolder.push(data.level, data.name) 
+                    }, 1000)
+                    setTimeout(() => {
+                        globalHolder.push(data.level, data.name)
                         renderGame();
                     }, spanLength)
 
-                } if(element.lastMessage) {
+                } if (element.lastMessage) {
                     let endDom = document.createElement("div");
                     endDom.setAttribute("id", "endC");
                     endDom.innerHTML = `<p>${element.lastMessage}</p>`
@@ -175,10 +175,10 @@ export function renderConversation(data) {
                 currentFlow[key].forEach((element, index) => {
                     buttons[index].onclick = clickHandler(element)
                     buttons[index].innerText = element.text;
-                    });
-                } 
+                });
+            }
 
-                if(key === "question") {
+            if (key === "question") {
 
                 setTimeout(() => {
                     let questionDom = document.createElement("div");
@@ -196,13 +196,13 @@ export function renderConversation(data) {
                     main.querySelector(".conversation").append(questionDom)
                     container.scrollTo(0, container.scrollHeight);
 
-                  }, 1000)  
-                }             
-            } 
+                }, 1000)
+            }
         }
     }
+}
 
-export function renderIMG(data){
+export function renderIMG(data) {
 
     swapStyleSheet("CSS/renderIMG.css")
     main.innerHTML = `
@@ -211,30 +211,37 @@ export function renderIMG(data){
 
     let container = main.querySelector("#content");
 
-        let flow;
+    let flow;
 
-        if(data.level === "levelTwo"){
-            flow = levelTwo.find(obj => obj.name === data.name);
-        }
-        if(data.level === "levelThree"){
-            flow = levelThree.find(obj => obj.name === data.name);
+    if (data.level === "levelTwo") {
+        flow = levelTwo.find(obj => obj.name === data.name);
+    }
+    if (data.level === "levelThree") {
+        flow = levelThree.find(obj => obj.name === data.name);
 
-        }
+    }
 
-    if(data.name === "imgFindMyIphone"){
+    if (data.name === "imgFindMyIphone") {
         container.innerHTML = `
         <h1>UPPDRAG</h1>
         <p>Du har nu fått tillgång till Mickans telefon. Kolla skärmdumpen i hennes kamerarulle för att ta reda på vart sektmedlemmarna befinner sig!</p>
-        <button><img src="media/imgGallery.svg"></button>
+        <button>
+            <ion-icon name="images-outline"></ion-icon>
+        </button>
         `;
 
         container.querySelector("button").addEventListener("click", () => {
             container.setAttribute("id", "containerFindMyIphone")
             container.innerHTML = `
             <div class="topDOM">
-                <p> <img src="media/arrow.svg">album</p>
-                <button>Välj</button>
-                <img src="media/dots.svg">
+                <div>
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                    <p>Album</p>
+                </div>
+                <div>
+                    <button>Välj</button>
+                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                </div>
             </div>
             <div class="middleDOM">
                 <h3>Senaste</h3>
@@ -246,7 +253,7 @@ export function renderIMG(data){
             `;
 
             let gridContainer = container.querySelector(".gridContainer")
-            flow.img.forEach( img => {
+            flow.img.forEach(img => {
                 let imgDOM = document.createElement("img");
                 imgDOM.src = `${img}`;
                 gridContainer.append(imgDOM)
@@ -255,33 +262,50 @@ export function renderIMG(data){
             })
         })
     }
-    if(data.name === "imgMeeting"){
+    if (data.name === "imgMeeting") {
         container.innerHTML = `
             <h1>SPIONERA PÅ MÖTET</h1>
             <div class="buttonContainer">
                 <div class="innerContainer">
-                    <button class="cameraOne"><img src="media/gameIMG/camera.svg"></button>
-                    <p>Camera 1</p>
+                    <button class="cameraOne">
+                        <ion-icon name="videocam-outline"></ion-icon>
+                    </button>
+                    <p>Kamera 1</p>
                 </div>
                 <div class="innerContainer">
-                    <button class="cameraTwo"><img src="media/gameIMG/camera.svg"></button>
-                    <p>Camera 2</p>
+                    <button class="cameraTwo">
+                        <ion-icon name="videocam-outline"></ion-icon>
+                    </button>
+                    <p>Kamera 2</p>
                 </div>
             </div>
         `;
 
-        container.querySelector(".cameraOne").onclick = () => displayIMG(flow.img1)
-        container.querySelector(".cameraTwo").onclick = () => displayIMG(flow.img2)
+        container.querySelector(".cameraOne").onclick = () => displayIMG(flow.img1, "Kamera 1")
+        container.querySelector(".cameraTwo").onclick = () => displayIMG(flow.img2, "Kamera 2")
     }
 
-    function displayIMG(img){
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    function displayIMG(img, text) {
         container.setAttribute("id", "displayIMG")
         container.innerHTML = `
-        <img id="imgContainer" src=${img}>
-        <div class="bottomDIV">
-            <img class="return" src="media/return.svg">
-            <button class="levelComplete">KLAR</button>
-        </div>
+        <h3>${text}</h3>
+        <section>
+            <div>
+                <img id="imgContainer" src=${img}>
+                <p>Idag ${hours}:${minutes}:${seconds}</p>
+            </div>
+            
+            <div class="bottomDIV">
+                <ion-icon name="return-down-back-outline"></ion-icon>
+                <button class="levelComplete">KLAR</button>
+            </div>
+        </section>
+        
         `;
 
         container.querySelector("button").addEventListener("click", () => {
@@ -295,7 +319,7 @@ export function renderIMG(data){
     }
 }
 
-export function findLeader(){
+export function findLeader() {
 
     swapStyleSheet("CSS/chooseCharacter.css");
 
@@ -333,7 +357,7 @@ export function findLeader(){
                 card.classList.toggle("flippedCard")
             }
 
-            if(event.target.id === "char_Anette"){
+            if (event.target.id === "char_Anette") {
                 toggleControl = false;
 
                 setTimeout(() => {

@@ -9,6 +9,7 @@ body {
     margin: 0;
     min-height: 100vh;
     background: linear-gradient(180deg, rgba(48, 48, 48, 1) 0%, rgba(21, 21, 21, 1) 100%);
+    overflow: hidden;
 }
 
 main {
@@ -52,7 +53,20 @@ ion-icon {
     font-size: 20px;
 }
 
-#notes,
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+header button {
+    background-color: transparent;
+    border: none;
+}
+
+/* #notes,
 #characters {
     cursor: pointer;
     position: absolute;
@@ -83,12 +97,12 @@ ion-icon {
     transform: scale(1.6);
     transition-duration: 1s;
     transform-style: smooth;
-}
+} */
 
 /* MAP */
 
 #map {
-    height: 90vh;
+    height: 85vh;
     border-radius: 10px;
 }
 
@@ -116,6 +130,7 @@ ion-icon {
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 9999;
     padding: 2vh 4vh 4vh 4vh;
     border-radius: 30px 30px 0 0;
 }
@@ -227,7 +242,7 @@ ion-icon {
     width: 85%;
     font-size: 16px;
     line-height: 3vh;
-    border: 1px solid black;
+    border: none;
     border-radius: 10px;
     padding: 15px;
     resize: none;
@@ -302,7 +317,6 @@ dialog::backdrop {
     background: linear-gradient(180deg, rgba(48, 48, 48, 1) 0%, rgba(21, 21, 21, 1) 100%);
     width: auto;
     height: 96%;
-    display: block;
     border-radius: none;
 }
 

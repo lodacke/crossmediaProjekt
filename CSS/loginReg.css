@@ -9,6 +9,22 @@ body {
     height: 100vh;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+header button {
+    background-color: transparent;
+    border: none;
+}
+
+ion-icon {
+    color: #B5B5B5;
+    font-size: 40px;
+}
+
 main {
     height: 80%;
     display: flex;
@@ -45,7 +61,7 @@ input {
     background-color: #3D3B3A;
     border: none;
     height: 4vh;
-    border-radius: 3px;
+    border-radius: 5px;
     margin-bottom: 4vh;
     color: var(--white);
     font-size: 18px;

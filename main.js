@@ -42,14 +42,13 @@ export function renderHomepage() {
 }
 
 export async function renderGame() {
-
     //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
     let testlevelOne = ["Alex", "Mickan", "Ove", "Anette"];
     let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
 
-    //testlevelOne.forEach( level => {
-    //    globalHolder.push("levelOne", level)
-    //})
+    // testlevelOne.forEach(level => {
+    //     globalHolder.push("levelOne", level)
+    // })
 
     console.log(globalHolder.levels)
     let level = levelCount()
@@ -60,16 +59,27 @@ export async function renderGame() {
         const { latitude, longitude } = position.coords;
 
         main.innerHTML = `
+        ${renderHeader().outerHTML}
         <div class="helpers">
-            <button id="notes">
-                <ion-icon name="create-outline"></ion-icon>
-            </button>
-            <button id="characters">
-                <ion-icon name="people-outline"></ion-icon>
-            </button>
            <div id="map"></div>
         </div>
         `;
+
+        document.querySelector("#notes").addEventListener("click", () => {
+            renderNotes()
+        })
+
+        document.querySelector("#characters").addEventListener("click", () => {
+            renderCharacters()
+        })
+
+        document.querySelector("#info").addEventListener("click", () => {
+            renderAboutUs()
+        })
+
+        document.querySelector("#settings").addEventListener("click", () => {
+            renderSettings()
+        })
 
         const map = L.map('map').setView([latitude, longitude], 16);
 
@@ -108,19 +118,11 @@ export async function renderGame() {
         const customControlInstance = new CustomControl({ position: 'bottomleft' });
         customControlInstance.addTo(map);
 
-        document.querySelector("#notes").addEventListener("click", () => {
-            renderNotes()
-        })
-
-        document.querySelector("#characters").addEventListener("click", () => {
-            renderCharacters()
-        })
-
         level.forEach(level => {
             L.marker([level.latitude, level.longitude], { icon: custumIcon(level.name) })
                 .addTo(map)
                 .on("click", () => {
-                    styleSVGElement(level, "#606060")
+                    styleSVGElement(level, "#A7A7A7")
                     const container = customControlInstance.getContainer();
                     if (container.innerHTML !== "") {
                         styleSVGElement(level, "#D99D04")
@@ -219,6 +221,7 @@ function renderCharacters() {
 
 function renderSettings() {
     dialog.show()
+    dialog.style.display = `block`;
     dialog.setAttribute("id", "settingsDialog")
 
     dialog.innerHTML = `
@@ -234,11 +237,13 @@ function renderSettings() {
     console.log("hej");
 
     dialog.querySelector("button").addEventListener("click", () => {
+        dialog.style.display = `none`;
         localStorage.remove("user")
         dialog.close()
     })
 
     dialog.querySelector(".exit").addEventListener("click", () => {
+        dialog.style.display = `none`;
         endSession()
     })
 
@@ -251,3 +256,26 @@ function renderAboutUs() {
     </div>`
 }
 
+function renderHeader() {
+    const header = document.createElement("header");
+    header.innerHTML = `
+        <div class="headerLeftCol">
+            <button id="notes">
+                <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button id="characters">
+                <ion-icon name="people"></ion-icon>
+            </button>
+        </div>
+        <div class="headerRightCol">
+            <button id="info">
+                <ion-icon name="information-circle-outline"></ion-icon>
+            </button>
+            <button id="settings">
+                <ion-icon name="aperture"></ion-icon>
+            </button>
+        </div>
+    `;
+
+    return header;
+}

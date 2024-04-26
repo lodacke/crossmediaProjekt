@@ -1,91 +1,149 @@
 /* FOR ALL ELEMENTS OF IMG-FUNCTION*/
 
-main{
-height: 100vh;
-display: flex;
+:root {
+    --white: #B5B5B5;
+    --yellow: #E6B400;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-#content{
+body {
+    margin: 0;
+}
+
+main {
+    background: linear-gradient(180deg, rgba(48, 48, 48, 1) 0%, rgba(21, 21, 21, 1) 100%);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+#content {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
+h1 {
+    color: var(--yellow);
+    font-weight: 500;
+    font-size: 28px;
+}
+
+p {
+    color: var(--white);
+    font-size: 16px;
+}
+
+ion-icon {
+    color: #B5B5B5;
+    font-size: 40px;
+}
+
 /* FOR ELEMENTS IN FIND-MY-PHONE*/
 
-#containerFindMyIphone{
+#containerFindMyIphone {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     width: 100%;
 }
 
-.topDOM{
- display: flex;
- justify-content: space-around;
+.topDOM {
+    display: flex;
+    justify-content: space-around;
 }
 
-.middleDOM{
+.middleDOM {
     height: 70%;
 }
 
-.middleDOM > h3{
+.middleDOM>h3 {
     align-self: left;
 }
 
-.gridContainer{
+.gridContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
-.gridContainer > *{
+.gridContainer>* {
     border: 1px solid black;
 }
 
-.bottomDOM{
+.bottomDOM {
     height: 20%;
 }
 
 /* FOR IMG-MEETING */
 
-.buttonContainer{
+.buttonContainer {
     display: flex;
-    gap: 10px;
+    gap: 30px;
 }
 
-.innerContainer{
+.innerContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
-.innerContainer > button{
-    width: 70px;
-    height: 70px;
+.innerContainer>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 75px;
+    background-color: #2A2A2A;
+    border: 1px solid #363636;
+    border-radius: 8px;
 }
 
 /* FOR DISPLAY IMG*/
 
-#displayIMG{
+#displayIMG {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: end;
+    align-items: center;
     width: 100%;
 }
 
-#imgContainer{
-    margin-top: 20%;
-    height: 60%;
+#displayIMG h3 {
+    color: var(--white);
 }
 
-.bottomDIV{
+#displayIMG section {
+    width: 100%;
+    height: 65%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
 }
 
-.bottomDIV > *{
-    cursor: pointer;
+#displayIMG section div:first-of-type {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+#imgContainer {
+    height: 50%;
+    width: 100%;
+    background-color: pink;
+}
 
+.bottomDIV {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin-bottom: 2.5vh;
+}
+
+.bottomDIV>* {
+    cursor: pointer;
+}

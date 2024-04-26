@@ -1,0 +1,91 @@
+/* FOR ALL ELEMENTS OF IMG-FUNCTION*/
+
+main{
+height: 100vh;
+display: flex;
+}
+
+#content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* FOR ELEMENTS IN FIND-MY-PHONE*/
+
+#containerFindMyIphone{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 100%;
+}
+
+.topDOM{
+ display: flex;
+ justify-content: space-around;
+}
+
+.middleDOM{
+    height: 70%;
+}
+
+.middleDOM > h3{
+    align-self: left;
+}
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.gridContainer > *{
+    border: 1px solid black;
+}
+
+.bottomDOM{
+    height: 20%;
+}
+
+/* FOR IMG-MEETING */
+
+.buttonContainer{
+    display: flex;
+    gap: 10px;
+}
+
+.innerContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.innerContainer > button{
+    width: 70px;
+    height: 70px;
+}
+
+/* FOR DISPLAY IMG*/
+
+#displayIMG{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#imgContainer{
+    margin-top: 20%;
+    height: 60%;
+}
+
+.bottomDIV{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottomDIV > *{
+    cursor: pointer;
+}
+
+

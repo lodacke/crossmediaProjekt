@@ -85,22 +85,14 @@ export async function renderGame() {
         function custumIcon(uniqID) {
             let customIcon = L.divIcon({
                 html: `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="37" viewBox="0 0 30 37">
-                        <g filter="url(#filter0_d_60_31)" id="iconSVG_${uniqID}">
-                        <circle cx="15" cy="11" r="11" fill="black"/>
-                            <path d="M15.1308 28.0503L6.36776 17.6064L23.759 17.4947L15.1308 28.0503Z" fill="black"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <g clip-path="url(#clip0_332_2)" id="iconSVG_${uniqID}">
+                            <path d="M4 12C4 8.8174 5.26428 5.76515 7.51472 3.51472C9.76515 1.26428 12.8174 0 16 0C19.1826 0 22.2348 1.26428 24.4853 3.51472C26.7357 5.76515 28 8.8174 28 12C28 20 16 32 16 32C16 32 4 20 4 12ZM11 12C11 13.3261 11.5268 14.5979 12.4645 15.5355C13.4021 16.4732 14.6739 17 16 17C17.3261 17 18.5979 16.4732 19.5355 15.5355C20.4732 14.5979 21 13.3261 21 12C21 10.6739 20.4732 9.40215 19.5355 8.46447C18.5979 7.52678 17.3261 7 16 7C14.6739 7 13.4021 7.52678 12.4645 8.46447C11.5268 9.40215 11 10.6739 11 12Z" fill="#ECAD0A"/>
                         </g>
                         <defs>
-                            <filter id="filter0_d_60_31" x="0" y="0" width="30" height="36.0503" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dy="4"/>
-                                <feGaussianBlur stdDeviation="2"/>
-                                <feComposite in2="hardAlpha" operator="out"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_60_31"/>
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_60_31" result="shape"/>
-                            </filter>
+                            <clipPath id="clip0_332_2">
+                                <rect width="32" height="32" fill="white"/>
+                            </clipPath>
                         </defs>
                     </svg>
                 `,
@@ -128,10 +120,10 @@ export async function renderGame() {
             L.marker([level.latitude, level.longitude], { icon: custumIcon(level.name) })
                 .addTo(map)
                 .on("click", () => {
-                    styleSVGElement(level, "green")
+                    styleSVGElement(level, "#8E8E8E")
                     const container = customControlInstance.getContainer();
                     if (container.innerHTML !== "") {
-                        styleSVGElement(level, "black")
+                        styleSVGElement(level, "#ECAD0A")
                         container.innerHTML = ``;
                     } else {
                         container.innerHTML = `

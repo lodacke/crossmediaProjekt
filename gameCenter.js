@@ -1,13 +1,14 @@
 import { conversations } from "./API/conversation.js";
+import { levelTwo, levelThree } from "./API/qlues.js";
 import { characters } from "./API/characters.js"
 import { swapStyleSheet } from "./utilities/cssSwap.js";
-import { parseText } from "./utilities/parse.js";
-import { dialog, main } from "./utilities/variable.js";
+import {parseText} from "./utilities/parse.js";
+import { dialog, globalHolder, main } from "./utilities/variable.js";
 import { renderGame } from "./main.js";
-import { globalHolder } from "./utilities/variable.js";
+import { styleSVGElement } from "./utilities/styleElement.js";
 
-export function renderQRscann() {
-
+export function renderQRscann(level){
+    console.log(level)
     dialog.show()
     dialog.setAttribute("id", "scannerContainer")
 
@@ -21,13 +22,16 @@ export function renderQRscann() {
 
     dialog.querySelector(".exit").addEventListener("click", () => {
         dialog.close()
+        styleSVGElement(level, "black")
     })
+
     const scanner = new Html5QrcodeScanner('reader', {
         qrbox: {
             width: 300,
             height: 300,
         },
         fps: 20,
+        facingMode: "environment" // Rad för att specifiera vilket håll kameran ska riktas mot.
     });
 
     scanner.render(success, error)
@@ -35,13 +39,14 @@ export function renderQRscann() {
     function success(result) {
         window.location.hash = "#game";
         const data = parseText(result);
-        console.log(data)
+        
 
         if (data.type === "function") {
 
-            dialog.close()
-            const dataString = JSON.stringify(data)
-            eval(`${data.link}(${dataString})`)
+        dialog.close()  
+        const dataString = JSON.stringify(data)
+        eval(`${data.link}(${dataString})`)
+        styleSVGElement(level, "green")
 
         } else {
             console.error("Function does not exist:", data);
@@ -97,7 +102,6 @@ export function renderConversation(data) {
     console.log(data.src);
 
     let flow = conversations[data.name]
-    let globalLevel = globalHolder[data.level]
     let container = main.querySelector("#conversationContainer");
     main.querySelector(".conversation").scrollTop = "100%";
 
@@ -118,17 +122,51 @@ export function renderConversation(data) {
                 answerDom.innerHTML = `<p>${element.text}</p>`;
                 main.querySelector(".conversation").append(answerDom);
 
-                if (["one", "two", "three", "four", "five", "six"].includes(element.response)) {
+                if (["one", "two", "three", "four", "five", "six", "seven", "eight"].includes(element.response)) {
                     renderConversation(element.response);
+                }
+                if(element.end){
+
+                    let spanLength = element.end.length * 30 + 2000;
+                    buttons.forEach(button => {
+                        button.disabled = true
+                    })
+
+                    setTimeout(() => {
+                        let closingDom = document.createElement("div");
+                        closingDom.append(document.createElement("p"))
+                        closingDom.classList.add("question")
+                        for (let i = 0; i < element.end.length; i++) {
+
+                            setTimeout(() => {
+                                let span = document.createElement("span");
+                                span.textContent = element.end[i];
+                                closingDom.querySelector("p").append(span);
+                                }, i * 30); 
+                            }
+                            
+
+                        main.querySelector(".conversation").append(closingDom)
+                        container.scrollTo(0, container.scrollHeight);
+                }, 1000) 
+                setTimeout(() => {
+                        console.log(data.level)
+                        globalHolder.push(data.level, data.name) 
+                        renderGame();
+                    }, spanLength)
+
                 } else {
+                    
                     let endDom = document.createElement("div");
                     endDom.setAttribute("id", "endC");
                     endDom.innerHTML = `<p>${element.response}</p>`
                     main.querySelector(".conversation").append(endDom)
                     setTimeout(() => {
-                        globalLevel.push(data.name)
+
+                        globalHolder.push(data.level, data.name)
+                        styleSVGElement(data.level)
                         renderGame();
-                    }, 3000)
+                    }, spanLength)
                 }
             };
         }
@@ -139,9 +177,10 @@ export function renderConversation(data) {
                 currentFlow[key].forEach((element, index) => {
                     buttons[index].onclick = clickHandler(element)
                     buttons[index].innerText = element.text;
-                });
+                    });
+                } 
 
-            } else {
+                if(key === "question") {
 
                 setTimeout(() => {
                     let questionDom = document.createElement("div");
@@ -159,14 +198,106 @@ export function renderConversation(data) {
                     main.querySelector(".conversation").append(questionDom)
                     container.scrollTo(0, container.scrollHeight);
 
-                }, 1000)
-
-            }
+                  }, 1000)  
+                }             
+            } 
         }
+    }
+
+export function renderIMG(data){
+
+    swapStyleSheet("CSS/renderIMG.css")
+    main.innerHTML = `
+        <div id="content"></div>
+        `;
+
+    let container = main.querySelector("#content");
+
+        let flow;
+
+        if(data.level === "levelTwo"){
+            flow = levelTwo.find(obj => obj.name === data.name);
+        }
+        if(data.level === "levelThree"){
+            flow = levelThree.find(obj => obj.name === data.name);
+
+        }
+
+    if(data.name === "imgFindMyIphone"){
+        container.innerHTML = `
+        <h1>UPPDRAG</h1>
+        <p>Du har nu fått tillgång till Mickans telefon. Kolla skärmdumpen i hennes kamerarulle för att ta reda på vart sektmedlemmarna befinner sig!</p>
+        <button><img src="media/imgGallery.svg"></button>
+        `;
+
+        container.querySelector("button").addEventListener("click", () => {
+            container.setAttribute("id", "containerFindMyIphone")
+            container.innerHTML = `
+            <div class="topDOM">
+                <p> <img src="media/arrow.svg">album</p>
+                <button>Välj</button>
+                <img src="media/dots.svg">
+            </div>
+            <div class="middleDOM">
+                <h3>Senaste</h3>
+                <div class="gridContainer"></div>
+            </div>
+            <div class="btmDOM">
+                <p>${flow.img.length} Foton, 0 Videos </p>    
+            </div>
+            `;
+
+            let gridContainer = container.querySelector(".gridContainer")
+            flow.img.forEach( img => {
+                let imgDOM = document.createElement("img");
+                imgDOM.src = `${img}`;
+                gridContainer.append(imgDOM)
+                imgDOM.onclick = () => displayIMG(flow.img1)
+
+            })
+        })
+    }
+    if(data.name === "imgMeeting"){
+        container.innerHTML = `
+            <h1>SPIONERA PÅ MÖTET</h1>
+            <div class="buttonContainer">
+                <div class="innerContainer">
+                    <button class="cameraOne"><img src="media/gameIMG/camera.svg"></button>
+                    <p>Camera 1</p>
+                </div>
+                <div class="innerContainer">
+                    <button class="cameraTwo"><img src="media/gameIMG/camera.svg"></button>
+                    <p>Camera 2</p>
+                </div>
+            </div>
+        `;
+
+        container.querySelector(".cameraOne").onclick = () => displayIMG(flow.img1)
+        container.querySelector(".cameraTwo").onclick = () => displayIMG(flow.img2)
+    }
+
+    function displayIMG(img){
+        container.setAttribute("id", "displayIMG")
+        container.innerHTML = `
+        <img id="imgContainer" src=${img}>
+        <div class="bottomDIV">
+            <img class="return" src="media/return.svg">
+            <button class="levelComplete">KLAR</button>
+        </div>
+        `;
+
+        container.querySelector("button").addEventListener("click", () => {
+            globalHolder.push(data.level, data.name)
+            renderGame()
+        })
+
+        container.querySelector(".return").addEventListener("click", () => {
+            renderIMG(data)
+        })
     }
 }
 
-export function chooseCharacter() {
+export function findLeader(){
 
     swapStyleSheet("CSS/chooseCharacter.css");
 
@@ -204,7 +335,7 @@ export function chooseCharacter() {
                 card.classList.toggle("flippedCard")
             }
 
-            if (event.target.id === "char_Anette") {
+            if(event.target.id === "char_Anette"){
                 toggleControl = false;
 
                 setTimeout(() => {

@@ -143,7 +143,17 @@ ion-icon {
 
 /* for icon */
 
+#levelDone{
+    fill: green
+}
+
 .leaflet-div-icon {
+#levelDone{
+    fill: green
+}
+}
+
+.leaflet-div-icon{
     background: none !important;
     border: none !important;
     box-shadow: none !important;

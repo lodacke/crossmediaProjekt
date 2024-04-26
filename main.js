@@ -1,10 +1,11 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main, dialog, CustomControl } from "./utilities/variable.js";
-import { renderQRscann } from "./gameCenter.js";
-import { levelOne, levelTwo, levelThree } from "./API/qlues.js";
+import { main, dialog, CustomControl, globalHolder} from "./utilities/variable.js";
+import { renderQRscann, findLeader } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
-import { globalHolder } from "./utilities/variable.js";
+import { styleSVGElement } from "./utilities/styleElement.js";
+import { levelCount} from "./utilities/levelCounter.js"
+
 
 export function renderHomepage() {
 
@@ -22,8 +23,7 @@ export function renderHomepage() {
     `;
 
     main.querySelector("#game").addEventListener("click", () => {
-        const storage = {};
-        renderGame(storage)
+        renderGame()
         window.location.hash = "#game";
     })
 
@@ -41,10 +41,19 @@ export function renderHomepage() {
 
 }
 
-export function renderGame() {
+export async function renderGame(){
 
-    console.log(globalHolder["levelOne"].length)
+    //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
+    let testlevelOne = ["Alex", "Mickan", "Ove", "Anette"];
+    let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
+    
+    //testlevelOne.forEach( level => {
+    //    globalHolder.push("levelOne", level)
+    //})
 
+    console.log(globalHolder.levels)
+    let level = levelCount()
+    console.log(level)
     swapStyleSheet("CSS/homePage.css")
 
     const watchID = navigator.geolocation.watchPosition(position => {
@@ -62,41 +71,41 @@ export function renderGame() {
         </div>
         `;
 
-        var map = L.map('map').setView([latitude, longitude], 16);
+        const map = L.map('map').setView([latitude, longitude], 16);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         })
             .addTo(map);
 
-        L.marker([latitude, longitude]).addTo(map)
-            .bindPopup('You are here')
-            .openPopup();
+       // L.marker([latitude, longitude]).addTo(map)
+       //     .bindPopup('You are here')
+       //     .openPopup();
 
-        function createCustumIcon(uniqID) {
-            let customIcon = L.divIcon({
-                html: `
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="37" viewBox="0 0 30 37">
-                    <g filter="url(#filter0_d_60_31)" id="iconSVG_${uniqID}">
-                    <circle cx="15" cy="11" r="11" fill="black"/>
-                        <path d="M15.1308 28.0503L6.36776 17.6064L23.759 17.4947L15.1308 28.0503Z" fill="black"/>
-                    </g>
-                    <defs>
-                        <filter id="filter0_d_60_31" x="0" y="0" width="30" height="36.0503" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                            <feOffset dy="4"/>
-                            <feGaussianBlur stdDeviation="2"/>
-                            <feComposite in2="hardAlpha" operator="out"/>
-                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_60_31"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_60_31" result="shape"/>
-                        </filter>
-                    </defs>
-                </svg>
-            `,
-                iconSize: [32, 92],
-                iconAnchor: [22, 94],
+        function custumIcon (uniqID) {
+                let customIcon = L.divIcon({
+                 html: `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="37" viewBox="0 0 30 37">
+                        <g filter="url(#filter0_d_60_31)" id="iconSVG_${uniqID}">
+                        <circle cx="15" cy="11" r="11" fill="black"/>
+                            <path d="M15.1308 28.0503L6.36776 17.6064L23.759 17.4947L15.1308 28.0503Z" fill="black"/>
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_60_31" x="0" y="0" width="30" height="36.0503" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dy="4"/>
+                                <feGaussianBlur stdDeviation="2"/>
+                                <feComposite in2="hardAlpha" operator="out"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_60_31"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_60_31" result="shape"/>
+                            </filter>
+                        </defs>
+                    </svg>
+                `,
+                iconSize: [32, 37], 
+                iconAnchor: [15, 18],
                 shadowAnchor: [5, 45],
                 popupAnchor: [-3, -76],
             });
@@ -115,55 +124,48 @@ export function renderGame() {
             renderCharacters()
         })
 
-        let level;
-
-        if (globalHolder["levelTwo"].length < 0 && globalHolder["levelTwo"].length <= 6) {
-            level = levelTwo;
-        } if (globalHolder["levelThree"].length < 0 && globalHolder["levelThree"].length <= 6) {
-            level = levelThree
-        } else {
-            level = levelOne
-        }
-
         level.forEach(level => {
-            L.marker([level.latitude, level.longitude], { icon: createCustumIcon(level.name) })
-                .addTo(map)
-                .on("mouseover", () => {
-
-                })
-                .on("click", () => {
-                    const svgAll = main.querySelectorAll(`#iconSVG_${level.name} > *`);
-                    svgAll.forEach(element => {
-                        element.style.fill = "green"
-                    })
-                    const container = customControlInstance.getContainer();
-                    if (container.innerHTML !== "") {
-                        const svgAll = main.querySelectorAll(`#iconSVG_${level.name} > *`);
-                        svgAll.forEach(element => {
-                            element.style.fill = "black"
-                        })
-                        container.innerHTML = ``;
-                    } else {
-                        container.innerHTML = `
-                            <div class="temporaryContent">
-                                <div class="content">
-                                    <h2>LEDTRÅD</h2>
-                                    <p>${level.clue}</p>
-                                </div>
-                                <div id="bottomContainer">
-                                    <button>Jag är här</button>
-                                </div>
+            L.marker([level.latitude, level.longitude], {icon: custumIcon(level.name)})
+            .addTo(map)
+            .on("click", () => {
+                styleSVGElement(level, "green")
+                const container = customControlInstance.getContainer();
+                if(container.innerHTML !== ""){
+                    styleSVGElement(level, "black")
+                    container.innerHTML = ``;
+                } else {
+                    container.innerHTML = `
+                    <div class="temporaryContent">
+                        <div id="topContainer">
+                            <button>Jag är här</button>
+                        </div>
+                        <div class="content">
+                            <h2>Ledtråd</h2>
+                            <p>${level.clue}</p>
                             </div>
                 `;
 
-                        container.querySelector("button").addEventListener("click", () => {
-                            renderQRscann()
-                            container.innerHTML = ``
-                        })
-                    }
-                })
-        })
-    })
+                container.querySelector("button").addEventListener("click", () => {
+                    switch (level.type) {
+                         case "QR":
+                             renderQRscann(level);
+                             break;
+                         case "IMG":
+                             renderQRscann(level);
+                             break;
+                         case "LEADER":
+                             findLeader();
+                             break; 
+                        case "ANALOG":
+                             // function for analog challanges??
+                             break;                       
+                        }
+                        container.innerHTML = ``;
+                    })
+                }                
+            })  
+        })  
+    }) 
 }
 
 function renderNotes() {
@@ -246,5 +248,11 @@ function renderSettings() {
     })
 
     endSession()
+}
+
+function renderAboutUs(){
+    main.innerHTML = `
+    <div>
+    </div>`
 }
 

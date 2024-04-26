@@ -1,10 +1,10 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main, dialog, CustomControl, globalHolder} from "./utilities/variable.js";
+import { main, dialog, CustomControl, globalHolder } from "./utilities/variable.js";
 import { renderQRscann, findLeader } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
 import { styleSVGElement } from "./utilities/styleElement.js";
-import { levelCount} from "./utilities/levelCounter.js"
+import { levelCount } from "./utilities/levelCounter.js"
 
 
 export function renderHomepage() {
@@ -41,12 +41,12 @@ export function renderHomepage() {
 
 }
 
-export async function renderGame(){
+export async function renderGame() {
 
     //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
     let testlevelOne = ["Alex", "Mickan", "Ove", "Anette"];
     let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
-    
+
     //testlevelOne.forEach( level => {
     //    globalHolder.push("levelOne", level)
     //})
@@ -78,13 +78,13 @@ export async function renderGame(){
         })
             .addTo(map);
 
-       // L.marker([latitude, longitude]).addTo(map)
-       //     .bindPopup('You are here')
-       //     .openPopup();
+        // L.marker([latitude, longitude]).addTo(map)
+        //     .bindPopup('You are here')
+        //     .openPopup();
 
-        function custumIcon (uniqID) {
-                let customIcon = L.divIcon({
-                 html: `
+        function custumIcon(uniqID) {
+            let customIcon = L.divIcon({
+                html: `
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="37" viewBox="0 0 30 37">
                         <g filter="url(#filter0_d_60_31)" id="iconSVG_${uniqID}">
                         <circle cx="15" cy="11" r="11" fill="black"/>
@@ -104,7 +104,7 @@ export async function renderGame(){
                         </defs>
                     </svg>
                 `,
-                iconSize: [32, 37], 
+                iconSize: [32, 37],
                 iconAnchor: [15, 18],
                 shadowAnchor: [5, 45],
                 popupAnchor: [-3, -76],
@@ -125,47 +125,48 @@ export async function renderGame(){
         })
 
         level.forEach(level => {
-            L.marker([level.latitude, level.longitude], {icon: custumIcon(level.name)})
-            .addTo(map)
-            .on("click", () => {
-                styleSVGElement(level, "green")
-                const container = customControlInstance.getContainer();
-                if(container.innerHTML !== ""){
-                    styleSVGElement(level, "black")
-                    container.innerHTML = ``;
-                } else {
-                    container.innerHTML = `
+            L.marker([level.latitude, level.longitude], { icon: custumIcon(level.name) })
+                .addTo(map)
+                .on("click", () => {
+                    styleSVGElement(level, "green")
+                    const container = customControlInstance.getContainer();
+                    if (container.innerHTML !== "") {
+                        styleSVGElement(level, "black")
+                        container.innerHTML = ``;
+                    } else {
+                        container.innerHTML = `
                     <div class="temporaryContent">
-                        <div id="topContainer">
+                        <div class="content">
+                            <h2>LEDTRÅD</h2>
+                            <p>${level.clue}</p>
+                        </div>
+                        <div id="bottomContainer">
                             <button>Jag är här</button>
                         </div>
-                        <div class="content">
-                            <h2>Ledtråd</h2>
-                            <p>${level.clue}</p>
-                            </div>
+                    </div>
                 `;
 
-                container.querySelector("button").addEventListener("click", () => {
-                    switch (level.type) {
-                         case "QR":
-                             renderQRscann(level);
-                             break;
-                         case "IMG":
-                             renderQRscann(level);
-                             break;
-                         case "LEADER":
-                             findLeader();
-                             break; 
-                        case "ANALOG":
-                             // function for analog challanges??
-                             break;                       
-                        }
-                        container.innerHTML = ``;
-                    })
-                }                
-            })  
-        })  
-    }) 
+                        container.querySelector("button").addEventListener("click", () => {
+                            switch (level.type) {
+                                case "QR":
+                                    renderQRscann(level);
+                                    break;
+                                case "IMG":
+                                    renderQRscann(level);
+                                    break;
+                                case "LEADER":
+                                    findLeader();
+                                    break;
+                                case "ANALOG":
+                                    // function for analog challanges??
+                                    break;
+                            }
+                            container.innerHTML = ``;
+                        })
+                    }
+                })
+        })
+    })
 }
 
 function renderNotes() {
@@ -252,7 +253,7 @@ function renderSettings() {
     endSession()
 }
 
-function renderAboutUs(){
+function renderAboutUs() {
     main.innerHTML = `
     <div>
     </div>`

@@ -173,6 +173,7 @@ function renderNotes() {
     let previousContent = window.localStorage.getItem("notes")
 
     dialog.show()
+    dialog.style.display = `flex`;
     dialog.setAttribute("id", "notesContainer")
 
     dialog.innerHTML = `
@@ -186,6 +187,7 @@ function renderNotes() {
     dialog.querySelector(".exit").addEventListener("click", () => {
         let textContent = dialog.querySelector("textarea").value
         window.localStorage.setItem("notes", textContent)
+        dialog.style.display = `none`;
         endSession()
     })
 }

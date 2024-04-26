@@ -1,7 +1,8 @@
 export function styleSVGElement(level, color){
+    //console.log(level)
     if(Array.isArray(level)){
         level.forEach( unit =>  {
-            //console.log(unit)
+            console.log(unit)
             const container = document.querySelector(`#iconSVG_${unit}`);
             if(container){
                 container.setAttribute("id", "levelDone")

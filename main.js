@@ -44,7 +44,7 @@ export function renderHomepage() {
 export async function renderGame(){
 
     //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
-    let testlevelOne = ["Alex", "Mickan", "Ove", "Anette", "Fredde"];
+    let testlevelOne = ["Alex", "Mickan", "Ove", "Anette"];
     let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
     
     //testlevelOne.forEach( level => {

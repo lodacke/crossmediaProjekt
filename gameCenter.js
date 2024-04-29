@@ -4,11 +4,10 @@ import { characters } from "./API/characters.js"
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import {parseText} from "./utilities/parse.js";
 import { dialog, globalHolder, main } from "./utilities/variable.js";
-import { renderGame } from "./main.js";
 import { styleSVGElement } from "./utilities/styleElement.js";
 
 export function renderQRscann(level){
-    console.log(level)
+
     dialog.show()
     dialog.setAttribute("id", "scannerContainer")
 
@@ -98,8 +97,6 @@ export function renderConversation(data) {
         </div>
     </div>
     `;
-
-    console.log(data.src);
 
     let flow = conversations[data.name]
     let container = main.querySelector("#conversationContainer");
@@ -295,6 +292,11 @@ export function renderIMG(data){
     }
 }
 
+export function userArrival(){
+    console.log("user arrived, add button and/or code for progress")
+}
+
+// function will be called as a prompt 
 export function findLeader(){
 
     swapStyleSheet("CSS/chooseCharacter.css");

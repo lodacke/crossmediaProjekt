@@ -57,6 +57,8 @@ ion-icon {
     cursor: pointer;
     position: absolute;
     top: 50vh;
+    height: 20px;
+    width: 20px;
     z-index: 9998;
 }
 
@@ -92,10 +94,8 @@ ion-icon {
     border-radius: 10px;
 }
 
-.leaflet-touch .leaflet-control-attribution,
-.leaflet-touch .leaflet-control-layers,
-.leaflet-touch .leaflet-bar {
-    display: none;
+*:focus {
+    outline: none;
 }
 
 /* Ändrar färg på kartan*/

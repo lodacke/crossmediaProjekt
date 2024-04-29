@@ -42,6 +42,13 @@ export const levelTwo =
         {
             "latitude": 55.613229,
             "longitude": 12.991713,
+            "name": "manifest",
+            "type": "ANALOG",
+            "clue": "Ingen sekt är den andra lik och för att hålla koll på alla regler och ritualer är det nödvändigt att ha dem nedskrivna. Om du letar noggrant kanske du kan hitta solsidan-sektens heliga manifest… vem vet vilka ledtrådar som gömmer sig där om sekten och dess ledare?", 
+        },
+        {
+            "latitude": 55.613229,
+            "longitude": 12.991713,
             "name": "Ludde",
             "type": "QR",
             "clue": "Du måste få reda på mer om sekten… kanske behöver du prata med en person som stått en av medlemmarna nära men som valt att gå en annan väg, rädd för att bli indragen i sektens mörker och hemligheter.", 
@@ -85,7 +92,8 @@ export const levelTwo =
             "name": "findLeader",
             "type": "LEADER",
             "clue": "Ingen sekt är den andra lik men ett gemensamt drag är att sektledaren bär ett stort ansvar. Har Solsidan-sekten en ledare och vilka uppgifter har denna person? ", 
-        }
+        },
+
     ]    
 
 export const levelThree = 

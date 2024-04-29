@@ -119,6 +119,7 @@ window.renderGame = async function renderGame(){
             })
         })
     });
+}
 
 function renderInfo(level, map, marker) {
     const currentIconUrl = marker.getIcon().url;
@@ -168,9 +169,6 @@ function renderInfo(level, map, marker) {
         }
         container.innerHTML = "";
     });
-}
-
-
 }
 
 function renderNotes() {

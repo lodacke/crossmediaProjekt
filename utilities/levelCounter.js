@@ -1,4 +1,4 @@
-import { globalHolder } from "./variable.js"
+import { globalHolder, dialog } from "./variable.js"
 import { styleSVGElement } from "./styleElement.js";
 import { levelTwo, levelThree, levelOne } from "../API/qlues.js"
 
@@ -13,8 +13,7 @@ export function levelCount() {
 
         } else if (globalHolder.levels.levelOne.length === 5) {
             console.log("levelOne is 5");
-
-            // add promt function gere. 
+            userAlert("levelTwo")
             return levelTwo;
         }   
     }
@@ -41,4 +40,30 @@ export function levelCount() {
     }
 
     return levelOne;
+}
+
+function userAlert(level){
+    dialog.show();
+    dialog.setAttribute("id", "userMess")
+    dialog.innerHTML = `
+    <h2>Grattis!</h2>
+    <p class="mess"></p>
+    <button class="messButton"></button>
+    `;
+
+    dialog.querySelector("button").addEventListener("click", () =>{
+        dialog.close()
+    })
+
+    let messDom = dialog.querySelector(".mess");
+    let messButton = dialog.querySelector(".messButton")
+    if(level === "levelTwo"){
+        messDom.textContent = "Du har nu träffat alla karaktärerna, och kan nu påbörjar nästa nivå av undersökningen"
+        messButton.textContent = "Påbörja nästa nivå"
+    }
+
+    if(level === "levelThree"){
+        messDom.textContent = "Du har lyckats lösa mysteriet!"
+        messButton.textContent = "Se high score!"
+    }
 }

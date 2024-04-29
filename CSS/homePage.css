@@ -318,3 +318,9 @@ dialog::backdrop {
     font-size: 16px;
     border: 1px solid var(--white);
 }
+
+
+/* DIALOG promt between levels*/
+#userMess{
+   text-align: center;
+}

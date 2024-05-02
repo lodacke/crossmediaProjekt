@@ -3,14 +3,6 @@ export const main = document.querySelector("main");
 
 export const dialog = document.querySelector("dialog")
 
-export const CustomControl = L.Control.extend({
-    onAdd: function (map) {
-        const container = L.DomUtil.create('div', 'leaflet-control custom-control');
-
-        return container;
-    }
-})
-
 export const globalHolder = {
   levels: JSON.parse(localStorage.getItem('levels')) || {}, 
   get: function(level) {
@@ -27,8 +19,10 @@ export const globalHolder = {
     this.set(level, levelData); 
   },
   reset: function() {
-    localStorage.clear();
+    localStorage.removeItem('levels'); 
+    localStorage.removeItem('startTime'); 
     this.levels = {}; 
     localStorage.setItem('levels', JSON.stringify(this.levels)); 
+    
   }
 };

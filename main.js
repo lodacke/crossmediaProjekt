@@ -1,11 +1,13 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main, dialog, CustomControl, globalHolder } from "./utilities/variable.js";
-import { renderQRscann, findLeader } from "./gameCenter.js";
+import { main, dialog, globalHolder} from "./utilities/variable.js";
+import { renderQRscann, findLeader, userArrival } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
+import { levelCount} from "./utilities/levelCounter.js"
 import { styleSVGElement } from "./utilities/styleElement.js";
-import { levelCount } from "./utilities/levelCounter.js"
-
+import { endGame } from "./gameCenter.js"
+import { renderLogin } from "./registerLogin.js"
+import { getCurrentTime } from "./utilities/getCurrentTime.js";
 
 export function renderHomepage() {
 
@@ -14,7 +16,7 @@ export function renderHomepage() {
     main.innerHTML = `
     <div id="contentHome">
     <div id="topContainer">
-        <ion-icon id="settings" name="settings-outline"></ion-icon>
+        <img src="media/settings.svg" id="settings" name="settings-outline"></img>
     </div>
         <button id="game">Starta spel</button>
         <button id="scoreBoard">Scoreboard</button>
@@ -41,126 +43,141 @@ export function renderHomepage() {
 
 }
 
-export async function renderGame() {
+window.renderGame = async function renderGame(){
+    let holdStart = globalHolder.get("StartTime");
+
+    if(!holdStart){
+        let startTime = getCurrentTime();
+        globalHolder.set("StartTime", startTime) // set startTime to use in end function later
+    }
+
     //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
     let testlevelOne = ["Alex", "Mickan", "Ove", "Anette"];
     let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
+    
+    //UPDATE LEVELS 
+    //testlevelTwo.forEach( level => {
+    //    globalHolder.push("levelTwo", level)
+    //})
 
-    // testlevelOne.forEach(level => {
-    //     globalHolder.push("levelOne", level)
-    // })
-
-    console.log(globalHolder.levels)
     let level = levelCount()
-    console.log(level)
     swapStyleSheet("CSS/homePage.css")
 
-    const watchID = navigator.geolocation.watchPosition(position => {
-        const { latitude, longitude } = position.coords;
-
-        main.innerHTML = `
-        ${renderHeader().outerHTML}
+    main.innerHTML = `
         <div class="helpers">
+        <button id="settings">Avsluta</button>
+            <button id="notes">
+                <ion-icon name="create-outline"></ion-icon>
+            </button>
+            <button id="characters">
+                <ion-icon name="people-outline"></ion-icon>
+            </button>
            <div id="map"></div>
+           <div class="containerTemp"></div>
         </div>
         `;
 
-        document.querySelector("#notes").addEventListener("click", () => {
-            renderNotes()
-        })
-
-        document.querySelector("#characters").addEventListener("click", () => {
-            renderCharacters()
-        })
-
-        document.querySelector("#info").addEventListener("click", () => {
-            renderAboutUs()
-        })
-
-        document.querySelector("#settings").addEventListener("click", () => {
-            renderSettings()
-        })
-
-        const map = L.map('map').setView([latitude, longitude], 16);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        })
-            .addTo(map);
-
-        // L.marker([latitude, longitude]).addTo(map)
-        //     .bindPopup('You are here')
-        //     .openPopup();
-
-        function custumIcon(uniqID) {
-            let customIcon = L.divIcon({
-                html: `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <g clip-path="url(#clip0_332_2)" id="iconSVG_${uniqID}">
-                            <path d="M4 12C4 8.8174 5.26428 5.76515 7.51472 3.51472C9.76515 1.26428 12.8174 0 16 0C19.1826 0 22.2348 1.26428 24.4853 3.51472C26.7357 5.76515 28 8.8174 28 12C28 20 16 32 16 32C16 32 4 20 4 12ZM11 12C11 13.3261 11.5268 14.5979 12.4645 15.5355C13.4021 16.4732 14.6739 17 16 17C17.3261 17 18.5979 16.4732 19.5355 15.5355C20.4732 14.5979 21 13.3261 21 12C21 10.6739 20.4732 9.40215 19.5355 8.46447C18.5979 7.52678 17.3261 7 16 7C14.6739 7 13.4021 7.52678 12.4645 8.46447C11.5268 9.40215 11 10.6739 11 12Z" fill="#D99D04"/>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_332_2">
-                                <rect width="32" height="32" fill="white"/>
-                            </clipPath>
-                        </defs>
-                    </svg>
-                `,
-                iconSize: [32, 37],
-                iconAnchor: [15, 18],
-                shadowAnchor: [5, 45],
-                popupAnchor: [-3, -76],
-            });
-            return customIcon
-        }
-
-
-        const customControlInstance = new CustomControl({ position: 'bottomleft' });
-        customControlInstance.addTo(map);
-
-        level.forEach(level => {
-            L.marker([level.latitude, level.longitude], { icon: custumIcon(level.name) })
-                .addTo(map)
-                .on("click", () => {
-                    styleSVGElement(level, "#A7A7A7")
-                    const container = customControlInstance.getContainer();
-                    if (container.innerHTML !== "") {
-                        styleSVGElement(level, "#D99D04")
-                        container.innerHTML = ``;
-                    } else {
-                        container.innerHTML = `
-                    <div class="temporaryContent">
-                        <div class="content">
-                            <h2>LEDTRÅD</h2>
-                            <p>${level.clue}</p>
-                        </div>
-                        <div id="bottomContainer">
-                            <button>Jag är här</button>
-                        </div>
-                    </div>
-                `;
-
-                        container.querySelector("button").addEventListener("click", () => {
-                            switch (level.type) {
-                                case "QR":
-                                    renderQRscann(level);
-                                    break;
-                                case "IMG":
-                                    renderQRscann(level);
-                                    break;
-                                case "LEADER":
-                                    findLeader();
-                                    break;
-                                case "ANALOG":
-                                    // function for analog challanges??
-                                    break;
-                            }
-                            container.innerHTML = ``;
-                        })
-                    }
-                })
-        })
+    document.querySelector("#notes").addEventListener("click", () => {
+        renderNotes()
     })
+
+    document.querySelector("#characters").addEventListener("click", () => {
+        renderCharacters()
+    })
+
+    document.querySelector("#settings").addEventListener("click", () => {
+        window.location.hash = "";
+        endGame()
+    })
+
+    let mapContainer = main.querySelector("#map");
+     const watchID = navigator.geolocation.watchPosition(position => {
+        const { latitude, longitude } = position.coords;
+        
+        const mapOptions = {
+            center: { lat: latitude, lng: longitude },
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.SATELLITE, //change for mapTypeId = HYBRID, ROADMAP, TERRAIN
+            disableDefaultUI: true,
+        };
+
+        const map = new google.maps.Map(mapContainer, mapOptions);
+
+        const selfMarker = new google.maps.Marker({
+            position: { lat: latitude, lng: longitude },
+            map: map,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 5,
+                fillColor: "#689ac8",
+                fillOpacity: 1,
+                strokeColor: "black",
+                strokeWeight: 1
+            }
+        });
+        
+        level.forEach( level => {
+            const marker = new google.maps.Marker({
+                position: { lat: level.latitude, lng: level.longitude }, 
+                map,
+                id:  `iconSVG_${level.name}`,   
+                
+                icon: {
+                    url: "media/pin.svg",
+                    },
+                })
+            marker.addListener("click", () => {
+                styleSVGElement(level.name, "#606060")
+               renderInfo(level, map, marker);
+            })
+
+        })
+    });
+}
+
+function renderInfo(level, map) {
+
+    map.addListener("click", () => {
+        if (container !== "") {
+            container.innerHTML = "";
+        }
+    });
+
+    let container = main.querySelector(".containerTemp");
+
+    container.innerHTML = `
+        <div class="temporaryContent">
+            <div class="content">
+                <h2>LEDTRÅD</h2>
+                <p>${level.clue}</p>
+            </div>
+            <div id="bottomContainer">
+                <button>Jag är här</button>
+            </div>
+        </div>
+    `;
+
+    main.append(container);
+
+    container.querySelector("button").addEventListener("click", () => {
+        switch (level.type) {
+            case "QR":
+                renderQRscann(level);
+                break;
+            case "IMG":
+                renderQRscann(level);
+                break;
+            case "LEADER":
+                findLeader();
+                break;
+            case "ANALOG":
+                userArrival(level);
+                break;
+            case "END":
+                endGame()
+        }
+        container.innerHTML = "";
+    });
 }
 
 function renderNotes() {
@@ -168,7 +185,6 @@ function renderNotes() {
     let previousContent = window.localStorage.getItem("notes")
 
     dialog.show()
-    dialog.style.display = `flex`;
     dialog.setAttribute("id", "notesContainer")
 
     dialog.innerHTML = `
@@ -182,7 +198,6 @@ function renderNotes() {
     dialog.querySelector(".exit").addEventListener("click", () => {
         let textContent = dialog.querySelector("textarea").value
         window.localStorage.setItem("notes", textContent)
-        dialog.style.display = `none`;
         endSession()
     })
 }
@@ -234,12 +249,11 @@ function renderSettings() {
         </div>
     `;
 
-    console.log("hej");
-
     dialog.querySelector("button").addEventListener("click", () => {
-        dialog.style.display = `none`;
-        localStorage.remove("user")
+        globalHolder.reset()
+        dialog.removeAttribute("id", "settingsDialog")
         dialog.close()
+        renderLogin()
     })
 
     dialog.querySelector(".exit").addEventListener("click", () => {
@@ -250,10 +264,16 @@ function renderSettings() {
     endSession()
 }
 
-function renderAboutUs() {
-    main.innerHTML = `
-    <div>
-    </div>`
+function renderAboutUs(){
+        main.innerHTML = `
+    <div id="container">
+        <div id="topContainer"><img src="media/return.svg"</div>
+    </div>
+    `;
+
+    main.querySelector("img").addEventListener("click", () =>{
+        renderHomepage()
+    })
 }
 
 function renderHeader() {
@@ -278,4 +298,57 @@ function renderHeader() {
     `;
 
     return header;
+}
+export async function renderScoreBoard(){
+
+    swapStyleSheet("CSS/scoreBoard.css");
+
+    main.innerHTML = `
+    <div id="container">
+        <div id="topContainer"><img src="media/return.svg"></div>
+        <h1>TOPPLISTA</h1>
+        <div id="content">
+            <div class="userDisplay"></div>
+            <div class="allUsers"></div>
+        </div>
+    </div>
+    `;
+
+    let containerUser = main.querySelector(".allUsers");
+
+    try {
+        const response = await fetch("../API/users.json");
+        if (!response.ok) {
+            console.log("can get users")
+        }
+        const users = await response.json();
+        users.sort((a, b) => {
+            let maxPointsA = a.games.length > 0 ? Math.max(...a.games.map(game => game.points)) : 0;
+            let maxPointsB = b.games.length > 0 ? Math.max(...b.games.map(game => game.points)) : 0;
+            return maxPointsB - maxPointsA; 
+        });
+
+        users.forEach(user => {
+            if(user.games.length > 0){
+                let dom = document.createElement("div");
+                dom.classList.add("userContainer");
+
+                let maxPoints = user.games.length > 0 ? Math.max(...user.games.map(game => game.points)) : 0;
+
+                    dom.innerHTML = `
+                <h1>${user.username}</h2>
+                <p>${maxPoints} p</p>
+                `;
+
+                containerUser.append(dom);  
+                }
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
+
+    main.querySelector("img").addEventListener("click", () =>{
+        renderHomepage()
+    })
 }

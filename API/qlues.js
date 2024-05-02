@@ -42,6 +42,14 @@ export const levelTwo =
         {
             "latitude": 55.613229,
             "longitude": 12.991713,
+            "name": "manifest",
+            "type": "ANALOG",
+            "level": "levelTwo",
+            "clue": "Ingen sekt är den andra lik och för att hålla koll på alla regler och ritualer är det nödvändigt att ha dem nedskrivna. Om du letar noggrant kanske du kan hitta solsidan-sektens heliga manifest… vem vet vilka ledtrådar som gömmer sig där om sekten och dess ledare?", 
+        },
+        {
+            "latitude": 55.613229,
+            "longitude": 12.991713,
             "name": "Ludde",
             "type": "QR",
             "clue": "Du måste få reda på mer om sekten… kanske behöver du prata med en person som stått en av medlemmarna nära men som valt att gå en annan väg, rädd för att bli indragen i sektens mörker och hemligheter.", 
@@ -85,7 +93,8 @@ export const levelTwo =
             "name": "findLeader",
             "type": "LEADER",
             "clue": "Ingen sekt är den andra lik men ett gemensamt drag är att sektledaren bär ett stort ansvar. Har Solsidan-sekten en ledare och vilka uppgifter har denna person? ", 
-        }
+        },
+
     ]    
 
 export const levelThree = 
@@ -95,6 +104,7 @@ export const levelThree =
             "longitude": 12.991713,
             "name": "ThreeOne",
             "type": "ANALOG",
+            "level": "levelThree",
             "clue": "Någon har sett Anette på denna plats släpandes på en soppåse. Kan det vara så att hon försöker radera spår eller gömma undan viktiga bevis som kan avslöja var hon håller Anna undangömd? Ta dig hit för att undersöka vad det är hon försöker göra sig av med…", 
         },
         {
@@ -102,6 +112,7 @@ export const levelThree =
             "longitude": 12.979740,
             "name": "ThreeTwo",
             "type": "ANALOG",
+            "level": "levelThree",
             "clue": "level3", 
         },
         {
@@ -109,6 +120,7 @@ export const levelThree =
             "longitude": 12.982415,
             "name": "ThreeThree",
             "type": "ANALOG",
+            "level": "levelThree",
             "clue": "level3", 
         },
     ]    

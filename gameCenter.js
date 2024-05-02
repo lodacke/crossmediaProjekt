@@ -4,11 +4,12 @@ import { characters } from "./API/characters.js"
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { parseText } from "./utilities/parse.js";
 import { dialog, globalHolder, main } from "./utilities/variable.js";
-import { renderGame } from "./main.js";
 import { styleSVGElement } from "./utilities/styleElement.js";
+import { renderScoreBoard } from "./main.js";
+import { getCurrentTime } from "./utilities/getCurrentTime.js";
 
-export function renderQRscann(level) {
-    console.log(level)
+export function renderQRscann(level){
+
     dialog.show()
     dialog.setAttribute("id", "scannerContainer")
 
@@ -98,8 +99,6 @@ export function renderConversation(data) {
         </div>
     </div>
     `;
-
-    console.log(data.src);
 
     let flow = conversations[data.name]
     let container = main.querySelector("#conversationContainer");
@@ -319,7 +318,12 @@ export function renderIMG(data) {
     }
 }
 
-export function findLeader() {
+export function userArrival(){
+    console.log("user arrived, add button and/or code for progress")
+}
+
+// function will be called as a prompt 
+export function findLeader(){
 
     swapStyleSheet("CSS/chooseCharacter.css");
 
@@ -373,10 +377,66 @@ export function findLeader() {
     })
 }
 
-export function renderAnalogChallange(code){
-    main.innerHTML = `
-        <div>
-        </div>
+export function renderAnalogChallange(level){
+    dialog.show()
+    dialog.innerHTML = `
+    <p>Är du färdig med stationen?</p>
+    <div>
+        <button class="true">Ja</button>
+        <button class="false">Nej</button>
+    </div>
     `;
+
+    dialog.querySelector(".true").addEventListener("click", () => {
+         globalHolder.push(level.level, level.name)
+         renderGame()
+         dialog.close()
+    })
+
+    dialog.querySelector(".false").addEventListener("click", () => {
+        dialog.close()
+    })
 }
+
+export async function endGame() {
+    let user = globalHolder.get("user")
+    let startTime = globalHolder.get("StartTime")
+    globalHolder.reset("StartTime")
+
+    let endTime = getCurrentTime();
+    
+    let durationInSeconds = endTime - startTime;
+    let durationInMinutes = durationInSeconds / 60;
+
+    let pointsPerMinute = 1;
+
+    let totalPoints = Math.floor(durationInMinutes * pointsPerMinute);
+
+    try {
+            let response = await fetch("../API/setPoints.php", {
+            method: "POST",
+            body: JSON.stringify({
+                username: user,
+                points: totalPoints,
+                })
+            })
+
+            let data = await response.json()
+            if (!response.ok) {
+                console.log(data)
+            } else {
+                console.log(data)
+            }
+
+            } catch (error) {
+                console.log(error)
+            }   
+
+    alert(`Congratulations! You've earned ${totalPoints} points for completing the game in ${durationInMinutes} minutes.`);
+    globalHolder.reset()
+    localStorage.removeItem("StartTime")
+    renderScoreBoard()
+}
+
+
 

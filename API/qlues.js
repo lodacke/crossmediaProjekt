@@ -44,6 +44,7 @@ export const levelTwo =
             "longitude": 12.991713,
             "name": "manifest",
             "type": "ANALOG",
+            "level": "levelTwo",
             "clue": "Ingen sekt är den andra lik och för att hålla koll på alla regler och ritualer är det nödvändigt att ha dem nedskrivna. Om du letar noggrant kanske du kan hitta solsidan-sektens heliga manifest… vem vet vilka ledtrådar som gömmer sig där om sekten och dess ledare?", 
         },
         {
@@ -103,6 +104,7 @@ export const levelThree =
             "longitude": 12.991713,
             "name": "ThreeOne",
             "type": "ANALOG",
+            "level": "levelThree",
             "clue": "Någon har sett Anette på denna plats släpandes på en soppåse. Kan det vara så att hon försöker radera spår eller gömma undan viktiga bevis som kan avslöja var hon håller Anna undangömd? Ta dig hit för att undersöka vad det är hon försöker göra sig av med…", 
         },
         {
@@ -110,6 +112,7 @@ export const levelThree =
             "longitude": 12.979740,
             "name": "ThreeTwo",
             "type": "ANALOG",
+            "level": "levelThree",
             "clue": "level3", 
         },
         {
@@ -117,6 +120,7 @@ export const levelThree =
             "longitude": 12.982415,
             "name": "ThreeThree",
             "type": "ANALOG",
+            "level": "levelThree",
             "clue": "level3", 
         },
     ]    

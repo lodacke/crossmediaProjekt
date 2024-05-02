@@ -1,9 +1,10 @@
 import { main } from "./utilities/variable.js"
 import { renderHomepage } from "./main.js"
 import { userMessage } from "./utilities/userMessage.js";
+import { swapStyleSheet } from "./utilities/cssSwap.js";
 
 export async function renderLogin() {
-
+    swapStyleSheet("CSS/loginReg.css")
     main.innerHTML = `
     <h1>LOGGA IN</h1>
     <section>

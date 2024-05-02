@@ -5,6 +5,9 @@ import { renderQRscann, findLeader, userArrival } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
 import { levelCount} from "./utilities/levelCounter.js"
 import { styleSVGElement } from "./utilities/styleElement.js";
+import { endGame } from "./gameCenter.js"
+import { renderLogin } from "./registerLogin.js"
+import { getCurrentTime } from "./utilities/getCurrentTime.js";
 
 export function renderHomepage() {
 
@@ -13,7 +16,7 @@ export function renderHomepage() {
     main.innerHTML = `
     <div id="contentHome">
     <div id="topContainer">
-        <ion-icon id="settings" name="settings-outline"></ion-icon>
+        <img src="media/settings.svg" id="settings" name="settings-outline"></img>
     </div>
         <button id="game">Starta spel</button>
         <button id="scoreBoard">Scoreboard</button>
@@ -41,23 +44,28 @@ export function renderHomepage() {
 }
 
 window.renderGame = async function renderGame(){
+    let holdStart = globalHolder.get("StartTime");
+
+    if(!holdStart){
+        let startTime = getCurrentTime();
+        globalHolder.set("StartTime", startTime) // set startTime to use in end function later
+    }
 
     //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
     let testlevelOne = ["Alex", "Mickan", "Ove", "Anette"];
     let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
     
     //UPDATE LEVELS 
-    //testlevelOne.forEach( level => {
-    //    globalHolder.push("levelOne", level)
+    //testlevelTwo.forEach( level => {
+    //    globalHolder.push("levelTwo", level)
     //})
 
-    console.log(globalHolder.levels)
     let level = levelCount()
-    console.log(level)
     swapStyleSheet("CSS/homePage.css")
 
     main.innerHTML = `
         <div class="helpers">
+        <button id="settings">Avsluta</button>
             <button id="notes">
                 <ion-icon name="create-outline"></ion-icon>
             </button>
@@ -77,11 +85,15 @@ window.renderGame = async function renderGame(){
         renderCharacters()
     })
 
+    document.querySelector("#settings").addEventListener("click", () => {
+        window.location.hash = "";
+        endGame()
+    })
+
     let mapContainer = main.querySelector("#map");
      const watchID = navigator.geolocation.watchPosition(position => {
         const { latitude, longitude } = position.coords;
         
-
         const mapOptions = {
             center: { lat: latitude, lng: longitude },
             zoom: 16,
@@ -97,9 +109,10 @@ window.renderGame = async function renderGame(){
             icon: {
                 path: google.maps.SymbolPath.CIRCLE,
                 scale: 5,
-                fillColor: "white",
+                fillColor: "#689ac8",
                 fillOpacity: 1,
-                strokeColor: "white"
+                strokeColor: "black",
+                strokeWeight: 1
             }
         });
         
@@ -114,25 +127,19 @@ window.renderGame = async function renderGame(){
                     },
                 })
             marker.addListener("click", () => {
-                styleSVGElement(marker, "#606060")
+                styleSVGElement(level.name, "#606060")
                renderInfo(level, map, marker);
             })
+
         })
     });
 }
 
-function renderInfo(level, map, marker) {
-    const currentIconUrl = marker.getIcon().url;
+function renderInfo(level, map) {
 
     map.addListener("click", () => {
         if (container !== "") {
             container.innerHTML = "";
-
-            if (currentIconUrl === "media/Pin-chosen.svg") {
-                marker.setIcon({ url: "media/pin.svg" });
-            } else {
-                marker.setIcon({ url: "media/Pin-chosen.svg" });
-            }
         }
     });
 
@@ -164,8 +171,10 @@ function renderInfo(level, map, marker) {
                 findLeader();
                 break;
             case "ANALOG":
-                userArrival();
+                userArrival(level);
                 break;
+            case "END":
+                endGame()
         }
         container.innerHTML = "";
     });
@@ -239,11 +248,11 @@ function renderSettings() {
         </div>
     `;
 
-    console.log("hej");
-
     dialog.querySelector("button").addEventListener("click", () => {
-        localStorage.remove("user")
+        globalHolder.reset()
+        dialog.removeAttribute("id", "settingsDialog")
         dialog.close()
+        renderLogin()
     })
 
     dialog.querySelector(".exit").addEventListener("click", () => {
@@ -254,8 +263,67 @@ function renderSettings() {
 }
 
 function renderAboutUs(){
-    main.innerHTML = `
-    <div>
-    </div>`
+        main.innerHTML = `
+    <div id="container">
+        <div id="topContainer"><img src="media/return.svg"</div>
+    </div>
+    `;
+
+    main.querySelector("img").addEventListener("click", () =>{
+        renderHomepage()
+    })
 }
 
+export async function renderScoreBoard(){
+
+    swapStyleSheet("CSS/scoreBoard.css");
+
+    main.innerHTML = `
+    <div id="container">
+        <div id="topContainer"><img src="media/return.svg"></div>
+        <h1>TOPPLISTA</h1>
+        <div id="content">
+            <div class="userDisplay"></div>
+            <div class="allUsers"></div>
+        </div>
+    </div>
+    `;
+
+    let containerUser = main.querySelector(".allUsers");
+
+    try {
+        const response = await fetch("../API/users.json");
+        if (!response.ok) {
+            console.log("can get users")
+        }
+        const users = await response.json();
+        users.sort((a, b) => {
+            let maxPointsA = a.games.length > 0 ? Math.max(...a.games.map(game => game.points)) : 0;
+            let maxPointsB = b.games.length > 0 ? Math.max(...b.games.map(game => game.points)) : 0;
+            return maxPointsB - maxPointsA; 
+        });
+
+        users.forEach(user => {
+            if(user.games.length > 0){
+                let dom = document.createElement("div");
+                dom.classList.add("userContainer");
+
+                let maxPoints = user.games.length > 0 ? Math.max(...user.games.map(game => game.points)) : 0;
+
+                    dom.innerHTML = `
+                <h1>${user.username}</h2>
+                <p>${maxPoints} p</p>
+                `;
+
+                containerUser.append(dom);  
+                }
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
+
+    main.querySelector("img").addEventListener("click", () =>{
+        renderHomepage()
+    })
+}

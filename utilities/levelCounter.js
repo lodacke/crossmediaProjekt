@@ -1,18 +1,22 @@
 import { globalHolder, dialog } from "./variable.js"
 import { styleSVGElement } from "./styleElement.js";
 import { levelTwo, levelThree, levelOne } from "../API/qlues.js"
+import { renderScoreBoard } from "../main.js";
 
-export function levelCount() {
+    let levelReachedOne = false;
+    let levelReachedTwo = false;
+    
+export function levelCount() { 
 
     if(globalHolder.levels.levelOne){
 
         if (globalHolder.levels.levelOne.length < 5) {
-            console.log("level One is under 5")
+            //console.log("level One is under 5")
             styleSVGElement(globalHolder.levels.levelOne, "green");
             return levelOne;
 
-        } else if (globalHolder.levels.levelOne.length === 5) {
-            console.log("levelOne is 5");
+        } else if (globalHolder.levels.levelOne.length === 5 && !levelReachedOne) {
+            levelReachedOne = true;
             userAlert("levelTwo")
             return levelTwo;
         }   
@@ -21,13 +25,13 @@ export function levelCount() {
     if(globalHolder.levels.levelTwo){
         console.log("levelTwo in")
         if (globalHolder.levels.levelTwo.length < 6) {
-            console.log("levelTwo > 5");
+            //console.log("levelTwo > 5");
 
             styleSVGElement(globalHolder.levels.levelTwo, "green");
             return levelTwo;
 
-        } else if (globalHolder.levels.levelTwo.length === 6) {
-
+        } else if (globalHolder.levels.levelTwo.length === 6 && !levelReachedTwo) {
+            levelReachedTwo = true;
             return levelThree;
         }
     }
@@ -65,5 +69,7 @@ function userAlert(level){
     if(level === "levelThree"){
         messDom.textContent = "Du har lyckats lösa mysteriet!"
         messButton.textContent = "Se high score!"
+
+        messButton.addEventListener("click", renderScoreBoard)
     }
 }

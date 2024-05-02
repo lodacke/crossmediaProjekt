@@ -256,6 +256,11 @@ dialog {
     z-index: 9999;
 }
 
+.modal::backdrop{
+    z-index: 9999;
+    background-color: black
+}
+
 dialog::backdrop {
     background-color: blue;
 }
@@ -322,5 +327,8 @@ dialog::backdrop {
 
 /* DIALOG promt between levels*/
 #userMess{
-   text-align: center;
+    text-align: center;
+    position: absolute;
+    width: 80%;
+    top: 40vh;
 }

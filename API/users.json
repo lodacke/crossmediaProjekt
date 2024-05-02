@@ -5,8 +5,38 @@
         "games": []
     },
     {
-        "username": "",
-        "password": "",
+        "username": "lo",
+        "password": "lo",
         "games": []
+    },
+    {
+        "username": "Hanna",
+        "password": "Hanna",
+        "games": [
+            {
+                "points": 2,
+                "timestamp": "2024-05-02"
+            },
+            {
+                "points": 0,
+                "timestamp": "2024-05-02"
+            },
+            {
+                "points": 0,
+                "timestamp": "2024-05-02"
+            },
+            {
+                "points": 0,
+                "timestamp": "2024-05-02"
+            },
+            {
+                "points": 2,
+                "timestamp": "2024-05-02"
+            },
+            {
+                "points": 0,
+                "timestamp": "2024-05-02"
+            }
+        ]
     }
 ]

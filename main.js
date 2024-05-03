@@ -10,8 +10,9 @@ import { renderLogin } from "./registerLogin.js"
 import { getCurrentTime } from "./utilities/getCurrentTime.js";
 
 export function renderHomepage() {
-
+    console.log(localStorage.getItem("user"))
     swapStyleSheet("CSS/homePage.css")
+    window.location.hash = "home";
 
     main.innerHTML = `
     <div id="contentHome">
@@ -26,7 +27,6 @@ export function renderHomepage() {
 
     main.querySelector("#game").addEventListener("click", () => {
         renderGame()
-        window.location.hash = "#game";
     })
 
     main.querySelector("#scoreBoard").addEventListener("click", () => {
@@ -43,8 +43,10 @@ export function renderHomepage() {
 
 }
 
-window.renderGame = async function renderGame(){
+export function renderGame(){
+    
     let holdStart = globalHolder.get("StartTime");
+    window.location.hash = "#game";
 
     if(!holdStart){
         let startTime = getCurrentTime();
@@ -253,6 +255,7 @@ function renderSettings() {
         globalHolder.reset()
         dialog.removeAttribute("id", "settingsDialog")
         dialog.close()
+        dialog.style.display = `none`;
         renderLogin()
     })
 

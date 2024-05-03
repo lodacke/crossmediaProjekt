@@ -7,6 +7,7 @@ import { dialog, globalHolder, main } from "./utilities/variable.js";
 import { styleSVGElement } from "./utilities/styleElement.js";
 import { renderScoreBoard } from "./main.js";
 import { getCurrentTime } from "./utilities/getCurrentTime.js";
+import { renderGame } from "./main.js";
 
 export function renderQRscann(level){
 
@@ -413,24 +414,24 @@ export async function endGame() {
     let totalPoints = Math.floor(durationInMinutes * pointsPerMinute);
 
     try {
-            let response = await fetch("../API/setPoints.php", {
-            method: "POST",
-            body: JSON.stringify({
-                username: user,
-                points: totalPoints,
-                })
+        let response = await fetch("../API/setPoints.php", {
+        method: "POST",
+        body: JSON.stringify({
+            username: user,
+            points: totalPoints,
             })
+        })
+        let data = await response.json()
+        if (!response.ok) {
+            console.log(data)
 
-            let data = await response.json()
-            if (!response.ok) {
-                console.log(data)
-            } else {
-                console.log(data)
-            }
+        } else {
+            console.log(data)
+        }
 
-            } catch (error) {
-                console.log(error)
-            }   
+        } catch (error) {
+            console.log(error)
+        }   
 
     alert(`Congratulations! You've earned ${totalPoints} points for completing the game in ${durationInMinutes} minutes.`);
     globalHolder.reset()

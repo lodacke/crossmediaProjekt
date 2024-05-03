@@ -32,10 +32,16 @@
             {
                 "points": 2,
                 "timestamp": "2024-05-02"
-            },
+            }
+        ]
+    },
+    {
+        "username": "f",
+        "password": "f",
+        "games": [
             {
-                "points": 0,
-                "timestamp": "2024-05-02"
+                "points": -319,
+                "timestamp": "2024-05-03"
             }
         ]
     }

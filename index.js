@@ -1,20 +1,19 @@
 import { renderHomepage } from "./main.js";
 import { renderLogin } from "./registerLogin.js";
 import { globalHolder } from "./utilities/variable.js";
-//import { chooseCharacter } from "./gameCenter.js";
+import { renderGame } from "./main.js";
 
 (function () {
    
-    if (globalHolder.get("user")) {
-        window.addEventListener("load", () => {
+    if (localStorage.getItem("user")) {
+        console.log("found user")
             if (window.location.hash === "#game") {
                 renderGame();
             } else {
                 renderHomepage();
             }
-        });
-    } else {
-        
+    } else {        
+        console.log("not found user")
         renderLogin();
     }
 })();

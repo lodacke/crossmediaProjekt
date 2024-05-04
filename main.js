@@ -1,9 +1,9 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main, dialog, globalHolder} from "./utilities/variable.js";
+import { main, dialog, globalHolder } from "./utilities/variable.js";
 import { renderQRscann, findLeader, userArrival } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
-import { levelCount} from "./utilities/levelCounter.js"
+import { levelCount } from "./utilities/levelCounter.js"
 import { styleSVGElement } from "./utilities/styleElement.js";
 import { endGame } from "./gameCenter.js"
 import { renderLogin } from "./registerLogin.js"
@@ -43,10 +43,10 @@ export function renderHomepage() {
 
 }
 
-window.renderGame = async function renderGame(){
+window.renderGame = async function renderGame() {
     let holdStart = globalHolder.get("StartTime");
 
-    if(!holdStart){
+    if (!holdStart) {
         let startTime = getCurrentTime();
         globalHolder.set("StartTime", startTime) // set startTime to use in end function later
     }
@@ -54,7 +54,7 @@ window.renderGame = async function renderGame(){
     //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
     let testlevelOne = ["Alex", "Mickan", "Ove", "Anette"];
     let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
-    
+
     //UPDATE LEVELS 
     //testlevelTwo.forEach( level => {
     //    globalHolder.push("levelTwo", level)
@@ -91,9 +91,9 @@ window.renderGame = async function renderGame(){
     })
 
     let mapContainer = main.querySelector("#map");
-     const watchID = navigator.geolocation.watchPosition(position => {
+    const watchID = navigator.geolocation.watchPosition(position => {
         const { latitude, longitude } = position.coords;
-        
+
         const mapOptions = {
             center: { lat: latitude, lng: longitude },
             zoom: 16,
@@ -115,20 +115,20 @@ window.renderGame = async function renderGame(){
                 strokeWeight: 1
             }
         });
-        
-        level.forEach( level => {
+
+        level.forEach(level => {
             const marker = new google.maps.Marker({
-                position: { lat: level.latitude, lng: level.longitude }, 
+                position: { lat: level.latitude, lng: level.longitude },
                 map,
-                id:  `iconSVG_${level.name}`,   
-                
+                id: `iconSVG_${level.name}`,
+
                 icon: {
                     url: "media/pin.svg",
-                    },
-                })
+                },
+            })
             marker.addListener("click", () => {
                 styleSVGElement(level.name, "#606060")
-               renderInfo(level, map, marker);
+                renderInfo(level, map, marker);
             })
 
         })
@@ -185,6 +185,7 @@ function renderNotes() {
     let previousContent = window.localStorage.getItem("notes")
 
     dialog.show()
+    dialog.style.display = `flex`;
     dialog.setAttribute("id", "notesContainer")
 
     dialog.innerHTML = `
@@ -196,7 +197,8 @@ function renderNotes() {
     `;
 
     dialog.querySelector(".exit").addEventListener("click", () => {
-        let textContent = dialog.querySelector("textarea").value
+        let textContent = dialog.querySelector("textarea").value;
+        dialog.style.display = `none`;
         window.localStorage.setItem("notes", textContent)
         endSession()
     })
@@ -264,14 +266,14 @@ function renderSettings() {
     endSession()
 }
 
-function renderAboutUs(){
-        main.innerHTML = `
+function renderAboutUs() {
+    main.innerHTML = `
     <div id="container">
         <div id="topContainer"><img src="media/return.svg"</div>
     </div>
     `;
 
-    main.querySelector("img").addEventListener("click", () =>{
+    main.querySelector("img").addEventListener("click", () => {
         renderHomepage()
     })
 }
@@ -299,7 +301,7 @@ function renderHeader() {
 
     return header;
 }
-export async function renderScoreBoard(){
+export async function renderScoreBoard() {
 
     swapStyleSheet("CSS/scoreBoard.css");
 
@@ -325,30 +327,30 @@ export async function renderScoreBoard(){
         users.sort((a, b) => {
             let maxPointsA = a.games.length > 0 ? Math.max(...a.games.map(game => game.points)) : 0;
             let maxPointsB = b.games.length > 0 ? Math.max(...b.games.map(game => game.points)) : 0;
-            return maxPointsB - maxPointsA; 
+            return maxPointsB - maxPointsA;
         });
 
         users.forEach(user => {
-            if(user.games.length > 0){
+            if (user.games.length > 0) {
                 let dom = document.createElement("div");
                 dom.classList.add("userContainer");
 
                 let maxPoints = user.games.length > 0 ? Math.max(...user.games.map(game => game.points)) : 0;
 
-                    dom.innerHTML = `
+                dom.innerHTML = `
                 <h1>${user.username}</h2>
                 <p>${maxPoints} p</p>
                 `;
 
-                containerUser.append(dom);  
-                }
-            });
+                containerUser.append(dom);
+            }
+        });
 
-        } catch (error) {
-            console.error(error);
-        }
+    } catch (error) {
+        console.error(error);
+    }
 
-    main.querySelector("img").addEventListener("click", () =>{
+    main.querySelector("img").addEventListener("click", () => {
         renderHomepage()
     })
 }

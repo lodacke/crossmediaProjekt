@@ -64,16 +64,11 @@ window.renderGame = async function renderGame() {
     swapStyleSheet("CSS/homePage.css")
 
     main.innerHTML = `
+        ${renderHeader().outerHTML}
         <div class="helpers">
-        <button id="settings">Avsluta</button>
-            <button id="notes">
-                <ion-icon name="create-outline"></ion-icon>
-            </button>
-            <button id="characters">
-                <ion-icon name="people-outline"></ion-icon>
-            </button>
            <div id="map"></div>
            <div class="containerTemp"></div>
+           <button id="quit">Avsluta</button>
         </div>
         `;
 
@@ -85,7 +80,15 @@ window.renderGame = async function renderGame() {
         renderCharacters()
     })
 
+    document.querySelector("#info").addEventListener("click", () => {
+        renderAboutUs()
+    })
+
     document.querySelector("#settings").addEventListener("click", () => {
+        renderSettings()
+    })
+
+    document.querySelector("#quit").addEventListener("click", () => {
         window.location.hash = "";
         endGame()
     })
@@ -301,6 +304,7 @@ function renderHeader() {
 
     return header;
 }
+
 export async function renderScoreBoard() {
 
     swapStyleSheet("CSS/scoreBoard.css");

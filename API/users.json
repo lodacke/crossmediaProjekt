@@ -44,5 +44,37 @@
                 "timestamp": "2024-05-03"
             }
         ]
+    },
+    {
+        "username": "sofie",
+        "password": "s",
+        "games": [
+            {
+                "points": 4,
+                "timestamp": "2024-05-06"
+            }
+        ]
+    },
+    {
+        "username": "adam",
+        "password": "adam",
+        "games": [
+            {
+                "points": 2,
+                "timestamp": "2024-05-06"
+            },
+            {
+                "points": 0,
+                "timestamp": "2024-05-06"
+            },
+            {
+                "points": 1,
+                "timestamp": "2024-05-06"
+            },
+            {
+                "points": 90,
+                "timestamp": "2024-05-06"
+            }
+        ]
     }
 ]

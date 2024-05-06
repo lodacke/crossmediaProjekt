@@ -435,8 +435,8 @@ export async function endGame() {
 
     alert(`Congratulations! You've earned ${totalPoints} points for completing the game in ${durationInMinutes} minutes.`);
     globalHolder.reset()
+    renderScoreBoard(user, durationInMinutes, totalPoints);
     localStorage.removeItem("StartTime")
-    renderScoreBoard()
 }
 
 

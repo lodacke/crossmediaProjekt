@@ -34,7 +34,7 @@ export async function renderLogin() {
 
         try {
 
-            let response = await fetch("../API/login.php", {
+            let response = await fetch("API/login.php", {
                 method: "POST",
                 body: JSON.stringify({
                     username: username.value,
@@ -95,7 +95,7 @@ export async function renderRegister() {
 
         try {
 
-            let response = await fetch("../API/register.php", {
+            let response = await fetch("API/register.php", {
                 method: "POST",
                 body: JSON.stringify({
                     username: username.value,

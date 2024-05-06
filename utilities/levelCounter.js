@@ -25,7 +25,7 @@ export function levelCount() {
     if(globalHolder.levels.levelTwo){
         console.log("levelTwo in")
         if (globalHolder.levels.levelTwo.length < 6) {
-            //console.log("levelTwo > 5");
+            //console.log("levelTwo under 5");
 
             styleSVGElement(globalHolder.levels.levelTwo, "green");
             return levelTwo;

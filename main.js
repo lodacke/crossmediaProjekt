@@ -10,7 +10,7 @@ import { renderLogin } from "./registerLogin.js"
 import { getCurrentTime } from "./utilities/getCurrentTime.js";
 
 export function renderHomepage() {
-    console.log(localStorage.getItem("user"))
+
     swapStyleSheet("CSS/homePage.css")
     window.location.hash = "home";
 
@@ -114,7 +114,8 @@ export function renderGame(){
                 fillColor: "#689ac8",
                 fillOpacity: 1,
                 strokeColor: "black",
-                strokeWeight: 1
+                strokeWeight: 1,
+                animation: google.maps.Animation.DROP
             }
         });
         
@@ -122,7 +123,7 @@ export function renderGame(){
             const marker = new google.maps.Marker({
                 position: { lat: level.latitude, lng: level.longitude }, 
                 map,
-                id:  `iconSVG_${level.name}`,   
+                id:  `iconSVG_${level.name}`, 
                 
                 icon: {
                     url: "media/pin.svg",
@@ -253,6 +254,7 @@ function renderSettings() {
 
     dialog.querySelector("button").addEventListener("click", () => {
         globalHolder.reset()
+        localStorage.removeItem("user");
         dialog.removeAttribute("id", "settingsDialog")
         dialog.close()
         dialog.style.display = `none`;
@@ -302,7 +304,7 @@ function renderHeader() {
 
     return header;
 }
-export async function renderScoreBoard(){
+export async function renderScoreBoard(user, duration, userScore){
 
     swapStyleSheet("CSS/scoreBoard.css");
 
@@ -311,11 +313,22 @@ export async function renderScoreBoard(){
         <div id="topContainer"><img src="media/return.svg"></div>
         <h1>TOPPLISTA</h1>
         <div id="content">
-            <div class="userDisplay"></div>
+            <div class="userContainer">
+            </div>
             <div class="allUsers"></div>
         </div>
     </div>
     `;
+
+    let userDom = main.querySelector(".userContainer")
+
+    if(user && duration && userScore){
+        userDom.innerHTML = `
+        <h1>${user}</h1>
+        <p>${duration} min</p>
+        <p>${userScore} p</p>
+        `;
+    }
 
     let containerUser = main.querySelector(".allUsers");
 

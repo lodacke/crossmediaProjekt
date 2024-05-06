@@ -1,0 +1,13 @@
+{
+    "name": "Solsidan",
+    "short_name": "Solsidan",
+    "start_url:": "https://www.maumt.se/wdu/ht22/students/solsidan/",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "media/logo.png",
+            "sizes": "212x212",
+            "type": "imge/png"
+        }
+    ]
+}

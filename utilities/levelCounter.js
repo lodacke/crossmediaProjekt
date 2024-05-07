@@ -1,7 +1,7 @@
 import { globalHolder, dialog } from "./variable.js"
 import { styleSVGElement } from "./styleElement.js";
 import { levelTwo, levelThree, levelOne } from "../API/qlues.js"
-import { renderScoreBoard } from "../main.js";
+import { renderGame, renderScoreBoard } from "../main.js";
 
     let levelReachedOne = false;
     let levelReachedTwo = false;
@@ -32,7 +32,9 @@ export function levelCount() {
 
         } else if (globalHolder.levels.levelTwo.length === 6 && !levelReachedTwo) {
             levelReachedTwo = true;
+            findLeader()
             return levelThree;
+            
         }
     }
     if(globalHolder.levels.levelThree){
@@ -72,4 +74,62 @@ function userAlert(level){
 
         messButton.addEventListener("click", renderScoreBoard)
     }
+}
+
+// function will be called as a prompt 
+export function findLeader(){
+
+    swapStyleSheet("CSS/chooseCharacter.css");
+
+    main.innerHTML = `
+        <div class="content"></div>
+    `;
+
+    let displayCharacters = []
+    for (let character of characters) {
+        if (character.alibi) {
+            displayCharacters.push(character)
+        }
+    }
+
+    displayCharacters.forEach(character => {
+        let card = document.createElement("div");
+        card.classList.add("flipCard");
+        card.setAttribute("id", `char_${character.name}`)
+        card.innerHTML = `
+        <div class="innerCard">
+            <div class="frontCard" id=char_${character.name}>
+                <img src=${character.img}>
+                <h1>${character.name}</h1>
+            </div>
+             <div class="backCard" id=char_${character.name}>
+                <img src=${character.img}>
+                <p>${character.alibi}</p>
+            </div>
+       </div>
+       `;
+
+        let toggleControl = true;
+        card.addEventListener("click", (event) => {
+            if (toggleControl === true) {
+                card.classList.toggle("flippedCard")
+            }
+
+            if (event.target.id === "char_Anette") {
+                toggleControl = false;
+
+                setTimeout(() => {
+                    let levelButton = document.createElement("button");
+                    levelButton.setAttribute("id", "nextLevel")
+                    levelButton.innerText = "Go to next level";
+                    levelButton.addEventListener("click", () => {
+                        renderGame()
+                    })
+                    main.querySelector(".content").append(levelButton)
+                }, 3000)
+            }
+
+        })
+        main.querySelector(".content").append(card)
+    })
 }

@@ -121,6 +121,7 @@ export function renderGame(){
                 animation: google.maps.Animation.DROP
             }
         });
+        console.log("true")
 
         level.forEach(level => {
             const marker = new google.maps.Marker({
@@ -129,7 +130,7 @@ export function renderGame(){
                 id:  `iconSVG_${level.name}`, 
                 
                 icon: {
-                    url: "media/pin.svg",
+                    url: "/media/pin.svg",
                 },
             })
             marker.addListener("click", () => {

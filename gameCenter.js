@@ -323,61 +323,6 @@ export function userArrival(){
     console.log("user arrived, add button and/or code for progress")
 }
 
-// function will be called as a prompt 
-export function findLeader(){
-
-    swapStyleSheet("CSS/chooseCharacter.css");
-
-    main.innerHTML = `
-        <div class="content"></div>
-    `;
-
-    let displayCharacters = []
-    for (let character of characters) {
-        if (character.alibi) {
-            displayCharacters.push(character)
-        }
-    }
-
-    displayCharacters.forEach(character => {
-        let card = document.createElement("div");
-        card.classList.add("flipCard");
-        card.setAttribute("id", `char_${character.name}`)
-        card.innerHTML = `
-        <div class="innerCard">
-            <div class="frontCard" id=char_${character.name}>
-                <img src=${character.img}>
-                <h1>${character.name}</h1>
-            </div>
-             <div class="backCard" id=char_${character.name}>
-                <img src=${character.img}>
-                <p>${character.alibi}</p>
-            </div>
-       </div>
-       `;
-
-        let toggleControl = true;
-        card.addEventListener("click", (event) => {
-            if (toggleControl === true) {
-                card.classList.toggle("flippedCard")
-            }
-
-            if (event.target.id === "char_Anette") {
-                toggleControl = false;
-
-                setTimeout(() => {
-                    let levelButton = document.createElement("button");
-                    levelButton.setAttribute("id", "nextLevel")
-                    levelButton.innerText = "Go to next level"
-                    main.querySelector(".content").append(levelButton)
-                }, 3000)
-            }
-
-        })
-        main.querySelector(".content").append(card)
-    })
-}
-
 export function renderAnalogChallange(level){
     dialog.show()
     dialog.innerHTML = `

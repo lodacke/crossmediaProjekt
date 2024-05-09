@@ -79,6 +79,16 @@
     },
     {
         "username": "tranen",
-        "password": "123"
+        "password": "123",
+        "games": [
+            {
+                "points": 178,
+                "timestamp": "2024-05-09"
+            },
+            {
+                "points": 19,
+                "timestamp": "2024-05-09"
+            }
+        ]
     }
 ]

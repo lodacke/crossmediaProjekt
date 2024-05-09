@@ -1,7 +1,7 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
 import { main, dialog, globalHolder } from "./utilities/variable.js";
-import { renderQRscann, findLeader, userArrival } from "./gameCenter.js";
+import { renderQRscann, userArrival } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
 import { levelCount } from "./utilities/levelCounter.js"
 import { styleSVGElement } from "./utilities/styleElement.js";
@@ -43,8 +43,8 @@ export function renderHomepage() {
 
 }
 
-export function renderGame(){
-    
+export function renderGame() {
+
     let holdStart = globalHolder.get("StartTime");
     window.location.hash = "#game";
 
@@ -70,13 +70,37 @@ export function renderGame(){
         <div class="helpers">
            <div id="map"></div>
            <div class="containerTemp"></div>
-           <button id="quit">Avsluta</button>
         </div>
         `;
 
-    document.querySelector("#notes").addEventListener("click", () => {
-        renderNotes()
+    const arrow = document.querySelector("#menu #dropArrow");
+    const header = document.querySelector("header");
+
+    arrow.addEventListener("click", originalEventHandler);
+
+    function originalEventHandler() {
+        arrow.style.transform = `rotate(180deg)`;
+        setTimeout(() => {
+            header.style.transform = `translateY(-25vh)`;
+            header.style.transition = `transform 1s ease`;
+        }, 10);
+
+        arrow.removeEventListener("click", originalEventHandler);
+    }
+
+    document.querySelectorAll("header button").forEach(button => {
+        button.addEventListener("click", () => {
+            arrow.style.transform = ``;
+            header.style.transform = `translateY(-65vh)`;
+            header.style.transition = `transform 1s ease`;
+
+            arrow.addEventListener("click", originalEventHandler);
+        })
     })
+
+    // document.querySelector("#notes").addEventListener("click", () => {
+    //     renderNotes()
+    // })
 
     document.querySelector("#characters").addEventListener("click", () => {
         renderCharacters()
@@ -127,8 +151,8 @@ export function renderGame(){
             const marker = new google.maps.Marker({
                 position: { lat: level.latitude, lng: level.longitude },
                 map,
-                id:  `iconSVG_${level.name}`, 
-                
+                id: `iconSVG_${level.name}`,
+
                 icon: {
                     url: "/media/pin.svg",
                 },
@@ -289,28 +313,28 @@ function renderAboutUs() {
 
 function renderHeader() {
     const header = document.createElement("header");
+
     header.innerHTML = `
-        <div class="headerLeftCol">
-            <button id="notes">
-                <ion-icon name="create-outline"></ion-icon>
+        <div id="menu">
+            <img src="../media/menuHeader.png">
+            <div id="menuButtons">
+                <button id="quit">AVSLUTA</button>
+                <button id="characters">KARAKTÄRER</button>
+                <button id="leaderboard">TOPPLISTA</button>
+                <button id="info">OM OSS</button>
+                <button id="settings">INSTÄLLNINGAR</button>
+            </div>
+            
+            <button id="dropArrow">
+                <ion-icon name="chevron-down"></ion-icon>
             </button>
-            <button id="characters">
-                <ion-icon name="people"></ion-icon>
-            </button>
-        </div>
-        <div class="headerRightCol">
-            <button id="info">
-                <ion-icon name="information-circle-outline"></ion-icon>
-            </button>
-            <button id="settings">
-                <ion-icon name="aperture"></ion-icon>
-            </button>
-        </div>
+        </div>  
     `;
 
     return header;
 }
-export async function renderScoreBoard(user, duration, userScore){
+
+export async function renderScoreBoard(user, duration, userScore) {
 
     swapStyleSheet("CSS/scoreBoard.css");
 
@@ -328,7 +352,7 @@ export async function renderScoreBoard(user, duration, userScore){
 
     let userDom = main.querySelector(".userContainer")
 
-    if(user && duration && userScore){
+    if (user && duration && userScore) {
         userDom.innerHTML = `
         <h1>${user}</h1>
         <p>${duration} min</p>

@@ -68,6 +68,25 @@ header img {
     width: 100%;
 }
 
+#notes {
+    background-color: #3D3B3A;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 5px 0 10px;
+    position: fixed;
+    bottom: 45vh;
+    right: 0;
+    z-index: 10;
+    border-radius: 10px 0 0 10px;
+    height: 50px;
+}
+
+#notes ion-icon {
+    font-size: 35px;
+}
+
 header #menuButtons {
     display: flex;
     flex-direction: column;
@@ -82,7 +101,6 @@ header #menuButtons button {
     padding: 1vh;
     font-size: 18px;
     width: 85%;
-    font-weight: 600;
     background-color: #3D3B3A;
     color: #A1A1A1;
     border: none;
@@ -232,39 +250,38 @@ header #dropArrow {
     align-items: center;
 }
 
-#notesHeader {
-    text-align: center;
-    margin: 10px;
-    color: var(--yellow);
-    font-weight: 500;
-}
-
 #notesInput {
     background-color: #3D3B3A;
     color: #A1A1A1;
-    height: 80%;
+    height: 85%;
     width: 85%;
     font-size: 16px;
     line-height: 3vh;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 15px;
     resize: none;
     overflow-y: auto;
-}
-
-#notesContainer>img {
-    position: absolute;
+    margin-top: 4vh;
 }
 
 textarea:focus {
     outline: none;
 }
 
-.inputSave {
+/* .inputSave {
     position: absolute;
     top: 90%;
     left: 80%;
+} */
+
+#return {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    display: flex;
+    padding: 15px;
+    cursor: pointer;
 }
 
 /* DIALOG */

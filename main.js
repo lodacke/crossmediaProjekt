@@ -67,6 +67,9 @@ export function renderGame() {
 
     main.innerHTML = `
         ${renderHeader().outerHTML}
+        <button id="notes">
+            <ion-icon name="create-outline"></ion-icon>
+        </button>
         <div class="helpers">
            <div id="map"></div>
            <div class="containerTemp"></div>
@@ -98,9 +101,9 @@ export function renderGame() {
         })
     })
 
-    // document.querySelector("#notes").addEventListener("click", () => {
-    //     renderNotes()
-    // })
+    document.querySelector("#notes").addEventListener("click", () => {
+        renderNotes()
+    })
 
     document.querySelector("#characters").addEventListener("click", () => {
         renderCharacters()
@@ -220,14 +223,13 @@ function renderNotes() {
     dialog.setAttribute("id", "notesContainer")
 
     dialog.innerHTML = `
-    <div id="topContainer">
-        <ion-icon class="exit" name="close-outline"></ion-icon>
-    </div>
-    <h2 id="notesHeader">ANTECKNINGAR</h2>
-    <textarea type="text" id="notesInput">${previousContent}</textarea>
+        <textarea type="text" id="notesInput">${previousContent}</textarea>
+        <button id="return">
+            <ion-icon name="return-down-back-outline"></ion-icon>
+        </button>
     `;
 
-    dialog.querySelector(".exit").addEventListener("click", () => {
+    dialog.querySelector("#return").addEventListener("click", () => {
         let textContent = dialog.querySelector("textarea").value;
         dialog.style.display = `none`;
         window.localStorage.setItem("notes", textContent)

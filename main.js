@@ -105,6 +105,10 @@ export function renderGame() {
         renderNotes()
     })
 
+    document.querySelector("#leaderboard").addEventListener("click", () => {
+        renderScoreBoard()
+    })
+
     document.querySelector("#characters").addEventListener("click", () => {
         renderCharacters()
     })
@@ -321,8 +325,8 @@ function renderHeader() {
             <img src="../media/menuHeader.png">
             <div id="menuButtons">
                 <button id="quit">AVSLUTA</button>
-                <button id="characters">KARAKTÄRER</button>
                 <button id="leaderboard">TOPPLISTA</button>
+                <button id="characters">KARAKTÄRER</button>
                 <button id="info">OM OSS</button>
                 <button id="settings">INSTÄLLNINGAR</button>
             </div>
@@ -408,6 +412,6 @@ export async function renderScoreBoard(user, duration, userScore) {
     }
 
     main.querySelector("#return").addEventListener("click", () => {
-        renderHomepage()
+        renderGame()
     })
 }

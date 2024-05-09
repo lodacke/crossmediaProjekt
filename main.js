@@ -342,23 +342,29 @@ export async function renderScoreBoard(user, duration, userScore) {
 
     main.innerHTML = `
     <div id="container">
-        <div id="topContainer"><img src="media/return.svg"></div>
-        <h1>TOPPLISTA</h1>
+        <div id="topContainer">
+            <ion-icon id="return" name="return-down-back"></ion-icon>
+        </div>
+        <h2>TOPPLISTA</h2>
         <div id="content">
-            <div class="userContainer">
+            <div class="mainUserContainer">
             </div>
             <div class="allUsers"></div>
         </div>
     </div>
     `;
 
-    let userDom = main.querySelector(".userContainer")
+    let userDom = main.querySelector(".mainUserContainer")
 
     if (user && duration && userScore) {
         userDom.innerHTML = `
-        <h1>${user}</h1>
-        <p>${duration} min</p>
-        <p>${userScore} p</p>
+            <section>
+                <div class="profileContainer">
+                    <ion-icon name="person"></ion-icon>
+                </div>
+            </section>
+            <h3>${user}</h3>
+            <p>${userScore}p</p>
         `;
     }
 
@@ -384,8 +390,13 @@ export async function renderScoreBoard(user, duration, userScore) {
                 let maxPoints = user.games.length > 0 ? Math.max(...user.games.map(game => game.points)) : 0;
 
                 dom.innerHTML = `
-                <h1>${user.username}</h2>
-                <p>${maxPoints} p</p>
+                    <section>
+                        <div class="profileContainer">
+                            <ion-icon name="person"></ion-icon>
+                        </div>
+                        <h3>${user.username}</h3>
+                    </section>
+                    <p>${maxPoints}p</p>
                 `;
 
                 containerUser.append(dom);
@@ -396,7 +407,7 @@ export async function renderScoreBoard(user, duration, userScore) {
         console.error(error);
     }
 
-    main.querySelector("img").addEventListener("click", () => {
+    main.querySelector("#return").addEventListener("click", () => {
         renderHomepage()
     })
 }

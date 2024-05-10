@@ -313,7 +313,7 @@ function renderAboutUs() {
     `;
 
     main.querySelector("img").addEventListener("click", () => {
-        renderHomepage()
+        renderGame()
     })
 }
 

@@ -4,7 +4,7 @@ import { characters } from "./API/characters.js"
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { parseText } from "./utilities/parse.js";
 import { dialog, globalHolder, main } from "./utilities/variable.js";
-import { renderScoreBoard } from "./main.js";
+import { renderHomepage, renderScoreBoard } from "./main.js";
 import { getCurrentTime } from "./utilities/getCurrentTime.js";
 import { renderGame } from "./main.js";
 
@@ -368,12 +368,13 @@ export function userArrival() {
 
 export function renderAnalogChallange(level) {
     dialog.show()
+    dialog.setAttribute("id", "analogControll")
     dialog.innerHTML = `
-    <p>Är du färdig med stationen?</p>
-    <div>
-        <button class="true">Ja</button>
-        <button class="false">Nej</button>
-    </div>
+        <p>Är du färdig med stationen?</p>
+        <div>
+            <button class="true">Ja</button>
+            <button class="false">Nej</button>
+        </div>
     `;
 
     dialog.querySelector(".true").addEventListener("click", () => {
@@ -423,6 +424,7 @@ export async function endGame() {
 
     alert(`Congratulations! You've earned ${totalPoints} points for completing the game in ${durationInMinutes} minutes.`);
     globalHolder.reset()
+    renderHomepage()
     renderScoreBoard(user, durationInMinutes, totalPoints);
     localStorage.removeItem("StartTime")
 }

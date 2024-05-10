@@ -1,22 +1,22 @@
 import { globalHolder, dialog } from "./variable.js"
-import { styleSVGElement } from "./styleElement.js";
 import { levelTwo, levelThree, levelOne } from "../API/qlues.js"
 import { renderGame, renderScoreBoard } from "../main.js";
 
-    let levelReachedOne = false;
-    let levelReachedTwo = false;
     
 export function levelCount() { 
+    
+    let levelReachedOne = false;
+    let levelReachedTwo = false;
 
     if(globalHolder.levels.levelOne){
 
         if (globalHolder.levels.levelOne.length < 5) {
             //console.log("level One is under 5")
-            styleSVGElement(globalHolder.levels.levelOne, "green");
             return levelOne;
 
-        } else if (globalHolder.levels.levelOne.length === 5 && !levelReachedOne) {
+        } else if (globalHolder.levels.levelOne.length === 5 && levelReachedOne) {
             levelReachedOne = true;
+             console.log(levelReachedOne)
             userAlert("levelTwo")
             return levelTwo;
         }   
@@ -25,9 +25,7 @@ export function levelCount() {
     if(globalHolder.levels.levelTwo){
         console.log("levelTwo in")
         if (globalHolder.levels.levelTwo.length < 6) {
-            //console.log("levelTwo under 5");
-
-            styleSVGElement(globalHolder.levels.levelTwo, "green");
+            console.log("levelTwo under 5");
             return levelTwo;
 
         } else if (globalHolder.levels.levelTwo.length === 6 && !levelReachedTwo) {
@@ -39,13 +37,12 @@ export function levelCount() {
     }
     if(globalHolder.levels.levelThree){
         if (globalHolder.levels.levelThree.length < 3) {
-
-            styleSVGElement(globalHolder.levels.levelThree, "green");
             return levelThree;
         }
     }
 
     return levelOne;
+    
 }
 
 function userAlert(level){
@@ -76,7 +73,7 @@ function userAlert(level){
     }
 }
 
-// function will be called as a prompt 
+// function will be called as a prompt between level 2 and level 3
 export function findLeader(){
 
     swapStyleSheet("CSS/chooseCharacter.css");

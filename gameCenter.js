@@ -4,7 +4,6 @@ import { characters } from "./API/characters.js"
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { parseText } from "./utilities/parse.js";
 import { dialog, globalHolder, main } from "./utilities/variable.js";
-import { styleSVGElement } from "./utilities/styleElement.js";
 import { renderScoreBoard } from "./main.js";
 import { getCurrentTime } from "./utilities/getCurrentTime.js";
 import { renderGame } from "./main.js";
@@ -24,7 +23,6 @@ export function renderQRscann(level){
 
     dialog.querySelector(".exit").addEventListener("click", () => {
         dialog.close()
-        styleSVGElement(level, "black")
     })
 
     const scanner = new Html5QrcodeScanner('reader', {
@@ -48,7 +46,6 @@ export function renderQRscann(level){
             dialog.close()
             const dataString = JSON.stringify(data)
             eval(`${data.link}(${dataString})`)
-            styleSVGElement(level, "green")
 
         } else {
             console.error("Function does not exist:", data);
@@ -162,7 +159,6 @@ export function renderConversation(data) {
                     setTimeout(() => {
 
                         globalHolder.push(data.level, data.name)
-                        styleSVGElement(data.level)
                         renderGame();
                     }, 3000)
                 }

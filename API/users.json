@@ -7,7 +7,12 @@
     {
         "username": "lo",
         "password": "lo",
-        "games": []
+        "games": [
+            {
+                "points": 287,
+                "timestamp": "2024-05-10"
+            }
+        ]
     },
     {
         "username": "Hanna",

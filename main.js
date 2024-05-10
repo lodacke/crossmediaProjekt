@@ -104,6 +104,11 @@ export function renderGame() {
         })
     })
 
+    document.querySelector("#quit").addEventListener("click", () => {
+        window.location.hash = "";
+        endGame()
+    })
+
     document.querySelector("#notes").addEventListener("click", () => {
         renderNotes()
     })
@@ -219,7 +224,6 @@ export function renderGame() {
         });
     });
 }
-
 
 function renderInfo(level, map) {
 
@@ -403,23 +407,27 @@ function renderHeader() {
 
 export async function renderScoreBoard(user, duration, userScore) {
 
-    swapStyleSheet("CSS/scoreBoard.css");
+    // swapStyleSheet("CSS/scoreBoard.css");
 
-    main.innerHTML = `
-    <div id="container">
-        <div id="topContainer">
-            <ion-icon id="return" name="return-down-back"></ion-icon>
-        </div>
-        <h2>TOPPLISTA</h2>
-        <div id="content">
-            <div class="mainUserContainer">
+    dialog.show()
+    dialog.style.display = `flex`;
+    dialog.setAttribute("id", "scoreboardDialog")
+
+    dialog.innerHTML = `
+        <div id="container">
+            <div id="topContainer">
+                <ion-icon name="return-down-back"></ion-icon>
             </div>
-            <div class="allUsers"></div>
+            <h2>TOPPLISTA</h2>
+            <div id="content">
+                <div class="mainUserContainer">
+                </div>
+                <div class="allUsers"></div>
+            </div>
         </div>
-    </div>
     `;
 
-    let userDom = main.querySelector(".mainUserContainer")
+    let userDom = dialog.querySelector(".mainUserContainer")
 
     if (user) {
         console.log("user values present")
@@ -436,7 +444,7 @@ export async function renderScoreBoard(user, duration, userScore) {
         console.log("no user values sent to function")
     }
 
-    let containerUser = main.querySelector(".allUsers");
+    let containerUser = dialog.querySelector(".allUsers");
 
     try {
         const response = await fetch("../API/users.json");
@@ -477,7 +485,8 @@ export async function renderScoreBoard(user, duration, userScore) {
         console.error(error);
     }
 
-    main.querySelector("#return").addEventListener("click", () => {
-        renderHomepage()
+    dialog.querySelector("#topContainer ion-icon").addEventListener("click", () => {
+        dialog.close()
+        dialog.style.display = `none`;
     })
 }

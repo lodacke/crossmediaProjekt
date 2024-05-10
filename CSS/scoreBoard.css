@@ -18,10 +18,21 @@ main {
     justify-content: center;
 }
 
-ion-icon {
-    color: var(--white);
-    font-size: 30px;
-    cursor: pointer;
+/* DIALOG */
+
+dialog {
+    border: 1px solid black;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+.modal::backdrop {
+    z-index: 9999;
+    background-color: black
+}
+
+dialog::backdrop {
+    background-color: blue;
 }
 
 #container {
@@ -37,8 +48,7 @@ ion-icon {
 
 #topContainer {
     display: flex;
-    justify-content: space-around;
-    align-self: flex-start;
+    justify-content: start;
 }
 
 #content {

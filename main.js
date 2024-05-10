@@ -386,7 +386,7 @@ function renderHeader() {
 
     header.innerHTML = `
         <div id="menu">
-            <img src="../media/menuHeader.png">
+            <img src="media/menuHeader.png">
             <div id="menuButtons">
                 <button id="quit">AVSLUTA</button>
                 <button id="leaderboard">TOPPLISTA</button>

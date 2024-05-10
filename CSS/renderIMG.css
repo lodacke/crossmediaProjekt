@@ -43,6 +43,13 @@ ion-icon {
 
 /* FOR ELEMENTS IN FIND-MY-PHONE*/
 
+#imgMeeting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10vh;
+}
+
 #imgFindMyIphone {
     width: 70%;
     text-align: center;
@@ -165,7 +172,7 @@ ion-icon {
     width: 100%;
 }
 
-#displayCameraFootage h3 {
+#displayCameraFootage h2 {
     color: var(--white);
 }
 

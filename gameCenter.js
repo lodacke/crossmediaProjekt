@@ -270,31 +270,29 @@ export function renderIMG(data) {
 
     if (data.name === "imgMeeting") {
         container.innerHTML = `
-            <h1>SPIONERA PÅ MÖTET</h1>
-            <div class="buttonContainer">
-                <div class="innerContainer">
-                    <button class="cameraOne">
-                        <ion-icon name="videocam-outline"></ion-icon>
-                    </button>
-                    <p>Kamera 1</p>
-                </div>
-                <div class="innerContainer">
-                    <button class="cameraTwo">
-                        <ion-icon name="videocam-outline"></ion-icon>
-                    </button>
-                    <p>Kamera 2</p>
+            <div id="imgMeeting">
+                <h1>SPIONERA PÅ MÖTET</h1>
+                <div class="buttonContainer">
+                    <div class="innerContainer">
+                        <button class="cameraOne">
+                            <ion-icon name="videocam-outline"></ion-icon>
+                        </button>
+                        <p>Kamera 1</p>
+                    </div>
+                    <div class="innerContainer">
+                        <button class="cameraTwo">
+                            <ion-icon name="videocam-outline"></ion-icon>
+                        </button>
+                        <p>Kamera 2</p>
+                    </div>
                 </div>
             </div>
+            
         `;
 
         container.querySelector(".cameraOne").onclick = () => displayCameraFootage(flow.img1, "Kamera 1")
         container.querySelector(".cameraTwo").onclick = () => displayCameraFootage(flow.img2, "Kamera 2")
     }
-
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
 
     function displayIMG(img) {
         container.setAttribute("id", "displayIMG")
@@ -321,29 +319,44 @@ export function renderIMG(data) {
         })
     }
 
+    function liveTimer() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const string = `${hours}:${minutes}:${seconds}`;
+
+        const timer = document.getElementById("timer");
+        timer.textContent = string;
+
+    }
+
     function displayCameraFootage(img, text) {
         container.setAttribute("id", "displayCameraFootage")
         container.innerHTML = `
-            <h3>${text}</h3>
+            <h2>${text}</h2>
             <section>
                 <div>
                     <img id="imgContainer" src=${img}>
-                    <p>Idag ${hours}:${minutes}:${seconds}</p>
+                    <p id="timer"></p>
                 </div>
                 
                 <div class="bottomDIV">
-                    <ion-icon name="return-down-back-outline"></ion-icon>
+                    <ion-icon name="return-down-back-outline" id="return"></ion-icon>
                     <button class="levelComplete">KLAR</button>
                 </div>
             </section>
         `;
+
+        liveTimer()
+        setInterval(liveTimer, 1000)
 
         container.querySelector("button").addEventListener("click", () => {
             globalHolder.push(data.level, data.name)
             renderGame()
         })
 
-        container.querySelector(".return").addEventListener("click", () => {
+        container.querySelector("#return").addEventListener("click", () => {
             renderIMG(data)
         })
     }

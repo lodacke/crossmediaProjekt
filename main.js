@@ -310,12 +310,15 @@ function renderSettings() {
     })
 
     dialog.querySelector(".exit").addEventListener("click", () => {
+        dialog.close()
         dialog.style.display = `none`;
         endSession()
     })
 
     dialog.querySelector("#endGame").addEventListener("click", () => {
         window.location.hash = "";
+        dialog.close()
+        dialog.style.display = `none`;
         endGame()
     })
 
@@ -357,7 +360,9 @@ function renderHeader() {
 
     return header;
 }
+
 export async function renderScoreBoard(user, duration, userScore){
+    console.log(user, duration, userScore)
 
     swapStyleSheet("CSS/scoreBoard.css");
 
@@ -375,12 +380,15 @@ export async function renderScoreBoard(user, duration, userScore){
 
     let userDom = main.querySelector(".userContainer")
 
-    if(user && duration && userScore){
+    if(user){
+        console.log("user values present")
         userDom.innerHTML = `
         <h1>${user}</h1>
         <p>${duration} min</p>
         <p>${userScore} p</p>
         `;
+    } else {
+        console.log("no user values sent to function")
     }
 
     let containerUser = main.querySelector(".allUsers");
@@ -391,13 +399,15 @@ export async function renderScoreBoard(user, duration, userScore){
             console.log("can get users")
         }
         const users = await response.json();
-        users.sort((a, b) => {
-            let maxPointsA = a.games.length > 0 ? Math.max(...a.games.map(game => game.points)) : 0;
-            let maxPointsB = b.games.length > 0 ? Math.max(...b.games.map(game => game.points)) : 0;
+        let sortedUsers = users.sort((a, b) => {
+
+            let maxPointsA = (a.games && a.games.length > 0) ? Math.max(...a.games.map(game => game.points)) : 0;
+            let maxPointsB = (b.games && b.games.length > 0) ? Math.max(...b.games.map(game => game.points)) : 0;
             return maxPointsB - maxPointsA;
         });
 
-        users.forEach(user => {
+        sortedUsers.forEach(user => {
+
             if (user.games.length > 0) {
                 let dom = document.createElement("div");
                 dom.classList.add("userContainer");

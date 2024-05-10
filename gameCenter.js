@@ -8,7 +8,7 @@ import { renderScoreBoard } from "./main.js";
 import { getCurrentTime } from "./utilities/getCurrentTime.js";
 import { renderGame } from "./main.js";
 
-export function renderQRscann(level){
+export function renderQRscann(level) {
 
     dialog.show()
     dialog.setAttribute("id", "scannerContainer")
@@ -219,16 +219,24 @@ export function renderIMG(data) {
 
     if (data.name === "imgFindMyIphone") {
         container.innerHTML = `
-        <h1>UPPDRAG</h1>
-        <p>Du har nu fått tillgång till Mickans telefon. Kolla skärmdumpen i hennes kamerarulle för att ta reda på vart sektmedlemmarna befinner sig!</p>
-        <button>
-            <ion-icon name="images-outline"></ion-icon>
-        </button>
+            <div id="imgFindMyIphone">
+                <h2>UPPDRAG</h2>
+                <p>Du har nu fått tillgång till Mickans telefon. Kolla skärmdumpen i hennes kamerarulle för att ta reda på vart sektmedlemmarna befinner sig!</p>
+                <button>
+                    <ion-icon name="images-outline"></ion-icon>
+                </button>
+            </div>
         `;
 
         container.querySelector("button").addEventListener("click", () => {
-            container.setAttribute("id", "containerFindMyIphone")
-            container.innerHTML = `
+            displayAlbum(data)
+        });
+
+    }
+
+    function displayAlbum() {
+        container.setAttribute("id", "containerFindMyIphone")
+        container.innerHTML = `
             <div class="topDOM">
                 <div>
                     <ion-icon name="chevron-back-outline"></ion-icon>
@@ -236,7 +244,7 @@ export function renderIMG(data) {
                 </div>
                 <div>
                     <button>Välj</button>
-                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                    <ion-icon name="ellipsis-horizontal"></ion-icon>
                 </div>
             </div>
             <div class="middleDOM">
@@ -246,18 +254,20 @@ export function renderIMG(data) {
             <div class="btmDOM">
                 <p>${flow.img.length} Foton, 0 Videos </p>    
             </div>
-            `;
+        `;
 
-            let gridContainer = container.querySelector(".gridContainer")
-            flow.img.forEach(img => {
-                let imgDOM = document.createElement("img");
-                imgDOM.src = `${img}`;
-                gridContainer.append(imgDOM)
-                imgDOM.onclick = () => displayIMG(flow.img1)
+        console.log(flow.img);
 
-            })
+        let gridContainer = container.querySelector(".gridContainer")
+        flow.img.forEach(img => {
+            let imgDOM = document.createElement("img");
+            imgDOM.src = `${img}`;
+            gridContainer.append(imgDOM)
+            imgDOM.onclick = () => displayIMG(flow.img1)
+
         })
     }
+
     if (data.name === "imgMeeting") {
         container.innerHTML = `
             <h1>SPIONERA PÅ MÖTET</h1>
@@ -277,8 +287,8 @@ export function renderIMG(data) {
             </div>
         `;
 
-        container.querySelector(".cameraOne").onclick = () => displayIMG(flow.img1, "Kamera 1")
-        container.querySelector(".cameraTwo").onclick = () => displayIMG(flow.img2, "Kamera 2")
+        container.querySelector(".cameraOne").onclick = () => displayCameraFootage(flow.img1, "Kamera 1")
+        container.querySelector(".cameraTwo").onclick = () => displayCameraFootage(flow.img2, "Kamera 2")
     }
 
     const now = new Date();
@@ -286,22 +296,46 @@ export function renderIMG(data) {
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
 
-    function displayIMG(img, text) {
+    function displayIMG(img) {
         container.setAttribute("id", "displayIMG")
         container.innerHTML = `
-        <h3>${text}</h3>
-        <section>
-            <div>
-                <img id="imgContainer" src=${img}>
-                <p>Idag ${hours}:${minutes}:${seconds}</p>
-            </div>
-            
-            <div class="bottomDIV">
-                <ion-icon name="return-down-back-outline"></ion-icon>
-                <button class="levelComplete">KLAR</button>
-            </div>
-        </section>
-        
+            <section>
+                <div>
+                    <img id="imgContainer" src=${img}>
+                </div>
+                
+                <div class="bottomDIV">
+                    <ion-icon name="return-down-back-outline" id="returnToAlbum"></ion-icon>
+                    <button class="levelComplete">KLAR</button>
+                </div>
+            </section>
+        `;
+
+        container.querySelector("button").addEventListener("click", () => {
+            globalHolder.push(data.level, data.name)
+            renderGame()
+        })
+
+        container.querySelector("#returnToAlbum").addEventListener("click", () => {
+            displayAlbum()
+        })
+    }
+
+    function displayCameraFootage(img, text) {
+        container.setAttribute("id", "displayCameraFootage")
+        container.innerHTML = `
+            <h3>${text}</h3>
+            <section>
+                <div>
+                    <img id="imgContainer" src=${img}>
+                    <p>Idag ${hours}:${minutes}:${seconds}</p>
+                </div>
+                
+                <div class="bottomDIV">
+                    <ion-icon name="return-down-back-outline"></ion-icon>
+                    <button class="levelComplete">KLAR</button>
+                </div>
+            </section>
         `;
 
         container.querySelector("button").addEventListener("click", () => {
@@ -315,11 +349,11 @@ export function renderIMG(data) {
     }
 }
 
-export function userArrival(){
+export function userArrival() {
     console.log("user arrived, add button and/or code for progress")
 }
 
-export function renderAnalogChallange(level){
+export function renderAnalogChallange(level) {
     dialog.show()
     dialog.innerHTML = `
     <p>Är du färdig med stationen?</p>
@@ -330,9 +364,9 @@ export function renderAnalogChallange(level){
     `;
 
     dialog.querySelector(".true").addEventListener("click", () => {
-         globalHolder.push(level.level, level.name)
-         renderGame()
-         dialog.close()
+        globalHolder.push(level.level, level.name)
+        renderGame()
+        dialog.close()
     })
 
     dialog.querySelector(".false").addEventListener("click", () => {
@@ -346,7 +380,7 @@ export async function endGame() {
     globalHolder.reset("StartTime")
 
     let endTime = getCurrentTime();
-    
+
     let durationInSeconds = endTime - startTime;
     let durationInMinutes = durationInSeconds / 60;
 
@@ -356,10 +390,10 @@ export async function endGame() {
 
     try {
         let response = await fetch("../API/setPoints.php", {
-        method: "POST",
-        body: JSON.stringify({
-            username: user,
-            points: totalPoints,
+            method: "POST",
+            body: JSON.stringify({
+                username: user,
+                points: totalPoints,
             })
         })
         let data = await response.json()
@@ -370,9 +404,9 @@ export async function endGame() {
             console.log(data)
         }
 
-        } catch (error) {
-            console.log(error)
-        }   
+    } catch (error) {
+        console.log(error)
+    }
 
     alert(`Congratulations! You've earned ${totalPoints} points for completing the game in ${durationInMinutes} minutes.`);
     globalHolder.reset()

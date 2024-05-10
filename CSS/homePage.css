@@ -449,14 +449,16 @@ dialog::backdrop {
     padding-top: 1.5vh;
 }
 
-.userContainer {
+.userContainer,
+.mainUserContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 3vh;
 }
 
-.userContainer section {
+.userContainer section,
+.mainUserContainer section {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -477,11 +479,13 @@ dialog::backdrop {
     cursor: auto;
 }
 
-.userContainer h3 {
+.userContainer h3,
+.mainUserContainer h3 {
     font-size: 20px;
 }
 
-.userContainer p {
+.userContainer p,
+.mainUserContainer p {
     color: var(--white);
     font-size: 18px;
     font-weight: 600;

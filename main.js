@@ -293,11 +293,10 @@ function renderNotes() {
 function renderCharacters() {
 
     main.innerHTML = `
-    <div id="topContainer">
-        <ion-icon class="exit" name="close-outline"></ion-icon>
-    </div>
-    <div id="containerCharacters">
-    </div>
+        <div id="topContainer">
+            <ion-icon class="exit" name="close-outline"></ion-icon>
+        </div>
+        <div id="containerCharacters"></div>
     `;
 
     let containerDom = main.querySelector("#containerCharacters");
@@ -436,8 +435,8 @@ export async function renderScoreBoard(user, duration, userScore) {
                 <div class="profileContainer">
                     <ion-icon name="person"></ion-icon>
                 </div>
+                <h3>${user}</h3>
             </section>
-            <h3>${user}</h3>
             <p>${userScore}p</p>
         `;
     } else {

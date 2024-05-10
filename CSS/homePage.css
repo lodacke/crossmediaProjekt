@@ -24,10 +24,6 @@ ion-icon {
     font-size: 30px;
 }
 
-#iconSVG {
-    fill: red;
-}
-
 #topContainer {
     display: flex;
     justify-content: flex-end;
@@ -134,15 +130,6 @@ header #dropArrow {
     outline: none;
 }
 
-/* Ändrar färg på kartan*/
-
-.leaflet-tile {
-    filter: hue-rotate(330deg) saturate(50%)
-        /* contrast(150%) <-- exempel på andra metoder för att ändra kartans färg */
-        /* hue-rotate(360deg) <- exempel på andra metoder för att ändra kartans färg  */
-         !important;
-}
-
 .temporaryContent {
     cursor: pointer;
     background-color: #3D3B3A;
@@ -182,17 +169,6 @@ header #dropArrow {
 
 #levelDone {
     fill: green
-}
-
-.leaflet-div-icon,
-#levelDone {
-    fill: green
-}
-
-.leaflet-div-icon {
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
 }
 
 

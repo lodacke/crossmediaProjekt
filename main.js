@@ -4,7 +4,6 @@ import { main, dialog, globalHolder } from "./utilities/variable.js";
 import { renderQRscann, userArrival } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
 import { levelCount } from "./utilities/levelCounter.js"
-import { styleSVGElement } from "./utilities/styleElement.js";
 import { endGame } from "./gameCenter.js"
 import { renderLogin } from "./registerLogin.js"
 import { getCurrentTime } from "./utilities/getCurrentTime.js";
@@ -17,7 +16,7 @@ export function renderHomepage() {
     main.innerHTML = `
     <div id="contentHome">
     <div id="topContainer">
-        <img src="media/settings.svg" id="settings" name="settings-outline"></img>
+        <img src="media/settings.svg" id="settings" name="settings-outline"></img> 
     </div>
         <button id="game">Starta spel</button>
         <button id="scoreBoard">Scoreboard</button>
@@ -54,7 +53,7 @@ export function renderGame() {
     }
 
     //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
-    let testlevelOne = ["Alex", "Mickan", "Ove", "Anette"];
+    let testlevelOne = ["Alex", "Mickan", "Ove", "Anette", "Fredde"];
     let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
 
     //UPDATE LEVELS 
@@ -63,6 +62,7 @@ export function renderGame() {
     //})
 
     let level = levelCount()
+
     swapStyleSheet("CSS/homePage.css")
 
     main.innerHTML = `
@@ -113,18 +113,14 @@ export function renderGame() {
         renderCharacters()
     })
 
-    document.querySelector("#info").addEventListener("click", () => {
+    main.querySelector("#info").addEventListener("click", () => {
         renderAboutUs()
     })
 
-    document.querySelector("#settings").addEventListener("click", () => {
+    main.querySelector("#settings").addEventListener("click", () => {
         renderSettings()
     })
 
-    document.querySelector("#quit").addEventListener("click", () => {
-        window.location.hash = "";
-        endGame()
-    })
 
     let mapContainer = main.querySelector("#map");
     const watchID = navigator.geolocation.watchPosition(position => {
@@ -132,7 +128,7 @@ export function renderGame() {
 
         const mapOptions = {
             center: { lat: latitude, lng: longitude },
-            zoom: 16,
+            zoom: 13,
             mapTypeId: google.maps.MapTypeId.SATELLITE, //change for mapTypeId = HYBRID, ROADMAP, TERRAIN
             disableDefaultUI: true,
         };
@@ -149,29 +145,78 @@ export function renderGame() {
                 fillOpacity: 1,
                 strokeColor: "black",
                 strokeWeight: 1,
-                animation: google.maps.Animation.DROP
-            }
+            },
+            animation: google.maps.Animation.DROP
         });
-        console.log("true")
 
-        level.forEach(level => {
-            const marker = new google.maps.Marker({
+        let iconSVG = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <g clip-path="url(#clip0_332_2)">
+                <path d="M4 12C4 8.8174 5.26428 5.76515 7.51472 3.51472C9.76515 1.26428 12.8174 0 16 0C19.1826 0 22.2348 1.26428 24.4853 3.51472C26.7357 5.76515 28 8.8174 28 12C28 20 16 32 16 32C16 32 4 20 4 12ZM11 12C11 13.3261 11.5268 14.5979 12.4645 15.5355C13.4021 16.4732 14.6739 17 16 17C17.3261 17 18.5979 16.4732 19.5355 15.5355C20.4732 14.5979 21 13.3261 21 12C21 10.6739 20.4732 9.40215 19.5355 8.46447C18.5979 7.52678 17.3261 7 16 7C14.6739 7 13.4021 7.52678 12.4645 8.46447C11.5268 9.40215 11 10.6739 11 12Z" fill="#ECAD0A"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_332_2">
+                    <rect width="32" height="32" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+        `;
+
+        let iconURL = 'data:image/svg+xml;charset=UTF-8;base64,' + btoa(iconSVG);
+
+        let DONEiconSVG = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <g clip-path="url(#clip0_332_2)">
+                <path d="M4 12C4 8.8174 5.26428 5.76515 7.51472 3.51472C9.76515 1.26428 12.8174 0 16 0C19.1826 0 22.2348 1.26428 24.4853 3.51472C26.7357 5.76515 28 8.8174 28 12C28 20 16 32 16 32C16 32 4 20 4 12ZM11 12C11 13.3261 11.5268 14.5979 12.4645 15.5355C13.4021 16.4732 14.6739 17 16 17C17.3261 17 18.5979 16.4732 19.5355 15.5355C20.4732 14.5979 21 13.3261 21 12C21 10.6739 20.4732 9.40215 19.5355 8.46447C18.5979 7.52678 17.3261 7 16 7C14.6739 7 13.4021 7.52678 12.4645 8.46447C11.5268 9.40215 11 10.6739 11 12Z" fill="#689ac8"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_332_2">
+                    <rect width="32" height="32" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+        `;
+
+        let DONEiconURL = 'data:image/svg+xml;charset=UTF-8;base64,' + btoa(DONEiconSVG);
+
+        let globalCounter = globalHolder.get("levels")
+        let doneTask = [];
+        for (const key in globalCounter) {
+        if (Object.hasOwnProperty.call(globalCounter, key)) {
+                const value = globalCounter[key];
+                if (Array.isArray(value)) {
+                    doneTask.push(...value);
+                } else {
+                    doneTask.push(value);
+                }
+            }
+        }
+
+        level.forEach((level, index) => {
+            let markerOptions = {
                 position: { lat: level.latitude, lng: level.longitude },
                 map,
-                id: `iconSVG_${level.name}`,
-
                 icon: {
-                    url: "/media/pin.svg",
+                    url: iconURL,
                 },
-            })
-            marker.addListener("click", () => {
-                styleSVGElement(level.name, "#606060")
-                renderInfo(level, map, marker);
-            })
+                animation: google.maps.Animation.DROP
+            };
 
-        })
+            if (doneTask.includes(level.name)) {
+                markerOptions.icon.url = DONEiconURL;
+            }
+
+            setTimeout(() => {
+                const marker = new google.maps.Marker(markerOptions);
+
+                marker.addListener("click", () => {
+                    renderInfo(level, map, marker);
+                });
+            }, index * 200); 
+        });
     });
 }
+
 
 function renderInfo(level, map) {
 
@@ -204,9 +249,6 @@ function renderInfo(level, map) {
                 break;
             case "IMG":
                 renderQRscann(level);
-                break;
-            case "LEADER":
-                findLeader();
                 break;
             case "ANALOG":
                 userArrival(level);
@@ -285,6 +327,7 @@ function renderSettings() {
         <h2>SETTINGS</h2>
         <div id="contentSettings">
             <button>Logout</button>
+            <button id="endGame">Avsluta</button>
         </div>
     `;
 
@@ -298,8 +341,16 @@ function renderSettings() {
     })
 
     dialog.querySelector(".exit").addEventListener("click", () => {
+        dialog.close()
         dialog.style.display = `none`;
         endSession()
+    })
+
+    dialog.querySelector("#endGame").addEventListener("click", () => {
+        window.location.hash = "";
+        dialog.close()
+        dialog.style.display = `none`;
+        endGame()
     })
 
     endSession()
@@ -360,7 +411,8 @@ export async function renderScoreBoard(user, duration, userScore) {
 
     let userDom = main.querySelector(".mainUserContainer")
 
-    if (user && duration && userScore) {
+    if(user){
+        console.log("user values present")
         userDom.innerHTML = `
             <section>
                 <div class="profileContainer">
@@ -370,6 +422,8 @@ export async function renderScoreBoard(user, duration, userScore) {
             <h3>${user}</h3>
             <p>${userScore}p</p>
         `;
+    } else {
+        console.log("no user values sent to function")
     }
 
     let containerUser = main.querySelector(".allUsers");
@@ -380,13 +434,15 @@ export async function renderScoreBoard(user, duration, userScore) {
             console.log("can get users")
         }
         const users = await response.json();
-        users.sort((a, b) => {
-            let maxPointsA = a.games.length > 0 ? Math.max(...a.games.map(game => game.points)) : 0;
-            let maxPointsB = b.games.length > 0 ? Math.max(...b.games.map(game => game.points)) : 0;
+        let sortedUsers = users.sort((a, b) => {
+
+            let maxPointsA = (a.games && a.games.length > 0) ? Math.max(...a.games.map(game => game.points)) : 0;
+            let maxPointsB = (b.games && b.games.length > 0) ? Math.max(...b.games.map(game => game.points)) : 0;
             return maxPointsB - maxPointsA;
         });
 
-        users.forEach(user => {
+        sortedUsers.forEach(user => {
+
             if (user.games.length > 0) {
                 let dom = document.createElement("div");
                 dom.classList.add("userContainer");

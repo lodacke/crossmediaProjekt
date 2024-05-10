@@ -15,12 +15,15 @@ export function renderHomepage() {
 
     main.innerHTML = `
     <div id="contentHome">
-    <div id="topContainer">
-        <img src="media/settings.svg" id="settings" name="settings-outline"></img> 
-    </div>
-        <button id="game">Starta spel</button>
-        <button id="scoreBoard">Scoreboard</button>
-        <button id="aboutUs">Om oss</button>       
+        <div id="topContainer">
+            <img src="media/solsidan.png"></img> 
+        </div>
+        <section>
+            <button id="game">STARTA SPELET</button>
+            <button id="scoreBoard">TOPPLISTA</button>
+            <button id="aboutUs">OM OSS</button>       
+            <button id="settings">INSTÄLLNINGAR</button>       
+        </section>  
     </div>
     `;
 
@@ -182,7 +185,7 @@ export function renderGame() {
         let globalCounter = globalHolder.get("levels")
         let doneTask = [];
         for (const key in globalCounter) {
-        if (Object.hasOwnProperty.call(globalCounter, key)) {
+            if (Object.hasOwnProperty.call(globalCounter, key)) {
                 const value = globalCounter[key];
                 if (Array.isArray(value)) {
                     doneTask.push(...value);
@@ -212,7 +215,7 @@ export function renderGame() {
                 marker.addListener("click", () => {
                     renderInfo(level, map, marker);
                 });
-            }, index * 200); 
+            }, index * 200);
         });
     });
 }
@@ -319,6 +322,7 @@ function renderSettings() {
     dialog.show()
     dialog.style.display = `block`;
     dialog.setAttribute("id", "settingsDialog")
+    document.querySelector(".overlay").style.display = `block`;
 
     dialog.innerHTML = `
         <div id="topContainer">
@@ -326,7 +330,7 @@ function renderSettings() {
         </div>
         <h2>SETTINGS</h2>
         <div id="contentSettings">
-            <button>Logout</button>
+            <button>Logga ut</button>
             <button id="endGame">Avsluta</button>
         </div>
     `;
@@ -337,12 +341,16 @@ function renderSettings() {
         dialog.removeAttribute("id", "settingsDialog")
         dialog.close()
         dialog.style.display = `none`;
+        document.querySelector(".overlay").style.display = `none`;
+
         renderLogin()
     })
 
     dialog.querySelector(".exit").addEventListener("click", () => {
         dialog.close()
         dialog.style.display = `none`;
+        document.querySelector(".overlay").style.display = `none`;
+
         endSession()
     })
 
@@ -350,6 +358,8 @@ function renderSettings() {
         window.location.hash = "";
         dialog.close()
         dialog.style.display = `none`;
+        document.querySelector(".overlay").style.display = `none`;
+
         endGame()
     })
 
@@ -411,7 +421,7 @@ export async function renderScoreBoard(user, duration, userScore) {
 
     let userDom = main.querySelector(".mainUserContainer")
 
-    if(user){
+    if (user) {
         console.log("user values present")
         userDom.innerHTML = `
             <section>
@@ -468,6 +478,6 @@ export async function renderScoreBoard(user, duration, userScore) {
     }
 
     main.querySelector("#return").addEventListener("click", () => {
-        renderGame()
+        renderHomepage()
     })
 }

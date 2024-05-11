@@ -26,7 +26,7 @@ export const characters = [
     {
         name: "Ove",
         img: "media/ove.png",
-        description: `Ove Sundberg är en person som inte direkt sticker ut för sin charm eller sin förmåga att läsa sociala signaler. Han är snål till den grad att det nästan blir en konstform, och hans totala brist på självdistans och social kompetens gör att han går igenom livet utan att förstå hur han uppfattas av andra. Trots hans uppenbara brister har han på något sätt lyckats bli ordförande i Saltsjöbadens Golfklubb. Ove är gift med Anette och tillsammans har de dottern Marielle.`,
+        description: `Ove Sundberg är en person som är snål till den grad att det nästan blir en konstform, och hans totala brist på självdistans och social kompetens gör att han går igenom livet utan att förstå hur han uppfattas av andra. Trots hans uppenbara brister har han på något sätt lyckats bli ordförande i Saltsjöbadens Golfklubb. Ove är gift med Anette och tillsammans har de dottern Marielle. Trots att människorna i hans omgivning helst skulle vilja undvika honom till varje pris, dyker han alltid upp när de minst önskar det. Även om Ove är en uppenbart irriterande människa har han sina goda stunder.`,
         alibi: "Fel. Övriga sektmedlemmar litade inte på att Ove var kapabel att förvara offret då han ansågs lättdistraherad. "
     },
     {

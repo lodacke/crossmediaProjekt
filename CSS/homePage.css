@@ -206,13 +206,35 @@ header #dropArrow {
     fill: green
 }
 
-
 /* CHARACTERS */
 
-#containerCharacters {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+#charactersPopUp {
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(21, 21, 21) 100%);
+}
+
+#charactersPopUp #topContainer ion-icon {
+    padding: 5% 5% 0 0;
+}
+
+.swiper {
+    width: 90%;
+    height: 90%;
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet {
+    border-radius: 2px;
+    width: 5vw;
+    height: 0.5vh;
+    background-color: #595959;
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet-active {
+    background-color: #5E5E5E;
 }
 
 #containerCharacters p {
@@ -222,13 +244,31 @@ header #dropArrow {
 }
 
 .imgBackground {
-    background-color: #222120;
-    height: 80vw;
-    width: 100%;
+    background-color: #1e1d1d;
+    height: 75vw;
+    width: 90%;
     border-radius: 20px;
-
+    margin-top: 2vh;
     display: flex;
     justify-content: center;
+}
+
+.imgSpotlight {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: #4f4f4f;
+    top: 12%;
+    filter: blur(40px);
+}
+
+.imgBackground img {
+    z-index: 100;
+}
+
+.character {
+    height: fit-content;
 }
 
 .topCharacter {
@@ -241,7 +281,7 @@ header #dropArrow {
     width: 80%;
 }
 
-.topCharacter>h3 {
+.topCharacter>h2 {
     color: var(--yellow);
     margin-top: 20px;
     margin-bottom: 0;
@@ -329,9 +369,8 @@ dialog::backdrop {
     display: none
 }
 
-#reader #reader_scan_region>video {
-    max-height: 20vh;
-    width: 100%;
+#reader #reader__scan_region>video {
+    max-height: 150px;
 }
 
 #reader__dashboard button {

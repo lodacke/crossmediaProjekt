@@ -218,7 +218,7 @@ section div:first-of-type {
 }
 
 .bottomDIV .levelComplete {
-    background-color: #E6B400;
+    background-color: var(--yellow);
     color: #151515;
     border-radius: 5px;
     font-size: 16px;

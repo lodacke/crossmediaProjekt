@@ -120,7 +120,7 @@ ion-icon {
 }
 
 #endC {
-    width: 92%;
+    width: 88%;
     color: red;
     background-color: #B5B5B5;
 }
@@ -139,11 +139,12 @@ ion-icon {
 .controlC button {
     background-color: #9B9690;
     color: #151515;
-    padding: 0px 15px;
+    padding: 10px 15px;
     border: none;
     border-radius: 5px;
     text-align: left;
-    min-width: 250px;
+    min-width: fit-content;
+    overflow-y: scroll;
 }
 
 #inputDisplay {

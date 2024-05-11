@@ -193,6 +193,7 @@ header #dropArrow {
 
 .temporaryContent>#bottomContainer button {
     background-color: var(--yellow);
+    color: #151515;
     font-size: 16px;
     padding: 1vh 2.5vh;
     border-radius: 10px;
@@ -328,10 +329,16 @@ dialog::backdrop {
     display: none
 }
 
+#reader #reader_scan_region>video {
+    max-height: 20vh;
+    width: 100%;
+}
+
 #reader__dashboard button {
     margin-bottom: 15px;
     font-size: 16px;
     background-color: var(--yellow);
+    color: #151515;
     padding: 1vh 2.5vh;
     border-radius: 10px;
     border: 1px solid var(--white);

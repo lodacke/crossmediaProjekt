@@ -241,6 +241,8 @@ header #dropArrow {
     text-align: center;
     color: #A1A1A1;
     margin-bottom: 60px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .imgBackground {

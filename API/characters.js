@@ -2,36 +2,36 @@ export const characters = [
     {
         name: "Fredde",
         img: "media/fredde.png",
-        description: `Freddan 39 år och jobbar som VD och fondförvaltare på banken. Han bor i ett av de flottaste husen i det mycket fashionabla området Solsidan, Saltsjöbaden utanför Stockholm, där han även är uppväxt. Fredde är gift med Mikaela Schiller, som kallas Mickan, och tillsammans har de två barn, Victor och Ebba. Han är bästa vän med Alex Löfström, en barndomsvän som nyligen flyttat tillbaka till Solsidan med sin sambo Anna. Fredde är mycket entusiastisk i det som han engagerar sig i, men handlar oftast först och tänker sen. Han tänker mycket på status och lägger därpå mycket pengar och omsorg.`,
+        description: `Fredrik Schiller är en affärsman som innehar positionen som VD och fondförvaltare i ett framgångsrikt men ospecificerat företag. Han bor tillsammans med sin fru Mikaela och deras tre barn i ett glamouröst område i Saltsjöbaden. Deras hem är ett av de mest imponerande och eftertraktade, vilket speglar familjens höga ställning och välstånd. Fredde är en väldigt entusiastisk och passionerad man. Han har dock en tendens att agera impulsivt, att handla först och tänka sen. Detta kan ibland leda till både framgångar och missöden, men det är en del av den personlighet som gör Fredde till den han är.`,
         alibi: "Fel. Freddes dominanta natur förstärktes av sekten och den ytterligare rikedom han fick ta del av, men han var aldrig den som förvarade Anna."
     },
     {
         name: "Mickan",
         img: "media/mickan.png",
-        description: `Mickan är gift med Fredde Schiller, Solsidans rikaste man. Hon är mammaledig med dottern Ebba men driver även ett företag som designar barnkläder. Mickan är precis som Fredde beroende av sin status i området, och vill vara "The first lady of Saltis", men har sin väninna Lussan att tävla mot. I säsong två återvänder en annan av Freddes barndomskamrater till Saltis, och visar sig vara tillsammans med Lussan, han visar sig även vara rikare än Fredde.`,
+        description: `Mikaela Schiller lever sitt liv i det välbärgade Saltsjöbaden tillsammans med sin make Fredrik. Mickans intressen inkluderar lyxiga shoppingrundor på Schuterman, promenader längs Saltsjöbadens stränder och att avnjuta ett glas vin tillsammans med hennes vänner. För Mickan är det viktigt att upprätthålla en fasad av framgång och perfektion. Men under ytan döljer sig en kvinna som kämpar med sin identitet och sina egna drömmar. Trots sin längtan efter självständighet och framgång är hon en hängiven familjekvinna som kämpar för att balansera sitt eget välbefinnande med sina ansvar gentemot sin familj och de hon älskar.`,
         alibi: "Fel. Sekten litade inte på att Mickan skulle klara av att förvara Anna då hon tidigare i livet inte bevisat sitt intellekt. "
     },
     {
         name: "Alex",
         img: "media/alex.png",
-        description: `är en 39-årig tandläkare, med egen klinik. Han är uppvuxen i Saltsjöbaden utanför Stockholm. I första avsnittet flyttar Alex och sambon (senare gift) Anna Svensson till "Saltis" då han har köpt sitt barndomshem av sin mamma, Margareta Löfström. I den första säsongen väntar han och Anna barn som sedan föds i det sista avsnittet. Alex är konflikträdd och nojig, och bryr sig väldigt mycket om vad andra tycker om honom. Han bor granne med sin bästa vän, och barndomskamrat, Fredde Schiller och hans fru Mikaela.`,
+        description: `Alexander Löfström är uppvuxen i Saltsjöbaden utanför Stockholm. Alex arbetar som tandläkare och har en egen klinik. Han har varit gift med Anna och de har tillsammans två barn. Alex är en karaktär som präglas av oro och konflikträdsla. Han bryr sig väldigt mycket om vad andra tycker om honom och varje beslut och handling vägs mot en osynlig mätare av andras åsikter. Trots detta har Alex ett gott hjärta och vill aldrig göra någon i sin omgivning besviken. Alexs barndomsvän och närmaste granne är Fredde Schiller och eras relation sträcker sig långt tillbaka till barndomen. Fredde fungerar som en stöttepelare i Alexs liv.`,
         alibi: "Fel. Anna misstänkte att Alex spelade en stor roll i sekten men kom i slutet av mars fram till att han bara var en “vanlig” medlem. Alex nervösa natur gjorde honom omförmögden att förvara Anna."
     },
     {
         name: "Anette",
         img: "media/anette.png",
-        description: `är en fiktiv karaktär i humordrama-serien Solsidan.`,
+        description: `Anette Sundberg är lika osympatisk som sin make Ove, och deras äktenskap kan bara beskrivas som en allians mellan två människor som delar samma tvivelaktiga karaktärsdrag.  Precis som Ove är Anette snål och saknar social kompetens, vilket gör henne till en svår person att umgås med för de flesta människor. Parets tillvaro tog en oväntad vändning när Anette fick tillgång till en stor summa pengar som ett resultat av en felaktig investering flera år tidigare. Trots deras nyfunna ekonomiska status, lyckades de inte förbättra sin sociala situation. Anette visar emellertid tecken på att hon tröttnar på sin make, men de lyckas alltid hitta tillbaka till varandra.`,
         alibi: "Rätt! Annette är sektens ledare och är den som har Anna i sitt förvar. Alla sektens möte hålls hemma hos henne och hon är alltid den som står upp och för talan!"
     },
     {
         name: "Ove",
         img: "media/ove.png",
-        description: `OVe är gammal skolbekant till Fredde och Alex. Ove är notoriskt snål och i total avsaknad av såväl social kompetens som självdistans, vilket resulterar i att han aldrig inser hur han uppfattas av omgivningen, att han beskrivs som en riktig skitstövel, eller att han aldrig är önskvärd eller välkommen. Ove vill ständigt låna prylar av grannarna, utan att lämna tillbaka dem eller själv låna ut något. Tidigare har han lyckats att - på oklart vis - bli ordförande i Saltsjöbadens Golfklubb. Han är gift med den lika osympatiska Annette med vilken han har dottern Marielle. Det var (lustigt nog) Oves och Anettes ide att Alex och Annas son skulle heta "Love". Ett snarlikt namn till "Ove". Trots Oves tämligen burdusa och buffliga stil följde de rådet.`,
+        description: `Ove Sundberg är en person som inte direkt sticker ut för sin charm eller sin förmåga att läsa sociala signaler. Han är snål till den grad att det nästan blir en konstform, och hans totala brist på självdistans och social kompetens gör att han går igenom livet utan att förstå hur han uppfattas av andra. Trots hans uppenbara brister har han på något sätt lyckats bli ordförande i Saltsjöbadens Golfklubb. Ove är gift med Anette och tillsammans har de dottern Marielle.`,
         alibi: "Fel. Övriga sektmedlemmar litade inte på att Ove var kapabel att förvara offret då han ansågs lättdistraherad. "
     },
     {
         name: "Anna",
         img: "media/anna.png",
-        description: ` Anna är sambo (sedermera gift) med Alex Löfström och jobbar som skådespelerska. I första säsongen är hon ledig från sitt arbete eftersom hon är gravid och i säsong 2 så börjar hon jobba som massör. Anna är inte uppväxt i Saltsjöbaden till skillnad från Alex, och känner sig bitvis utanför och annorlunda än sin väninna Mickan och dennas väninnor. Hon strävar dock för att passa in, men är ibland lite väl verbal och rättfram.`,
+        description: `Anna Svensson, en skådespelerska med en själ fylld av passion och drömmar, finner sig plötsligt boende i det pittoreska Saltsjöbaden då hon flyttade dit tillsammans med sin före detta make, Alex Löfström. För Anna är detta en ny värld, långt ifrån det rustika liv hon är van vid. Ibland känner hon sig som en främling i Saltsjöbaden. Hon är inte uppvuxen där och delar inte samma bakgrund eller referensramar som Alex och deras grannar. I strävan efter att passa in, finner hon sig själv kämpande för att hitta balansen mellan att vara verbal och rättfram, och samtidigt accepterad av de som omger henne.`,
     },
 ]

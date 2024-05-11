@@ -3,6 +3,7 @@ import { endSession } from "./utilities/endSession.js";
 import { main, dialog, globalHolder } from "./utilities/variable.js";
 import { renderQRscann, userArrival } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
+import { infoAboutUs } from "./API/aboutUs.js";
 import { levelCount } from "./utilities/levelCounter.js"
 import { endGame } from "./gameCenter.js"
 import { renderLogin } from "./registerLogin.js"
@@ -60,9 +61,9 @@ export function renderGame() {
     let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
 
     //UPDATE LEVELS 
-    //testlevelTwo.forEach( level => {
-    //    globalHolder.push("levelTwo", level)
-    //})
+    // testlevelTwo.forEach(level => {
+    //     globalHolder.push("levelTwo", level)
+    // })
 
     let level = levelCount()
 
@@ -292,10 +293,11 @@ function renderNotes() {
 
 function renderCharacters() {
 
-    const charactersPopUp = document.getElementById("charactersPopUp");
+    const charactersPopUp = document.getElementById("popUp");
+    charactersPopUp.classList.add("charactersPopUp");
     charactersPopUp.style.display = "block";
 
-    let containerDom = charactersPopUp.querySelector("#containerCharacters");
+    let containerDom = charactersPopUp.querySelector(".swiper-wrapper");
     // reset
     containerDom.innerHTML = "";
 
@@ -319,6 +321,7 @@ function renderCharacters() {
     });
 
     endSession(".exit", () => {
+        charactersPopUp.classList.remove("charactersPopUp");
         charactersPopUp.style.display = "none";
     })
 }
@@ -372,15 +375,42 @@ function renderSettings() {
 }
 
 function renderAboutUs() {
-    main.innerHTML = `
-    <div id="container">
-        <div id="topContainer"><img src="media/return.svg"</div>
-    </div>
-    `;
 
-    main.querySelector("img").addEventListener("click", () => {
-        renderGame()
+    const aboutUsPopUp = document.getElementById("popUp");
+    aboutUsPopUp.classList.add("aboutUsPopUp");
+    aboutUsPopUp.style.display = "block";
+    document.querySelector(".overlay").style.display = `block`;
+
+    let containerDom = aboutUsPopUp.querySelector(".swiper-wrapper");
+    // reset
+    containerDom.innerHTML = "";
+
+    infoAboutUs.forEach(info => {
+        let infoDom = document.createElement("div");
+        infoDom.classList.add("swiper-slide");
+
+        infoDom.innerHTML = `
+            <h2>OM OSS</h2>
+            <p>${info.text}</p>
+        `;
+        containerDom.append(infoDom);
+    });
+
+    endSession(".exit", () => {
+        aboutUsPopUp.style.display = "none";
+        aboutUsPopUp.classList.remove("aboutUsPopUp");
+        document.querySelector(".overlay").style.display = `none`;
     })
+
+    // main.innerHTML = `
+    // <div id="container">
+    //     <div id="topContainer"><img src="media/return.svg"</div>
+    // </div>
+    // `;
+
+    // main.querySelector("img").addEventListener("click", () => {
+    //     renderGame()
+    // })
 }
 
 function renderHeader() {

@@ -174,7 +174,7 @@ header #dropArrow {
     left: 0;
     right: 0;
     z-index: 9999;
-    padding: 2vh 4vh 4vh 4vh;
+    padding: 4vh;
     border-radius: 30px 30px 0 0;
 }
 
@@ -208,20 +208,35 @@ header #dropArrow {
 
 /* CHARACTERS */
 
-#charactersPopUp {
+#popUp {
     position: fixed;
-    top: 0;
     z-index: 9999;
-    height: 100vh;
     width: 100vw;
+}
+
+.charactersPopUp {
+    top: 0;
+    height: 100vh;
     background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(21, 21, 21) 100%);
 }
 
-#charactersPopUp #topContainer ion-icon {
+.aboutUsPopUp {
+    border-radius: 30px 30px 0 0;
+    height: 40vh;
+    bottom: 0;
+    background-color: #3D3B3A;
+}
+
+.aboutUsPopUp .swiper {
+    width: 90%;
+    height: fit-content;
+}
+
+#popUp #topContainer ion-icon {
     padding: 5% 5% 0 0;
 }
 
-.swiper {
+.charactersPopUp .swiper {
     width: 90%;
     height: 90%;
 }
@@ -237,7 +252,7 @@ header #dropArrow {
     background-color: #5E5E5E;
 }
 
-#containerCharacters p {
+.swiper-wrapper p {
     text-align: center;
     color: #A1A1A1;
     margin-bottom: 60px;
@@ -283,11 +298,16 @@ header #dropArrow {
     width: 80%;
 }
 
-.topCharacter>h2 {
+#popUp h2 {
     color: var(--yellow);
     margin-top: 20px;
     margin-bottom: 0;
     text-align: center;
+}
+
+.aboutUsPopUp .swiper-slide {
+    margin-top: -3vh;
+    height: 32vh;
 }
 
 /* NOTES */

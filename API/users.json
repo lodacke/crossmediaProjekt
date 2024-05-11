@@ -105,11 +105,10 @@
     {
         "username": "tranen",
         "password": "123",
-        "games": [
-            {
-                "points": -362,
-                "timestamp": "2024-05-11"
-            }
-        ]
+        "games": []
+    },
+    {
+        "username": "test",
+        "password": "123"
     }
 ]

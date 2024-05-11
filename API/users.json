@@ -101,14 +101,5 @@
                 "timestamp": "2024-05-06"
             }
         ]
-    },
-    {
-        "username": "tranen",
-        "password": "123",
-        "games": []
-    },
-    {
-        "username": "test",
-        "password": "123"
     }
 ]

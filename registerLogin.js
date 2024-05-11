@@ -110,7 +110,7 @@ export async function renderRegister() {
             if (!response.ok) {
                 userMessage(messageDom, data.message)
             } else {
-                messageDom.textContent = "New user have been added";
+                userMessage(messageDom, "New user have been added")
                 setTimeout(() => {
                     messageDom.textContent = "";
                     window.localStorage.setItem("user", JSON.stringify(data.username));

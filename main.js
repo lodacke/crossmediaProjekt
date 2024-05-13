@@ -478,7 +478,7 @@ export async function renderScoreBoard(user, duration, userScore) {
     let containerUser = dialog.querySelector(".allUsers");
 
     try {
-        const response = await fetch("../API/users.json");
+        const response = await fetch("API/users.json");
         if (!response.ok) {
             console.log("can get users")
         }
@@ -492,6 +492,8 @@ export async function renderScoreBoard(user, duration, userScore) {
 
         const top3Users = sortedUsers.slice(0., 3);
         sortedUsers = sortedUsers.slice(3., 8);
+        console.log(top3Users);
+        console.log(sortedUsers);
 
         top3Users.forEach((user, index) => {
 
@@ -529,9 +531,8 @@ export async function renderScoreBoard(user, duration, userScore) {
         let startIndex = 3;
         sortedUsers.forEach((user, index) => {
 
-            index += startIndex;
-
             if (user.games && user.games.length > 0) {
+                index += startIndex;
                 let dom = document.createElement("div");
                 dom.classList.add("userContainer");
 

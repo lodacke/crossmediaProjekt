@@ -477,8 +477,9 @@ dialog::backdrop {
 }
 
 
-/* DIALOG promt between levels*/
-#userMess {
+/* DIALOG promt between levels & ANALOG CONTROLL*/
+#userMess,
+#analogControll {
     text-align: center;
     position: absolute;
     width: 80%;
@@ -487,18 +488,27 @@ dialog::backdrop {
     height: fit-content;
 }
 
+#analogControll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3vh;
+}
+
 #userMess h2 {
     color: var(--yellow);
 }
 
-#userMess p {
+#userMess p,
+#analogControll p {
     font-size: 18px;
     color: #A1A1A1;
 }
 
-#userMess button {
+#userMess button,
+#analogControll button {
     margin-bottom: 2vh;
-    padding: 2vh;
+    padding: 1.5vh;
     background-color: #2A2A2A;
     border: none;
     border-radius: 5px;
@@ -507,6 +517,17 @@ dialog::backdrop {
     font-size: 18px;
     cursor: pointer;
     font-weight: 600;
+}
+
+#analogControll div {
+    display: flex;
+    gap: 10px;
+    width: 95%;
+}
+
+#analogControll .true {
+    background-color: var(--yellow);
+    color: #151515;
 }
 
 /* SCOREBOARD */

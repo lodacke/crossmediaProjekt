@@ -16,7 +16,7 @@ export async function renderLogin() {
             <label>LÖSENORD</label>
             <input class="password" type="password">
         </div>
-        <p class="linkText">Har du inte ett konto... <a href="#">Registrera</a></p>
+        <p class="linkText">Har du inte ett konto? <a href="#">Registrera</a></p>
         <p id="userMessage"></p>
     </section>
     
@@ -110,7 +110,7 @@ export async function renderRegister() {
             if (!response.ok) {
                 userMessage(messageDom, data.message)
             } else {
-                messageDom.textContent = "New user have been added";
+                userMessage(messageDom, "New user have been added")
                 setTimeout(() => {
                     messageDom.textContent = "";
                     window.localStorage.setItem("user", JSON.stringify(data.username));

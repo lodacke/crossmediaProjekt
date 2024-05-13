@@ -26,7 +26,7 @@ export function levelCount() {
 
         } else if (globalHolder.levels.levelTwo.length === 6 && !globalHolder.levels.levelThree) {
 
-            //findLeader()
+            findLeader()
             return levelThree;
 
         }

@@ -108,14 +108,14 @@ export const levelThree =
             "name": "ThreeTwo",
             "type": "ANALOG",
             "level": "levelThree",
-            "clue": "level3",
+            "clue": "På denna plats kan det ligga något som kan hjälpa dig lägga ihop pusslet och rädda Anna.",
         },
         {
             "latitude": 55.61626,
             "longitude": 12.97436,
             "name": "ThreeThree",
-            "type": "ANALOG",
+            "type": "CODE",
             "level": "levelThree",
-            "clue": "level3",
+            "clue": "Har du lyckats knäcka koden eller behöver du hjälp att få allt på rätt plats? ",
         },
     ]    

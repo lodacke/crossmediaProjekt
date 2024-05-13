@@ -22,7 +22,7 @@ export function renderHomepage() {
         <section>
             <button id="game">STARTA SPELET</button>
             <button id="scoreBoard">TOPPLISTA</button>
-            <button id="aboutUs">OM OSS</button>       
+            <button id="aboutUs">HUR SPELAR MAN?</button>       
             <button id="settings">INSTÄLLNINGAR</button>       
         </section>  
     </div>
@@ -413,7 +413,7 @@ function renderAboutUs() {
         infoDom.classList.add("swiper-slide");
 
         infoDom.innerHTML = `
-            <h2>OM SPELET</h2>
+            <h2>${info.title}</h2>
             <p>${info.text}</p>
         `;
         containerDom.append(infoDom);
@@ -436,7 +436,7 @@ function renderHeader() {
                 <button id="quit">AVSLUTA</button>
                 <button id="leaderboard">TOPPLISTA</button>
                 <button id="characters">KARAKTÄRER</button>
-                <button id="info">NY SPELARE    </button>
+                <button id="info">HUR SPELAR MAN?</button>
                 <button id="settings">INSTÄLLNINGAR</button>
             </div>
             

@@ -320,7 +320,7 @@ header #dropArrow {
 
 .imgBackground {
     background-color: #1e1d1d;
-    height: 70vw;
+    height: 65vw;
     width: 90%;
     border-radius: 10px;
     margin-top: 2vh;
@@ -364,8 +364,14 @@ header #dropArrow {
 }
 
 .aboutUsPopUp .swiper-slide {
-    margin-top: -3vh;
+    margin-top: -2vh;
     height: 32vh;
+}
+
+.aboutUsPopUp .swiper-slide p {
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 18px;
 }
 
 /* NOTES */
@@ -450,7 +456,7 @@ dialog::backdrop {
 }
 
 #reader #reader__scan_region>video {
-    max-height: 150px;
+    max-height: 250px;
 }
 
 #reader__dashboard button {

@@ -1,15 +1,31 @@
 export const infoAboutUs = [
     {
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        title: "OM SPELET",
+        text: "Det är en mysteriegåta som utspelar sig i västra hamnen, Malmö. Karaktärerna i spelet, som även är medlemmar av en sekt, är baserat på karaktärerna i solsidan. Du har rollen som ”sektexpert” och ska lösa gåtan."
     },
     {
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        title: "HUR GÖR MAN?",
+        text: "Du ska ta dig till de olika stationerna markerade på kartan. På varje station finns en QR-kod som du skannar med mobilkameran för att få tillgång till olika ledtrådar"
     },
     {
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        title: "OLIKA STATIONER",
+        text: "Det finns olika typer av stationer, digitala och analoga. De digitala utförs i mobilen och kan t.ex. vara sms-konversationer med flervalsalternativ. De analoga stationerna har fysiska ledtrådar på plats."
     },
     {
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        title: "POÄNGRÄKNING",
+        text: "Du börjar spelet med 1000p och för varje minut som går dras 1poäng. Det gäller att skynda dig eftersom din tid är begränsad!"
+    },
+    {
+        title: "ANTECKNINGAR",
+        text: "På höger sida om kartan finns en ikon som leder till anteckningar. Det är upp till dig att anteckna och sålla ut relevant information från ledtrådarna för att lösa fallet."
+    },
+    {
+        title: "UPPLEVELSE",
+        text: "För bäst upplevelse: <br>1. Öppna sidan på Safari (webbläsare) <br>2. Tryck på ikonen till vänster om historik <br>3. Tryck på 'Lägg till i hemskärmen'"
+    },
+    {
+        title: "LYCKA TILL!",
+        text: "Nu borde spelet finnas i din hemskärm! Öppna den därifrån och börja din resa. Lycka till!"
     }
 ];
 

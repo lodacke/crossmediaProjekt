@@ -1,7 +1,7 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
 import { main, dialog, globalHolder } from "./utilities/variable.js";
-import { renderQRscann, userArrival } from "./gameCenter.js";
+import { renderAnalogChallange, renderQRscann } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
 import { infoAboutUs } from "./API/aboutUs.js";
 import { levelCount } from "./utilities/levelCounter.js"
@@ -261,7 +261,7 @@ function renderInfo(level, map) {
                 renderQRscann(level);
                 break;
             case "ANALOG":
-                userArrival(level);
+                renderAnalogChallange(level);
                 break;
             case "END":
                 endGame()

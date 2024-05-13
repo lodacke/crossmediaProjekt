@@ -3,10 +3,7 @@ import { levelTwo, levelThree, levelOne } from "../API/qlues.js"
 import { renderGame, renderScoreBoard } from "../main.js";
 
 
-export function levelCount() {
-
-    let levelReachedOne = true;
-    let levelReachedTwo = false;
+export function levelCount() { 
 
     if (globalHolder.levels.levelOne) {
 
@@ -14,23 +11,18 @@ export function levelCount() {
             //console.log("level One is under 5")
             return levelOne;
 
-        } else if (globalHolder.levels.levelOne.length > 5 && levelReachedOne) {
-            console.log(levelReachedOne)
-            levelReachedOne = true;
-            console.log(levelReachedOne)
+        } else if (globalHolder.levels.levelOne.length > 5) {
             userAlert("levelTwo")
             return levelTwo;
         }
     }
-
-    if (globalHolder.levels.levelTwo) {
-        console.log("levelTwo in")
+    if(globalHolder.levels.levelTwo){
+        console.log("levelTwo")
         if (globalHolder.levels.levelTwo.length < 6) {
-            console.log("levelTwo under 5");
             return levelTwo;
 
-        } else if (globalHolder.levels.levelTwo.length === 6 && !levelReachedTwo) {
-            levelReachedTwo = true;
+        } else if (globalHolder.levels.levelTwo.length === 6) {
+
             findLeader()
             return levelThree;
 

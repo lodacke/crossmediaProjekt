@@ -363,9 +363,6 @@ export function renderIMG(data) {
     }
 }
 
-export function userArrival() {
-    console.log("user arrived, add button and/or code for progress")
-}
 
 export function renderAnalogChallange(level) {
     dialog.show()

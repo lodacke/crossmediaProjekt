@@ -4,8 +4,8 @@ import { renderGame, renderScoreBoard } from "../main.js";
 
     
 export function levelCount() { 
-    
-    let levelReachedOne = false;
+
+    let levelReachedOne = true;
     let levelReachedTwo = false;
 
     if(globalHolder.levels.levelOne){
@@ -14,7 +14,8 @@ export function levelCount() {
             //console.log("level One is under 5")
             return levelOne;
 
-        } else if (globalHolder.levels.levelOne.length === 5 && levelReachedOne) {
+        } else if (globalHolder.levels.levelOne.length > 5 && levelReachedOne) {
+            console.log(levelReachedOne)
             levelReachedOne = true;
              console.log(levelReachedOne)
             userAlert("levelTwo")

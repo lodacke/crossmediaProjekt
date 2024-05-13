@@ -164,6 +164,18 @@ header #dropArrow {
     outline: none;
 }
 
+/* MARKER */
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.pulsating-marker {
+    animation: pulse 1s infinite alternate;
+}
+
 .temporaryContent {
     cursor: pointer;
     background-color: #3D3B3A;

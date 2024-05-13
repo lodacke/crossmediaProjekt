@@ -61,11 +61,12 @@ export function renderGame() {
     let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
 
     //UPDATE LEVELS 
-    // testlevelTwo.forEach(level => {
-    //     globalHolder.push("levelTwo", level)
+    // testlevelOne.forEach(level => {
+    //     globalHolder.push("levelOne", level)
     // })
 
     let level = levelCount()
+    console.log(level)
 
     swapStyleSheet("CSS/homePage.css")
 
@@ -153,7 +154,8 @@ export function renderGame() {
                 fillColor: "#689ac8",
                 fillOpacity: 1,
                 strokeColor: "black",
-                strokeWeight: 1,
+                strokeWeight: 0.5,
+                optimized: false
             },
             animation: google.maps.Animation.DROP
         });

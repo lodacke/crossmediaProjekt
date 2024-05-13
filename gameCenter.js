@@ -264,7 +264,7 @@ export function renderIMG(data) {
             let imgDOM = document.createElement("img");
             imgDOM.src = `${img}`;
             gridContainer.append(imgDOM)
-            imgDOM.onclick = () => displayIMG(flow.img1)
+            imgDOM.onclick = () => displayIMG(img)
 
         })
     }

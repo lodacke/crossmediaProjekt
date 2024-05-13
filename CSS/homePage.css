@@ -167,9 +167,17 @@ header #dropArrow {
 /* MARKER */
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .pulsating-marker {
@@ -474,7 +482,31 @@ dialog::backdrop {
     text-align: center;
     position: absolute;
     width: 80%;
-    top: 40vh;
+    top: 35vh;
+    background-color: #3D3B3A;
+    height: fit-content;
+}
+
+#userMess h2 {
+    color: var(--yellow);
+}
+
+#userMess p {
+    font-size: 18px;
+    color: #A1A1A1;
+}
+
+#userMess button {
+    margin-bottom: 2vh;
+    padding: 2vh;
+    background-color: #2A2A2A;
+    border: none;
+    border-radius: 5px;
+    color: #A1A1A1;
+    width: 90%;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 /* SCOREBOARD */

@@ -118,6 +118,7 @@ export function renderConversation(data) {
                 answerDom.classList.add("answer");
                 answerDom.innerHTML = `<p>${element.text}</p>`;
                 main.querySelector(".conversation").append(answerDom);
+                main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
 
                 if (element.response === "one", "two", "three", "four", "five", "six", "seven", "eight") {
                     renderConversation(element.response);
@@ -132,7 +133,6 @@ export function renderConversation(data) {
                     setTimeout(() => {
                         let closingDom = document.createElement("div");
                         closingDom.append(document.createElement("p"))
-                        closingDom.classList.add("question")
                         for (let i = 0; i < element.end.length; i++) {
 
                             setTimeout(() => {
@@ -144,7 +144,7 @@ export function renderConversation(data) {
 
 
                         main.querySelector(".conversation").append(closingDom)
-                        container.scrollTo(0, container.scrollHeight);
+
                     }, 1000)
                     setTimeout(() => {
                         globalHolder.push(data.level, data.name)
@@ -155,7 +155,9 @@ export function renderConversation(data) {
                     let endDom = document.createElement("div");
                     endDom.setAttribute("id", "endC");
                     endDom.innerHTML = `<p>${element.lastMessage}</p>`
-                    main.querySelector(".conversation").append(endDom)
+                    main.querySelector(".conversation").append(endDom);
+                    main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
+
                     setTimeout(() => {
 
                         globalHolder.push(data.level, data.name)
@@ -190,7 +192,6 @@ export function renderConversation(data) {
                     }
 
                     main.querySelector(".conversation").append(questionDom)
-                    container.scrollTo(0, container.scrollHeight);
 
                 }, 1000)
             }

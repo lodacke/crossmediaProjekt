@@ -262,9 +262,9 @@ header #dropArrow {
 
 .imgBackground {
     background-color: #1e1d1d;
-    height: 75vw;
+    height: 70vw;
     width: 90%;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 2vh;
     display: flex;
     justify-content: center;

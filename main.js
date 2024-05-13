@@ -401,16 +401,6 @@ function renderAboutUs() {
         aboutUsPopUp.classList.remove("aboutUsPopUp");
         document.querySelector(".overlay").style.display = `none`;
     })
-
-    // main.innerHTML = `
-    // <div id="container">
-    //     <div id="topContainer"><img src="media/return.svg"</div>
-    // </div>
-    // `;
-
-    // main.querySelector("img").addEventListener("click", () => {
-    //     renderGame()
-    // })
 }
 
 function renderHeader() {

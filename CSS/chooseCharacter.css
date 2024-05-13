@@ -1,16 +1,35 @@
-.content {
-    width: 90vw;
-    height: 100vh;
+:root {
+    --yellow: #E6B400;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+dialog {
+    background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(21, 21, 21) 100%);
+    width: 90%;
+    height: 95%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-top: 5vh;
+    text-align: center;
+    color: var(--yellow);
+}
+
+.content {
+    width: 95%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
 }
 
 .flipCard {
-    background-color: transparent;
-    width: 100%;
-    margin: 10px;
-    height: 200px;
+    height: 14vh;
     perspective: 10000px;
+    cursor: pointer;
 }
 
 .innerCard {
@@ -22,44 +41,81 @@
     transform-style: preserve-3d;
 }
 
-.frontCard, .backCard {
+.frontCard,
+.backCard {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden; 
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     display: flex;
     align-items: center;
-    border: 1px solid black;
-} 
+}
 
 .frontCard {
-    background-color: black;
-    color:white;
+    background-color: #3D3B3A;
+    color: #A1A1A1;
+    border-radius: 5px;
 }
 
 .backCard {
-    background-color: white;
-    color:black;
-    transform: rotateY(180deg); 
+    background-color: #3D3B3A;
+    color: #A1A1A1;
+    border-radius: 5px;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: start;
+}
+
+.profileContainer {
+    background-color: #1e1d1d;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-left: 3vh;
 }
 
 img {
-    width: 20px;
-    height: 20px;
-    margin: 0px 30px 0px 10px;
+    height: 100%;
+}
+
+h1 {
+    font-size: 18px;
 }
 
 p {
-    width: 70%;
+    margin: 2.5vh 2vh;
+    text-align: left;
+}
+
+span {
+    color: #b50b0b;
+}
+
+#char_Anette span {
+    color: green;
 }
 
 .flippedCard .innerCard {
     transform: rotateY(180deg);
 }
 
-#nextLevel{
-    position: absolute;
-    top: 5%;
-    left: 72%;
+.bottomContainer {
+    display: flex;
+    justify-content: end;
+}
+
+#nextLevel {
+    background-color: var(--yellow);
+    color: #151515;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    width: 60%;
+    cursor: pointer;
+    padding: 1.3vh;
+    margin-top: 5px;
 }

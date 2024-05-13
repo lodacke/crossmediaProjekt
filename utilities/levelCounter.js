@@ -6,7 +6,7 @@ import { swapStyleSheet } from "./cssSwap.js";
 import { characters } from "../API/characters.js";
 
 
-export function levelCount() { 
+export function levelCount() {
 
     if (globalHolder.levels.levelOne) {
 
@@ -19,7 +19,7 @@ export function levelCount() {
             return levelTwo;
         }
     }
-    if(globalHolder.levels.levelTwo){
+    if (globalHolder.levels.levelTwo) {
         console.log("levelTwo")
         if (globalHolder.levels.levelTwo.length < 6) {
             return levelTwo;
@@ -79,6 +79,7 @@ export function findLeader() {
     swapStyleSheet("CSS/chooseCharacter.css");
     dialog.show()
     dialog.innerHTML = `
+        <h2>VEM ÄR SEKTLEDAREN?</h2>
         <div class="content"></div>
     `;
 
@@ -97,11 +98,13 @@ export function findLeader() {
         card.innerHTML = `
         <div class="innerCard">
             <div class="frontCard" id=char_${character.name}>
-                <img src=${character.img}>
-                <h1>${character.name}</h1>
+                <div class="profileContainer">
+                    <img src=${character.img}>
+                </div>
+                
+                <h1>${character.fullName}</h1>
             </div>
              <div class="backCard" id=char_${character.name}>
-                <img src=${character.img}>
                 <p>${character.alibi}</p>
             </div>
        </div>
@@ -117,14 +120,16 @@ export function findLeader() {
                 toggleControl = false;
 
                 setTimeout(() => {
-                    let levelButton = document.createElement("button");
-                    levelButton.setAttribute("id", "nextLevel")
-                    levelButton.innerText = "Go to next level";
-                    levelButton.addEventListener("click", () => {
+                    let container = document.createElement("div");
+                    container.classList.add("bottomContainer");
+                    container.innerHTML = `
+                        <button id="nextLevel">Fortsätt till nivå 3</button>
+                    `;
+                    container.querySelector("button").addEventListener("click", () => {
                         dialog.close()
                         renderGame()
                     })
-                    dialog.querySelector(".content").append(levelButton)
+                    dialog.querySelector(".content").append(container)
                 }, 3000)
             }
 

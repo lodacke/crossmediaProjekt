@@ -2,6 +2,7 @@
     --white: #B5B5B5;
     --yellow: #E6B400;
     font-family: Arial, Helvetica, sans-serif;
+    --boxShadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 body {
@@ -79,6 +80,7 @@ ion-icon {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: var(--boxShadow);
 }
 
 #contentHome section #game {
@@ -140,6 +142,7 @@ header #menuButtons button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: var(--boxShadow);
 }
 
 header #menuButtons #quit {
@@ -226,6 +229,7 @@ header #dropArrow {
     padding: 1vh 2.5vh;
     border-radius: 10px;
     border: 1px solid var(--white);
+    box-shadow: var(--boxShadow);
 }
 
 /* for icon */
@@ -245,6 +249,7 @@ header #dropArrow {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: var(--boxShadow);
 }
 
 #welcomeDialog h2 {
@@ -270,6 +275,7 @@ header #dropArrow {
     padding: 1.3vh;
     margin-top: 10px;
     margin-bottom: 2vh;
+    box-shadow: var(--boxShadow);
 }
 
 /* CHARACTERS */
@@ -475,6 +481,7 @@ dialog::backdrop {
     padding: 1vh 2.5vh;
     border-radius: 10px;
     border: 1px solid var(--white);
+    box-shadow: var(--boxShadow);
 }
 
 #reader__dashboard a {
@@ -495,6 +502,7 @@ dialog::backdrop {
     height: auto;
     position: fixed;
     top: 30vh;
+    box-shadow: var(--boxShadow);
 }
 
 #settingsDialog h2 {
@@ -521,6 +529,7 @@ dialog::backdrop {
     border: none;
     width: 90%;
     cursor: pointer;
+    box-shadow: var(--boxShadow);
 }
 
 #settingsDialog #endGame {
@@ -569,6 +578,7 @@ dialog::backdrop {
     font-size: 18px;
     cursor: pointer;
     font-weight: 600;
+    box-shadow: var(--boxShadow);
 }
 
 #analogControll div {
@@ -590,6 +600,10 @@ dialog::backdrop {
     height: 100%;
     width: 91%;
     background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(21, 21, 21) 100%);
+}
+
+#scoreboardDialog h2 {
+    margin-top: 3vh;
 }
 
 #scoreboardDialog #container {
@@ -616,34 +630,81 @@ dialog::backdrop {
     height: 100%;
 }
 
-.mainUserContainer {
-    height: 12vh;
-    background-color: #524E4D;
+.top3Users {
+    height: 28vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.top3Users div {
+    width: 27vw;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top3Users div:nth-child(1) {
+    grid-column: 2;
+}
+
+.top3Users div:nth-child(2) {
+    grid-column: 1;
+}
+
+.top3Users div:nth-child(3) {
+    grid-column: 3;
+}
+
+.top3Users div h1 {
+    font-size: 30px;
+    margin: 15px;
+    color: #A1A1A1;
+}
+
+.userContainerTop3 div {
+    background-color: #3D3B3A;
     border-radius: 5px;
-    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--boxShadow);
+}
+
+.top3Users .userContainerTop3:first-of-type div {
+    background-color: #524E4D;
+}
+
+.userContainerTop3 h3 {
+    margin-bottom: 0;
+}
+
+.userContainerTop3 p {
+    margin-top: 10px;
 }
 
 .allUsers {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 1vh;
     height: 100%;
     width: 100%;
-    background-color: #3D3B3A;
     border-radius: 5px;
     padding-top: 1.5vh;
 }
 
-.userContainer,
-.mainUserContainer {
+.userContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 3vh;
+    padding: 0.5vh 3vh;
+    background-color: #3D3B3A;
+    border-radius: 5px;
+    box-shadow: var(--boxShadow);
 }
 
-.userContainer section,
-.mainUserContainer section {
+.userContainer section {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -664,17 +725,22 @@ dialog::backdrop {
     cursor: auto;
 }
 
-.userContainer h3,
-.mainUserContainer h3 {
+.userContainer h3 {
     font-size: 20px;
 }
 
 .userContainer p,
-.mainUserContainer p {
+.userContainer h1,
+.userContainerTop3 p {
     color: var(--white);
     font-size: 18px;
     font-weight: 600;
 }
+
+.userContainer p {
+    margin-right: 0;
+}
+
 
 /* CHOOSE CHARACTER */
 

@@ -1,6 +1,7 @@
 :root {
     --white: #B5B5B5;
     --yellow: #E6B400;
+    --boxShadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -66,6 +67,8 @@ input {
     color: var(--white);
     font-size: 18px;
     padding-left: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* a lighter box-shadow for inputs*/
 }
 
 .linkText {
@@ -97,4 +100,5 @@ button {
     color: #151515;
     border: none;
     border-radius: 5px;
+    box-shadow: var(--boxShadow);
 }

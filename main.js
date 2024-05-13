@@ -13,7 +13,7 @@ export function renderHomepage() {
 
     swapStyleSheet("CSS/homePage.css")
     window.location.hash = "home";
-    body.setAttribute("style", "background-image: url('../media/moln.jpeg');");
+    body.setAttribute("style", "background-image: url('media/moln.jpeg');");
 
     main.innerHTML = `
         <div id="contentHome">
@@ -468,30 +468,13 @@ export async function renderScoreBoard(user, duration, userScore) {
             </div>
             <h2>TOPPLISTA</h2>
             <div id="content">
-                <div class="mainUserContainer">
-                </div>
+                <div class="top3Users"></div>
                 <div class="allUsers"></div>
             </div>
         </div>
     `;
 
-    let userDom = dialog.querySelector(".mainUserContainer")
-
-    if (user) {
-        console.log("user values present")
-        userDom.innerHTML = `
-            <section>
-                <div class="profileContainer">
-                    <ion-icon name="person"></ion-icon>
-                </div>
-                <h3>${user}</h3>
-            </section>
-            <p>${userScore}p</p>
-        `;
-    } else {
-        console.log("no user value has been sent")
-    }
-
+    let top3Dom = dialog.querySelector(".top3Users");
     let containerUser = dialog.querySelector(".allUsers");
 
     try {
@@ -506,24 +489,57 @@ export async function renderScoreBoard(user, duration, userScore) {
             let maxPointsB = (b.games && b.games.length > 0) ? Math.max(...b.games.map(game => game.points)) : 0;
             return maxPointsB - maxPointsA;
         });
-        sortedUsers = sortedUsers.slice(0., 7)
 
-        for (let i = 0; i < sortedUsers.length; i++) {
-            sortedUsers.push(i)
-        }
+        const top3Users = sortedUsers.slice(0., 3);
+        sortedUsers = sortedUsers.slice(3., 8);
 
-        console.log(sortedUsers)
-        sortedUsers.forEach(user => {
+        top3Users.forEach((user, index) => {
 
-            if (user.games.length > 0) {
+            if (user.games && user.games.length > 0) {
+                let dom = document.createElement("div");
+                dom.classList.add("userContainerTop3");
+
+                let maxPoints = Math.max(...user.games.map(game => game.points));
+
+                index++;
+                let content = ``;
+                if (index == 1) {
+                    content = `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                    <path d="M43.7503 13.2348C44.5791 13.2348 45.374 13.564 45.96 14.1501C46.5461 14.7361 46.8753 15.531 46.8753 16.3598C46.8753 17.1886 46.5461 17.9834 45.96 18.5695C45.374 19.1555 44.5791 19.4848 43.7503 19.4848C43.5378 19.4673 43.3281 19.4254 43.1253 19.3598L42.2972 19.0785C41.9328 18.8944 41.6129 18.6331 41.3597 18.3129L40.8284 17.4535C40.6774 17.0975 40.5977 16.7152 40.594 16.3285C40.5981 15.9181 40.683 15.5126 40.8438 15.135C41.0047 14.7574 41.2383 14.4152 41.5314 14.1279C41.8245 13.8406 42.1713 13.6139 42.552 13.4606C42.9327 13.3074 43.3399 13.2306 43.7503 13.2348ZM25.0003 10.1098C25.7725 10.1098 26.5134 10.4154 27.0609 10.96C27.6084 11.5046 27.918 12.2438 27.9222 13.016C27.9163 13.4855 27.795 13.9464 27.5688 14.3579C27.3426 14.7694 27.0186 15.1188 26.6253 15.3754L26.094 15.6254C25.7504 15.7615 25.3854 15.8356 25.0159 15.8441C24.6395 15.8388 24.2678 15.7591 23.9222 15.6098L23.6097 15.4223C23.1467 15.1868 22.7567 14.8296 22.4814 14.3892C22.2061 13.9487 22.056 13.4416 22.0472 12.9223C22.0636 12.1542 22.3835 11.4238 22.9369 10.8909C23.4903 10.358 24.2321 10.0659 25.0003 10.0785V10.1098ZM18.7503 25.5629L23.5159 17.8754C24.4774 18.2088 25.5232 18.2088 26.4847 17.8754L31.2503 25.5316L40.1253 20.016C40.3995 20.2843 40.7036 20.5202 41.0315 20.7191L36.8128 33.391H13.2034L8.98467 20.7191C9.31265 20.5202 9.61672 20.2843 9.89092 20.016L18.7503 25.5629ZM6.2503 13.7191C6.60175 13.7171 6.95012 13.7848 7.27523 13.9183C7.60033 14.0518 7.8957 14.2486 8.14422 14.4971C8.39274 14.7456 8.58947 15.041 8.72301 15.3661C8.85655 15.6912 8.92424 16.0396 8.92217 16.391C8.9174 16.7174 8.85388 17.0403 8.73467 17.3441L8.28155 18.0785C7.99483 18.4217 7.62612 18.6869 7.2096 18.8496C6.79308 19.0123 6.34222 19.0672 5.89883 19.0092C5.45543 18.9512 5.03385 18.7823 4.67315 18.518C4.31245 18.2537 4.02432 17.9026 3.83545 17.4973C3.64659 17.0919 3.56311 16.6455 3.59276 16.1993C3.6224 15.7531 3.76421 15.3216 4.00503 14.9448C4.24586 14.5681 4.57791 14.2582 4.9704 14.0439C5.36289 13.8296 5.80313 13.7179 6.2503 13.7191ZM36.9222 40.1879H13.1253V36.7816H36.9222V40.1879Z" fill="#E6B400"/>
+                  </svg>`;
+                } else if (index == 2) {
+                    content = `<h1>2</h1>`;
+                } else {
+                    content = `<h1>3</h1>`;
+                }
+
+                dom.innerHTML = `
+                    ${content}
+                    <div>
+                        <h3>${user.username}</h3>
+                        <p>${maxPoints}p</p>
+                    </div>
+                    
+                `;
+
+                top3Dom.append(dom);
+            }
+        });
+
+        let startIndex = 3;
+        sortedUsers.forEach((user, index) => {
+
+            index += startIndex;
+
+            if (user.games && user.games.length > 0) {
                 let dom = document.createElement("div");
                 dom.classList.add("userContainer");
 
-                let maxPoints = user.games.length > 0 ? Math.max(...user.games.map(game => game.points)) : 0;
+                let maxPoints = Math.max(...user.games.map(game => game.points));
 
                 dom.innerHTML = `
-                 <h1>${index + 1}</h1>
                     <section>
+                        <h1>${index + 1}</h1>
                         <div class="profileContainer">
                             <ion-icon name="person"></ion-icon>
                         </div>

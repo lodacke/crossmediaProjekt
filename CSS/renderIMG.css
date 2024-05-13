@@ -3,6 +3,7 @@
 :root {
     --white: #B5B5B5;
     --yellow: #E6B400;
+    --boxShadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -63,6 +64,7 @@ ion-icon {
     border: none;
     padding: 1.5vh;
     border-radius: 10px;
+    box-shadow: var(--boxShadow);
 }
 
 #containerFindMyIphone {
@@ -104,6 +106,7 @@ ion-icon {
     padding: 1vh 3.5vh;
     border-radius: 30px;
     font-size: 16px;
+    box-shadow: var(--boxShadow);
 }
 
 .middleDOM {
@@ -157,6 +160,7 @@ ion-icon {
     background-color: #2A2A2A;
     border: 1px solid #363636;
     border-radius: 8px;
+    box-shadow: var(--boxShadow);
 }
 
 /* FOR DISPLAY IMG*/
@@ -222,6 +226,7 @@ section div:first-of-type {
     border: none;
     width: 30%;
     cursor: pointer;
+    box-shadow: var(--boxShadow);
 }
 
 #displayCameraFootage .bottomDIV {

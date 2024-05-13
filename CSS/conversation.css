@@ -1,3 +1,7 @@
+:root {
+    --boxShadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 body {
     margin: 0;
 }
@@ -146,6 +150,7 @@ ion-icon {
     text-align: left;
     min-width: fit-content;
     overflow-y: scroll;
+    box-shadow: var(--boxShadow);
 }
 
 #inputDisplay {
@@ -162,6 +167,7 @@ ion-icon {
     padding: 10px 15px;
     border-radius: 5px;
     color: #B5B5B5;
+    box-shadow: var(--boxShadow);
 }
 
 #inputDisplay #send {
@@ -171,6 +177,7 @@ ion-icon {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: var(--boxShadow);
 }
 
 #inputDisplay #send ion-icon {

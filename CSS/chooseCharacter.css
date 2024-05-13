@@ -1,5 +1,6 @@
 :root {
     --yellow: #E6B400;
+    --boxShadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -56,6 +57,7 @@ h2 {
     background-color: #3D3B3A;
     color: #A1A1A1;
     border-radius: 5px;
+    box-shadow: var(--boxShadow);
 }
 
 .backCard {
@@ -65,6 +67,7 @@ h2 {
     transform: rotateY(180deg);
     display: flex;
     align-items: start;
+    box-shadow: var(--boxShadow);
 }
 
 .profileContainer {
@@ -118,4 +121,5 @@ span {
     cursor: pointer;
     padding: 1.3vh;
     margin-top: 5px;
+    box-shadow: var(--boxShadow);
 }

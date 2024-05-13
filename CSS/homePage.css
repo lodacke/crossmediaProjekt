@@ -10,6 +10,10 @@ body {
     min-height: 100vh;
     background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(21, 21, 21) 100%);
     overflow: hidden;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 main {
@@ -194,21 +198,25 @@ header #dropArrow {
     left: 0;
     right: 0;
     z-index: 9999;
-    padding: 4vh;
+    padding: 1vh 2vh 4vh 2vh;
     border-radius: 30px 30px 0 0;
 }
 
 .temporaryContent>.content h2 {
-    font-size: 18px;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 2vh;
 }
 
 .temporaryContent>.content p {
     font-size: 16px;
+    margin: 0 2vh 1vh 2vh;
 }
 
 .temporaryContent>#bottomContainer {
     display: flex;
     justify-content: end;
+    padding-top: 2vh;
 }
 
 .temporaryContent>#bottomContainer button {
@@ -358,7 +366,7 @@ header #dropArrow {
 
 #popUp h2 {
     color: var(--yellow);
-    margin-top: 20px;
+    margin-top: 15px;
     margin-bottom: 0;
     text-align: center;
 }
@@ -580,7 +588,7 @@ dialog::backdrop {
     display: flex;
     justify-content: center;
     height: 100%;
-    width: 90%;
+    width: 91%;
     background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(21, 21, 21) 100%);
 }
 
@@ -666,4 +674,123 @@ dialog::backdrop {
     color: var(--white);
     font-size: 18px;
     font-weight: 600;
+}
+
+/* CHOOSE CHARACTER */
+
+#chooseCharacter {
+    background: linear-gradient(180deg, rgb(40, 40, 40) 0%, rgb(21, 21, 21) 100%);
+    width: 90%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-top: 5vh;
+    text-align: center;
+    color: var(--yellow);
+}
+
+.content {
+    width: 95%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.flipCard {
+    height: 14vh;
+    perspective: 10000px;
+    cursor: pointer;
+}
+
+.innerCard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.frontCard,
+.backCard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.frontCard {
+    background-color: #3D3B3A;
+    color: #A1A1A1;
+    border-radius: 5px;
+}
+
+.backCard {
+    background-color: #3D3B3A;
+    color: #A1A1A1;
+    border-radius: 5px;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: start;
+}
+
+.characterContainer {
+    background-color: #1e1d1d;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+    margin-left: 3vh;
+}
+
+img {
+    height: 100%;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+p {
+    margin: 2.5vh 2vh;
+    text-align: left;
+}
+
+span {
+    color: #b50b0b;
+}
+
+#char_Anette span {
+    color: green;
+}
+
+.flippedCard .innerCard {
+    transform: rotateY(180deg);
+}
+
+.bottomContainer {
+    display: flex;
+    justify-content: end;
+}
+
+#nextLevel {
+    background-color: var(--yellow);
+    color: #151515;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    width: 60%;
+    cursor: pointer;
+    padding: 1.3vh;
+    margin-top: 5px;
 }

@@ -1,6 +1,6 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
-import { main, dialog, globalHolder } from "./utilities/variable.js";
+import { main, body, dialog, globalHolder } from "./utilities/variable.js";
 import { renderAnalogChallange, renderQRscann } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
 import { infoAboutUs, intro } from "./API/aboutUs.js";
@@ -13,22 +13,24 @@ export function renderHomepage() {
 
     swapStyleSheet("CSS/homePage.css")
     window.location.hash = "home";
+    body.setAttribute("style", "background-image: url('../media/moln.jpeg');");
 
     main.innerHTML = `
-    <div id="contentHome">
-        <div id="topContainer">
-            <img src="media/solsidan.png"></img> 
-        </div>
-        <section>
-            <button id="game">STARTA SPELET</button>
-            <button id="scoreBoard">TOPPLISTA</button>
-            <button id="aboutUs">HUR SPELAR MAN?</button>       
-            <button id="settings">INSTÄLLNINGAR</button>       
-        </section>  
-    </div>
+        <div id="contentHome">
+            <div id="topContainer">
+                <img src="media/solsidan.png"></img> 
+            </div>
+            <section>
+                <button id="game">STARTA SPELET</button>
+                <button id="scoreBoard">TOPPLISTA</button>
+                <button id="aboutUs">HUR SPELAR MAN?</button>       
+                <button id="settings">INSTÄLLNINGAR</button>       
+            </section>  
+        </div>   
     `;
 
     main.querySelector("#game").addEventListener("click", () => {
+        body.removeAttribute("style", "background-image: url('../media/moln.jpeg');");
         renderGame()
     })
 
@@ -78,12 +80,11 @@ export function renderGame() {
         <div class="helpers">
            <div id="map"></div>
            <div class="containerTemp"></div>
-           <button class="test">Test</button>
         </div>
         `;
 
-    let test = main.querySelector(".test")
-    test.addEventListener("click", findLeader)
+    // let test = main.querySelector(".test")
+    // test.addEventListener("click", findLeader)
     const arrow = document.querySelector("#menu #dropArrow");
     const header = document.querySelector("header");
 
@@ -233,6 +234,7 @@ export function renderGame() {
 
 function introGame() {
     dialog.show()
+    dialog.style.display = `flex`;
     document.querySelector(".overlay").style.display = `block`;
     dialog.setAttribute("id", "welcomeDialog")
     dialog.innerHTML = `
@@ -242,8 +244,8 @@ function introGame() {
     `;
 
     dialog.querySelector("button").addEventListener("click", () => {
-        console.log("hallå?");
         document.querySelector(".overlay").style.display = `none`;
+        dialog.style.display = `none`;
         dialog.close()
         renderGame()
     })
@@ -374,6 +376,7 @@ function renderSettings() {
         dialog.close()
         dialog.style.display = `none`;
         document.querySelector(".overlay").style.display = `none`;
+        body.removeAttribute("style", "background-image: url('../media/moln.jpeg');");
 
         renderLogin()
     })

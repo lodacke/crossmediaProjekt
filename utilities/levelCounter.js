@@ -76,8 +76,9 @@ function userAlert(level) {
 // function will be called as a prompt between level 2 and level 3
 export function findLeader() {
 
-    swapStyleSheet("CSS/chooseCharacter.css");
+    // swapStyleSheet("CSS/chooseCharacter.css");
     dialog.show()
+    dialog.setAttribute("id", "chooseCharacter");
     dialog.innerHTML = `
         <h2>VEM ÄR SEKTLEDAREN?</h2>
         <div class="content"></div>
@@ -98,7 +99,7 @@ export function findLeader() {
         card.innerHTML = `
         <div class="innerCard">
             <div class="frontCard" id=char_${character.name}>
-                <div class="profileContainer">
+                <div class="characterContainer">
                     <img src=${character.img}>
                 </div>
                 
@@ -127,6 +128,8 @@ export function findLeader() {
                     `;
                     container.querySelector("button").addEventListener("click", () => {
                         dialog.close()
+                        dialog.removeAttribute("id", "chooseCharacter");
+
                         renderGame()
                     })
                     dialog.querySelector(".content").append(container)

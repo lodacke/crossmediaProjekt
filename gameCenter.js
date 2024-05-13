@@ -43,7 +43,7 @@ export function renderQRscann(level) {
 
         alert(result)
         if (data.type === "function") {
-            
+
             dialog.close()
             const dataString = JSON.stringify(data)
             eval(`${data.link}(${dataString})`)
@@ -273,27 +273,15 @@ export function renderIMG(data) {
     if (data.name === "imgMeeting") {
         container.innerHTML = `
             <div id="imgMeeting">
-                <h1>SPIONERA PÅ MÖTET</h1>
-                <div class="buttonContainer">
-                    <div class="innerContainer">
-                        <button class="cameraOne">
-                            <ion-icon name="videocam-outline"></ion-icon>
-                        </button>
-                        <p>Kamera 1</p>
-                    </div>
-                    <div class="innerContainer">
-                        <button class="cameraTwo">
-                            <ion-icon name="videocam-outline"></ion-icon>
-                        </button>
-                        <p>Kamera 2</p>
-                    </div>
-                </div>
+                <h2>UPPDRAG</h2>
+                <p>Du har nu fått tillgång till en övervakningskamera. Spionera på mötet för att lista ut vem sektledaren är. Men var försiktig...</p>
+                <button class="camera">
+                    <ion-icon name="videocam-outline"></ion-icon>
+                </button>
             </div>
-            
         `;
 
-        container.querySelector(".cameraOne").onclick = () => displayCameraFootage(flow.img1, "Kamera 1")
-        container.querySelector(".cameraTwo").onclick = () => displayCameraFootage(flow.img2, "Kamera 2")
+        container.querySelector(".camera").onclick = () => displayCameraFootage(flow.img1, "Kamera 1");
     }
 
     function displayIMG(img) {
@@ -344,7 +332,6 @@ export function renderIMG(data) {
                 </div>
                 
                 <div class="bottomDIV">
-                    <ion-icon name="return-down-back-outline" id="return"></ion-icon>
                     <button class="levelComplete">KLAR</button>
                 </div>
             </section>
@@ -356,11 +343,6 @@ export function renderIMG(data) {
         container.querySelector("button").addEventListener("click", () => {
             globalHolder.push(data.level, data.name)
             renderGame()
-            clearInterval(intervalTimer)
-        })
-
-        container.querySelector("#return").addEventListener("click", () => {
-            renderIMG(data)
             clearInterval(intervalTimer)
         })
     }

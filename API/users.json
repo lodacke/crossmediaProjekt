@@ -115,15 +115,11 @@
         ]
     },
     {
-        "username": "test",
-        "password": "123"
-    },
-    {
-        "username": "try",
+        "username": "tranen",
         "password": "123",
         "games": [
             {
-                "points": 256,
+                "points": 0,
                 "timestamp": "2024-05-13"
             }
         ]

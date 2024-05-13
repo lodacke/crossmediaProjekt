@@ -43,14 +43,8 @@ ion-icon {
 
 /* FOR ELEMENTS IN FIND-MY-PHONE*/
 
+#imgFindMyIphone,
 #imgMeeting {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: -10vh;
-}
-
-#imgFindMyIphone {
     width: 70%;
     text-align: center;
     background-color: #3D3B3A;
@@ -58,11 +52,13 @@ ion-icon {
     border-radius: 5px;
 }
 
-#imgFindMyIphone h2 {
+#imgFindMyIphone h2,
+#imgMeeting h2 {
     color: var(--yellow);
 }
 
-#imgFindMyIphone button {
+#imgFindMyIphone button,
+#imgMeeting button {
     background-color: #2A2A2A;
     border: none;
     padding: 1.5vh;
@@ -198,13 +194,11 @@ section div:first-of-type {
 #displayCameraFootage #imgContainer {
     height: 50%;
     width: 100%;
-    background-color: pink;
 }
 
 #displayIMG #imgContainer {
     height: 60vh;
     width: 100%;
-    background-color: pink;
     margin-top: -16vh;
 }
 
@@ -228,4 +222,12 @@ section div:first-of-type {
     border: none;
     width: 30%;
     cursor: pointer;
+}
+
+#displayCameraFootage .bottomDIV {
+    justify-content: end;
+}
+
+#displayCameraFootage .bottomDIV .levelComplete {
+    padding: 1.3vh;
 }

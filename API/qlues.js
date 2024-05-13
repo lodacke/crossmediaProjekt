@@ -78,9 +78,7 @@ export const levelTwo =
             "type": "IMG",
             "clue": "I en väl undangömd lokal i västra hamnen samlas högt uppsatta medlemmar till ett hemligt sektmöte där sektens ledare styr med järnhand. Att smyga dig dit kan ge dig ovärderlig information om deras hemligheter. Men var försiktig och göm dig väl... Att bli upptäckt av sekten kan få ödesdigra konsekvenser.",
             "placement": "Leta på en lyktstolpe vid ett cykelställ.",
-            "img1": "media/gameIMG/...svg",
-            "img2": "media/gameIMG/...svg",
-
+            "img1": "media/gameIMG/Meeting.jpg",
         },
         {
             "latitude": 55.61213,
@@ -88,9 +86,9 @@ export const levelTwo =
             "name": "imgMap",
             "level": "levelTwo",
             "type": "ANALOG",
-            "clue": "Västra hamnen är ett stort område och sektmedlemmarna, listiga som de är, har skrivit sig på hemlig adress. För att hålla reda på allt har varje sektmedlem tilldelats en karta som visar samtliga boenden, men det sägs att Ove har tappat sin… för att upptäcka deras gömställen behöver du hitta Oves karta innan den försvinner igen…", 
+            "clue": "Västra hamnen är ett stort område och sektmedlemmarna, listiga som de är, har skrivit sig på hemlig adress. För att hålla reda på allt har varje sektmedlem tilldelats en karta som visar samtliga boenden, men det sägs att Ove har tappat sin… för att upptäcka deras gömställen behöver du hitta Oves karta innan den försvinner igen…",
             "placement": "Leta i dungen under ett stort svart föremål.",
-        }, 
+        },
         {
             "latitude": 55.61142,
             "longitude": 12.97608,

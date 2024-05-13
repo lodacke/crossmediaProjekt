@@ -50,6 +50,7 @@ export function renderGame() {
 
     let holdStart = globalHolder.get("StartTime");
     window.location.hash = "#game";
+    introGame()
 
     if (!holdStart) {
         introGame()
@@ -231,19 +232,24 @@ export function renderGame() {
     });
 }
 
-function introGame(){
+function introGame() {
     dialog.show()
+    document.querySelector(".overlay").style.display = `block`;
+    dialog.setAttribute("id", "welcomeDialog")
     dialog.innerHTML = `
-    <h1>VÄLKOMMEN</h1>
+    <h2>VÄLKOMMEN</h2>
     <p>${intro}</p>
     <button>FORTSÄTT</button>
     `;
 
     dialog.querySelector("button").addEventListener("click", () => {
+        console.log("hallå?");
+        document.querySelector(".overlay").style.display = `none`;
         dialog.close()
         renderGame()
-        })
+    })
 }
+
 function renderInfo(level, map) {
 
     map.addListener("click", () => {
@@ -498,9 +504,9 @@ export async function renderScoreBoard(user, duration, userScore) {
             let maxPointsB = (b.games && b.games.length > 0) ? Math.max(...b.games.map(game => game.points)) : 0;
             return maxPointsB - maxPointsA;
         });
-        sortedUsers = sortedUsers.slice(0.,7)
+        sortedUsers = sortedUsers.slice(0., 7)
 
-        for(let i = 0; i < sortedUsers.length; i++){
+        for (let i = 0; i < sortedUsers.length; i++) {
             sortedUsers.push(i)
         }
 

@@ -350,21 +350,24 @@ export function renderIMG(data) {
         `;
 
         liveTimer()
-        setInterval(liveTimer, 1000)
+        let intervalTimer = setInterval(liveTimer, 1000);
 
         container.querySelector("button").addEventListener("click", () => {
             globalHolder.push(data.level, data.name)
             renderGame()
+            clearInterval(intervalTimer)
         })
 
         container.querySelector("#return").addEventListener("click", () => {
             renderIMG(data)
+            clearInterval(intervalTimer)
         })
     }
 }
 
 
 export function renderAnalogChallange(level) {
+    console.log(level)
     dialog.show()
     dialog.setAttribute("id", "analogControll")
     dialog.innerHTML = `

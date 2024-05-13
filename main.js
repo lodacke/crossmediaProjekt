@@ -4,7 +4,7 @@ import { main, dialog, globalHolder } from "./utilities/variable.js";
 import { renderAnalogChallange, renderQRscann } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
 import { infoAboutUs } from "./API/aboutUs.js";
-import { levelCount } from "./utilities/levelCounter.js"
+import { findLeader, levelCount } from "./utilities/levelCounter.js"
 import { endGame } from "./gameCenter.js"
 import { renderLogin } from "./registerLogin.js"
 import { getCurrentTime } from "./utilities/getCurrentTime.js";
@@ -78,9 +78,12 @@ export function renderGame() {
         <div class="helpers">
            <div id="map"></div>
            <div class="containerTemp"></div>
+           <button class="test">Test</button>
         </div>
         `;
 
+    let test = main.querySelector(".test")
+    test.addEventListener("click", findLeader)
     const arrow = document.querySelector("#menu #dropArrow");
     const header = document.querySelector("header");
 

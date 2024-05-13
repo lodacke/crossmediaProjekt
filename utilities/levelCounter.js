@@ -1,6 +1,9 @@
 import { globalHolder, dialog } from "./variable.js"
 import { levelTwo, levelThree, levelOne } from "../API/qlues.js"
 import { renderGame, renderScoreBoard } from "../main.js";
+import { swapStyleSheet } from "./cssSwap.js";
+//import { main } from "./variable.js";
+import { characters } from "../API/characters.js";
 
 
 export function levelCount() { 
@@ -11,7 +14,7 @@ export function levelCount() {
             //console.log("level One is under 5")
             return levelOne;
 
-        } else if (globalHolder.levels.levelOne.length > 5) {
+        } else if (globalHolder.levels.levelOne.length > 5 && !globalHolder.levels.levelTwo) {
             userAlert("levelTwo")
             return levelTwo;
         }
@@ -21,9 +24,9 @@ export function levelCount() {
         if (globalHolder.levels.levelTwo.length < 6) {
             return levelTwo;
 
-        } else if (globalHolder.levels.levelTwo.length === 6) {
+        } else if (globalHolder.levels.levelTwo.length === 6 && !globalHolder.levels.levelThree) {
 
-            findLeader()
+            //findLeader()
             return levelThree;
 
         }
@@ -38,6 +41,7 @@ export function levelCount() {
 
 }
 
+// function will be called as a prompt between level 1 and level 2
 function userAlert(level) {
     dialog.show();
     document.querySelector(".overlay").style.display = `block`;
@@ -73,8 +77,8 @@ function userAlert(level) {
 export function findLeader() {
 
     swapStyleSheet("CSS/chooseCharacter.css");
-
-    main.innerHTML = `
+    dialog.show()
+    dialog.innerHTML = `
         <div class="content"></div>
     `;
 
@@ -86,6 +90,7 @@ export function findLeader() {
     }
 
     displayCharacters.forEach(character => {
+        console.log(character)
         let card = document.createElement("div");
         card.classList.add("flipCard");
         card.setAttribute("id", `char_${character.name}`)
@@ -116,13 +121,14 @@ export function findLeader() {
                     levelButton.setAttribute("id", "nextLevel")
                     levelButton.innerText = "Go to next level";
                     levelButton.addEventListener("click", () => {
+                        dialog.close()
                         renderGame()
                     })
-                    main.querySelector(".content").append(levelButton)
+                    dialog.querySelector(".content").append(levelButton)
                 }, 3000)
             }
 
         })
-        main.querySelector(".content").append(card)
+        dialog.querySelector(".content").append(card)
     })
 }

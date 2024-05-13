@@ -77,6 +77,7 @@ export const levelTwo =
             "latitude": 55.61598,
             "longitude": 12.97577,
             "name": "imgMap",
+            "level": "levelTwo",
             "type": "ANALOG",
             "clue": "Västra hamnen är ett stort område och sektmedlemmarna, listiga som de är, har skrivit sig på hemlig adress. För att hålla reda på allt har varje sektmedlem tilldelats en karta som visar samtliga boenden, men det sägs att Ove har tappat sin… för att upptäcka deras gömställen behöver du hitta Oves karta innan den försvinner igen…", 
         }, 
@@ -84,6 +85,7 @@ export const levelTwo =
             "latitude": 55.615383,
             "longitude": 12.978522,
             "name": "imgDiary",
+            "level": "levelTwo",
             "type": "ANALOG",
             "clue": "Under en lång tid smög sig tvivel och förtvivlan på Anna angående sektens sanna natur. Hon höll sina tankar nära hjärtat och vågade aldrig uttrycka dem högt, väl medveten om att sekten övervakade varje ord som sades. Men kanske finns Annas ord nedtecknade någonstans?"
         },

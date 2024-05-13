@@ -366,6 +366,7 @@ export function renderIMG(data) {
 
 export function renderAnalogChallange(level) {
     dialog.show()
+    document.querySelector(".overlay").style.display = `block`;
     dialog.setAttribute("id", "analogControll")
     dialog.innerHTML = `
         <p>Är du färdig med stationen?</p>
@@ -379,10 +380,12 @@ export function renderAnalogChallange(level) {
         globalHolder.push(level.level, level.name)
         renderGame()
         dialog.close()
+        document.querySelector(".overlay").style.display = `none`;
     })
 
     dialog.querySelector(".false").addEventListener("click", () => {
         dialog.close()
+        document.querySelector(".overlay").style.display = `none`;
     })
 }
 

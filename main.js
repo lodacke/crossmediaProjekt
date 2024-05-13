@@ -3,7 +3,7 @@ import { endSession } from "./utilities/endSession.js";
 import { main, dialog, globalHolder } from "./utilities/variable.js";
 import { renderAnalogChallange, renderQRscann } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
-import { infoAboutUs } from "./API/aboutUs.js";
+import { infoAboutUs, intro } from "./API/aboutUs.js";
 import { findLeader, levelCount } from "./utilities/levelCounter.js"
 import { endGame } from "./gameCenter.js"
 import { renderLogin } from "./registerLogin.js"
@@ -52,6 +52,7 @@ export function renderGame() {
     window.location.hash = "#game";
 
     if (!holdStart) {
+        introGame()
         let startTime = getCurrentTime();
         globalHolder.set("StartTime", startTime) // set startTime to use in end function later
     }
@@ -66,7 +67,6 @@ export function renderGame() {
     // })
 
     let level = levelCount()
-    console.log(level)
 
     swapStyleSheet("CSS/homePage.css")
 
@@ -231,6 +231,19 @@ export function renderGame() {
     });
 }
 
+function introGame(){
+    dialog.show()
+    dialog.innerHTML = `
+    <h1>VÄLKOMMEN</h1>
+    <p>${intro}</p>
+    <button>FORTSÄTT</button>
+    `;
+
+    dialog.querySelector("button").addEventListener("click", () => {
+        dialog.close()
+        renderGame()
+        })
+}
 function renderInfo(level, map) {
 
     map.addListener("click", () => {
@@ -395,7 +408,7 @@ function renderAboutUs() {
         infoDom.classList.add("swiper-slide");
 
         infoDom.innerHTML = `
-            <h2>OM OSS</h2>
+            <h2>OM SPELET</h2>
             <p>${info.text}</p>
         `;
         containerDom.append(infoDom);
@@ -418,7 +431,7 @@ function renderHeader() {
                 <button id="quit">AVSLUTA</button>
                 <button id="leaderboard">TOPPLISTA</button>
                 <button id="characters">KARAKTÄRER</button>
-                <button id="info">OM OSS</button>
+                <button id="info">NY SPELARE    </button>
                 <button id="settings">INSTÄLLNINGAR</button>
             </div>
             
@@ -467,7 +480,8 @@ export async function renderScoreBoard(user, duration, userScore) {
             <p>${userScore}p</p>
         `;
     } else {
-        console.log("no user values sent to function")
+        userDom.innerHTML = `
+        <p>No users to show</p>`
     }
 
     let containerUser = dialog.querySelector(".allUsers");
@@ -485,6 +499,12 @@ export async function renderScoreBoard(user, duration, userScore) {
             return maxPointsB - maxPointsA;
         });
         sortedUsers = sortedUsers.slice(0.,7)
+
+        for(let i = 0; i < sortedUsers.length; i++){
+            sortedUsers.push(i)
+        }
+
+        console.log(sortedUsers)
         sortedUsers.forEach(user => {
 
             if (user.games.length > 0) {

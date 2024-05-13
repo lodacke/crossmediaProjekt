@@ -101,6 +101,7 @@ ion-icon {
     flex-direction: column;
     gap: 20px;
     height: 100%;
+    scroll-behavior: smooth;
 }
 
 .conversation>div {

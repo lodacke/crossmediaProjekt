@@ -440,7 +440,7 @@ export async function renderScoreBoard(user, duration, userScore) {
             let maxPointsB = (b.games && b.games.length > 0) ? Math.max(...b.games.map(game => game.points)) : 0;
             return maxPointsB - maxPointsA;
         });
-
+        sortedUsers = sortedUsers.slice(0.,7)
         sortedUsers.forEach(user => {
 
             if (user.games.length > 0) {

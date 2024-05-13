@@ -27,8 +27,8 @@ export function renderQRscann(level) {
 
     const scanner = new Html5QrcodeScanner('reader', {
         qrbox: {
-            width: 300,
-            height: 300,
+            width: 500,
+            height: 500,
         },
         fps: 20,
         facingMode: "environment" // Rad för att specifiera vilket håll kameran ska riktas mot.
@@ -37,12 +37,13 @@ export function renderQRscann(level) {
     scanner.render(success, error)
 
     function success(result) {
+        console.log(result)
         window.location.hash = "#game";
         const data = parseText(result);
 
-
+        alert(result)
         if (data.type === "function") {
-
+            
             dialog.close()
             const dataString = JSON.stringify(data)
             eval(`${data.link}(${dataString})`)
@@ -54,7 +55,7 @@ export function renderQRscann(level) {
     }
 
     function error(err) {
-        console.error(err)
+        //console.error(err)
     }
 }
 
@@ -364,7 +365,6 @@ export function renderIMG(data) {
         })
     }
 }
-
 
 export function renderAnalogChallange(level) {
     console.log(level)

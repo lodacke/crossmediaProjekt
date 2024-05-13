@@ -6,7 +6,6 @@ import { renderGame } from "./main.js";
 (function () {
    
     if (localStorage.getItem("user")) {
-        console.log("found user")
             if (window.location.hash === "#game") {
                 renderGame();
             } else {

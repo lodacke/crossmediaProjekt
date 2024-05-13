@@ -244,6 +244,7 @@ function introGame(){
         renderGame()
         })
 }
+
 function renderInfo(level, map) {
 
     map.addListener("click", () => {
@@ -259,6 +260,7 @@ function renderInfo(level, map) {
             <div class="content">
                 <h2>LEDTRÅD</h2>
                 <p>${level.clue}</p>
+                <p>${level.placement}</p>
             </div>
             <div id="bottomContainer">
                 <button>Jag är här</button>
@@ -480,8 +482,7 @@ export async function renderScoreBoard(user, duration, userScore) {
             <p>${userScore}p</p>
         `;
     } else {
-        userDom.innerHTML = `
-        <p>No users to show</p>`
+       console.log("no user value has been sent")
     }
 
     let containerUser = dialog.querySelector(".allUsers");
@@ -500,12 +501,7 @@ export async function renderScoreBoard(user, duration, userScore) {
         });
         sortedUsers = sortedUsers.slice(0.,7)
 
-        for(let i = 0; i < sortedUsers.length; i++){
-            sortedUsers.push(i)
-        }
-
-        console.log(sortedUsers)
-        sortedUsers.forEach(user => {
+        sortedUsers.forEach((user, index)  => {
 
             if (user.games.length > 0) {
                 let dom = document.createElement("div");
@@ -514,6 +510,7 @@ export async function renderScoreBoard(user, duration, userScore) {
                 let maxPoints = user.games.length > 0 ? Math.max(...user.games.map(game => game.points)) : 0;
 
                 dom.innerHTML = `
+                 <h1>${index + 1}</h1>
                     <section>
                         <div class="profileContainer">
                             <ion-icon name="person"></ion-icon>

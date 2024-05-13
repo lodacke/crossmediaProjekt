@@ -265,10 +265,10 @@ export const conversations = {
 
     "Alex": {
         start: {
-            question: "Hej hej. Kul att du kom hit! jag har så tråkigt nu för tiden...",
+            question: "Hej hej, Kul att du kom hit! jag har så tråkigt nu för tiden...",
             option: [
                 {
-                    text: "Var är Anna?",
+                    text: "Var har du Anna?",
                     response: "one"
                 },
                 {
@@ -278,7 +278,7 @@ export const conversations = {
             ]
         },
         one: {
-            question: "Eh...eh...eh... hon är nog hos sina föräldrar. Sist jag pratade med henne så skulle hon i alla fall åka dit på besök. I vilket fall så är hon ingen jag vill umgås med...jag längtar tills vi kan gå skilda vägar...och jag vet att det kommer vara snart.",
+            question: "Eh... Eh... Eh... Hon är nog hos sina föräldrar. I vilket fall så är hon ingen jag vill umgås med...jag längtar tills vi kan gå skilda vägar...och jag vet att det kommer vara snart.",
             option: [
                 {
                     text: "Ä det bara du som ogillar henne så mycket helt plötsligt?",
@@ -292,7 +292,7 @@ export const conversations = {
         },
         
         two: {
-            question: "Även om jag har det bättre ställt nu än någonsin förr så har jag tappat kontakten lite med min familj.. eller i alla fall mina barn. Anna vill jag inte ens räkna till min familj längre, inte efter vad hon gjorde. Men barnen... dem saknar jag lite. Jag hade stora planer för dem, de skulle gå i mina fotspår. Men Anna satte stopp för det! Nu känner jag att de tagit avstånd från mig...jag hoppas att de ändrar sig så att de inte måste följa sin mammas öde.", 
+            question: "På sistone har jag tappat kontakten med barnen. Anna vill jag inte ens räkna som min familj längre. Men barnen saknar jag, jag hade stora planer för dem... Men det satte Anna stopp för! Nu känner jag att de tagit avstånd från mig... Jag hoppas att de ändrar sig så att de inte måste följa sin mammas öde.", 
             option: [
                 {
                     text: "Vad har Anna gjort?",
@@ -318,49 +318,49 @@ export const conversations = {
             ]
         },
         four: {
-            question: "Jag vet inte om jag kan berätta allt... men hon kommer få det hon förtjänar! Och det kommer ske snart...riktigt snart.", 
+            question: "Jag vet inte om jag kan berätta allt, men hon kommer få det hon förtjänar! Och det kommer ske snart...riktigt snart.", 
             option: [
                 {
                     text: "När kommer det hända?",
                     response: "eight"
                 },
                 {
-                    text: "Var kommer det ske?", 
+                    text: "Var någonstans?", 
                     lastMessage: "Tyvärr kan jag inte berätta det... men du kanske kan få vara med på ett speciellt möte, jag ska kolla med gruppen. Men gud vad klockan blev mycket! Nu måste jag gå!" 
                 }
             ]
         },
         five: {
-            question: "A: Nä det är faktiskt inte det. Hon gjorde ju saker som gick emot hela gruppen. Hon svek oss! Och de ska man akta sig för att göra. Hon visste vad hon gav sig in på och ändå skulle hon börja tveka. Jag blir bara så arg för hon förstör för barnen också och får dem att tvivla! Jag hade stora planer för dem...",
+            question: "Nä det är faktiskt inte det. Hon gjorde ju saker som gick emot hela gruppen. Hon visste vad hon gav sig in på och ändå började hon tvivla. Jag blir så arg, hon förstör dessutom för barnen genom att får dem att tvivla! Jag som hade stora planer för dem...",
             option: [
                 {
-                    text: "Vilka är med i gruppen?",
+                    text: "Vilka är gruppen?",
                     lastMessage: "seven"
                 },
                 {
                     text: "Vad hade du för planer med barnen?", 
-                    lastMessage: "De skulle bli som oss... nästa generation och föra vidare arvet, men jag börjar tvivla på om det kommer hända... Hur som helst måste jag gå nu! Jag har en lagning strax."
+                    lastMessage: "De skulle bli som oss, föra vidare arvet, men jag har börjar tvivla om det kommer bli så. Hur som helst måste jag gå nu! Jag har en lagning strax."
                 }
             ]
         },
         six: {
-            question: "Utan att säga för mycket så har vi planerat in ett avsked. Men jag vet att det kommer medföra bra saker för oss alla. Nu vet ju inte jag vad du tycker om henne... men om du hade fått allt du önskar i utbyte mot att ja... hon försvann...hade du gjort det?",
+            question: "Utan att säga för mycket så har vi planerat in ett avsked. Men det kommer medföra bra saker för oss alla. Om du hade fått allt du önskar i utbyte mot att ja... Hon försvann...Hade du gjort det?",
             option: [
                 {
                     text: "Nja.. jag vet inte riktigt.",
-                    lastMessage: "Jag hör att du hade behövt övertalas lite mer... men vi kan höras längre fram. Jag måste gå nu, har en lagning strax!"
+                    lastMessage: "Jag hör att du hade behövt övertalas lite mer... Men vi kan höras längre fram. Jag måste gå nu, har en lagning strax!"
                 },
                 {
                     text: "Jag hade gjort det!", 
-                    lastMessage: "Perfekt! jag ska prata med några andra personer...främst en. Men nu måste jag gå! Har en lagning strax."
+                    lastMessage: "Perfekt! jag ska prata med några andra personer...Främst en. Men nu måste jag gå! Har en lagning strax."
                 }
             ]
         },
         seven: {
-            question: "Det är jag, Fredde, Mickan, Anette och Ove. Anna var ju med innan, men inte längre... Om du hade varit intresserad kan jag höra med de andra om du kan vara med på ett av våra möten...",
+            question: "Det är jag, Fredde, Mickan, Anette och Ove. Anna var ju med innan, men inte nu längre... Om du hade varit intresserad kan jag höra med de andra om du kan vara med på ett av våra möten?",
             option: [
                 {
-                    text: "Hmm men vad är det ni gör på era möten?",
+                    text: "Hmm, vad gör på era möten?",
                     lastMessage: "Jag kan inte säga det utan de andras tillåtelse men det vi gör är väldigt lönsamt iallafall..... Hur som helst måste jag gå nu! Jag har en lagning strax"
                 },
                 {
@@ -405,17 +405,17 @@ export const conversations = {
             question: "Tjenare mannen! Ska vi ut och ta kaffe?",
             option: [
                 {
-                    text: "Du brukar vara så snål. Har du vunnit på lotto?",
+                    text: "Du som är så snål! Har du vunnit på lotto?",
                     response: "one"
                 },
                                 {
-                    text: "Jag hinner inte umgås just nu... men vad gör du ikväll?",
+                    text: "Jag hinner inte nu, men vad gör du ikväll?",
                     response: "two"
                 },
             ]
         },
         one: {
-            question: "Lotto och lotto... men pengarna har ju trillat in.",
+            question: "Lotto och lotto... Men pengarna har ju trillat in.",
             option: [
                 {
                     text: "Hur?",
@@ -435,7 +435,7 @@ export const conversations = {
                     response: "five"
                 },
                  {
-                    text: "Men kanske imorgon?",
+                    text: "Imorgon då?",
                     response: "six"
                 },
             ]
@@ -497,11 +497,11 @@ export const conversations = {
             option: [
                 {
                     text: "Du beter dig lite märkligt?",
-                    lastMessage: "Det har varit lite tufft men livet vänder nu, men klockan är mycket så jag måste gå nu!"
+                    lastMessage: "Det har varit lite tufft men livet vänder nu, men nu är klockan mycket så jag måste gå!"
                 },
                  {
                     text: "Vad är det som händer egentligen?",
-                    lastMessage: "Det har varit lite tufft men livet vänder nu, men klockan är mycket så jag måste gå nu!"
+                    lastMessage: "Det har varit lite tufft men livet vänder nu, men nu är klockan mycket så jag måste gå!"
                 },
             ]
         },
@@ -513,7 +513,7 @@ export const conversations = {
                     lastMessage: "Det får du veta ifall om gänget accepterar dig, men nu måste jag gå, ha det bra!"
                 },
                  {
-                    text: "Vart ska ni vara?",
+                    text: "Vart någonstans?",
                     lastMessage: "Det får du veta ifall om gänget accepterar dig, men nu måste jag gå, ha det bra!"
                 },
             ]
@@ -526,21 +526,21 @@ export const conversations = {
                     response: "ten"
                 },
                  {
-                    text: "Men oj du ser jättestressad ut som om du håller i en stor hemlighet",
+                    text: "Men du ser jättestressad ut, som att du håller på en stor hemlighet",
                     response: "ten"
                 },
             ]
         },
         ten: {
-            question: `Nej nej bara varit några små problem på senaste..`,
+            question: `Nej nej bara varit några små problem på sistone`,
             option: [
                 {
-                    text: "Jaha vadå för problem?",
-                    lastMessage: "Nja asså kanske en annan gång för nu måste jag gå, ha det bra!"
+                    text: "Vadå för problem?",
+                    lastMessage: "Nja kanske en annan gång, för nu måste jag gå. Ha det bra!"
                 },
                  {
-                    text: "Jag vill att du berättar allt för mig",
-                    lastMessage: "Nja asså kanske en annan gång för nu måste jag gå, ha det bra!"
+                    text: "Berättar allt för mig",
+                    lastMessage: "Nja kanske en annan gång, för nu måste jag gå. Ha det bra!"
                 },
             ]
         },
@@ -548,12 +548,12 @@ export const conversations = {
             question: `Härligt!`,
             option: [
                 {
-                    text: "Men kan du berätta mer om vad det är för grej ni gjorde?",
-                    lastMessage: "Nja asså kanske en annan gång för nu måste jag gå, ha det bra!"
+                    text: "Kan du inte berätta mer om vad det är för grej ni gjorde?",
+                    lastMessage: "Nja kanske en annan gång för nu måste jag gå, ha det bra!"
                 },
                  {
-                    text: "Men kan du berätta mer om vad det är för grej ni gjorde?",
-                    lastMessage: "Nja asså kanske en annan gång för nu måste jag gå, ha det bra!"
+                    text: "Kan du inte berätta mer om vad det är för grej ni gjorde?",
+                    lastMessage: "Nja kanske en annan gång för nu måste jag gå, ha det bra!"
                 },
             ]
         },
@@ -564,7 +564,7 @@ export const conversations = {
             question: "Nämen hej! Vad gör du här? Jag har så mycket att göra...",
             option: [
                 {
-                    text: "Jag är bara ute och går en promenad!",
+                    text: "Jag går en promenad!",
                     response: "one"
                 },
                 {
@@ -574,7 +574,7 @@ export const conversations = {
             ]
         },
         one: {
-            question: "Och du kom hit till lilla mig? Vad gullig du är. Folk känns nästan lite rädda för mig nu för tiden. Kanske är det för att det går så bra för mig ... eller så är det bara det att de inte är vana vid att möta någon som verkligen vågar vara så öppen och målmedveten. Men du, du verkar inte vara en av dem som skyr för sanningen. Det är uppfriskande att ha någon som vågar stå emot den allmänna trenden av ytlighet och falskhet och som vågar se världen för vad den är...",
+            question: "Och du kom hit till lilla mig? Vad gullig du är. Det känns som att folk är rädda för mig nu för tiden. Kanske är det för att det går så bra för mig. Eller så är det bara det att de inte är vana vid att möta någon som verkligen vågar vara så öppen och målmedveten. Men du, du verkar inte vara en av dem som skyr för sanningen. Det är uppfriskande att ha någon som vågar stå emot den allmänna trenden av ytlighet och falskhet och som vågar se världen för vad den är.",
             option: [
                 {
                     text: "Jag tycker i alla fall att du är en trevlig person.",
@@ -587,7 +587,7 @@ export const conversations = {
             ]
         },
         two: {
-            question: "Ja jag vet att jag borde det. Men jag har så mycket att stå i just nu... det är mycket som ska planeras till ett särskilt event kan man säga.",
+            question: "Ja jag vet att jag borde det, men jag har så mycket att stå i just nu. Det är mycket som ska planeras till ett särskilt event kan man säga.",
             option: [
                 {
                     text: "Vad för event är det?",
@@ -639,10 +639,10 @@ export const conversations = {
             ]
         },
         six: {
-            question: "Väldigt mycket saker! Jag, eller vi rättare sagt, har speciella rutiner gällande detta... Och det är oerhört viktigt att allting går rätt till, annars kan det få stora konsekvenser.",
+            question: "Väldigt mycket saker! Jag, eller vi rättare sagt, har speciella rutiner för det vi ska göra. Och det är oerhört viktigt att allting går rätt till, annars kan det få förödande konsekvenser.",
             option: [
                 {
-                    text: "Vilka speciella rutiner har ni?",
+                    text: "Vad är det för rutiner?",
                     response: "eleven"
                 },
                 {
@@ -704,15 +704,15 @@ export const conversations = {
             ]
         },
         eleven: {
-            question: "Det kan jag inte säga till dig...inte i nuläget i alla fall. Du måste visa att du är en människa man kan lita på.",
+            question: "Det kan jag inte säga till dig, inte i nuläget i alla fall. Du måste visa att du är en människa man kan lita på.",
             option: [
                 {
-                    text: "Det förstår jag. Vad är det som krävs?",
-                    lastMessage: "Jadu man kan iallafall inte vara för känslig iallafall, jag och gänget får diskutera detta och se vad du kan göra för att vinna förtroendet. Men nu måste jag gå! Som sagt är det mycket jag måste hinna med att fixa.."
+                    text: "Förståenligt. Vad krävs?",
+                    lastMessage: "Jadu man kan iallafall inte vara för känslig, jag och gänget får diskutera detta och se vad du kan göra för att vinna förtroendet. Men nu måste jag gå! Som sagt är det mycket jag måste hinna med att fixa.."
                 },
                 {
                     text: "Jag bevisar mig gärna!",
-                    lastMessage: "Jadu man kan iallafall inte vara för känslig iallafall, jag och gänget får diskutera detta och se vad du kan göra för att vinna förtroendet. Men nu måste jag gå! Som sagt är det mycket jag måste hinna med att fixa.."
+                    lastMessage: "Jadu man kan iallafall inte vara för känslig, jag och gänget får diskutera detta och se vad du kan göra för att vinna förtroendet. Men nu måste jag gå! Som sagt är det mycket jag måste hinna med att fixa.."
                 },
             ]
         },

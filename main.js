@@ -50,7 +50,6 @@ export function renderGame() {
 
     let holdStart = globalHolder.get("StartTime");
     window.location.hash = "#game";
-    introGame()
 
     if (!holdStart) {
         introGame()

@@ -61,7 +61,7 @@ export const levelTwo =
             "type": "IMG",
             "clue": "Att vara medlem i sekten kräver precision och noggrann planering... Sektens medlemmar är alltid medvetna om var de andra befinner sig, särskilt när det vankas sektmöte! De har ännu inte avslöjat för dig hur de lyckas med det så du måste på annat sätt få reda på var de befinner sig. På Mickans telefon finns en skärmdump som kan ge dig en avgörande ledtråd. Möt upp henne och kolla snabbt på hennes telefon utan att hon märker!", 
             "img": [ "media/gameIMG/..svg", "media/gameIMG/..svg", "media/gameIMG/..svg"],
-            "img1": "media/gameIMG/..svg",
+            "img1": "media/ /..svg",
         },
         {
             "latitude": 55.61480,
@@ -77,14 +77,14 @@ export const levelTwo =
             "latitude": 55.61598,
             "longitude": 12.97577,
             "name": "imgMap",
-            "type": "IMG",
+            "type": "ANALOG",
             "clue": "Västra hamnen är ett stort område och sektmedlemmarna, listiga som de är, har skrivit sig på hemlig adress. För att hålla reda på allt har varje sektmedlem tilldelats en karta som visar samtliga boenden, men det sägs att Ove har tappat sin… för att upptäcka deras gömställen behöver du hitta Oves karta innan den försvinner igen…", 
         }, 
         {
             "latitude": 55.615383,
             "longitude": 12.978522,
             "name": "imgDiary",
-            "type": "IMG",
+            "type": "ANALOG",
             "clue": "Under en lång tid smög sig tvivel och förtvivlan på Anna angående sektens sanna natur. Hon höll sina tankar nära hjärtat och vågade aldrig uttrycka dem högt, väl medveten om att sekten övervakade varje ord som sades. Men kanske finns Annas ord nedtecknade någonstans?"
         },
 

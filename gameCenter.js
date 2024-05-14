@@ -19,6 +19,7 @@ export function renderQRscann(level) {
         <ion-icon class="exit" name="close-outline"></ion-icon>
     </div>
     <div id="reader"></div>
+    <button class="optionalCall">Not working?</button>
     `;
 
     dialog.querySelector(".exit").addEventListener("click", () => {
@@ -57,6 +58,22 @@ export function renderQRscann(level) {
     function error(err) {
         //console.error(err)
     }
+
+    dialog.querySelector(".optionalCall").addEventListener("click", () => {
+    try {
+
+        const fn = eval(level.function);
+        if (typeof fn === 'function') {
+            fn(level);
+            dialog.close()
+        } else {
+            console.error('Evaluated value is not a function');
+        }
+    } catch (error) {
+        console.error('Error evaluating code:', error);
+    }
+    });
+
 }
 
 export function renderConversation(data) {

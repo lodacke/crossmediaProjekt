@@ -132,7 +132,7 @@ export const conversations = {
             ]
         },
         one: {
-            question: "Jag ska träffa min man... min förra bästa vän svek mig så henne vill jag inte umgås med längre. Det är en sådan besvikelse när någon som man trodde var ens närmaste vän visar sig vara någon annan än vad man förväntade sig. Det var sjukt  svårt att förstå och acceptera att människor förändras eller visar sin sanna sida på ett oväntat sätt. Men ja...vad skulle man egentligen tro om någon som inte var uppväxt på saltis.",
+            question: "Jag ska träffa min man. Min bästa vän svek mig, så henne vill jag inte träffa. Det är en sån besvikelse när någon som man trodde var ens närmaste vän visar sig vara någon annan. Det var svårt att förstå och, men ja... Vad kan man förvänta sig av någon som inte var uppväxt på Saltis.",
             option: [
                 {
                     text: "Vad ska du och Fredde göra?",
@@ -145,10 +145,10 @@ export const conversations = {
             ]
         },
         two: {
-            question: "Fredde jobbar ju mycket, men sen har vi börjat med lite extra aktiviteter.",
+            question: `Fredde jobbar ju mycket, men sen har vi börjat med lite "extra" aktiviteter.`,
             option: [
                 {
-                    text: "Vad för något?",
+                    text: "Vadå för något?",
                     response: "five"
                 },
                 {
@@ -158,20 +158,20 @@ export const conversations = {
             ]
         },
         three: {
-          question: "Vi ska över till några kompisar. Eller ja... kompisar och kompisar, det är ett illa måste att umgås med dem.",
+          question: "Vi ska över till några kompisar. Eller ja... Kompisar, det är ett illa måste att umgås med dem.",
             option: [
                 {
                     text: "Varför måste ni umgås med dem?",
                     response: "seven"
                 },
                 {
-                    text: "Vem är det ni måste umgås med?", 
+                    text: "Vilka är det?", 
                     response: "eight"
                 }
             ]
         },
         four: {
-          question: "Hon har fel prioriteringar om man säger så... och om man inte kan vara med mig så är man emot mig. Jag tycker bara det är så sjukt frustrerande att vissa människor inte kan prioritera rätt... ",
+          question: "Hon hade fel prioriteringar om man säger så. Och om man inte är med mig så är man emot mig",
             option: [
                 {
                     text: "Jag håller mig helst på din goda sida!",
@@ -184,14 +184,14 @@ export const conversations = {
             ]
         },
         five: {
-          question: "Jag vet inte om jag får säga... men det är ju tyvärr inget tillfälle där jag kan ha mina nya Gucci skor",
+          question: "Jag vet inte om jag får säga det... Men det är tyvärr inte ett tillfälle där jag kan ha på mig mina nya Gucci skor",
             option: [
                 {
-                    text: "Låter spännande! trots att du inte kan ha dina fina skor",
+                    text: "Låter spännande! Trots att du inte kan ha dina fina skor",
                     response: "ten"
                 },
                 {
-                    text: "Gucci skor är fina!", 
+                    text: "Gucci skor är såå fina!", 
                     response: "ten"
                 }
             ]
@@ -200,24 +200,24 @@ export const conversations = {
           question: "Nej det är vi och fyra andra!",
             option: [
                 {
-                    text: "Låter lite suspekt.",
+                    text: "Kan jag gå med?",
                     response: "nine"
                 },
                 {
-                    text: "Jag vill gärna veta mer!", 
+                    text: "Söker ni nya medlemmar?", 
                     response: "nine"
                 }
             ]
         },
         seven: {
-          question: "Vi har viktiga saker att uträtta... och tro det eller ej så är dem ganska hjälpsamma, även om de varit irriterande förr i tiden",
+          question: "Vi uträttar viktiga saker, och tro det eller ej så är dem ganska hjälpsamma. Även om de varit irriterande förr i tiden.",
             option: [
                 {
-                    text: "Vem ska ni träffa?",
-                    lastMessage: "Det är Anette och Ove. Sen kommer ju Alex också, men han har vi ju alltid umgåtts med. Nu måste jag dock gå innan xxx i stan stänger!"
+                    text: "Vilka är ni?",
+                    lastMessage: "Det är Anette och Ove. Sen kommer ju Alex också, men han har vi ju alltid umgåtts med. Nu måste jag dock gå innan frisören stänger"
                 },
                 {
-                    text: "Var ska ni träffas?", 
+                    text: "Var ska ni ses?", 
                     lastMessage: "Det kan jag inte berätta...Men om du vill kan jag höra med de andra om du kan vara med nästa gång? Nu måste jag dock gå innan xxx i stan stänger!"
                 }
             ]
@@ -227,11 +227,11 @@ export const conversations = {
             option: [
                 {
                     text: "Vad ska ni göra?",
-                    lastMessage: "Vi ska ha ett möte typ...jag vet inte om jag fåt lov att säga mer. Men om du vill kan jag höra med de andra om du kan vara med nästa gång? Nu måste jag dock gå innan xxx i stan stänger!"
+                    lastMessage: "Vi ska ha ett möte typ...Jag vet inte om jag fåt lov att säga mer. Men om du vill kan jag höra med de andra om du kan vara med nästa gång? Nu måste jag dock gå innan xxx i stan stänger!"
                 },
                 {
                     text: "Var ska ni träffas?", 
-                    lastMessage: "Det kan jag inte berätta...Men om du vill kan jag höra med de andra om du kan vara med nästa gång? Nu måste jag dock gå innan xxx i stan stänger!"
+                    lastMessage: "Det kan jag inte berätta... Men om du vill kan jag höra med de andra om du kan vara med nästa gång? Nu måste jag dock gå innan xxx i stan stänger!"
                 }
             ]
         },

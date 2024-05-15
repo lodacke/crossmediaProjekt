@@ -13,11 +13,11 @@ export async function levelCount() {
         if (globalHolder.levels.levelOne.length < 5) {
             return levelOne;
 
-        } 
-        else if (globalHolder.levels.levelOne_completed){
-                console.log("true")
-                userAlert("levelOne")
-                return levelTwo;                           
+        }
+        else if (globalHolder.levels.levelOne_completed) {
+            console.log("true")
+            userAlert("levelOne")
+            return levelTwo;
         }
     }
     if (globalHolder.levels.levelTwo) {
@@ -28,9 +28,14 @@ export async function levelCount() {
         } 
         else if (globalHolder.levels.levelTwo_completed){
             findLeader("levelTwo")
-            return levelThree; 
+            return levelThree;
         } else {
-            return levelThree
+
+            if (globalHolder.levels.levelOne_completed) {
+                findLeader("levelTwo")
+                return levelThree;
+            }
+            return levelThree;
         }
     }
     if (globalHolder.levels.levelThree) {

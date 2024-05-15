@@ -43,6 +43,14 @@
             {
                 "points": 10,
                 "timestamp": "2024-05-13"
+            },
+            {
+                "points": -250,
+                "timestamp": "2024-05-15"
+            },
+            {
+                "points": 1,
+                "timestamp": "2024-05-15"
             }
         ]
     },

@@ -1,7 +1,7 @@
 import { swapStyleSheet } from "./utilities/cssSwap.js";
 import { endSession } from "./utilities/endSession.js";
 import { main, body, dialog, globalHolder } from "./utilities/variable.js";
-import { renderAnalogChallange, renderQRscann } from "./gameCenter.js";
+import { renderAnalogChallange, renderQRscann, addCode } from "./gameCenter.js";
 import { characters } from "./API/characters.js";
 import { infoAboutUs, intro } from "./API/aboutUs.js";
 import { findLeader, levelCount } from "./utilities/levelCounter.js"
@@ -80,11 +80,12 @@ export function renderGame() {
         <div class="helpers">
            <div id="map"></div>
            <div class="containerTemp"></div>
+           <button class="test"></button>
         </div>
         `;
 
-    // let test = main.querySelector(".test")
-    // test.addEventListener("click", findLeader)
+     let test = main.querySelector(".test")
+     test.addEventListener("click", addCode)
     const arrow = document.querySelector("#menu #dropArrow");
     const header = document.querySelector("header");
 

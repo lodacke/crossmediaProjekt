@@ -391,6 +391,29 @@ export function renderAnalogChallange(level) {
     })
 }
 
+export function addCode(){
+    dialog.show()
+    dialog.setAttribute("id", "codeDialog");
+    dialog.innerHTML = `
+    <h1>SIFFERKOD</h1>
+    <p>Skriv in koden som finns vid stationen när du genomfört den</p>
+    <div class="containerCode">
+        <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+        <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+        <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+        <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+    </div>
+    <button class="done">KLAR</button>
+    `;
+
+    dialog.querySelector(".done").addEventListener("click", () => {
+
+        dialog.close()
+        dialog.removeAttribute("id", "codeDialog")
+        endGame()
+    })
+}
+
 export async function endGame() {
     let user = globalHolder.get("user")
     let startTime = globalHolder.get("StartTime")
@@ -431,6 +454,7 @@ export async function endGame() {
     renderScoreBoard(user, durationInMinutes, totalPoints);
     localStorage.removeItem("StartTime")
 }
+
 
 
 

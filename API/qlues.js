@@ -140,7 +140,7 @@ export const levelThree =
             "latitude": 55.61583,
             "longitude": 12.97398,
             "name": "codeOrder",
-            "function": "renderConversation",
+            "function": "ADDNAME",
             "type": "CODE",
             "level": "levelThree",
             "clue": "Har du lyckats knäcka koden eller behöver du hjälp att få allt på rätt plats? ",

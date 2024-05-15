@@ -333,12 +333,13 @@ header #dropArrow {
 
 .imgBackground {
     background-color: #1e1d1d;
-    height: 65vw;
+    height: 60vw;
     width: 90%;
     border-radius: 10px;
     margin-top: 2vh;
     display: flex;
     justify-content: center;
+    align-items: end;
 }
 
 .imgSpotlight {
@@ -352,6 +353,7 @@ header #dropArrow {
 }
 
 .imgBackground img {
+    height: 90%;
     z-index: 100;
 }
 
@@ -862,29 +864,73 @@ span {
 
 /* DIALOG FOR CODE */
 
-#codeDialog{
+#codeDialog {
     display: flex;
     flex-direction: column;
     text-align: center;
+
+    background-color: #363636;
+    top: 28vh;
+    width: 80%;
+    box-shadow: var(--boxShadow);
 }
 
-#codeDialog > p{
+#codeDialog>h2 {
+    margin-top: 3vh;
+}
+
+#codeDialog>p {
+    font-size: 18px;
+    margin: 0;
     text-align: center;
+    color: var(--white);
 }
 
-.containerCode{
+.containerCode {
     display: flex;
-     justify-content: center;
-    margin: 10%;
+    justify-content: center;
+    margin: 7%;
 }
 
-.containerCode > input{
-    width: 20px;
-    height: 50px;
+.containerCode>input {
+    width: 30px;
+    height: 40px;
     margin: 5px;
+    background-color: #2A2A2A;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 8px 10px 0 rgba(51, 51, 51, 0.2), 4px 2px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
-#codeDialog > button{
-    width: 60%;
+#codeDialog>button {
+    background-color: var(--yellow);
+    color: #151515;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    width: 85%;
+    cursor: pointer;
+    padding: 1.3vh;
+    margin-bottom: 20px;
     align-self: center;
+}
+
+/* END MESSAGE WHEN COMPLETING GAME*/
+
+#endMess {
+    background-color: #363636;
+    top: 35vh;
+    width: 80%;
+    box-shadow: var(--boxShadow);
+}
+
+#endMess h2 {
+    margin-top: 3vh;
+}
+
+#endMess p {
+    font-size: 18px;
+    text-align: center;
+    color: var(--white);
 }

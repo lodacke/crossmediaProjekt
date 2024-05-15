@@ -33,6 +33,11 @@ ion-icon {
     display: flex;
     gap: 20px;
     align-items: center;
+    height: 50px;
+}
+
+.topC .leftCol img {
+    height: 100%;
 }
 
 .topC .leftCol #name {

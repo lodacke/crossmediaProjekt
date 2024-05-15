@@ -14,27 +14,23 @@ export function levelCount() {
             return levelOne;
 
         } 
-        else {
-            if (globalHolder.levels.levelOne_completed){
+        else if (globalHolder.levels.levelOne_completed){
                 console.log("true")
-                 userAlert("levelTwo")
-                return levelTwo;               
-            }
-            return levelTwo;  
+                userAlert("levelOne")
+                return levelTwo;                           
         }
     }
     if (globalHolder.levels.levelTwo) {
 
         if (globalHolder.levels.levelTwo.length < 6) {
-            return levelTwo;
-
+            return levelTwo;            
+            
+        } 
+        else  if (globalHolder.levels.levelTwo_completed){
+            findLeader("levelTwo")
+            return levelThree; 
         } else {
-
-            if(globalHolder.levels.levelOne_completed){
-                findLeader("levelTwo")
-                return levelThree;
-            }   
-            return levelThree;       
+            return levelThree
         }
     }
     if (globalHolder.levels.levelThree) {
@@ -49,6 +45,8 @@ export function levelCount() {
 
 // function will be called as a prompt between level 1 and level 2
 function userAlert(level) {
+
+    console.log(level)
     dialog.show();
     document.querySelector(".overlay").style.display = `block`;
     dialog.setAttribute("id", "userMess")
@@ -67,7 +65,7 @@ function userAlert(level) {
 
     let messDom = dialog.querySelector(".mess");
     let messButton = dialog.querySelector(".messButton")
-    if (level === "levelTwo") {
+    if (level === "levelOne") {
         messDom.textContent = "Du har nu träffat alla karaktärerna, och kan nu påbörjar nästa nivå av undersökningen"
         messButton.textContent = "Påbörja nästa nivå"
     }
@@ -99,7 +97,6 @@ export function findLeader() {
     }
 
     displayCharacters.forEach(character => {
-        console.log(character)
         let card = document.createElement("div");
         card.classList.add("flipCard");
         card.setAttribute("id", `char_${character.name}`)

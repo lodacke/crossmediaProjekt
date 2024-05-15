@@ -19,11 +19,11 @@ export const globalHolder = {
     this.set(level, levelData);
 
     if (level === "levelOne" && levelData.length === 5) {
-      this.levels[`${level}_completed`]; 
+      this.levels[`${level}_completed`] = true; 
       localStorage.setItem('levels', JSON.stringify(this.levels));
     }
     if (level === "levelTwo" && levelData.length === 6) {
-      this.levels[`${level}_completed`]; 
+      this.levels[`${level}_completed`] = true; 
       localStorage.setItem('levels', JSON.stringify(this.levels));
     }
   },

@@ -49,6 +49,7 @@ export function renderHomepage() {
 }
 
 export async function renderGame() {
+    //window.location.reload()
 
     let holdStart = globalHolder.get("StartTime");
     window.location.hash = "#game";

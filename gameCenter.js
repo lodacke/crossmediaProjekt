@@ -425,7 +425,8 @@ export function addCode() {
 }
 
 export async function endGame() {
-    let user = globalHolder.get("user")
+    let user = localStorage.getItem("user")
+    let userData = JSON.parse(user);
     let startTime = globalHolder.get("StartTime")
 
     let endTime = getCurrentTime();
@@ -441,7 +442,7 @@ export async function endGame() {
         let response = await fetch("../API/setPoints.php", {
             method: "POST",
             body: JSON.stringify({
-                username: user,
+                username: userData,
                 points: totalPoints,
             })
         })

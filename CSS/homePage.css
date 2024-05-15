@@ -263,7 +263,7 @@ header #dropArrow {
 }
 
 #welcomeDialog button {
-    background-color: #2A2A2A;
+    background-color: #202020;
     color: #A1A1A1;
     border-radius: 5px;
     font-size: 18px;
@@ -534,7 +534,7 @@ dialog::backdrop {
 }
 
 #settingsDialog #endGame {
-    background-color: #2A2A2A;
+    background-color: #202020;
     color: #A1A1A1;
 }
 
@@ -571,7 +571,7 @@ dialog::backdrop {
 #analogControll button {
     margin-bottom: 2vh;
     padding: 1.5vh;
-    background-color: #2A2A2A;
+    background-color: #202020;
     border: none;
     border-radius: 5px;
     color: #A1A1A1;

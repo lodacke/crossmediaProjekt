@@ -109,6 +109,7 @@ button {
     box-shadow: var(--boxShadow);
     border: 1px solid black;
     border-radius: 5px;
+    width: 80%;
 }
 
 #instructionsDialog div {
@@ -126,8 +127,12 @@ button {
 #instructionsDialog p {
     color: var(--white);
     width: 90%;
+    font-size: 18px;
+    text-align: center;
 }
 
 #instructionsDialog button {
     margin-bottom: 15px;
+    background-color: #202020;
+    color: #A1A1A1;
 }

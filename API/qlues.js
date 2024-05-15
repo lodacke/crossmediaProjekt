@@ -133,8 +133,9 @@ export const levelThree =
             "latitude": 55.61250,
             "longitude": 12.97720,
             "name": "mapPuzzel",
-            "function": "ANALOG",
-            "type": "ANALOG",
+            "type": "QR",
+            "function": "renderIMG",
+            "img": "media/gameIMG/gameKarta_inringning.jpg",
             "level": "levelThree",
             "clue": "På denna plats kan det ligga något som kan hjälpa dig lägga ihop pusslet och rädda Anna.",
             "placement": "Leta på baksidan av en skylt."

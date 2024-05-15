@@ -260,8 +260,36 @@ export function renderIMG(data) {
 
     }
 
-    function displayAlbum(data) {
-          console.log(data.img);
+    if (data.name === "imgMeeting") {
+        container.innerHTML = `
+            <div id="imgMeeting">
+                <h2>UPPDRAG</h2>
+                <p>Du har nu fått tillgång till en övervakningskamera. Spionera på mötet för att lista ut vem sektledaren är. Men var försiktig...</p>
+                <button class="camera">
+                    <ion-icon name="videocam-outline"></ion-icon>
+                </button>
+            </div>
+        `;
+        container.querySelector(".camera").onclick = () => displayCameraFootage(data.img1, "Kamera 1");
+    }
+
+    if(data.name === "mapPuzzel") {
+        console.log("inne")
+        container.innerHTML = `
+            <div id="imgMeeting">
+                <h2>KARTA</h2>
+                <img src=${flow.img}>
+                </button></button>
+            </div>
+        `;
+        container.querySelector("button").addEventListener("click", () => {
+            globalHolder.push(data.level, data.name)
+            renderGame()
+        });
+
+    }
+
+        function displayAlbum(data) {
         container.setAttribute("id", "containerFindMyIphone")
         container.innerHTML = `
             <div class="topDOM">
@@ -293,19 +321,6 @@ export function renderIMG(data) {
             imgDOM.onclick = () => displayIMG(data, img)
 
         })
-    }
-
-    if (data.name === "imgMeeting") {
-        container.innerHTML = `
-            <div id="imgMeeting">
-                <h2>UPPDRAG</h2>
-                <p>Du har nu fått tillgång till en övervakningskamera. Spionera på mötet för att lista ut vem sektledaren är. Men var försiktig...</p>
-                <button class="camera">
-                    <ion-icon name="videocam-outline"></ion-icon>
-                </button>
-            </div>
-        `;
-        container.querySelector(".camera").onclick = () => displayCameraFootage(data.img1, "Kamera 1");
     }
 
     function displayIMG(data, img) {

@@ -11,6 +11,7 @@ import { renderGame } from "./main.js";
 export function renderQRscann(level) {
 
     dialog.show()
+    dialog.style.display = `block`;
     dialog.setAttribute("id", "scannerContainer")
 
 
@@ -45,13 +46,13 @@ export function renderQRscann(level) {
         alert(result)
         if (data.type === "function") {
 
-            dialog.close()
-
             const dataString = JSON.stringify(data)
             const fn = eval(dataString.function);
             if (typeof fn === 'function') {
-                fn(dataString);
                 dialog.close()
+                dialog.style.display = `none`;
+                dialog.removeAttribute("id", "scannerContainer")
+                fn(dataString);
             }
         } else {
             console.error("Function does not exist:", dataString);
@@ -70,6 +71,8 @@ export function renderQRscann(level) {
             if (typeof fn === 'function') {
                 fn(level);
                 dialog.close()
+                dialog.style.display = `none`;
+                dialog.removeAttribute("id", "scannerContainer")
             } else {
                 console.error('Evaluated value is not a function');
             }
@@ -400,27 +403,48 @@ export function renderAnalogChallange(level) {
 }
 
 export function addCode() {
+
+    let correctCode = ["3","5","6","1"];
+    dialog.setAttribute("id", "codeDialog");
+    dialog.style.display = `block`;
     dialog.show()
     document.querySelector(".overlay").style.display = `block`;
-    dialog.setAttribute("id", "codeDialog");
+    
     dialog.innerHTML = `
         <h2>SIFFERKOD</h2>
-        <p>Skriv in koden som finns vid stationen när du genomfört den</p>
+        <p class="topMess">Skriv in koden som finns vid stationen när du genomfört den</p>
         <div class="containerCode">
             <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
             <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
             <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
             <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
         </div>
+        <p class="tempMess"></p>
         <button class="done">KLAR</button>
     `;
 
     dialog.querySelector(".done").addEventListener("click", () => {
 
-        document.querySelector(".overlay").style.display = `none`;
-        dialog.close()
-        dialog.removeAttribute("id", "codeDialog")
-        endGame()
+        const inputs = document.querySelectorAll('.containerCode input');
+        let inputValues = [];
+        inputs.forEach(input => {
+            inputValues.push(input.value);
+        });
+
+        if (inputValues.length === correctCode.length && inputValues.every((value, index) => value === correctCode[index])) {
+            document.querySelector(".overlay").style.display = `none`;
+            dialog.close();
+             dialog.style.display = `none`;
+            dialog.removeAttribute("id", "codeDialog")
+            endGame()
+        } else {
+            dialog.querySelector(".tempMess").textContent = "Fel kod, försök igen!"
+            setTimeout(() => {
+                dialog.querySelector(".tempMess").textContent = ""
+            }, 2000)
+           
+            
+        }
     })
 }
 

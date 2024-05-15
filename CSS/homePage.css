@@ -878,7 +878,7 @@ span {
     margin-top: 3vh;
 }
 
-#codeDialog>p {
+.topMess {
     font-size: 18px;
     margin: 0;
     text-align: center;
@@ -902,6 +902,14 @@ span {
     color: var(--white);
     font-size: 20px;
     text-align: center;
+}
+
+.tempMess{ 
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 10px;
 }
 
 #codeDialog>button {

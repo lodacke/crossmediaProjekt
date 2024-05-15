@@ -60,8 +60,7 @@ export async function renderGame() {
         introGame() 
     }
 
-    let level = levelCount()
-    console.log(level)
+    let level = await levelCount()
 
     swapStyleSheet("CSS/homePage.css")
 

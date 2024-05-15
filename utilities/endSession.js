@@ -7,6 +7,7 @@ export function endSession(node, functionCall){
             functionCall()
         })
     } else {
-        dialog.close()
+        dialog.close();
+        dialog.style.display = `none`;
     }
 }

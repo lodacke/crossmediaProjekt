@@ -6,7 +6,7 @@ import { swapStyleSheet } from "./cssSwap.js";
 import { characters } from "../API/characters.js";
 
 
-export function levelCount() {
+export async function levelCount() {
 
     if (globalHolder.levels.levelOne) {
 
@@ -26,7 +26,7 @@ export function levelCount() {
             return levelTwo;            
             
         } 
-        else  if (globalHolder.levels.levelTwo_completed){
+        else if (globalHolder.levels.levelTwo_completed){
             findLeader("levelTwo")
             return levelThree; 
         } else {
@@ -48,6 +48,7 @@ function userAlert(level) {
 
     console.log(level)
     dialog.show();
+    dialog.style.display = `block`
     document.querySelector(".overlay").style.display = `block`;
     dialog.setAttribute("id", "userMess")
     dialog.innerHTML = `
@@ -59,6 +60,7 @@ function userAlert(level) {
     dialog.querySelector("button").addEventListener("click", () => {
         globalHolder.removeItem(`${level}_completed`)
         dialog.close()
+        dialog.style.display = `none`
         document.querySelector(".overlay").style.display = `none`;
 
     })
@@ -83,6 +85,7 @@ export function findLeader() {
 
     // swapStyleSheet("CSS/chooseCharacter.css");
     dialog.show()
+    dialog.style.display = `block`
     dialog.setAttribute("id", "chooseCharacter");
     dialog.innerHTML = `
         <h2>VEM ÄR SEKTLEDAREN?</h2>
@@ -132,6 +135,7 @@ export function findLeader() {
                     `;
                     container.querySelector("button").addEventListener("click", () => {
                         dialog.close()
+                        dialog.style.display = `none`
                         dialog.removeAttribute("id", "chooseCharacter");
                         globalHolder.removeItem('levelTwo_completed')
                         renderGame()

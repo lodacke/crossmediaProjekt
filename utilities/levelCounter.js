@@ -11,24 +11,30 @@ export function levelCount() {
     if (globalHolder.levels.levelOne) {
 
         if (globalHolder.levels.levelOne.length < 5) {
-            //console.log("level One is under 5")
             return levelOne;
 
-        } else if (globalHolder.levels.levelOne.length > 5 && !globalHolder.levels.levelTwo) {
-            userAlert("levelTwo")
-            return levelTwo;
+        } 
+        else {
+            if (globalHolder.levels.levelOne_completed){
+                console.log("true")
+                 userAlert("levelTwo")
+                return levelTwo;               
+            }
+            return levelTwo;  
         }
     }
     if (globalHolder.levels.levelTwo) {
-        console.log("levelTwo")
+
         if (globalHolder.levels.levelTwo.length < 6) {
             return levelTwo;
 
-        } else if (globalHolder.levels.levelTwo.length === 6 && !globalHolder.levels.levelThree) {
+        } else {
 
-            findLeader()
-            return levelThree;
-
+            if(globalHolder.levels.levelOne_completed){
+                findLeader("levelTwo")
+                return levelThree;
+            }   
+            return levelThree;       
         }
     }
     if (globalHolder.levels.levelThree) {
@@ -53,6 +59,7 @@ function userAlert(level) {
     `;
 
     dialog.querySelector("button").addEventListener("click", () => {
+        globalHolder.removeItem(`${level}_completed`)
         dialog.close()
         document.querySelector(".overlay").style.display = `none`;
 
@@ -129,7 +136,7 @@ export function findLeader() {
                     container.querySelector("button").addEventListener("click", () => {
                         dialog.close()
                         dialog.removeAttribute("id", "chooseCharacter");
-
+                        globalHolder.removeItem('levelTwo_completed')
                         renderGame()
                     })
                     dialog.querySelector(".content").append(container)

@@ -46,11 +46,15 @@ export function renderQRscann(level) {
         if (data.type === "function") {
 
             dialog.close()
-            const dataString = JSON.stringify(data)
-            eval(`${data.link}(${dataString})`)
 
+            const dataString = JSON.stringify(data)
+            const fn = eval(dataString.function);
+            if (typeof fn === 'function') {
+                fn(dataString);
+                dialog.close()
+            }
         } else {
-            console.error("Function does not exist:", data);
+            console.error("Function does not exist:", dataString);
         }
         scanner.clear()
     }
@@ -253,7 +257,8 @@ export function renderIMG(data) {
 
     }
 
-    function displayAlbum() {
+    function displayAlbum(data) {
+          console.log(data.img);
         container.setAttribute("id", "containerFindMyIphone")
         container.innerHTML = `
             <div class="topDOM">
@@ -271,18 +276,18 @@ export function renderIMG(data) {
                 <div class="gridContainer"></div>
             </div>
             <div class="btmDOM">
-                <p>${flow.img.length} Foton, 0 Videos </p>    
+                <p>${data.img.length} Foton, 0 Videos </p>    
             </div>
         `;
 
-        console.log(flow.img);
+      
 
         let gridContainer = container.querySelector(".gridContainer")
-        flow.img.forEach(img => {
+        data.img.forEach(img => {
             let imgDOM = document.createElement("img");
             imgDOM.src = `${img}`;
             gridContainer.append(imgDOM)
-            imgDOM.onclick = () => displayIMG(img)
+            imgDOM.onclick = () => displayIMG(data, img)
 
         })
     }
@@ -297,11 +302,10 @@ export function renderIMG(data) {
                 </button>
             </div>
         `;
-
-        container.querySelector(".camera").onclick = () => displayCameraFootage(flow.img1, "Kamera 1");
+        container.querySelector(".camera").onclick = () => displayCameraFootage(data.img1, "Kamera 1");
     }
 
-    function displayIMG(img) {
+    function displayIMG(data, img) {
         container.setAttribute("id", "displayIMG")
         container.innerHTML = `
             <section>
@@ -322,7 +326,7 @@ export function renderIMG(data) {
         })
 
         container.querySelector("#returnToAlbum").addEventListener("click", () => {
-            displayAlbum()
+            displayAlbum(data)
         })
     }
 
@@ -368,6 +372,7 @@ export function renderIMG(data) {
 export function renderAnalogChallange(level) {
     console.log(level)
     dialog.show()
+    dialog.style.display = `block`;
     document.querySelector(".overlay").style.display = `block`;
     dialog.setAttribute("id", "analogControll")
     dialog.innerHTML = `
@@ -380,14 +385,17 @@ export function renderAnalogChallange(level) {
 
     dialog.querySelector(".true").addEventListener("click", () => {
         globalHolder.push(level.level, level.name)
-        renderGame()
+
         dialog.close()
+        dialog.style.display = `none`;
         document.querySelector(".overlay").style.display = `none`;
+         renderGame()
     })
 
     dialog.querySelector(".false").addEventListener("click", () => {
-        dialog.close()
         document.querySelector(".overlay").style.display = `none`;
+        dialog.style.display = `none`;
+        dialog.close()       
     })
 }
 
@@ -417,7 +425,6 @@ export function addCode(){
 export async function endGame() {
     let user = globalHolder.get("user")
     let startTime = globalHolder.get("StartTime")
-    globalHolder.reset("StartTime")
 
     let endTime = getCurrentTime();
 
@@ -450,9 +457,9 @@ export async function endGame() {
 
     alert(`Congratulations! You've earned ${totalPoints} points for completing the game in ${durationInMinutes} minutes.`);
     globalHolder.reset()
+    localStorage.removeItem("HTML5_QRCODE_DATA")
     renderHomepage()
     renderScoreBoard(user, durationInMinutes, totalPoints);
-    localStorage.removeItem("StartTime")
 }
 
 

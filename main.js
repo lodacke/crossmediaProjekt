@@ -48,27 +48,19 @@ export function renderHomepage() {
 
 }
 
-export function renderGame() {
+export async function renderGame() {
 
     let holdStart = globalHolder.get("StartTime");
     window.location.hash = "#game";
 
     if (!holdStart) {
-        introGame()
         let startTime = getCurrentTime();
         globalHolder.set("StartTime", startTime) // set startTime to use in end function later
+        introGame() 
     }
 
-    //SAMPLE OF NAME FOR GLOBAL HOLDERS: 
-    let testlevelOne = ["Alex", "Mickan", "Ove", "Anette", "Fredde"];
-    let testlevelTwo = ["Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary", "findLeader"];
-
-    //UPDATE LEVELS 
-    // testlevelOne.forEach(level => {
-    //     globalHolder.push("levelOne", level)
-    // })
-
     let level = levelCount()
+    console.log(level)
 
     swapStyleSheet("CSS/homePage.css")
 
@@ -84,8 +76,8 @@ export function renderGame() {
         </div>
         `;
 
-     let test = main.querySelector(".test")
-     test.addEventListener("click", addCode)
+    let test = main.querySelector(".test")
+    test.addEventListener("click", addCode)
     const arrow = document.querySelector("#menu #dropArrow");
     const header = document.querySelector("header");
 
@@ -113,6 +105,7 @@ export function renderGame() {
 
     document.querySelector("#quit").addEventListener("click", () => {
         window.location.hash = "";
+        globalHolder.reset()
         endGame()
     })
 
@@ -195,11 +188,10 @@ export function renderGame() {
 
         let DONEiconURL = 'data:image/svg+xml;charset=UTF-8;base64,' + btoa(DONEiconSVG);
 
-        let globalCounter = globalHolder.get("levels")
         let doneTask = [];
-        for (const key in globalCounter) {
-            if (Object.hasOwnProperty.call(globalCounter, key)) {
-                const value = globalCounter[key];
+        for (const key in globalHolder.levels) {
+            if (Object.hasOwnProperty.call(globalHolder.levels, key)) {
+                let value = globalHolder.levels[key];
                 if (Array.isArray(value)) {
                     doneTask.push(...value);
                 } else {

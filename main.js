@@ -94,7 +94,7 @@ export function renderGame() {
     function originalEventHandler() {
         arrow.style.transform = `rotate(180deg)`;
         setTimeout(() => {
-            header.style.transform = `translateY(-25vh)`;
+            header.style.transform = `translateY(-28vh)`;
             header.style.transition = `transform 1s ease`;
         }, 10);
 
@@ -298,6 +298,9 @@ function renderInfo(level, map) {
 function renderNotes() {
 
     let previousContent = window.localStorage.getItem("notes")
+    if (previousContent == "null") {
+        previousContent = `Skriv ner dina anteckningar...`;
+    }
 
     dialog.show()
     dialog.style.display = `flex`;

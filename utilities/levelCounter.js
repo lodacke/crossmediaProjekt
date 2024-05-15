@@ -13,14 +13,14 @@ export function levelCount() {
         if (globalHolder.levels.levelOne.length < 5) {
             return levelOne;
 
-        } 
+        }
         else {
-            if (globalHolder.levels.levelOne_completed){
+            if (globalHolder.levels.levelOne_completed) {
                 console.log("true")
-                 userAlert("levelTwo")
-                return levelTwo;               
+                userAlert("levelTwo")
+                return levelTwo;
             }
-            return levelTwo;  
+            return levelTwo;
         }
     }
     if (globalHolder.levels.levelTwo) {
@@ -30,11 +30,11 @@ export function levelCount() {
 
         } else {
 
-            if(globalHolder.levels.levelOne_completed){
+            if (globalHolder.levels.levelOne_completed) {
                 findLeader("levelTwo")
                 return levelThree;
-            }   
-            return levelThree;       
+            }
+            return levelThree;
         }
     }
     if (globalHolder.levels.levelThree) {
@@ -85,6 +85,7 @@ export function findLeader() {
 
     // swapStyleSheet("CSS/chooseCharacter.css");
     dialog.show()
+    dialog.style.display = `flex`;
     dialog.setAttribute("id", "chooseCharacter");
     dialog.innerHTML = `
         <h2>VEM ÄR SEKTLEDAREN?</h2>
@@ -135,6 +136,7 @@ export function findLeader() {
                     `;
                     container.querySelector("button").addEventListener("click", () => {
                         dialog.close()
+                        dialog.style.display = `none`;
                         dialog.removeAttribute("id", "chooseCharacter");
                         globalHolder.removeItem('levelTwo_completed')
                         renderGame()

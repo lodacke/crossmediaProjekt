@@ -57,7 +57,7 @@ export async function renderGame() {
     if (!holdStart) {
         let startTime = getCurrentTime();
         globalHolder.set("StartTime", startTime) // set startTime to use in end function later
-        introGame() 
+        introGame()
     }
 
     let level = await levelCount()
@@ -72,12 +72,9 @@ export async function renderGame() {
         <div class="helpers">
            <div id="map"></div>
            <div class="containerTemp"></div>
-           <button class="test"></button>
         </div>
         `;
 
-    let test = main.querySelector(".test")
-    test.addEventListener("click", addCode)
     const arrow = document.querySelector("#menu #dropArrow");
     const header = document.querySelector("header");
 

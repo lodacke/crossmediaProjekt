@@ -20,6 +20,10 @@ export const infoAboutUs = [
         text: "På höger sida om kartan finns en ikon som leder till anteckningar. Det är upp till dig att anteckna och sålla ut relevant information från ledtrådarna för att lösa fallet."
     },
     {
+        title: "UPPLEVELSE",
+        text: "För bäst upplevelse: <br>1. Öppna sidan på Safari (webbläsare) <br>2. Tryck på ikonen till vänster om historik <br>3. Tryck på 'Lägg till i hemskärmen'"
+    },
+    {
         title: "LYCKA TILL!",
         text: "Nu borde spelet finnas i din hemskärm! Öppna den därifrån och börja din resa. Lycka till!"
     }

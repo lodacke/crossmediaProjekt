@@ -276,10 +276,10 @@ export function renderIMG(data) {
     if(data.name === "mapPuzzel") {
         console.log("inne")
         container.innerHTML = `
-            <div id="imgMeeting">
+            <div id="mapPuzzle">
                 <h2>KARTA</h2>
                 <img src=${flow.img}>
-                </button></button>
+                <button> KLAR </button>
             </div>
         `;
         container.querySelector("button").addEventListener("click", () => {

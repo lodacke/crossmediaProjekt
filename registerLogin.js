@@ -1,4 +1,4 @@
-import { main } from "./utilities/variable.js"
+import { main, body, dialog, globalHolder } from "./utilities/variable.js";
 import { renderHomepage } from "./main.js"
 import { userMessage } from "./utilities/userMessage.js";
 import { swapStyleSheet } from "./utilities/cssSwap.js";
@@ -56,10 +56,38 @@ export async function renderLogin() {
             userMessage(messageDom, error.message)
         }
     })
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        const hasInstructionBeenShown = sessionStorage.getItem("instructionShown");
+
+        console.log("HELLO");
+        if (!hasInstructionBeenShown) {
+            console.log("JAPP");
+            dialog.show()
+            dialog.style.display = `block`;
+            dialog.setAttribute("id", "instructionsDialog")
+            document.querySelector(".overlay").style.display = `block`;
+
+            dialog.innerHTML = ` 
+                <div>
+                    <h2>UPPLEVELSE</h2>
+                    <p>För bäst upplevelse: <br>1. Öppna sidan på Safari (webbläsare) <br>2. Tryck på ikonen till vänster om historik <br>3. Tryck på 'Lägg till i hemskärmen</p>
+                    <button>Got it!</button>
+                </div>  
+            `;
+
+            dialog.querySelector("button").addEventListener("click", () => {
+                dialog.removeAttribute("id", "instructionsDialog")
+                dialog.close()
+                dialog.style.display = `none`;
+                document.querySelector(".overlay").style.display = `none`;
+                sessionStorage.setItem("instructionShown", "true");
+            })
+        }
+    })
 }
 
 export async function renderRegister() {
-
     main.innerHTML = `
     <h1>REGISTRERA</h1>
     <section>

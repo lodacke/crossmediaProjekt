@@ -859,3 +859,32 @@ span {
     padding: 1.3vh;
     margin-top: 5px;
 }
+
+/* DIALOG FOR CODE */
+
+#codeDialog{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#codeDialog > p{
+    text-align: center;
+}
+
+.containerCode{
+    display: flex;
+     justify-content: center;
+    margin: 10%;
+}
+
+.containerCode > input{
+    width: 20px;
+    height: 50px;
+    margin: 5px;
+}
+
+#codeDialog > button{
+    width: 60%;
+    align-self: center;
+}

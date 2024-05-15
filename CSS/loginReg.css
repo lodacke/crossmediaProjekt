@@ -38,12 +38,12 @@ main {
 h1 {
     color: var(--yellow);
     font-weight: 500;
-    margin-top: 20%;
+    margin-top: 15%;
 }
 
 section {
     width: 90%;
-    height: 60%;
+    height: 65%;
 }
 
 div {
@@ -83,7 +83,7 @@ input {
 
 #userMessage {
     font-size: 18px;
-    color: red;
+    background-color: #2A2A2A;
     background-color: var(--white);
     text-align: center;
     padding: 1vh;
@@ -101,4 +101,33 @@ button {
     border: none;
     border-radius: 5px;
     box-shadow: var(--boxShadow);
+}
+
+#instructionsDialog {
+    top: 30vh;
+    background-color: #363636;
+    box-shadow: var(--boxShadow);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#instructionsDialog div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#instructionsDialog h2 {
+    margin-bottom: 0;
+    color: var(--yellow);
+    text-align: center;
+}
+
+#instructionsDialog p {
+    color: var(--white);
+    width: 90%;
+}
+
+#instructionsDialog button {
+    margin-bottom: 15px;
 }

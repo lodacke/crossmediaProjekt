@@ -64,18 +64,18 @@ export function renderQRscann(level) {
     }
 
     dialog.querySelector(".optionalCall").addEventListener("click", () => {
-    try {
+        try {
 
-        const fn = eval(level.function);
-        if (typeof fn === 'function') {
-            fn(level);
-            dialog.close()
-        } else {
-            console.error('Evaluated value is not a function');
+            const fn = eval(level.function);
+            if (typeof fn === 'function') {
+                fn(level);
+                dialog.close()
+            } else {
+                console.error('Evaluated value is not a function');
+            }
+        } catch (error) {
+            console.error('Error evaluating code:', error);
         }
-    } catch (error) {
-        console.error('Error evaluating code:', error);
-    }
     });
 
 }
@@ -399,23 +399,25 @@ export function renderAnalogChallange(level) {
     })
 }
 
-export function addCode(){
+export function addCode() {
     dialog.show()
+    document.querySelector(".overlay").style.display = `block`;
     dialog.setAttribute("id", "codeDialog");
     dialog.innerHTML = `
-    <h1>SIFFERKOD</h1>
-    <p>Skriv in koden som finns vid stationen när du genomfört den</p>
-    <div class="containerCode">
-        <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
-        <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
-        <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
-        <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
-    </div>
-    <button class="done">KLAR</button>
+        <h2>SIFFERKOD</h2>
+        <p>Skriv in koden som finns vid stationen när du genomfört den</p>
+        <div class="containerCode">
+            <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+            <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+            <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+            <input type="text" maxlength="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
+        </div>
+        <button class="done">KLAR</button>
     `;
 
     dialog.querySelector(".done").addEventListener("click", () => {
 
+        document.querySelector(".overlay").style.display = `none`;
         dialog.close()
         dialog.removeAttribute("id", "codeDialog")
         endGame()
@@ -455,11 +457,24 @@ export async function endGame() {
         console.log(error)
     }
 
-    alert(`Congratulations! You've earned ${totalPoints} points for completing the game in ${durationInMinutes} minutes.`);
-    globalHolder.reset()
-    localStorage.removeItem("HTML5_QRCODE_DATA")
-    renderHomepage()
-    renderScoreBoard(user, durationInMinutes, totalPoints);
+    dialog.show();
+    document.querySelector(".overlay").style.display = `block`;
+    dialog.setAttribute("id", "endMess")
+    dialog.innerHTML = `
+        <h2>GRATTIS!</h2>
+        <p class="mess">Du har tjänat in ${totalPoints} poäng för att du klarade spelet under ${Math.round(durationInMinutes)} minuter!</p>
+    `;
+
+    setTimeout(() => {
+        dialog.close();
+        document.querySelector(".overlay").style.display = `none`;
+        dialog.removeAttribute("id", "endMess")
+
+        globalHolder.reset()
+        renderHomepage()
+        renderScoreBoard(user, durationInMinutes, totalPoints);
+        localStorage.removeItem("StartTime")
+    }, 4000);
 }
 
 

@@ -502,7 +502,7 @@ dialog::backdrop {
     width: 80%;
     height: auto;
     position: fixed;
-    top: 30vh;
+    top: 35vh;
     box-shadow: var(--boxShadow);
 }
 

@@ -38,12 +38,12 @@ main {
 h1 {
     color: var(--yellow);
     font-weight: 500;
-    margin-top: 20%;
+    margin-top: 15%;
 }
 
 section {
     width: 90%;
-    height: 60%;
+    height: 65%;
 }
 
 div {

@@ -43,7 +43,7 @@ export function renderHomepage() {
     })
 
     main.querySelector("#settings").addEventListener("click", () => {
-        renderSettings()
+        renderSettings(false)
     })
 
 }
@@ -84,8 +84,8 @@ export function renderGame() {
         </div>
         `;
 
-     let test = main.querySelector(".test")
-     test.addEventListener("click", addCode)
+    let test = main.querySelector(".test")
+    test.addEventListener("click", addCode)
     const arrow = document.querySelector("#menu #dropArrow");
     const header = document.querySelector("header");
 
@@ -133,7 +133,7 @@ export function renderGame() {
     })
 
     main.querySelector("#settings").addEventListener("click", () => {
-        renderSettings()
+        renderSettings(true)
     })
 
 
@@ -353,7 +353,7 @@ function renderCharacters() {
     })
 }
 
-function renderSettings() {
+function renderSettings(inGame) {
     dialog.show()
     dialog.style.display = `block`;
     dialog.setAttribute("id", "settingsDialog")
@@ -366,9 +366,23 @@ function renderSettings() {
         <h2>SETTINGS</h2>
         <div id="contentSettings">
             <button>Logga ut</button>
-            <button id="endGame">Avsluta</button>
         </div>
     `;
+
+    if (inGame) {
+        document.getElementById("contentSettings").innerHTML += `
+            <button id="endGame">Avsluta</button>
+        `;
+
+        dialog.querySelector("#endGame").addEventListener("click", () => {
+            window.location.hash = "";
+            dialog.close()
+            dialog.style.display = `none`;
+            document.querySelector(".overlay").style.display = `none`;
+
+            endGame()
+        })
+    }
 
     dialog.querySelector("button").addEventListener("click", () => {
         globalHolder.reset()
@@ -388,15 +402,6 @@ function renderSettings() {
         document.querySelector(".overlay").style.display = `none`;
 
         endSession()
-    })
-
-    dialog.querySelector("#endGame").addEventListener("click", () => {
-        window.location.hash = "";
-        dialog.close()
-        dialog.style.display = `none`;
-        document.querySelector(".overlay").style.display = `none`;
-
-        endGame()
     })
 
     endSession()

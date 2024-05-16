@@ -8,7 +8,8 @@ export const levelOne =
             "level": "levelOne",
             "type": "QR",
             "clue": "Träffa Fredde för att få reda på mer om vad som hänt",
-            "placement": "Leta vid en hög lyktstolpe."
+            "placement": "Leta vid en hög lyktstolpe.",
+            "src": "media/gameIMG/Fredde.png"
         },
         {
             "latitude": 55.61346,
@@ -18,7 +19,8 @@ export const levelOne =
             "level": "levelOne",
             "type": "QR",
             "clue": "Träffa Alex för att få reda på mer om vad som hänt",
-            "placement": "Leta vid en låg lyktstolpe bland cyklarna"
+            "placement": "Leta vid en låg lyktstolpe bland cyklarna",
+            "src": "media/gameIMG/Alex.png"
         },
         {
             "latitude": 55.61629,
@@ -28,7 +30,8 @@ export const levelOne =
             "level": "levelOne",
             "type": "QR",
             "clue": "Träffa Mickan för att få reda på mer om vad som hänt",
-            "placement": "Leta där man slänger skräp."
+            "placement": "Leta där man slänger skräp.",
+            "src": "media/gameIMG/Mickan.png"
         },
         {
             "latitude": 55.61518,
@@ -38,7 +41,8 @@ export const levelOne =
             "level": "levelOne",
             "type": "QR",
             "clue": "Träffa Ove för att få reda på mer om vad som hänt",
-            "placement": "Leta på en låg lykta i metall vid vattnet. "
+            "placement": "Leta på en låg lykta i metall vid vattnet. ",
+            "src": "media/gameIMG/Ove.png"
         },
         {
             "latitude": 55.61684,
@@ -48,7 +52,8 @@ export const levelOne =
             "level": "levelOne",
             "type": "QR",
             "clue": "Träffa Anette för att få reda på mer om vad som hänt",
-            "placement": "Leta på ett skåp i metall vid vattnet."
+            "placement": "Leta på ett skåp i metall vid vattnet.",
+            "src": "media/gameIMG/Anette.png"
         }
     ]
 

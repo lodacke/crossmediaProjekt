@@ -39,7 +39,7 @@ export function renderQRscann(level) {
     scanner.render(success, error)
 
     function success(result) {
-        
+
         window.location.hash = "#game";
         const data = parseText(result);
 
@@ -193,11 +193,11 @@ export function renderConversation(data) {
                     main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
 
                     setTimeout(() => {
-                        main.querySelector("#prompt").innerHTML = ``;
+                        main.querySelector("#send").innerHTML = ``;
                         let button = document.createElement("button");
                         button.textContent = "KLAR";
                         button.classList.add("nextLevel");
-                        main.querySelector("#prompt").append(button)
+                        main.querySelector("#send").append(button)
                         button.addEventListener("click", () => {
                             globalHolder.push(data.level, data.name)
                             renderGame();
@@ -289,7 +289,7 @@ export function renderIMG(data) {
         container.querySelector(".camera").onclick = () => displayCameraFootage(data.img1, "Kamera 1");
     }
 
-    if(data.name === "mapPuzzel") {
+    if (data.name === "mapPuzzel") {
         console.log(flow)
         container.innerHTML = `
             <div id="mapPuzzle">
@@ -326,7 +326,7 @@ export function renderIMG(data) {
             </div>
         `;
 
-      
+
 
         let gridContainer = container.querySelector(".gridContainer")
         data.img.forEach(img => {
@@ -421,25 +421,25 @@ export function renderAnalogChallange(level) {
         dialog.close()
         dialog.style.display = `none`;
         document.querySelector(".overlay").style.display = `none`;
-         renderGame()
+        renderGame()
     })
 
     dialog.querySelector(".false").addEventListener("click", () => {
         document.querySelector(".overlay").style.display = `none`;
         dialog.style.display = `none`;
-        dialog.close()       
+        dialog.close()
     })
 }
 
 export function addCode() {
 
     dialog.show()
-    dialog.style.display = `block`;  
+    dialog.style.display = `block`;
     dialog.setAttribute("id", "codeDialog");
     document.querySelector(".overlay").style.display = `block`;
 
-    let correctCode = ["3","5","6","1"];
-    
+    let correctCode = ["3", "5", "6", "1"];
+
     dialog.innerHTML = `
         <h2>SIFFERKOD</h2>
         <p class="topMess">Skriv in koden som finns vid stationen när du genomfört den</p>
@@ -474,7 +474,7 @@ export function addCode() {
                 dialog.querySelector(".tempMess").textContent = "";
                 dialog.classList.remove("shake");
             }, 2000);
-}
+        }
     })
 }
 

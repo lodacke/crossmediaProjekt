@@ -525,12 +525,18 @@ dialog::backdrop {
 /* SETTINGS */
 
 #settingsDialog {
+    display: none;
     background-color: #3D3B3A;
-    width: 80%;
+    width: auto;
     height: auto;
     position: fixed;
     top: 35vh;
     box-shadow: var(--boxShadow);
+    z-index: 100;
+    left: 7vw;
+    right: 7vw;
+    border-radius: 5px;
+    padding: 2vh 1vh;
 }
 
 #settingsDialog h2 {

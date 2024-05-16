@@ -349,13 +349,16 @@ function renderCharacters() {
 }
 
 function renderSettings(inGame) {
-    dialog.show()
-    dialog.style.display = `block`;
-    dialog.setAttribute("id", "settingsDialog");
+    // dialog.show()
+    // dialog.style.display = `block`;
+    // dialog.setAttribute("id", "settingsDialog");
+
+    let settings = document.getElementById("settingsDialog");
+    settings.style.display = "block";
 
     document.querySelector(".overlay").style.display = `block`;
 
-    dialog.innerHTML = `
+    settings.innerHTML = `
         <div id="topContainer">
             <ion-icon class="exit" name="close-outline"></ion-icon>
         </div>
@@ -370,31 +373,34 @@ function renderSettings(inGame) {
             <button id="endGame">Avsluta</button>
         `;
 
-        dialog.querySelector("#endGame").addEventListener("click", () => {
+        settings.querySelector("#endGame").addEventListener("click", () => {
             window.location.hash = "";
-            dialog.close()
-            dialog.style.display = `none`;
+            // dialog.close()
+            // dialog.style.display = `none`;
+            settings.style.display = "none";
             document.querySelector(".overlay").style.display = `none`;
 
             endGame()
         })
     }
 
-    dialog.querySelector("button").addEventListener("click", () => {
+    settings.querySelector("button").addEventListener("click", () => {
         globalHolder.reset()
         localStorage.removeItem("user");
-        dialog.removeAttribute("id", "settingsDialog")
-        dialog.close()
-        dialog.style.display = `none`;
+        // dialog.removeAttribute("id", "settingsDialog")
+        // dialog.close()
+        // dialog.style.display = `none`;
+        settings.style.display = "none";
         document.querySelector(".overlay").style.display = `none`;
         body.removeAttribute("style", "background-image: url('../media/moln.jpeg');");
 
         renderLogin()
     })
 
-    dialog.querySelector(".exit").addEventListener("click", () => {
-        dialog.close()
-        dialog.style.display = `none`;
+    settings.querySelector(".exit").addEventListener("click", () => {
+        // dialog.close()
+        // dialog.style.display = `none`;
+        settings.style.display = "none";
         document.querySelector(".overlay").style.display = `none`;
 
         endSession()

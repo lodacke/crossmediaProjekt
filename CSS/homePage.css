@@ -966,6 +966,7 @@ span {
 /* END MESSAGE WHEN COMPLETING GAME*/
 
 #endMess {
+    display: none;
     background-color: #363636;
     top: 35vh;
     width: auto;

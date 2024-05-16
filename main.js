@@ -301,7 +301,7 @@ function renderNotes() {
     dialog.innerHTML = `
         <textarea type="text" id="notesInput">${previousContent}</textarea>
         <button id="return">
-            <ion-icon name="return-down-back-outline"></ion-icon>
+            <ion-icon name="chevron-back-outline"></ion-icon>
         </button>
     `;
 
@@ -342,7 +342,7 @@ function renderCharacters() {
         containerDom.append(characterDom);
     });
 
-    charactersPopUp.querySelector(".exit").addEventListener( "click", () => {
+    charactersPopUp.querySelector(".exit").addEventListener("click", () => {
         charactersPopUp.classList.remove("charactersPopUp");
         charactersPopUp.style.display = "none";
     })
@@ -464,13 +464,14 @@ export async function renderScoreBoard(user, duration, userScore) {
 
     dialog.innerHTML = `
         <div id="container">
-            <div id="topContainer">
-                <ion-icon name="return-down-back"></ion-icon>
-            </div>
+            
             <h2>TOPPLISTA</h2>
             <div id="content">
                 <div class="top3Users"></div>
                 <div class="allUsers"></div>
+            </div>
+            <div id="topContainer">
+                <ion-icon name="chevron-back-outline"></ion-icon>
             </div>
         </div>
     `;

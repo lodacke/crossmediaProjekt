@@ -445,7 +445,7 @@ textarea:focus {
     border: none;
     width: 100%;
     display: flex;
-    padding: 15px;
+    padding: 15px 0;
     cursor: pointer;
 }
 
@@ -638,13 +638,13 @@ dialog::backdrop {
 }
 
 #scoreboardDialog h2 {
-    margin-top: 3vh;
+    margin-top: 10vh;
 }
 
 #scoreboardDialog #container {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 95vh;
     width: 95%;
 }
 
@@ -656,6 +656,10 @@ dialog::backdrop {
 #scoreboardDialog #topContainer {
     display: flex;
     justify-content: start;
+}
+
+#scoreboardDialog #topContainer ion-icon {
+    margin: 0;
 }
 
 #scoreboardDialog #content {
@@ -959,10 +963,11 @@ span {
 
 #endMess h2 {
     margin-top: 3vh;
+    text-align: center;
+    margin-left: 5%;
 }
 
 #endMess p {
-    text-align: center;
     font-size: 18px;
     color: var(--white);
 }

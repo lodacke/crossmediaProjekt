@@ -350,7 +350,7 @@ export function renderIMG(data) {
                 </div>
                 
                 <div class="bottomDIV">
-                    <ion-icon name="return-down-back-outline" id="returnToAlbum"></ion-icon>
+                    <ion-icon name="chevron-back-outline" id="returnToAlbum"></ion-icon>
                     <button class="levelComplete">KLAR</button>
                 </div>
             </section>

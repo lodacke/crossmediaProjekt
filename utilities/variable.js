@@ -30,8 +30,6 @@ export const globalHolder = {
   reset: function () {
     localStorage.removeItem('levels');
     localStorage.removeItem('startTime');
-    //this.levels = {};
-    //localStorage.setItem('levels', JSON.stringify(this.levels));
   },
 
   removeItem: function (key) {

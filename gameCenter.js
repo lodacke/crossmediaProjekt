@@ -39,11 +39,10 @@ export function renderQRscann(level) {
     scanner.render(success, error)
 
     function success(result) {
-        console.log(result)
+        
         window.location.hash = "#game";
         const data = parseText(result);
 
-        alert(result)
         if (data.type === "function") {
 
             const dataString = JSON.stringify(data)
@@ -145,7 +144,7 @@ export function renderConversation(data) {
                 main.querySelector(".conversation").append(answerDom);
                 main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
 
-                if (element.response === "one", "two", "three", "four", "five", "six", "seven", "eight") {
+                if (element.response === "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve") {
                     renderConversation(element.response);
                 }
                 if (element.end) {
@@ -172,11 +171,21 @@ export function renderConversation(data) {
 
                     }, 1000)
                     setTimeout(() => {
-                        globalHolder.push(data.level, data.name)
-                        renderGame();
+                        main.querySelector("#prompt").innerHTML = ``;
+                        let button = document.createElement("button");
+                        button.textContent = "KLAR";
+                        button.classList.add("nextLevel");
+                        main.querySelector("#prompt").append(button)
+                        button.addEventListener("click", () => {
+                            globalHolder.push(data.level, data.name)
+                            renderGame();
+                        })
                     }, spanLength)
 
                 } if (element.lastMessage) {
+                    buttons.forEach(button => {
+                        button.disabled = true
+                    })
                     let endDom = document.createElement("div");
                     endDom.setAttribute("id", "endC");
                     endDom.innerHTML = `<p>${element.lastMessage}</p>`
@@ -184,9 +193,15 @@ export function renderConversation(data) {
                     main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
 
                     setTimeout(() => {
-
-                        globalHolder.push(data.level, data.name)
-                        renderGame();
+                        main.querySelector("#prompt").innerHTML = ``;
+                        let button = document.createElement("button");
+                        button.textContent = "KLAR";
+                        button.classList.add("nextLevel");
+                        main.querySelector("#prompt").append(button)
+                        button.addEventListener("click", () => {
+                            globalHolder.push(data.level, data.name)
+                            renderGame();
+                        })
                     }, 3000)
                 }
             };
@@ -217,6 +232,7 @@ export function renderConversation(data) {
                     }
 
                     main.querySelector(".conversation").append(questionDom)
+                    questionDom.scrollTop = "100%";
 
                 }, 1000)
             }
@@ -274,7 +290,7 @@ export function renderIMG(data) {
     }
 
     if(data.name === "mapPuzzel") {
-        console.log("inne")
+        console.log(flow)
         container.innerHTML = `
             <div id="mapPuzzle">
                 <h2>KARTA</h2>
@@ -286,10 +302,9 @@ export function renderIMG(data) {
             globalHolder.push(data.level, data.name)
             renderGame()
         });
-
     }
 
-        function displayAlbum(data) {
+    function displayAlbum(data) {
         container.setAttribute("id", "containerFindMyIphone")
         container.innerHTML = `
             <div class="topDOM">
@@ -388,7 +403,6 @@ export function renderIMG(data) {
 }
 
 export function renderAnalogChallange(level) {
-    console.log(level)
     dialog.show()
     dialog.style.display = `block`;
     document.querySelector(".overlay").style.display = `block`;
@@ -419,11 +433,12 @@ export function renderAnalogChallange(level) {
 
 export function addCode() {
 
-    let correctCode = ["3","5","6","1"];
-    dialog.setAttribute("id", "codeDialog");
-    dialog.style.display = `block`;
     dialog.show()
+    dialog.style.display = `block`;  
+    dialog.setAttribute("id", "codeDialog");
     document.querySelector(".overlay").style.display = `block`;
+
+    let correctCode = ["3","5","6","1"];
     
     dialog.innerHTML = `
         <h2>SIFFERKOD</h2>
@@ -449,17 +464,17 @@ export function addCode() {
         if (inputValues.length === correctCode.length && inputValues.every((value, index) => value === correctCode[index])) {
             document.querySelector(".overlay").style.display = `none`;
             dialog.close();
-             dialog.style.display = `none`;
+            dialog.style.display = `none`;
             dialog.removeAttribute("id", "codeDialog")
             endGame()
         } else {
-            dialog.querySelector(".tempMess").textContent = "Fel kod, försök igen!"
+            dialog.querySelector(".tempMess").textContent = "Fel kod, försök igen!";
+            dialog.classList.add("shake");
             setTimeout(() => {
-                dialog.querySelector(".tempMess").textContent = ""
-            }, 2000)
-           
-            
-        }
+                dialog.querySelector(".tempMess").textContent = "";
+                dialog.classList.remove("shake");
+            }, 2000);
+}
     })
 }
 
@@ -475,7 +490,9 @@ export async function endGame() {
 
     let pointsPerMinute = 1;
 
-    let totalPoints = Math.floor(durationInMinutes * pointsPerMinute);
+    let points = Math.floor(durationInMinutes * pointsPerMinute);
+    console.log(points)
+    let totalPoints = 1000 - points;
 
     try {
         let response = await fetch("../API/setPoints.php", {

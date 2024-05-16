@@ -144,6 +144,7 @@ ion-icon {
     padding-top: 20px;
     overflow-x: auto;
     height: 11vh;
+    scrollbar-width: none;
 }
 
 .controlC button {

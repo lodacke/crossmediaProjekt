@@ -1,8 +1,6 @@
 import { globalHolder, dialog } from "./variable.js"
 import { levelTwo, levelThree, levelOne } from "../API/qlues.js"
 import { renderGame, renderScoreBoard } from "../main.js";
-import { swapStyleSheet } from "./cssSwap.js";
-//import { main } from "./variable.js";
 import { characters } from "../API/characters.js";
 
 

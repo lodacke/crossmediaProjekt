@@ -226,7 +226,7 @@ export function renderConversation(data) {
                     for (let i = 0; i < currentFlow[key].length; i++) {
                         setTimeout(() => {
                             let span = document.createElement("span");
-                            span.textContent = currentFlow[key][i];
+                            span.textContent = currentFlow[key][i].replace(/\n/g, "<br>");;
                             questionDom.querySelector("p").append(span);
                         }, i * 30);
                     }

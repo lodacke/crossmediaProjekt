@@ -342,7 +342,7 @@ function renderCharacters() {
         containerDom.append(characterDom);
     });
 
-    endSession(".exit", () => {
+    charactersPopUp.querySelector(".exit").addEventListener( "click", () => {
         charactersPopUp.classList.remove("charactersPopUp");
         charactersPopUp.style.display = "none";
     })

@@ -469,7 +469,7 @@ dialog::backdrop {
 /* QR SCANNER */
 #scannerContainer {
     position: fixed;
-    top: 30%;
+    top: 25%;
     height: fit-content;
     width: 60vw;
     background-color: #0000008a;
@@ -506,6 +506,15 @@ dialog::backdrop {
 
 #reader__filescan_input {
     font-size: 14px;
+}
+
+.optionalCall {
+    background-color: #b3b3b3;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 0.5vh 2vh;
 }
 
 /* SETTINGS */

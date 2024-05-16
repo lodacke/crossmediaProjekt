@@ -351,7 +351,8 @@ function renderCharacters() {
 function renderSettings(inGame) {
     dialog.show()
     dialog.style.display = `block`;
-    dialog.setAttribute("id", "settingsDialog")
+    dialog.setAttribute("id", "settingsDialog");
+
     document.querySelector(".overlay").style.display = `block`;
 
     dialog.innerHTML = `

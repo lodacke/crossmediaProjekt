@@ -228,7 +228,7 @@ function introGame() {
     document.querySelector(".overlay").style.display = `block`;
     dialog.setAttribute("id", "welcomeDialog")
     dialog.innerHTML = `
-    <h2>VÄLKOMMEN</h2>
+    <h2>Hej!</h2>
     <p>${intro}</p>
     <button>FORTSÄTT</button>
     `;
@@ -539,9 +539,6 @@ export async function renderScoreBoard(user, duration, userScore) {
                 dom.innerHTML = `
                     <section>
                         <h1>${index + 1}</h1>
-                        <div class="profileContainer">
-                            <ion-icon name="person"></ion-icon>
-                        </div>
                         <h3>${user.username}</h3>
                     </section>
                     <p>${maxPoints}p</p>

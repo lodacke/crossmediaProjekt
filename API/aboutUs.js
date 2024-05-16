@@ -21,7 +21,7 @@ export const infoAboutUs = [
     },
     {
         title: "UPPLEVELSE",
-        text: "För bäst upplevelse: <br>1. Öppna sidan på Safari (webbläsare) <br>2. Tryck på ikonen till vänster om historik <br>3. Tryck på 'Lägg till i hemskärmen'"
+        text: "För bäst upplevelse: <br><span>1.</span>   Öppna sidan på Safari (webbläsare) <br><span>2.</span>   Tryck på ikonen till vänster om historik <br><span>3.</span>   Tryck på 'Lägg till i hemskärmen'"
     },
     {
         title: "LYCKA TILL!",

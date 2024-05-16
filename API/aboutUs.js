@@ -1,15 +1,15 @@
 export const infoAboutUs = [
     {
         title: "OM SPELET",
-        text: "Det är en mysteriegåta som utspelar sig i västra hamnen, Malmö. Karaktärerna i spelet, som även är medlemmar av en sekt, är baserat på karaktärerna i solsidan. Du har rollen som ”sektexpert” och ska lösa gåtan."
+        text: "Det är en mysteriegåta som utspelar sig i västra hamnen, Malmö. Karaktärerna i spelet, som även är medlemmar av en sekt, är baserat på karaktärerna i solsidan. Ditt uppdrag är att lösa gåtan genom att samla ledtrådar."
     },
     {
         title: "HUR GÖR MAN?",
-        text: "Du ska ta dig till de olika stationerna markerade på kartan. På varje station finns en QR-kod som du skannar med mobilkameran för att få tillgång till olika ledtrådar"
+        text: "Du ska ta dig till de olika stationerna markerade på kartan. På vissa stationer finns en QR-kod som du skannar med mobilkameran för att få tillgång till olika ledtrådar"
     },
     {
         title: "OLIKA STATIONER",
-        text: "Det finns olika typer av stationer, digitala och analoga. De digitala utförs i mobilen och kan t.ex. vara sms-konversationer med flervalsalternativ. De analoga stationerna har fysiska ledtrådar på plats."
+        text: "Det finns olika typer av stationer, digitala och analoga. De digitala utförs i mobilen och kan t.ex. vara sms-konversationer med flervalsalternativ. Dessa är de med QR-koder medan de analoga stationerna har fysiska ledtrådar på plats."
     },
     {
         title: "POÄNGRÄKNING",
@@ -21,7 +21,7 @@ export const infoAboutUs = [
     },
     {
         title: "UPPLEVELSE",
-        text: "För bäst upplevelse: <br>1. Öppna sidan på Safari (webbläsare) <br>2. Tryck på ikonen till vänster om historik <br>3. Tryck på 'Lägg till i hemskärmen'"
+        text: "För bäst upplevelse: <br><span>1.</span>   Öppna sidan på Safari (webbläsare) <br><span>2.</span>   Tryck på ikonen till vänster om historik <br><span>3.</span>   Tryck på 'Lägg till i hemskärmen'"
     },
     {
         title: "LYCKA TILL!",
@@ -29,4 +29,4 @@ export const infoAboutUs = [
     }
 ];
 
-export const intro = "Välkommen till en mystisk upplevelse i hjärtat av Malmö, Västra hamnen. Här tar den välkända humoristiska Solsidan en vändning till en mörk och mystisk sekt. Du är en sektexpert och har blivit kontaktad av Annas barn för att rädda henne från att offras i en ritual. Västra hamnen  som en gång var en plats av lyx är idag präglad av mörker och mysterier. För att rädda Anna kommer du att behöva utforska runt om i västra hamnen och lösa ledtrådar som kommer att hjälpa dig innan det blir för sent, men var försiktig så att karaktärerna inte upptäcker att du är en infiltratör. Skynda dig eftersom du får poäng baserat på din tid, din resa börjar nu."
+export const intro = "Anna Svensson är försvunnen och det är ditt uppdrag att hitta henne. Det har ryktats om att hon är kidnappad av en sekt som planerar att offra henne någonstans i västra hamnen. Men var är hon, och kan du hitta henne innan det är försent? För att rädda Anna behöver du prata med olika karaktärer, söka efter ledtrådar och slutligen lägga ihop hela pusslet. Skynda dig - det är en kamp mot klockan!"

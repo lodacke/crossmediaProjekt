@@ -231,7 +231,7 @@ function introGame() {
     document.querySelector(".overlay").style.display = `block`;
     dialog.setAttribute("id", "welcomeDialog")
     dialog.innerHTML = `
-    <h2>VÄLKOMMEN</h2>
+    <h2>Hej!</h2>
     <p>${intro}</p>
     <button>FORTSÄTT</button>
     `;
@@ -301,7 +301,7 @@ function renderNotes() {
     dialog.innerHTML = `
         <textarea type="text" id="notesInput">${previousContent}</textarea>
         <button id="return">
-            <ion-icon name="return-down-back-outline"></ion-icon>
+            <ion-icon name="chevron-back-outline"></ion-icon>
         </button>
     `;
 
@@ -342,7 +342,7 @@ function renderCharacters() {
         containerDom.append(characterDom);
     });
 
-    charactersPopUp.querySelector(".exit").addEventListener( "click", () => {
+    charactersPopUp.querySelector(".exit").addEventListener("click", () => {
         charactersPopUp.classList.remove("charactersPopUp");
         charactersPopUp.style.display = "none";
     })
@@ -464,13 +464,14 @@ export async function renderScoreBoard(user, duration, userScore) {
 
     dialog.innerHTML = `
         <div id="container">
-            <div id="topContainer">
-                <ion-icon name="return-down-back"></ion-icon>
-            </div>
+            
             <h2>TOPPLISTA</h2>
             <div id="content">
                 <div class="top3Users"></div>
                 <div class="allUsers"></div>
+            </div>
+            <div id="topContainer">
+                <ion-icon name="chevron-back-outline"></ion-icon>
             </div>
         </div>
     `;
@@ -542,9 +543,6 @@ export async function renderScoreBoard(user, duration, userScore) {
                 dom.innerHTML = `
                     <section>
                         <h1>${index + 1}</h1>
-                        <div class="profileContainer">
-                            <ion-icon name="person"></ion-icon>
-                        </div>
                         <h3>${user.username}</h3>
                     </section>
                     <p>${maxPoints}p</p>

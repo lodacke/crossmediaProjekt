@@ -7,8 +7,9 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Fredde för att få reda på mer om vad som hänt.",
-            "placement": "Leta vid en hög lyktstolpe."
+            "clue": "Träffa Fredde för att få reda på mer om vad som hänt",
+            "placement": "Leta vid en hög lyktstolpe.",
+            "src": "media/gameIMG/Fredde.png"
         },
         {
             "latitude": 55.61346,
@@ -17,8 +18,9 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Alex för att få reda på mer om vad som hänt.",
-            "placement": "Leta vid en låg lyktstolpe bland cyklarna"
+            "clue": "Träffa Alex för att få reda på mer om vad som hänt",
+            "placement": "Leta vid en låg lyktstolpe bland cyklarna",
+            "src": "media/gameIMG/Alex.png"
         },
         {
             "latitude": 55.61629,
@@ -27,8 +29,9 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Mickan för att få reda på mer om vad som hänt.",
-            "placement": "Leta där man slänger skräp."
+            "clue": "Träffa Mickan för att få reda på mer om vad som hänt",
+            "placement": "Leta där man slänger skräp.",
+            "src": "media/gameIMG/Mickan.png"
         },
         {
             "latitude": 55.61518,
@@ -37,8 +40,9 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Ove för att få reda på mer om vad som hänt.",
-            "placement": "Leta på en låg lykta i metall vid vattnet. "
+            "clue": "Träffa Ove för att få reda på mer om vad som hänt",
+            "placement": "Leta på en låg lykta i metall vid vattnet. ",
+            "src": "media/gameIMG/Ove.png"
         },
         {
             "latitude": 55.61684,
@@ -47,8 +51,9 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Anette för att få reda på mer om vad som hänt.",
-            "placement": "Leta på ett skåp i metall vid vattnet."
+            "clue": "Träffa Anette för att få reda på mer om vad som hänt",
+            "placement": "Leta på ett skåp i metall vid vattnet.",
+            "src": "media/gameIMG/Anette.png"
         }
     ]
 
@@ -82,8 +87,8 @@ export const levelTwo =
             "level": "levelTwo",
             "clue": "Att vara medlem i sekten kräver precision och noggrann planering... Sektens medlemmar är alltid medvetna om var de andra befinner sig, särskilt när det vankas sektmöte! De har ännu inte avslöjat för dig hur de lyckas med det så du måste på annat sätt få reda på var de befinner sig. På Mickans telefon finns en skärmdump som kan ge dig en avgörande ledtråd. Möt upp henne och kolla snabbt på hennes telefon utan att hon märker!",
             "placement": "Leta vid en lyktstolpe mitt emot frisören.",
-            "img": ["media/gameIMG/mickan-album1.JPG", "media/gameIMG/mickan-album2.JPG", "media/gameIMG/mickan-album3.JPG", "media/gameIMG/mickan-album4.JPG", "media/gameIMG/mickan-album5.JPG", "media/gameIMG/mickan-album6.JPG"],
-            "img1": "media/gameIMG/..svg",
+            "img": ["media/gameIMG/mickan-album1.JPG", "media/gameIMG/mickan-album2.JPG", "media/gameIMG/mickan-album3.JPG", "media/gameIMG/mickan-album4.JPG", "media/gameIMG/findMyIphone.jpg", "media/gameIMG/mickan-album5.JPG", "media/gameIMG/mickan-album6.JPG"],
+            "img1": "media/gameIMG/findMyIphone.jpg",
         },
         {
             "latitude": 55.61272,

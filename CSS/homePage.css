@@ -86,6 +86,7 @@ ion-icon {
 #contentHome section #game {
     background-color: #E6B400;
     color: #151515;
+    font-weight: 700;
 }
 
 /* HEADER */
@@ -148,6 +149,7 @@ header #menuButtons button {
 header #menuButtons #quit {
     background-color: #E6B400;
     color: #151515;
+    font-weight: 700;
 }
 
 header #dropArrow {
@@ -241,7 +243,7 @@ header #dropArrow {
 /* WELCOME DIALOG*/
 
 #welcomeDialog {
-    top: 12vh;
+    top: 16vh;
     background-color: #3D3B3A;
     color: #a1a1a1;
     width: 80%;
@@ -253,12 +255,13 @@ header #dropArrow {
 
 #welcomeDialog h2 {
     color: var(--yellow);
-    margin-bottom: -0.5px;
+    margin-bottom: -2px;
+    width: 90%;
+    text-align: start;
 }
 
 #welcomeDialog p {
-    width: 94%;
-    text-align: center;
+    width: 90%;
     font-size: 18px;
 }
 
@@ -303,6 +306,11 @@ header #dropArrow {
     height: fit-content;
 }
 
+.aboutUsPopUp .swiper .swiper-slide p span {
+    font-weight: 800;
+    color: var(--white);
+}
+
 #popUp #topContainer ion-icon {
     padding: 5% 5% 0 0;
 }
@@ -324,7 +332,6 @@ header #dropArrow {
 }
 
 .swiper-wrapper p {
-    text-align: center;
     color: #A1A1A1;
     margin-bottom: 60px;
     margin-left: 5%;
@@ -373,9 +380,15 @@ header #dropArrow {
 
 #popUp h2 {
     color: var(--yellow);
-    margin-top: 15px;
-    margin-bottom: 0;
-    text-align: center;
+    margin-top: 25px;
+    margin-bottom: -10px;
+    text-align: start;
+    width: 90%;
+}
+
+.aboutUsPopUp h2 {
+    margin-left: 5%;
+    margin-bottom: -5px;
 }
 
 .aboutUsPopUp .swiper-slide {
@@ -384,7 +397,7 @@ header #dropArrow {
 }
 
 .aboutUsPopUp .swiper-slide p {
-    margin-left: 2%;
+    margin-left: 5%;
     margin-right: 2%;
     font-size: 18px;
 }
@@ -432,7 +445,7 @@ textarea:focus {
     border: none;
     width: 100%;
     display: flex;
-    padding: 15px;
+    padding: 15px 0;
     cursor: pointer;
 }
 
@@ -456,7 +469,7 @@ dialog::backdrop {
 /* QR SCANNER */
 #scannerContainer {
     position: fixed;
-    top: 30%;
+    top: 25%;
     height: fit-content;
     width: 60vw;
     background-color: #0000008a;
@@ -493,6 +506,15 @@ dialog::backdrop {
 
 #reader__filescan_input {
     font-size: 14px;
+}
+
+.optionalCall {
+    background-color: #b3b3b3;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding: 0.5vh 2vh;
 }
 
 /* SETTINGS */
@@ -559,12 +581,24 @@ dialog::backdrop {
 
 #userMess h2 {
     color: var(--yellow);
+    margin-top: 3vh;
+    margin-left: 5%;
+    margin-bottom: -1vh;
 }
 
 #userMess p,
 #analogControll p {
     font-size: 18px;
     color: #A1A1A1;
+}
+
+#analogControll p {
+    text-align: center;
+}
+
+#userMess p {
+    text-align: center;
+    margin: 3vh 0;
 }
 
 #userMess button,
@@ -604,13 +638,13 @@ dialog::backdrop {
 }
 
 #scoreboardDialog h2 {
-    margin-top: 3vh;
+    margin-top: 10vh;
 }
 
 #scoreboardDialog #container {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 95vh;
     width: 95%;
 }
 
@@ -622,6 +656,10 @@ dialog::backdrop {
 #scoreboardDialog #topContainer {
     display: flex;
     justify-content: start;
+}
+
+#scoreboardDialog #topContainer ion-icon {
+    margin: 0;
 }
 
 #scoreboardDialog #content {
@@ -708,22 +746,11 @@ dialog::backdrop {
 .userContainer section {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-.profileContainer {
-    background-color: #2A2A2A;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.profileContainer ion-icon {
-    color: #8e8e8e;
-    cursor: auto;
+.allUsers .userContainer section h1 {
+    font-size: 22px;
 }
 
 .userContainer h3 {
@@ -880,7 +907,6 @@ span {
 
 .topMess {
     font-size: 18px;
-    margin: 0;
     text-align: center;
     color: var(--white);
 }
@@ -904,7 +930,7 @@ span {
     text-align: center;
 }
 
-.tempMess{ 
+.tempMess {
     font-size: 18px;
     margin: 0;
     text-align: center;
@@ -937,11 +963,12 @@ span {
 
 #endMess h2 {
     margin-top: 3vh;
+    text-align: center;
+    margin-left: 5%;
 }
 
 #endMess p {
     font-size: 18px;
-    text-align: center;
     color: var(--white);
 }
 
@@ -950,9 +977,23 @@ span {
 }
 
 @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }

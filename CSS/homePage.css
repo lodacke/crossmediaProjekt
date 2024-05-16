@@ -65,6 +65,10 @@ ion-icon {
     align-items: center;
 }
 
+#contentHome #topContainer {
+    justify-content: center;
+}
+
 #contentHome section {
     display: flex;
     flex-direction: column;

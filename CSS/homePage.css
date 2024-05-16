@@ -54,6 +54,7 @@ ion-icon {
 #topContainer img {
     width: 100%;
     margin-top: 5vh;
+    height: 80%;
 }
 
 #contentHome {
@@ -62,6 +63,10 @@ ion-icon {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+#contentHome #topContainer {
+    justify-content: center;
 }
 
 #contentHome section {
@@ -222,6 +227,7 @@ header #dropArrow {
     display: flex;
     justify-content: end;
     padding-top: 2vh;
+    margin-right: 5%;
 }
 
 .temporaryContent>#bottomContainer button {
@@ -243,7 +249,7 @@ header #dropArrow {
 /* WELCOME DIALOG*/
 
 #welcomeDialog {
-    top: 16vh;
+    top: 18vh;
     background-color: #3D3B3A;
     color: #a1a1a1;
     width: 80%;
@@ -258,6 +264,7 @@ header #dropArrow {
     margin-bottom: -2px;
     width: 90%;
     text-align: start;
+    margin-top: 3vh;
 }
 
 #welcomeDialog p {
@@ -515,19 +522,25 @@ dialog::backdrop {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    padding: 0.5vh 2vh;
+    padding: 1vh 2vh;
     width: 100%;
 }
 
 /* SETTINGS */
 
 #settingsDialog {
+    display: none;
     background-color: #3D3B3A;
-    width: 80%;
+    width: auto;
     height: auto;
     position: fixed;
     top: 35vh;
     box-shadow: var(--boxShadow);
+    z-index: 100;
+    left: 7vw;
+    right: 7vw;
+    border-radius: 5px;
+    padding: 2vh 1vh;
 }
 
 #settingsDialog h2 {
@@ -958,15 +971,22 @@ span {
 /* END MESSAGE WHEN COMPLETING GAME*/
 
 #endMess {
+    display: none;
     background-color: #363636;
     top: 35vh;
-    width: 80%;
+    width: auto;
     box-shadow: var(--boxShadow);
+    position: fixed;
+    z-index: 100;
+    left: 7vw;
+    right: 7vw;
+    border-radius: 5px;
+    padding: 2vh 1vh;
 }
 
 #endMess h2 {
     margin-top: 3vh;
-    text-align: center;
+    text-align: start;
     margin-left: 5%;
 }
 

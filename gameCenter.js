@@ -116,10 +116,6 @@ export function renderConversation(data) {
             <button></button>
             <button class="option"></button>
         </div> 
-        <div id="inputDisplay">
-            <div id="prompt">Välj svar ovan</div>
-            <div id="send"><ion-icon name="send-outline"></ion-icon></div>
-        </div>
     </div>
     `;
 
@@ -173,11 +169,11 @@ export function renderConversation(data) {
 
                     }, 1000)
                     setTimeout(() => {
-                        main.querySelector("#prompt").innerHTML = ``;
+                        main.querySelector(".controlC").innerHTML = ``;
                         let button = document.createElement("button");
                         button.textContent = "KLAR";
                         button.classList.add("nextLevel");
-                        main.querySelector("#prompt").append(button)
+                        main.querySelector(".controlC").append(button)
                         button.addEventListener("click", () => {
                             globalHolder.push(data.level, data.name)
                             renderGame();
@@ -197,11 +193,11 @@ export function renderConversation(data) {
                     main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
 
                     setTimeout(() => {
-                        main.querySelector("#send").innerHTML = ``;
+                        main.querySelector(".controlC").innerHTML = ``;
                         let button = document.createElement("button");
                         button.textContent = "KLAR";
                         button.classList.add("nextLevel");
-                        main.querySelector("#send").append(button)
+                        main.querySelector(".controlC").append(button)
                         button.addEventListener("click", () => {
                             globalHolder.push(data.level, data.name)
                             renderGame();
@@ -519,20 +515,18 @@ export async function endGame() {
         console.log(error)
     }
 
-    dialog.show();
-    dialog.style.display = `block`;
     document.querySelector(".overlay").style.display = `block`;
-    dialog.setAttribute("id", "endMess")
-    dialog.innerHTML = `
+
+    let endMess = document.getElementById("endMess");
+    endMess.style.display = `block`;
+    endMess.innerHTML = `
         <h2>GRATTIS!</h2>
         <p class="mess">Du har tjänat in ${totalPoints} poäng för att du klarade spelet under ${Math.round(durationInMinutes)} minuter!</p>
     `;
 
     setTimeout(() => {
-        dialog.close();
         document.querySelector(".overlay").style.display = `none`;
-        dialog.removeAttribute("id", "endMess")
-
+        endMess.style.display = `none`;
         globalHolder.reset()
         renderHomepage()
         renderScoreBoard(user, durationInMinutes, totalPoints);

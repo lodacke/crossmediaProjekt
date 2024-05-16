@@ -48,13 +48,13 @@ export const conversations = {
                 text: "Jag ser fram emot att se vad som händer.",
                 lastMessage: "Oj, nu ringer det här, hejdå!",
 
-            },
-            {
-                text: "Jag vet inte om jag är villig att göra vad som helst...",
-                lastMessage: "Oj, nu ringer det här, hejdå!"
-            }
-        ]
-    },
+                },
+                {
+                    text: "Jag vet inte om jag är villig att göra vad som helst...",
+                    lastMessage: "Oj, nu ringer det här, hejdå!"
+                }
+            ]
+        },
 
     four: {
         question: "Mötena sker på en hemlig plats och det är jag och fyra andra som är med... \nVarje möte handlar om lite olika saker men jag kan inte gå in på detaljer i nuläget. Du måste förtjäna att vara med för att kunna få all info och det är tyvärr inte bara jag som bestämmer om du kan haka på...\nMen du snokar väl inte?",
@@ -63,13 +63,13 @@ export const conversations = {
                 text: "Jag vill veta mer!",
                 response: "seven",
 
-            },
-            {
-                text: " Absolut inte!",
-                response: "seven"
-            }
-        ]
-    },
+                },
+                {
+                    text: " Absolut inte!",
+                    response: "seven"
+                }
+            ]
+        },
 
     five: {
         question: `Ja, några tips har jag väl. Men det beror lite på... Vissa delar av min verksamhet sker lite mer "off the record" så att säga. \nOm du skulle vara intresserad skulle jag kanske kunna få med dig på ett möte?\nMen först måste jag prata med de andra.\n Hur långt är du beredd att gå för att nå toppen?`,
@@ -116,13 +116,13 @@ export const conversations = {
     },
 
     },
-    
+
     "Mickan": {
         start: {
             question: "Hej på dig snygging! Vill du med och shoppa en runda.\nJag har sååå mycket pengar, haha.",
             option: [
-                 {
-                    text: "Var har du fått alla pengar ifrån?", 
+                {
+                    text: "Var har du fått alla pengar ifrån?",
                     response: "two"
                 },
                 {
@@ -139,7 +139,7 @@ export const conversations = {
                     response: "three"
                 },
                 {
-                    text: "Vad hände mellan er?", 
+                    text: "Vad hände mellan er?",
                     response: "four"
                 }
             ]
@@ -152,16 +152,16 @@ export const conversations = {
                     response: "five"
                 },
                 {
-                    text: "Är ni ensamma om att göra de aktiviteterna?", 
+                    text: "Är ni ensamma om att göra de aktiviteterna?",
                     response: "six"
                 }
             ]
         },
         three: {
-          question: "Vi ska över till några kompisar. Eller ja... Kompisar, det är ett illa måste att umgås med dem.",
+            question: "Vi ska över till några kompisar. Eller ja... Kompisar, det är ett illa måste att umgås med dem.",
             option: [
                 {
-                    text: "Vilka är det?", 
+                    text: "Vilka är det?",
                     response: "eight"
                 },
                 {
@@ -171,7 +171,7 @@ export const conversations = {
             ]
         },
         four: {
-          question: "Hon hade fel prioriteringar om man säger så. Och om man inte är med mig så är man emot mig",
+            question: "Hon hade fel prioriteringar om man säger så. Och om man inte är med mig så är man emot mig",
             option: [
                 {
                     text: "Jag håller mig helst på din goda sida!",
@@ -191,26 +191,26 @@ export const conversations = {
                     response: "ten"
                 },
                 {
-                    text: "Gucci skor är såå fina!", 
+                    text: "Gucci skor är såå fina!",
                     response: "ten"
                 }
             ]
         },
         six: {
-          question: "Nej det är vi och fyra andra!",
+            question: "Nej det är vi och fyra andra!",
             option: [
                 {
                     text: "Kan jag gå med?",
                     response: "nine"
                 },
                 {
-                    text: "Söker ni nya medlemmar?", 
+                    text: "Söker ni nya medlemmar?",
                     response: "nine"
                 }
             ]
         },
         seven: {
-          question: "Vi uträttar viktiga saker, och tro det eller ej så är dem ganska hjälpsamma. Även om de varit irriterande förr i tiden.",
+            question: "Vi uträttar viktiga saker, och tro det eller ej så är dem ganska hjälpsamma. Även om de varit irriterande förr i tiden.",
             option: [
                 {
                     text: "Vilka är ni?",
@@ -223,7 +223,7 @@ export const conversations = {
             ]
         },
         eight: {
-          question: "Det är Anette och Ove. Sen kommer ju Alex också, men han har vi ju alltid umgåtts med.",
+            question: "Det är Anette och Ove. Sen kommer ju Alex också, men han har vi ju alltid umgåtts med.",
             option: [
                 {
                     text: "Vad ska ni göra?",
@@ -244,12 +244,12 @@ export const conversations = {
                 },
                 {
                     text: "Vadå uppoffringar, behöver jag döda någon?", 
-                    lastMessage: `Eeeh okej...Oj det "ringer". <br> Vi ses.`
+                    lastMessage: `Eeeh nej...Oj det "ringer". <br> Vi ses.`
                 }
             ]
         },
         ten: {
-          question: "Gud va du är underbar!",
+            question: "Gud va du är underbar!",
             option: [
                 {
                     text: "Jag vill också tjäna lite extra.",
@@ -272,7 +272,7 @@ export const conversations = {
                     response: "one"
                 },
                 {
-                    text: "Varför har du tråkigt?", 
+                    text: "Varför har du tråkigt?",
                     response: "two"
                 }
             ]
@@ -285,12 +285,12 @@ export const conversations = {
                     response: "five"
                 },
                 {
-                    text: "Hur vet du att ni kommer skiljas åt?", 
+                    text: "Hur vet du att ni kommer skiljas åt?",
                     response: "six"
                 }
             ]
         },
-        
+
         two: {
             question: "På sistone har jag tappat kontakten med barnen. Anna vill jag inte ens räkna som min familj längre.\n Men barnen saknar jag, jag hade stora planer för dem... Men det satte Anna stopp för! \nNu känner jag att de tagit avstånd från mig... Jag hoppas att de ändrar sig så att de inte måste följa sin mammas öde.", 
             option: [
@@ -299,7 +299,7 @@ export const conversations = {
                     response: "three"
                 },
                 {
-                    text: "Annas öde?", 
+                    text: "Annas öde?",
                     response: "four"
                 }
             ]
@@ -377,8 +377,8 @@ export const conversations = {
                     lastMessage: "Ja asså egenligen ska man bara vara lojal till allt vi gör det är det viktigaste. <br>Men gud vad klockan blev mycket!<br> Nu måste jag gå! "
                 },
                 {
-                    text: "Finns det något jag måste tänka på?", 
-                    lastMessage: "Ja asså egenligen ska man bara vara lojal till allt vi gör det är det viktigaste. <br>Men gud vad klockan blev mycket!<br> Nu måste jag gå! "
+                    text: "Ja fråga jag vill gärna vara med. Men är det något jag måste tänka på?",
+                    lastMessage: "Ja asså egenligen ska man bara vara lojal till allt vi gör det är det viktigaste. Men gud vad klockan blev mycket! Nu måste jag gå! "
                 }
             ]
         },
@@ -408,7 +408,7 @@ export const conversations = {
                     text: "Du som är så snål! Har du vunnit på lotto?",
                     response: "one"
                 },
-                                {
+                {
                     text: "Jag hinner inte nu, men vad gör du ikväll?",
                     response: "two"
                 },
@@ -421,7 +421,7 @@ export const conversations = {
                     text: "Hur?",
                     response: "three"
                 },
-                 {
+                {
                     text: "Började det när ni flyttade hit?",
                     response: "four"
                 },
@@ -434,7 +434,7 @@ export const conversations = {
                     text: "Vad ska ni göra?",
                     response: "five"
                 },
-                 {
+                {
                     text: "Imorgon då?",
                     response: "six"
                 },
@@ -447,7 +447,7 @@ export const conversations = {
                     text: "Det låter annorlunda...",
                     response: "nine"
                 },
-                 {
+                {
                     text: "Hoppas ni inte pratar om mänskliga offer ;)",
                     response: "nine"
                 },
@@ -460,7 +460,7 @@ export const conversations = {
                     text: "Ni är så smarta!",
                     response: "eleven"
                 },
-                 {
+                {
                     text: "Det låter som något jag också hade velat göra!",
                     response: "eleven"
                 },
@@ -473,7 +473,7 @@ export const conversations = {
                     text: "Det var lite taskigt?",
                     response: "seven"
                 },
-                 {
+                {
                     text: "Jag gör vad jag vill!",
                     response: "seven"
                 },
@@ -486,7 +486,7 @@ export const conversations = {
                     text: "Det låter kul!",
                     response: "eight"
                 },
-                 {
+                {
                     text: "Jag kommer gärna!",
                     response: "eight"
                 },
@@ -499,7 +499,7 @@ export const conversations = {
                     text: "Du beter dig lite märkligt?",
                     lastMessage: "Det har varit lite tufft men livet vänder. <br> <br> Men så mycket klockan blivit, nu måste jag gå!"
                 },
-                 {
+                {
                     text: "Vad är det som händer egentligen?",
                     lastMessage: "Det har varit lite tufft men livet vänder. <br> <br> Men så mycket klockan blivit, nu måste jag gå!"
                 },
@@ -512,7 +512,7 @@ export const conversations = {
                     text: "Vad ska ni göra?",
                     lastMessage: "Det får du veta ifall om gänget accepterar dig. <br> Men nu måste jag gå, ha det bra!"
                 },
-                 {
+                {
                     text: "Vart någonstans?",
                     lastMessage: "Det får du veta ifall om gänget accepterar dig. <br> Men nu måste jag gå, ha det bra!"
                 },
@@ -525,7 +525,7 @@ export const conversations = {
                     text: "Sa jag något fel? du verkar vara på tårna idag",
                     response: "ten"
                 },
-                 {
+                {
                     text: "Men du ser jättestressad ut, som att du håller på en stor hemlighet",
                     response: "ten"
                 },
@@ -538,7 +538,7 @@ export const conversations = {
                     text: "Vadå för problem?",
                     lastMessage: "Nja kanske en annan gång, för nu måste jag gå. <br> Ha det bra!"
                 },
-                 {
+                {
                     text: "Berättar allt för mig",
                     lastMessage: "Nja kanske en annan gång, för nu måste jag gå. <br> Ha det bra!"
                 },
@@ -742,7 +742,7 @@ export const conversations = {
                 },
             ]
         },
-        
+
 
     }
 

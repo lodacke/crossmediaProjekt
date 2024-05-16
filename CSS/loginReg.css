@@ -83,7 +83,6 @@ input {
 
 #userMessage {
     font-size: 18px;
-    background-color: #2A2A2A;
     background-color: var(--white);
     text-align: center;
     padding: 1vh;

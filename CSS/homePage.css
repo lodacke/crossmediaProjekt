@@ -227,6 +227,7 @@ header #dropArrow {
     display: flex;
     justify-content: end;
     padding-top: 2vh;
+    margin-right: 5%;
 }
 
 .temporaryContent>#bottomContainer button {
@@ -248,7 +249,7 @@ header #dropArrow {
 /* WELCOME DIALOG*/
 
 #welcomeDialog {
-    top: 16vh;
+    top: 18vh;
     background-color: #3D3B3A;
     color: #a1a1a1;
     width: 80%;
@@ -263,6 +264,7 @@ header #dropArrow {
     margin-bottom: -2px;
     width: 90%;
     text-align: start;
+    margin-top: 3vh;
 }
 
 #welcomeDialog p {
@@ -519,7 +521,7 @@ dialog::backdrop {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    padding: 0.5vh 2vh;
+    padding: 1vh 2vh;
 }
 
 /* SETTINGS */

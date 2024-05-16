@@ -115,10 +115,6 @@ export function renderConversation(data) {
             <button></button>
             <button class="option"></button>
         </div> 
-        <div id="inputDisplay">
-            <div id="prompt">Välj svar ovan</div>
-            <div id="send"><ion-icon name="send-outline"></ion-icon></div>
-        </div>
     </div>
     `;
 
@@ -171,11 +167,11 @@ export function renderConversation(data) {
 
                     }, 1000)
                     setTimeout(() => {
-                        main.querySelector("#prompt").innerHTML = ``;
+                        main.querySelector(".controlC").innerHTML = ``;
                         let button = document.createElement("button");
                         button.textContent = "KLAR";
                         button.classList.add("nextLevel");
-                        main.querySelector("#prompt").append(button)
+                        main.querySelector(".controlC").append(button)
                         button.addEventListener("click", () => {
                             globalHolder.push(data.level, data.name)
                             renderGame();
@@ -193,11 +189,11 @@ export function renderConversation(data) {
                     main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
 
                     setTimeout(() => {
-                        main.querySelector("#send").innerHTML = ``;
+                        main.querySelector(".controlC").innerHTML = ``;
                         let button = document.createElement("button");
                         button.textContent = "KLAR";
                         button.classList.add("nextLevel");
-                        main.querySelector("#send").append(button)
+                        main.querySelector(".controlC").append(button)
                         button.addEventListener("click", () => {
                             globalHolder.push(data.level, data.name)
                             renderGame();

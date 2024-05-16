@@ -76,7 +76,8 @@ export const levelTwo =
             "type": "QR",
             "level": "levelTwo",
             "clue": "Du måste få reda på mer om sekten… kanske behöver du prata med en person som stått en av medlemmarna nära men som valt att gå en annan väg, rädd för att bli indragen i sektens mörker och hemligheter.",
-            "placement": "Leta där man slänger skräp."
+            "placement": "Leta där man slänger skräp.",
+            "src": "media/gameIMG/anonym.png"
         },
         {
             "latitude": 55.61285,
@@ -140,7 +141,7 @@ export const levelThree =
             "name": "mapPuzzel",
             "type": "QR",
             "function": "renderIMG",
-            "img": "media/gameIMG/gameKarta_inringning.jpg",
+            "img": "media/gameIMG/mapMarker.jpg",
             "level": "levelThree",
             "clue": "På denna plats kan det ligga något som kan hjälpa dig lägga ihop pusslet och rädda Anna.",
             "placement": "Leta på baksidan av en skylt."

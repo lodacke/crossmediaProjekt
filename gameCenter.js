@@ -20,11 +20,13 @@ export function renderQRscann(level) {
         <ion-icon class="exit" name="close-outline"></ion-icon>
     </div>
     <div id="reader"></div>
+    <p class="errorM"></p>
     <button class="optionalCall">Not working?</button>
     `;
 
     dialog.querySelector(".exit").addEventListener("click", () => {
         dialog.close()
+        dialog.style.display = `none`;
     })
 
     const scanner = new Html5QrcodeScanner('reader', {
@@ -54,18 +56,17 @@ export function renderQRscann(level) {
                 fn(dataString);
             }
         } else {
-            console.error("Function does not exist:", dataString);
+            dialog.querySelector(".errorM").textContent = "Can't read QR-code.";
         }
         scanner.clear()
     }
 
     function error(err) {
-        //console.error(err)
+        dialog.querySelector(".errorM").textContent = "Can't read QR-code.";
     }
 
     dialog.querySelector(".optionalCall").addEventListener("click", () => {
         try {
-
             const fn = eval(level.function);
             if (typeof fn === 'function') {
                 fn(level);
@@ -73,7 +74,7 @@ export function renderQRscann(level) {
                 dialog.style.display = `none`;
                 dialog.removeAttribute("id", "scannerContainer")
             } else {
-                console.error('Evaluated value is not a function');
+                console.log("error")
             }
         } catch (error) {
             console.error('Error evaluating code:', error);
@@ -440,14 +441,8 @@ export function renderAnalogChallange(level) {
 
 export function addCode() {
 
-    dialog.show()
-    dialog.style.display = `block`;
-    dialog.setAttribute("id", "codeDialog");
-    document.querySelector(".overlay").style.display = `block`;
-
-    let correctCode = ["3", "5", "6", "1"];
-
-    dialog.innerHTML = `
+    main.innerHTML = `
+        <div id="codeDialog">
         <h2>SIFFERKOD</h2>
         <p class="topMess">Skriv in koden som finns vid stationen när du genomfört den</p>
         <div class="containerCode">
@@ -458,9 +453,16 @@ export function addCode() {
         </div>
         <p class="tempMess"></p>
         <button class="done">KLAR</button>
+    </div>
     `;
+        
 
-    dialog.querySelector(".done").addEventListener("click", () => {
+    let correctCode = ["3", "5", "6", "1"];
+
+    let container = main.querySelector("#codeDialog")
+
+
+    main.querySelector(".done").addEventListener("click", () => {
 
         const inputs = document.querySelectorAll('.containerCode input');
         let inputValues = [];
@@ -469,17 +471,13 @@ export function addCode() {
         });
 
         if (inputValues.length === correctCode.length && inputValues.every((value, index) => value === correctCode[index])) {
-            document.querySelector(".overlay").style.display = `none`;
-            dialog.close();
-            dialog.style.display = `none`;
-            dialog.removeAttribute("id", "codeDialog")
             endGame()
         } else {
-            dialog.querySelector(".tempMess").textContent = "Fel kod, försök igen!";
-            dialog.classList.add("shake");
+            main.querySelector(".tempMess").textContent = "Fel kod, försök igen!";
+            container.classList.add("shake");
             setTimeout(() => {
-                dialog.querySelector(".tempMess").textContent = "";
-                dialog.classList.remove("shake");
+                main.querySelector(".tempMess").textContent = "";
+                container.classList.remove("shake");
             }, 2000);
         }
     })
@@ -522,6 +520,7 @@ export async function endGame() {
     }
 
     dialog.show();
+    dialog.style.display = `block`;
     document.querySelector(".overlay").style.display = `block`;
     dialog.setAttribute("id", "endMess")
     dialog.innerHTML = `

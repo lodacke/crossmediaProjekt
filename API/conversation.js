@@ -14,7 +14,7 @@ export const conversations = {
         ]
     },
     one: {
-        question: "Hm... Ja alltså... Mina pengar kommer inte bara från jobbet. Jag har en liten side-business så att säga. Eller det är inte bara jag som har den utan hela mitt gäng. Vi har speciella möten ibland som hjälper oss framåt, om du vill så kan jag försöka få med dig?",
+        question: "Hm... Ja alltså... \nMina pengar kommer inte bara från jobbet. \nJag har en liten side-business så att säga. Det är inte bara jag, utan hela mitt gäng. Vi har speciella möten som hjälper oss framåt, om du vill så kan jag försöka få med dig?",
         "option": [
             {
                 text: "Jag är öppen för allt.",
@@ -42,7 +42,7 @@ export const conversations = {
         ]
     },
     three: {
-        question: `Det är bra att du är det. Vissa delar av vår "verksamhet" kan anses lite... annorlunda. \nDet gäller att ha tydliga mål och vara villiga att göra allt för att nå dem om man ska vara med oss. Det finns ju dem som inte var det... och ja... det går inte bra för dem.`,
+        question: `Det är bra att du är det. Vissa delar av vår "verksamhet" kan anses lite... annorlunda. \nDet gäller att ha tydliga mål och vara villiga att göra allt för att nå dem om man ska vara med oss. Det finns ju dem som inte var det... Och ja... \nDet går inte bra för dem.`,
         "option": [
             {
                 text: "Jag ser fram emot att se vad som händer.",
@@ -72,7 +72,7 @@ export const conversations = {
     },
 
     five: {
-        question: `Ja några tips har jag väl. Men det beror lite på...\nVissa delar av min verksamhet sker lite mer "off the record" så att säga. Om du skulle vara intresserad skulle jag kanske kunna få med dig på ett möte?\nMen först måste jag prata med de andra. Hur långt är du beredd att gå för att nå toppen?`,
+        question: `Ja, några tips har jag väl. Men det beror lite på... Vissa delar av min verksamhet sker lite mer "off the record" så att säga. \nOm du skulle vara intresserad skulle jag kanske kunna få med dig på ett möte?\nMen först måste jag prata med de andra.\n Hur långt är du beredd att gå för att nå toppen?`,
         "option": [
             {
                 text: "Jag kan göra vad som helst!",
@@ -80,22 +80,22 @@ export const conversations = {
 
             },
             {
-                text: "Vet inte riktigt... Kanske.",
+                text: "Vet inte riktigt.",
                 lastMessage: "Oj, nu ringer det här, hejdå!"
             }
         ]
     },
 
     six: {
-        question: `Amen du har ju säkert hört hur Ove kan vara... och vissa saker ska han verkligen inte prata om alls!\nDu vet när vi bodde på Saltis så var det nära att han förstörde allt, men vi lyckades sopa undan efter honom ändå...`,
+        question: `Amen du har ju säkert hört hur Ove kan vara... Och vissa saker ska han verkligen inte prata om alls!\nNär vi bodde på Saltis så var det nära att han förstörde allt, men vi lyckades sopa undan efter honom ändå...`,
         "option": [
             {
-                text: "Absolut inte!",
+                text: "Vad gjorde Ove?",
                 lastMessage: "Oj, nu ringer det här, hejdå!",
 
             },
             {
-                text: "Jag vill veta allt!",
+                text: "Började det på Saltis?",
                 lastMessage: "Oj, nu ringer det här, hejdå!"
             }
         ]
@@ -236,15 +236,15 @@ export const conversations = {
             ]
         },
         nine: {
-          question: "Det krävs att man gör uppoffringar för att komma in i gruppen och det vet jag inte om du är redo för",
+          question: "Det krävs att man gör uppoffringar för att komma in i gruppen och det vet jag inte om du är redo för.",
             option: [
                 {
                     text: "Låter som att ni håller på med skumma aktiviteter..",
-                    lastMessage: `Eeeh okej...Oj det "ringer"!<br> Vi ses.`
+                    lastMessage: `Eeeh okej...Det "ringer".<br> Vi ses.`
                 },
                 {
                     text: "Vadå uppoffringar, behöver jag döda någon?", 
-                    lastMessage: `Eeeh okej...Oj det "ringer"! <br> Vi ses.`
+                    lastMessage: `Eeeh okej...Oj det "ringer". <br> Vi ses.`
                 }
             ]
         },
@@ -305,7 +305,7 @@ export const conversations = {
             ]
         },
         three: {
-            question: "Ja vad har hon inte gjort... Hon visste att det värsta tänkbara vara att svika oss och ändå skulle hon göra de. \nVi kände alla hennes tvivel... \nÄven om hon inte sa det högt.", 
+            question: "Ja vad har hon inte gjort... Hon visste att det värsta tänkbara var att svika oss och ändå skulle hon göra de. \nVi kände alla hennes tvivel... \nÄven om hon inte sa det högt.", 
             option: [
                 {
                     text: "Tvivel om vad?",
@@ -344,11 +344,11 @@ export const conversations = {
             ]
         },
         six: {
-            question: "Utan att säga för mycket så har vi planerat in ett avsked. \nMen det kommer medföra bra saker för oss alla. Om du hade fått allt du önskar i utbyte mot att ja... \nHon försvann...Hade du gjort det?",
+            question: "Utan att säga för mycket så har vi planerat in ett avsked. \nMen det kommer medföra bra saker för oss alla. Om du hade fått allt du önskar i utbyte mot att ja... \nHon försvann...\nHade inte du gjort det?",
             option: [
                 {
                     text: "Nja.. jag vet inte riktigt.",
-                    lastMessage: "Jag hör att du hade behövt övertalas lite mer... <br>Men vi kan höras längre fram. <br> Jag måste gå nu, har en lagning strax!"
+                    lastMessage: "Jag hör att du hade behövt övertalas. <br>Men vi kan höras längre fram. <br> Jag måste gå nu, har en lagning strax!"
                 },
                 {
                     text: "Jag hade gjort det!", 
@@ -393,7 +393,7 @@ export const conversations = {
                     end: "Jag jobbade ju hos honom ganska länge… \nMen han blev konstigare och konstigare med tiden. Han har ju alltid haft det bra ställt men han blev så otroligt girig tillslut, jag kände knappt igen honom. \nHan började umgås med Anette och Ove också, vilket jag aldrig trodde skulle hända! Men de har ju alltid varit imponerade av honom, han är ju som en förebild för dem och ja… Nu gör de exakt allt han säger. \nEn händelse var dock märklig… En dag såg jag Fredde på sitt kontor tillsammans med Ove och Alex, jag har aldrig sett Ove så dominant över Fredde innan… \nDet var nästan som att han var rädd för honom… \nTillslut så fick Alex säga till dem att lugna ner sig och då lyssnade dem direkt. Lite ovanligt att se Alex ha någon form av auktoritet… \nMen jag kan inte säga mer… \nDu får inte säga till någon att jag berättat detta!"
                 },
                 {
-                    text: "Märkte du något konstigt med Fredrik innan du slutade?",
+                    text: "Märkte du något med Fredrik innan du slutade?",
                     end: "Jag jobbade ju hos honom ganska länge… Men han blev konstigare och konstigare med tiden. Han har ju alltid haft det bra ställt men han blev så otroligt girig tillslut, jag kände knappt igen honom. \nHan började umgås med Anette och Ove också, vilket jag aldrig trodde skulle hända! Men de har ju alltid varit imponerade av honom, han är ju som en förebild för dem och ja… Nu gör de exakt allt han säger. \nEn händelse var dock märklig… En dag såg jag Fredde på sitt kontor tillsammans med Ove och Alex, jag har aldrig sett Ove så dominant över Fredde innan… \nDet var nästan som att han var rädd för honom… \nTillslut så fick Alex säga till dem att lugna ner sig och då lyssnade dem direkt. Lite ovanligt att se Alex ha någon form av auktoritet… \nMen jag kan inte säga mer… \n Du får inte säga till någon att jag berättat detta!"
                 },
             ]
@@ -549,10 +549,10 @@ export const conversations = {
             option: [
                 {
                     text: "Kan du inte berätta mer om vad det är för grej ni gjorde?",
-                    lastMessage: "Nja kanske en annan gång för nu måste jag gå. <br> Ha det bra!"
+                    lastMessage: "Nja, kanske en annan gång för nu måste jag gå. <br> Ha det bra!"
                 },
                  {
-                    text: "Kan du inte berätta mer om vad det är för grej ni gjorde?",
+                    text: "Berätta hur jag kan bli en del av gruppen?",
                     lastMessage: "Nja kanske en annan gång för nu måste jag gå. <br> Ha det bra!"
                 },
             ]
@@ -574,14 +574,14 @@ export const conversations = {
             ]
         },
         one: {
-            question: "Och du kom hit till lilla mig? Vad gulligt av dig.\nDet känns som att folk är rädda för mig nu för tiden, kanske är det för att det går så bra för mig.\n Eller så är det bara det att de inte är vana vid att möta någon som verkligen vågar vara så öppen och målmedveten som mig.\nMen du, du verkar inte vara en av dem som skyr för sanningen. Det är uppfriskande att ha någon som vågar stå emot den allmänna trenden av ytlighet och falskhet och som vågar se världen för vad den är.",
+            question: "Och du kom hit till lilla mig?\n Vad gulligt av dig.\nDet känns som att folk är rädda för mig nu för tiden, kanske är det för att det går så bra för mig.\n Eller så är det bara det att de inte är vana vid att möta någon som verkligen vågar vara så öppen och målmedveten som mig.\n \nMen du, du verkar inte vara en av dem som skyr för sanningen. Det är uppfriskande att ha någon som vågar stå emot den allmänna trenden av ytlighet och falskhet och som vågar se världen för vad den är.",
             option: [
                 {
                     text: "Jag tycker du är en trevlig person.",
                     response: "three"
                 },
                 {
-                    text: "Varför är rädd för dig?",
+                    text: "Varför är dom rädda för dig?",
                     response: "four"
                 },
             ]

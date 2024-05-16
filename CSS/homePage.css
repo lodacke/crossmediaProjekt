@@ -488,7 +488,7 @@ dialog::backdrop {
 }
 
 #reader__dashboard button {
-    margin-bottom: 15px;
+    margin-bottom: -15px;
     font-size: 16px;
     background-color: var(--yellow);
     color: #151515;
@@ -499,6 +499,7 @@ dialog::backdrop {
 }
 
 #reader__dashboard a {
+    display: none;
     color: var(--white);
     text-decoration: none;
     font-size: 16px;
@@ -515,6 +516,7 @@ dialog::backdrop {
     border: none;
     cursor: pointer;
     padding: 0.5vh 2vh;
+    width: 100%;
 }
 
 /* SETTINGS */
@@ -888,17 +890,18 @@ span {
     margin-top: 5px;
 }
 
-/* DIALOG FOR CODE */
 
 #codeDialog {
+    margin-top: 20vh;
     display: flex;
     flex-direction: column;
     text-align: center;
 
     background-color: #363636;
     top: 28vh;
-    width: 80%;
+    width: 100%;
     box-shadow: var(--boxShadow);
+    align-self: center;
 }
 
 #codeDialog>h2 {

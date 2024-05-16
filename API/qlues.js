@@ -7,7 +7,7 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Fredde för att få reda på mer om vad som hänt",
+            "clue": "Träffa Fredde för att få reda på mer om vad som hänt.",
             "placement": "Leta vid en hög lyktstolpe."
         },
         {
@@ -17,7 +17,7 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Alex för att få reda på mer om vad som hänt",
+            "clue": "Träffa Alex för att få reda på mer om vad som hänt.",
             "placement": "Leta vid en låg lyktstolpe bland cyklarna"
         },
         {
@@ -27,7 +27,7 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Mickan för att få reda på mer om vad som hänt",
+            "clue": "Träffa Mickan för att få reda på mer om vad som hänt.",
             "placement": "Leta där man slänger skräp."
         },
         {
@@ -37,7 +37,7 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Ove för att få reda på mer om vad som hänt",
+            "clue": "Träffa Ove för att få reda på mer om vad som hänt.",
             "placement": "Leta på en låg lykta i metall vid vattnet. "
         },
         {
@@ -47,7 +47,7 @@ export const levelOne =
             "function": "renderConversation",
             "level": "levelOne",
             "type": "QR",
-            "clue": "Träffa Anette för att få reda på mer om vad som hänt",
+            "clue": "Träffa Anette för att få reda på mer om vad som hänt.",
             "placement": "Leta på ett skåp i metall vid vattnet."
         }
     ]

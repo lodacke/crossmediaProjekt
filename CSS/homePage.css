@@ -243,7 +243,7 @@ header #dropArrow {
 /* WELCOME DIALOG*/
 
 #welcomeDialog {
-    top: 12vh;
+    top: 16vh;
     background-color: #3D3B3A;
     color: #a1a1a1;
     width: 80%;
@@ -581,12 +581,24 @@ dialog::backdrop {
 
 #userMess h2 {
     color: var(--yellow);
+    margin-top: 3vh;
+    margin-left: 5%;
+    margin-bottom: -1vh;
 }
 
 #userMess p,
 #analogControll p {
     font-size: 18px;
     color: #A1A1A1;
+}
+
+#analogControll p {
+    text-align: center;
+}
+
+#userMess p {
+    text-align: center;
+    margin: 3vh 0;
 }
 
 #userMess button,
@@ -891,7 +903,6 @@ span {
 
 .topMess {
     font-size: 18px;
-    margin: 0;
     text-align: center;
     color: var(--white);
 }
@@ -951,8 +962,8 @@ span {
 }
 
 #endMess p {
-    font-size: 18px;
     text-align: center;
+    font-size: 18px;
     color: var(--white);
 }
 

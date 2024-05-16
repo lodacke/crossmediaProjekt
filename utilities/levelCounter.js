@@ -10,7 +10,7 @@ export async function levelCount() {
 
     if (globalHolder.levels.levelOne) {
 
-        if (globalHolder.levels.levelOne.length < 5 ) {
+        if (globalHolder.levels.levelOne.length < 5) {
             return levelOne;
 
         }
@@ -18,16 +18,16 @@ export async function levelCount() {
             console.log("true")
             userAlert("levelOne")
             return levelTwo;
-        } 
+        }
     }
     if (globalHolder.levels.levelTwo) {
 
         if (globalHolder.levels.levelTwo.length < 6) {
             console.log("levelTwo lower than 6")
-            return levelTwo;            
-            
-        } 
-        else if (globalHolder.levels.levelTwo_completed){
+            return levelTwo;
+
+        }
+        else if (globalHolder.levels.levelTwo_completed) {
             console.log("levelTwo complete")
             findLeader("levelTwo")
             return levelThree;
@@ -129,19 +129,19 @@ export function findLeader() {
 
             if (event.target.id === "char_Anette") {
                 toggleControl = false;
-                    let container = document.createElement("div");
-                    container.classList.add("bottomContainer");
-                    container.innerHTML = `
+                let container = document.createElement("div");
+                container.classList.add("bottomContainer");
+                container.innerHTML = `
                         <button id="nextLevel">Fortsätt till nivå 3</button>
                     `;
-                    container.querySelector("button").addEventListener("click", () => {
-                        dialog.close()
-                        dialog.style.display = `none`
-                        dialog.removeAttribute("id", "chooseCharacter");
-                        globalHolder.removeItem('levelTwo_completed')
-                        renderGame()
-                    })
-                    dialog.querySelector(".content").append(container)
+                container.querySelector("button").addEventListener("click", () => {
+                    dialog.close()
+                    dialog.style.display = `none`
+                    dialog.removeAttribute("id", "chooseCharacter");
+                    globalHolder.removeItem('levelTwo_completed')
+                    renderGame()
+                })
+                dialog.querySelector(".content").append(container)
             }
 
         })

@@ -87,8 +87,8 @@ export const levelTwo =
             "level": "levelTwo",
             "clue": "Att vara medlem i sekten kräver precision och noggrann planering... Sektens medlemmar är alltid medvetna om var de andra befinner sig, särskilt när det vankas sektmöte! De har ännu inte avslöjat för dig hur de lyckas med det så du måste på annat sätt få reda på var de befinner sig. På Mickans telefon finns en skärmdump som kan ge dig en avgörande ledtråd. Möt upp henne och kolla snabbt på hennes telefon utan att hon märker!",
             "placement": "Leta vid en lyktstolpe mitt emot frisören.",
-            "img": ["media/gameIMG/mickan-album1.JPG", "media/gameIMG/mickan-album2.JPG", "media/gameIMG/mickan-album3.JPG", "media/gameIMG/mickan-album4.JPG", "media/gameIMG/mickan-album5.JPG", "media/gameIMG/mickan-album6.JPG"],
-            "img1": "media/gameIMG/..svg",
+            "img": ["media/gameIMG/mickan-album1.JPG", "media/gameIMG/mickan-album2.JPG", "media/gameIMG/mickan-album3.JPG", "media/gameIMG/mickan-album4.JPG", "media/gameIMG/findMyIphone.jpg", "media/gameIMG/mickan-album5.JPG", "media/gameIMG/mickan-album6.JPG"],
+            "img1": "media/gameIMG/findMyIphone.jpg",
         },
         {
             "latitude": 55.61272,

@@ -291,12 +291,17 @@ export function renderIMG(data) {
 
     if (data.name === "mapPuzzel") {
         console.log(flow)
+        container.setAttribute("id", "mapPuzzle")
         container.innerHTML = `
-            <div id="mapPuzzle">
-                <h2>KARTA</h2>
-                <img src=${flow.img}>
-                <button> KLAR </button>
-            </div>
+            <section>
+                <div>
+                    <img id="imgContainer" src=${flow.img}>
+                </div>
+                
+                <div class="bottomDIV">
+                    <button class="levelComplete">KLAR</button>
+                </div>
+            </section>
         `;
         container.querySelector("button").addEventListener("click", () => {
             globalHolder.push(data.level, data.name)
@@ -325,8 +330,6 @@ export function renderIMG(data) {
                 <p>${data.img.length} Foton, 0 Videos </p>    
             </div>
         `;
-
-
 
         let gridContainer = container.querySelector(".gridContainer")
         data.img.forEach(img => {

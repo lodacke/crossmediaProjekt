@@ -10,7 +10,7 @@ export async function levelCount() {
 
     if (globalHolder.levels.levelOne) {
 
-        if (globalHolder.levels.levelOne.length < 5) {
+        if (globalHolder.levels.levelOne.length < 5 ) {
             return levelOne;
 
         }
@@ -18,23 +18,21 @@ export async function levelCount() {
             console.log("true")
             userAlert("levelOne")
             return levelTwo;
-        }
+        } 
     }
     if (globalHolder.levels.levelTwo) {
 
         if (globalHolder.levels.levelTwo.length < 6) {
+            console.log("levelTwo lower than 6")
             return levelTwo;            
             
         } 
         else if (globalHolder.levels.levelTwo_completed){
+            console.log("levelTwo complete")
             findLeader("levelTwo")
             return levelThree;
         } else {
 
-            if (globalHolder.levels.levelOne_completed) {
-                findLeader("levelTwo")
-                return levelThree;
-            }
             return levelThree;
         }
     }
@@ -131,8 +129,6 @@ export function findLeader() {
 
             if (event.target.id === "char_Anette") {
                 toggleControl = false;
-
-                setTimeout(() => {
                     let container = document.createElement("div");
                     container.classList.add("bottomContainer");
                     container.innerHTML = `
@@ -146,7 +142,6 @@ export function findLeader() {
                         renderGame()
                     })
                     dialog.querySelector(".content").append(container)
-                }, 3000)
             }
 
         })

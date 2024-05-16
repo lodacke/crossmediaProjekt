@@ -72,11 +72,14 @@ export async function renderGame() {
         <div class="helpers">
            <div id="map"></div>
            <div class="containerTemp"></div>
+           <button class="test">test</button>
         </div>
         `;
 
     const arrow = document.querySelector("#menu #dropArrow");
     const header = document.querySelector("header");
+
+    main.querySelector(".test").addEventListener("click", addCode)
 
     arrow.addEventListener("click", originalEventHandler);
 

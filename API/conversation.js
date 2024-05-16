@@ -1,10 +1,10 @@
 export const conversations = {
     "Fredde": {
     start: {
-        question: "Nämen hej är du här! Vad gör du här?",
+        question: "Hej! Vad gör du här?",
         "option": [
             {
-                text: "Jag undra om ni har en ledig tjänst? Jag hade gärna velat ha ett jobb där jag tjänade lite mer, som du!",
+                text: "Jag undra om ni har en ledig tjänst?",
                 response: "one"
             },
             {
@@ -17,7 +17,7 @@ export const conversations = {
         question: "Hm... ja alltså... mina pengar kommer inte bara från jobbet. Jag har en liten side-business så att säga. Eller det är inte bara jag som har den utan hela mitt gäng. Vi har speciella möten ibland som hjälper oss framåt, om du vill så kan jag försöka få med dig?",
         "option": [
             {
-                text: "Det låter bra! Jag är öppen för exakt allt.",
+                text: "Det låter bra! Jag är öppen för allt.",
                 response: "three"
 
             },
@@ -335,7 +335,7 @@ export const conversations = {
             option: [
                 {
                     text: "Vilka är gruppen?",
-                    lastMessage: "seven"
+                    response: "seven"
                 },
                 {
                     text: "Vad hade du för planer med barnen?", 
@@ -389,12 +389,12 @@ export const conversations = {
             question: "Hej, jag har inte jättelång tid på mig, vad kan jag hjälpa till med?",
             option: [
                 {
-                    text: "Märkte du något konstigt med Fredrik innan du slutade?",
+                    text: "Hände något med Fredde? ",
                     end: "Jag jobbade ju hos honom ganska länge… men han blev konstigare och konstigare med tiden. Han har ju alltid haft det bra ställt men han blev så otroligt girig tillslut, jag kände knappt igen honom. Han började umgås med Anette och Ove också, vilket jag aldrig trodde skulle hända! Men de har ju alltid varit imponerade av honom, han är ju som en förebild för dem och ja… de gör ju exakt allt han säger. En händelse var dock märklig… en dag såg jag Fredde på sitt kontor tillsammans med Ove och Alex, jag har aldrig sett Ove så dominant över Fredde innan… det var nästan som att han var rädd för honom… tillslut så fick Alex säga till dem att lugna ner sig och då lyssnade dem direkt. Lite ovanligt att se Alex ha någon form av auktoritet… Men jag kan inte säga mer… du får inte säga till någon att jag berättat detta!"
                 },
                 {
-                    text: "Hände något med Fredde? ",
-                    end: "Jag jobbade ju hos honom ganska länge… men han blev konstigare och konstigare med tiden. Han har ju alltid haft det bra ställt men han blev så otroligt girig tillslut, jag kände knappt igen honom. Han började umgås med Anette och Ove också, vilket jag aldrig trodde skulle hända! Men de har ju alltid varit imponerade av honom, han är ju som en förebild för dem och ja… de gör ju exakt allt han säger. En händelse var dock märklig… en dag såg jag Fredde på sitt kontor tillsammans med Ove och Alex, jag har aldrig sett Ove så dominant över Fredde innan… det var nästan som att han var rädd för honom… tillslut så fick Alex säga till dem att lugna ner sig och då lyssnade dem direkt. Lite ovanligt att se Alex ha någon form av auktoritet… Men jag kan inte säga mer… du får inte säga till någon att jag berättat detta!"
+                    text: "Märkte du något konstigt med Fredrik innan du slutade?",
+                    end: "Jag jobbade ju hos honom ganska länge… Men han blev konstigare och konstigare med tiden. Han har ju alltid haft det bra ställt men han blev så otroligt girig tillslut, jag kände knappt igen honom. Han började umgås med Anette och Ove också, vilket jag aldrig trodde skulle hända! Men de har ju alltid varit imponerade av honom, han är ju som en förebild för dem och ja… de gör ju exakt allt han säger. En händelse var dock märklig… En dag såg jag Fredde på sitt kontor tillsammans med Ove och Alex, jag har aldrig sett Ove så dominant över Fredde innan… Det var nästan som att han var rädd för honom… Tillslut så fick Alex säga till dem att lugna ner sig och då lyssnade dem direkt. Lite ovanligt att se Alex ha någon form av auktoritet… Men jag kan inte säga mer… du får inte säga till någon att jag berättat detta!"
                 },
             ]
         }
@@ -454,7 +454,7 @@ export const conversations = {
             ]
         },
         four: {
-            question: "Nej innan dess.. vi gjorde en grej på saltis som var väldigt gynnsam...",
+            question: "Nej innan dess.. Vi gjorde en grej på saltis som var väldigt gynnsam...",
             option: [
                 {
                     text: "Ni är så smarta!",
@@ -564,7 +564,7 @@ export const conversations = {
             question: "Nämen hej! Vad gör du här? Jag har så mycket att göra...",
             option: [
                 {
-                    text: "Jag går en promenad!",
+                    text: "Jag går en promenad.",
                     response: "one"
                 },
                 {
@@ -629,7 +629,7 @@ export const conversations = {
             question: "Det kan jag tyvärr inte säga till dig, inte i nuläget i alla fall...",
             option: [
                 {
-                    text: "nä okej...men vilka ska vara med på det?",
+                    text: "Nä okej... Men vilka ska vara med på det?",
                     response: "nine"
                 },
                 {
@@ -681,7 +681,7 @@ export const conversations = {
             question: "Det håller jag helt med om! Och en personer kommer snart att få det...jag kan knappt vänta...",
             option: [
                 {
-                    text: "Hmm okej det lät lite skumt vad menar du med det?",
+                    text: "Hmm okej, det låter skumt. Vad menar du med det?",
                     lastMessage: "Nä men, bara att jag och mitt gäng snart ställer allt till sitt rätta. Men nu måste jag gå!"
                 },
                 {

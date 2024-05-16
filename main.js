@@ -349,9 +349,6 @@ function renderCharacters() {
 }
 
 function renderSettings(inGame) {
-    // dialog.show()
-    // dialog.style.display = `block`;
-    // dialog.setAttribute("id", "settingsDialog");
 
     let settings = document.getElementById("settingsDialog");
     settings.style.display = "block";
@@ -375,8 +372,6 @@ function renderSettings(inGame) {
 
         settings.querySelector("#endGame").addEventListener("click", () => {
             window.location.hash = "";
-            // dialog.close()
-            // dialog.style.display = `none`;
             settings.style.display = "none";
             document.querySelector(".overlay").style.display = `none`;
 
@@ -387,9 +382,6 @@ function renderSettings(inGame) {
     settings.querySelector("button").addEventListener("click", () => {
         globalHolder.reset()
         localStorage.removeItem("user");
-        // dialog.removeAttribute("id", "settingsDialog")
-        // dialog.close()
-        // dialog.style.display = `none`;
         settings.style.display = "none";
         document.querySelector(".overlay").style.display = `none`;
         body.removeAttribute("style", "background-image: url('../media/moln.jpeg');");
@@ -398,8 +390,6 @@ function renderSettings(inGame) {
     })
 
     settings.querySelector(".exit").addEventListener("click", () => {
-        // dialog.close()
-        // dialog.style.display = `none`;
         settings.style.display = "none";
         document.querySelector(".overlay").style.display = `none`;
 

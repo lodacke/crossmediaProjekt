@@ -968,13 +968,19 @@ span {
 #endMess {
     background-color: #363636;
     top: 35vh;
-    width: 80%;
+    width: auto;
     box-shadow: var(--boxShadow);
+    position: fixed;
+    z-index: 100;
+    left: 7vw;
+    right: 7vw;
+    border-radius: 5px;
+    padding: 2vh 1vh;
 }
 
 #endMess h2 {
     margin-top: 3vh;
-    text-align: center;
+    text-align: start;
     margin-left: 5%;
 }
 

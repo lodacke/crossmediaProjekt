@@ -517,19 +517,18 @@ export async function endGame() {
         console.log(error)
     }
 
-    dialog.show();
     document.querySelector(".overlay").style.display = `block`;
-    dialog.setAttribute("id", "endMess")
-    dialog.innerHTML = `
+
+    let endMess = document.getElementById("endMess");
+    endMess.style.display = `block`;
+    endMess.innerHTML = `
         <h2>GRATTIS!</h2>
         <p class="mess">Du har tjänat in ${totalPoints} poäng för att du klarade spelet under ${Math.round(durationInMinutes)} minuter!</p>
     `;
 
     setTimeout(() => {
-        dialog.close();
         document.querySelector(".overlay").style.display = `none`;
-        dialog.removeAttribute("id", "endMess")
-
+        endMess.style.display = `none`;
         globalHolder.reset()
         renderHomepage()
         renderScoreBoard(user, durationInMinutes, totalPoints);

@@ -1,5 +1,6 @@
 :root {
     --boxShadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -153,10 +154,12 @@ ion-icon {
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
-    text-align: left;
+    text-align: center;
     min-width: fit-content;
     overflow-y: scroll;
     box-shadow: var(--boxShadow);
+    min-width: 45vw;
+    min-width: 55vw;
 }
 
 #inputDisplay {

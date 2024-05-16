@@ -152,6 +152,7 @@ export function renderConversation(data) {
                     let spanLength = element.end.length * 30 + 2000;
                     buttons.forEach(button => {
                         button.disabled = true
+                        button.textContent = ``
                     })
 
                     setTimeout(() => {
@@ -182,9 +183,11 @@ export function renderConversation(data) {
                         })
                     }, spanLength)
 
-                } if (element.lastMessage) {
+                } 
+                if (element.lastMessage) {
                     buttons.forEach(button => {
                         button.disabled = true
+                        button.textContent = ``
                     })
                     let endDom = document.createElement("div");
                     endDom.setAttribute("id", "endC");
@@ -226,7 +229,8 @@ export function renderConversation(data) {
                     for (let i = 0; i < currentFlow[key].length; i++) {
                         setTimeout(() => {
                             let span = document.createElement("span");
-                            span.textContent = currentFlow[key][i].replace(/\n/g, "<br>");;
+                            let text = currentFlow[key][i].replace(/\n/g, "<br>")
+                            span.innerHTML = text;
                             questionDom.querySelector("p").append(span);
                         }, i * 30);
                     }
@@ -280,7 +284,7 @@ export function renderIMG(data) {
         container.innerHTML = `
             <div id="imgMeeting">
                 <h2>UPPDRAG</h2>
-                <p>Du har nu fått tillgång till en övervakningskamera. Spionera på mötet för att lista ut vem sektledaren är. Men var försiktig...</p>
+                <p>Du har fått tillgång till en övervakningskamera. Spionera på mötet för att lista ut vem sektledaren är. Men var försiktig...</p>
                 <button class="camera">
                     <ion-icon name="videocam-outline"></ion-icon>
                 </button>

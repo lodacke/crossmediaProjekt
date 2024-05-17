@@ -148,6 +148,8 @@ ion-icon {
     overflow-x: auto;
     height: 11vh;
     scrollbar-width: none;
+    padding-left: 7%;
+    padding-right: 7%;
 }
 
 .controlC button {
@@ -157,18 +159,16 @@ ion-icon {
     border: none;
     border-radius: 5px;
     text-align: center;
-    min-width: 50vw;
+    min-width: fit-content;
     overflow-y: scroll;
     box-shadow: var(--boxShadow);
-    max-width: 45vw;
+    max-width: 70vw;
 }
 
 #nextLevel {
-    padding: 19px 15px;
     border: none;
     color: #151515;
     font-weight: 600;
-    width: 100%;
-    margin-left: 11%;
-    min-height: 30px;
+    font-size: 18px;
+    padding: 0 4vh;
 }

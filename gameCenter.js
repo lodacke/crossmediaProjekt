@@ -149,7 +149,7 @@ export function renderConversation(data) {
                     let spanLength = element.lastMessage.length * 30 + 1000;
                     main.querySelector(".controlC").innerHTML = ``;
                     let button = document.createElement("button");
-                    button.setAttribute("id","nextLevel");
+                    button.setAttribute("id", "nextLevel");
                     main.querySelector(".controlC").append(button)
 
                     setTimeout(() => {
@@ -172,27 +172,27 @@ export function renderConversation(data) {
                         main.querySelector(".conversation").append(closingDom)
 
                     }, 1000)
-                setTimeout(() => {
-                    button.innerHTML =`<span style="opacity: 0;">KLAR</span>`;
-                    let textSpan = button.querySelector('span'); 
                     setTimeout(() => {
-                        textSpan.style.transition = 'opacity 0.5s, background-color 0.5s'; 
-                        textSpan.style.opacity = '1'; 
-                        button.style.backgroundColor = "#9b9690"; 
-                    }, 1000);
+                        button.innerHTML = `<span style="opacity: 0;">KLAR</span>`;
+                        let textSpan = button.querySelector('span');
+                        setTimeout(() => {
+                            textSpan.style.transition = 'opacity 0.5s, background-color 0.5s';
+                            textSpan.style.opacity = '1';
+                            button.style.backgroundColor = "#9b9690";
+                        }, 1000);
 
-                    setTimeout(() => {
-                        button.style.transition = 'background-color 0.5s'; 
-                        button.style.backgroundColor = "#E6B400"; 
-                    }, 1000); 
+                        setTimeout(() => {
+                            button.style.transition = 'background-color 0.5s';
+                            button.style.backgroundColor = "#E6B400";
+                        }, 1000);
 
-                    button.addEventListener("click", () => {
-                        globalHolder.push(data.level, data.name)
-                        renderGame();
-                    });
-                }, spanLength);
-        } 
-    };
+                        button.addEventListener("click", () => {
+                            globalHolder.push(data.level, data.name)
+                            renderGame();
+                        });
+                    }, spanLength);
+                }
+            };
         }
 
         for (let key in currentFlow) {
@@ -201,11 +201,11 @@ export function renderConversation(data) {
                 currentFlow[key].forEach((element, index) => {
                     buttons[index].onclick = clickHandler(element);
                     buttons[index].innerHTML = `<span style="opacity: 0;">${element.text}</span>`;
-                    let textSpan = buttons[index].querySelector('span'); 
+                    let textSpan = buttons[index].querySelector('span');
                     setTimeout(() => {
-                        textSpan.style.transition = 'opacity 0.5s'; 
-                        textSpan.style.opacity = '1'; 
-                    }, 1000);                 
+                        textSpan.style.transition = 'opacity 0.5s';
+                        textSpan.style.opacity = '1';
+                    }, 1000);
                 });
             }
 
@@ -226,13 +226,13 @@ export function renderConversation(data) {
                             requestAnimationFrame(() => {
                                 main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
                             });
-        
+
                         }, i * 30);
                     }
 
                     main.querySelector(".conversation").append(questionDom)
-                    
-                    
+
+
 
                 }, 1000)
             }
@@ -450,7 +450,7 @@ export function addCode() {
         <button class="return">TILLBAKA TILL SPELET</button>
     </div>
     `;
-        
+
 
     let correctCode = ["3", "5", "6", "1"];
 

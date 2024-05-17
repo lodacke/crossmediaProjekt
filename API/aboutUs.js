@@ -13,7 +13,7 @@ export const infoAboutUs = [
     },
     {
         title: "POÄNGRÄKNING",
-        text: "För att vinna ska du få så få poäng som möjligt. Du börjar spelet med 1000p och för varje minut som går dras 1 poäng av. Det gäller att skynda dig eftersom din tid är begränsad!"
+        text: "Du börjar spelet med 1000p och för varje minut som går dras 1 poäng av. För att vinna ska du försöka lösa gåtan så fort som möjligt för att inte tappa för många poäng. Det gäller att skynda dig eftersom din tid är begränsad!"
     },
     {
         title: "ANTECKNINGAR",

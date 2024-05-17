@@ -144,75 +144,68 @@ export function renderConversation(data) {
                 if (element.response === "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve") {
                     renderConversation(element.response);
                 }
-                if (element.end) {
+                if (element.lastMessage) {
 
-                    let spanLength = element.end.length * 30 + 2000;
-                    buttons.forEach(button => {
-                        button.disabled = true
-                        button.textContent = ``
-                    })
+                    let spanLength = element.lastMessage.length * 30 + 1000;
+                    main.querySelector(".controlC").innerHTML = ``;
+                    let button = document.createElement("button");
+                    button.setAttribute("id","nextLevel");
+                    main.querySelector(".controlC").append(button)
 
                     setTimeout(() => {
                         let closingDom = document.createElement("div");
+                        closingDom.classList.add("question")
                         closingDom.append(document.createElement("p"))
-                        for (let i = 0; i < element.end.length; i++) {
+                        for (let i = 0; i < element.lastMessage.length; i++) {
 
                             setTimeout(() => {
                                 let span = document.createElement("span");
-                                span.textContent = element.end[i];
+                                let text = element.lastMessage[i].replace(/\n/g, "<br>")
+                                span.innerHTML = text
                                 closingDom.querySelector("p").append(span);
+                                requestAnimationFrame(() => {
+                                    main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
+                                });
                             }, i * 30);
                         }
-
 
                         main.querySelector(".conversation").append(closingDom)
 
                     }, 1000)
+                setTimeout(() => {
+                    button.innerHTML =`<span style="opacity: 0;">KLAR</span>`;
+                    let textSpan = button.querySelector('span'); 
                     setTimeout(() => {
-                        main.querySelector(".controlC").innerHTML = ``;
-                        let button = document.createElement("button");
-                        button.textContent = "KLAR";
-                        button.classList.add("nextLevel");
-                        main.querySelector(".controlC").append(button)
-                        button.addEventListener("click", () => {
-                            globalHolder.push(data.level, data.name)
-                            renderGame();
-                        })
-                    }, spanLength)
-
-                } 
-                if (element.lastMessage) {
-                    buttons.forEach(button => {
-                        button.disabled = true
-                        button.textContent = ``
-                    })
-                    let endDom = document.createElement("div");
-                    endDom.setAttribute("id", "endC");
-                    endDom.innerHTML = `<p>${element.lastMessage}</p>`
-                    main.querySelector(".conversation").append(endDom);
-                    main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
+                        textSpan.style.transition = 'opacity 0.5s, background-color 0.5s'; 
+                        textSpan.style.opacity = '1'; 
+                        button.style.backgroundColor = "#9b9690"; 
+                    }, 1000);
 
                     setTimeout(() => {
-                        main.querySelector(".controlC").innerHTML = ``;
-                        let button = document.createElement("button");
-                        button.textContent = "KLAR";
-                        button.classList.add("nextLevel");
-                        main.querySelector(".controlC").append(button)
-                        button.addEventListener("click", () => {
-                            globalHolder.push(data.level, data.name)
-                            renderGame();
-                        })
-                    }, 3000)
-                }
-            };
+                        button.style.transition = 'background-color 0.5s'; 
+                        button.style.backgroundColor = "#E6B400"; 
+                    }, 1000); 
+
+                    button.addEventListener("click", () => {
+                        globalHolder.push(data.level, data.name)
+                        renderGame();
+                    });
+                }, spanLength);
+        } 
+    };
         }
 
         for (let key in currentFlow) {
 
             if (key === "option") {
                 currentFlow[key].forEach((element, index) => {
-                    buttons[index].onclick = clickHandler(element)
-                    buttons[index].innerText = element.text;
+                    buttons[index].onclick = clickHandler(element);
+                    buttons[index].innerHTML = `<span style="opacity: 0;">${element.text}</span>`;
+                    let textSpan = buttons[index].querySelector('span'); 
+                    setTimeout(() => {
+                        textSpan.style.transition = 'opacity 0.5s'; 
+                        textSpan.style.opacity = '1'; 
+                    }, 1000);                 
                 });
             }
 
@@ -229,11 +222,17 @@ export function renderConversation(data) {
                             let text = currentFlow[key][i].replace(/\n/g, "<br>")
                             span.innerHTML = text;
                             questionDom.querySelector("p").append(span);
+
+                            requestAnimationFrame(() => {
+                                main.querySelector(".conversation").scrollTop = main.querySelector(".conversation").scrollHeight;
+                            });
+        
                         }, i * 30);
                     }
 
                     main.querySelector(".conversation").append(questionDom)
-                    questionDom.scrollTop = "100%";
+                    
+                    
 
                 }, 1000)
             }
@@ -291,7 +290,6 @@ export function renderIMG(data) {
     }
 
     if (data.name === "mapPuzzel") {
-        console.log(flow)
         container.setAttribute("id", "mapPuzzle")
         container.innerHTML = `
             <section>
@@ -449,6 +447,7 @@ export function addCode() {
         </div>
         <p class="tempMess"></p>
         <button class="done">KLAR</button>
+        <button class="return">TILLBAKA TILL SPELET</button>
     </div>
     `;
         
@@ -457,7 +456,7 @@ export function addCode() {
 
     let container = main.querySelector("#codeDialog")
 
-
+    main.querySelector(".return").addEventListener("click", renderGame)
     main.querySelector(".done").addEventListener("click", () => {
 
         const inputs = document.querySelectorAll('.containerCode input');
@@ -492,7 +491,6 @@ export async function endGame() {
     let pointsPerMinute = 1;
 
     let points = Math.floor(durationInMinutes * pointsPerMinute);
-    console.log(points)
     let totalPoints = 1000 - points;
 
     try {
@@ -529,9 +527,9 @@ export async function endGame() {
         endMess.style.display = `none`;
         globalHolder.reset()
         renderHomepage()
-        renderScoreBoard(user, durationInMinutes, totalPoints);
+        renderScoreBoard(user);
         localStorage.removeItem("StartTime")
-    }, 4000);
+    }, 3000);
 }
 
 

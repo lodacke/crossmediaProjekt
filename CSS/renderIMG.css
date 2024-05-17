@@ -192,7 +192,7 @@ section {
 
 section div:first-of-type {
     width: 100%;
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -200,14 +200,18 @@ section div:first-of-type {
 
 #displayCameraFootage #imgContainer {
     height: 50%;
-    width: 100%;
 }
 
-#displayIMG #imgContainer,
-#mapPuzzle #imgContainer {
+#displayIMG #imgContainer {
     height: 60vh;
-    width: 100%;
     margin-top: -16vh;
+}
+
+#mapPuzzle #imgContainer{
+    height: 40vh;
+    width: 100%;
+    margin-top: -9vh;
+
 }
 
 .bottomDIV {

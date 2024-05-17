@@ -8,7 +8,7 @@ export const levelOne =
             "level": "levelOne",
             "type": "QR",
             "clue": "Träffa Fredde för att få reda på mer om vad som hänt",
-            "placement": "Leta vid en hög lyktstolpe.",
+            "placement": "Leta bland cyklarna",
             "src": "media/gameIMG/Fredde.png"
         },
         {

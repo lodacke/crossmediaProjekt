@@ -1,6 +1,5 @@
 import { globalHolder, dialog } from "./variable.js"
 import { levelTwo, levelThree, levelOne } from "../API/qlues.js"
-import { renderGame, renderScoreBoard } from "../main.js";
 import { characters } from "../API/characters.js";
 
 
@@ -8,35 +7,42 @@ export async function levelCount() {
 
     if (globalHolder.levels.levelOne) {
 
-        if (globalHolder.levels.levelOne.length < 5) {
+        if (globalHolder.levels.levelOne.length < 5 && !globalHolder.levels.levelOne_check) {
+            console.log("first scope")
             return levelOne;
-
+            
         }
         else if (globalHolder.levels.levelOne_completed) {
-            console.log("true")
             userAlert("levelOne")
             return levelTwo;
-        }
+        } 
     }
-    if (globalHolder.levels.levelTwo) {
 
-        if (globalHolder.levels.levelTwo.length < 6) {
-            console.log("levelTwo lower than 6")
+    if ( globalHolder.levels.levelOne_check || globalHolder.levels.levelTwo){
+
+        if (globalHolder.levels.levelTwo && globalHolder.levels.levelTwo.length < 6 && !globalHolder.levels.levelTwo_check) {
+            console.log("second scope")
             return levelTwo;
 
         }
         else if (globalHolder.levels.levelTwo_completed) {
-            console.log("levelTwo complete")
             findLeader("levelTwo")
             return levelThree;
-        } else {
 
-            return levelThree;
+        }  else if (globalHolder.levels.levelTwo_check ) {
+            return levelThree
+        } else {
+            return levelTwo
         }
+        
+       
     }
-    if (globalHolder.levels.levelThree) {
-        if (globalHolder.levels.levelThree.length < 3) {
+    if (globalHolder.levels.levelTwo_check || globalHolder.levels.levelTwo) {
+        console.log("third scope")
+        if (globalHolder.levels.levelThree && globalHolder.levels.levelThree.length < 3) {
             return levelThree;
+        } else {
+            return levelThree
         }
     }
 
@@ -44,7 +50,7 @@ export async function levelCount() {
 
 }
 
-// function will be called as a prompt between level 1 and level 2
+// function called as a prompt between level 1 and level 2
 function userAlert(level) {
 
     console.log(level)
@@ -55,7 +61,7 @@ function userAlert(level) {
     dialog.innerHTML = `
     <h2>GRATTIS!</h2>
     <p class="mess"></p>
-    <button class="messButton"></button>
+    <button class="messButton">Påbörja nästa nivå</button>
     `;
 
     dialog.querySelector("button").addEventListener("click", () => {
@@ -67,82 +73,66 @@ function userAlert(level) {
     })
 
     let messDom = dialog.querySelector(".mess");
-    let messButton = dialog.querySelector(".messButton")
     if (level === "levelOne") {
         messDom.textContent = "Du har nu träffat alla karaktärerna, och kan nu påbörjar nästa nivå av undersökningen"
-        messButton.textContent = "Påbörja nästa nivå"
     }
 
-    if (level === "levelThree") {
-        messDom.textContent = "Du har lyckats lösa mysteriet!"
-        messButton.textContent = "Se high score!"
+    if (level === "levelTwo") {
+        messDom.textContent = "Du lyckades lista ut vem sektledaren är! Nu måste du hitta Anna."
 
-        messButton.addEventListener("click", renderScoreBoard)
     }
 }
 
-// function will be called as a prompt between level 2 and level 3
 export function findLeader() {
-
-    // swapStyleSheet("CSS/chooseCharacter.css");
-    dialog.show()
-    dialog.style.display = `block`
-    dialog.setAttribute("id", "chooseCharacter");
+    dialog.show();
+    dialog.style.display = 'block';
+    dialog.setAttribute('id', 'chooseCharacter');
     dialog.innerHTML = `
         <h2>VEM ÄR SEKTLEDAREN?</h2>
         <div class="content"></div>
     `;
 
-    let displayCharacters = []
-    for (let character of characters) {
-        if (character.alibi) {
-            displayCharacters.push(character)
-        }
-    }
+    let displayCharacters = characters.filter(character => character.alibi);
 
     displayCharacters.forEach(character => {
-        let card = document.createElement("div");
-        card.classList.add("flipCard");
-        card.setAttribute("id", `char_${character.name}`)
+        let card = document.createElement('div');
+        card.classList.add('flipCard');
+        card.setAttribute('id', `char_${character.name}`);
         card.innerHTML = `
-        <div class="innerCard">
-            <div class="frontCard" id=char_${character.name}>
-                <div class="characterContainer">
-                    <img src=${character.img}>
+            <div class="innerCard">
+                <div class="frontCard" id="char_${character.name}">
+                    <div class="characterContainer">
+                        <img src=${character.img}>
+                    </div>
+                    <h1>${character.fullName}</h1>
                 </div>
-                
-                <h1>${character.fullName}</h1>
+                <div class="backCard" id="char_${character.name}">
+                    <p>${character.alibi}</p>
+                </div>
             </div>
-             <div class="backCard" id=char_${character.name}>
-                <p>${character.alibi}</p>
-            </div>
-       </div>
-       `;
+        `;
+        dialog.querySelector('.content').append(card);
+    });
 
-        let toggleControl = true;
-        card.addEventListener("click", (event) => {
-            if (toggleControl === true) {
-                card.classList.toggle("flippedCard")
-            }
+    dialog.querySelector('.content').addEventListener('click', event => {
+        const card = event.target.closest('.flipCard');
+        if (card) {
+            card.classList.toggle('flippedCard');
 
-            if (event.target.id === "char_Anette") {
-                toggleControl = false;
-                let container = document.createElement("div");
-                container.classList.add("bottomContainer");
+            if (card.id === 'char_Anette') {
+                const container = document.createElement('div');
+                container.classList.add('bottomContainer');
                 container.innerHTML = `
-                        <button id="nextLevel">Fortsätt till nivå 3</button>
-                    `;
-                container.querySelector("button").addEventListener("click", () => {
-                    dialog.close()
-                    dialog.style.display = `none`
-                    dialog.removeAttribute("id", "chooseCharacter");
-                    globalHolder.removeItem('levelTwo_completed')
-                    renderGame()
-                })
-                dialog.querySelector(".content").append(container)
+                    <button id="nextLevel">Fortsätt till nivå 3</button>
+                `;
+                container.querySelector('#nextLevel').addEventListener('click', () => {
+                    dialog.close();
+                    dialog.style.display = 'none';
+                    dialog.removeAttribute('id', 'chooseCharacter');
+                    userAlert('levelTwo');
+                });
+                dialog.querySelector('.content').append(container);
             }
-
-        })
-        dialog.querySelector(".content").append(card)
-    })
+        }
+    });
 }

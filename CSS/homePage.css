@@ -1050,3 +1050,40 @@ span {
     60% { transform: translateY(-20px); }
     80% { transform: translateY(-2px); } 
 }
+
+/* exit game */
+
+#endDialog{
+    background-color: #3D3B3A;
+    width: auto;
+    height: auto;
+    position: fixed;
+    top: 35vh;
+    box-shadow: var(--boxShadow);
+    z-index: 100;
+    left: 7vw;
+    right: 7vw;
+    border-radius: 5px;
+    padding: 2vh 1vh;
+}
+
+
+#endDialog > div{
+    margin-top: 6vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+#endDialog > div > button{
+    width: 40%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #3D3B3A;
+    color: #A1A1A1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: var(--boxShadow);
+}
+

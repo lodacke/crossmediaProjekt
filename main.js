@@ -100,9 +100,29 @@ export async function renderGame() {
     })
 
     document.querySelector("#quit").addEventListener("click", () => {
-        window.location.hash = "";
-        globalHolder.reset()
-        endGame()
+
+        dialog.show()
+        dialog.setAttribute("id", "endDialog")
+        dialog.style.display = `block`;
+        dialog.innerHTML = `
+        <h2>Är du säker på att du vill avsluta spelet?</h2>
+        <div class="dialogC">
+            <button class="trueExit"> Ja </button>
+            <button class="falseExit"> Nej </button>
+        </div>
+        `;
+
+        dialog.querySelector(".trueExit").addEventListener("click", () => {
+            dialog.style.display = `none`;
+            dialog.close()
+            window.location.hash = "";
+            globalHolder.reset()
+                renderHomepage()
+        })
+
+        dialog.querySelector(".falseExit").addEventListener("click", () => {
+            dialog.style.display = `none`;
+        })
     })
 
     document.querySelector("#notes").addEventListener("click", () => {

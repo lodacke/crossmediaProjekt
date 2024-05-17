@@ -240,11 +240,6 @@ header #dropArrow {
     box-shadow: var(--boxShadow);
 }
 
-/* for icon */
-
-#levelDone {
-    fill: green
-}
 
 /* WELCOME DIALOG*/
 
@@ -517,7 +512,7 @@ dialog::backdrop {
 }
 
 .optionalCall {
-    background-color: #b3b3b3;
+    background-color: #9b9690;
     border-radius: 5px;
     font-size: 16px;
     border: none;
@@ -784,6 +779,16 @@ dialog::backdrop {
     margin-right: 0;
 }
 
+#feedback {
+    color: var(--white);
+    text-align: center;
+    margin-top: auto;
+}
+
+a{
+    color: var(--yellow)
+}
+
 
 /* CHOOSE CHARACTER */
 
@@ -954,7 +959,7 @@ span {
     margin-bottom: 10px;
 }
 
-#codeDialog>button {
+#codeDialog> .done {
     background-color: var(--yellow);
     color: #151515;
     border-radius: 5px;
@@ -967,6 +972,21 @@ span {
     margin-bottom: 20px;
     align-self: center;
 }
+
+#codeDialog> .return {
+    color: #151515;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    width: 85%;
+    cursor: pointer;
+    padding: 1.3vh;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+
 
 /* END MESSAGE WHEN COMPLETING GAME*/
 
@@ -1000,23 +1020,33 @@ span {
 }
 
 @keyframes shake {
-    0% {
-        transform: translateX(0);
-    }
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
 
-    25% {
-        transform: translateX(-5px);
-    }
+.bounceWinner{
+    animation: jumpUpDown 1.5s ease-in-out;
+}
 
-    50% {
-        transform: translateX(5px);
-    }
+@keyframes jumpUpDown {
+    0%, 100% { transform: translateY(0); }  
+    20% { transform: translateY(-80px); } 
+    40% { transform: translateY(-13px); }
+    60% { transform: translateY(-30px); }
+    80% { transform: translateY(-2px); } 
+}
 
-    75% {
-        transform: translateX(-5px);
-    }
+.bounce {
+    animation: bounceUpDown 1.5s ease-in-out;
+}
 
-    100% {
-        transform: translateX(0);
-    }
+@keyframes bounceUpDown {
+    0%, 100% { transform: translateY(0); }  
+    20% { transform: translateY(-70px); } 
+    40% { transform: translateY(0px); }
+    60% { transform: translateY(-20px); }
+    80% { transform: translateY(-2px); } 
 }

@@ -1,129 +1,8 @@
 [
     {
-        "username": "a",
-        "password": "a",
-        "games": []
-    },
-    {
         "username": "lo",
         "password": "lo",
         "games": [
-            {
-                "points": 287,
-                "timestamp": "2024-05-10"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-10"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-10"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-10"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-10"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-10"
-            },
-            {
-                "points": 127,
-                "timestamp": "2024-05-13"
-            },
-            {
-                "points": 18,
-                "timestamp": "2024-05-13"
-            },
-            {
-                "points": 10,
-                "timestamp": "2024-05-13"
-            },
-            {
-                "points": -250,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 1,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 11,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 3,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 2,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 3,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 4,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 9,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 3,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 8,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 1,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 14,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 13,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 665,
-                "timestamp": "2024-05-15"
-            },
             {
                 "points": 952,
                 "timestamp": "2024-05-16"
@@ -135,6 +14,42 @@
             {
                 "points": 909,
                 "timestamp": "2024-05-16"
+            },
+            {
+                "points": 980,
+                "timestamp": "2024-05-17"
+            },
+            {
+                "points": 992,
+                "timestamp": "2024-05-17"
+            },
+            {
+                "points": 993,
+                "timestamp": "2024-05-17"
+            },
+            {
+                "points": 995,
+                "timestamp": "2024-05-17"
+            },
+            {
+                "points": 995,
+                "timestamp": "2024-05-17"
+            },
+            {
+                "points": 994,
+                "timestamp": "2024-05-17"
+            },
+            {
+                "points": 991,
+                "timestamp": "2024-05-17"
+            },
+            {
+                "points": 987,
+                "timestamp": "2024-05-17"
+            },
+            {
+                "points": 983,
+                "timestamp": "2024-05-17"
             }
         ]
     },
@@ -145,28 +60,12 @@
             {
                 "points": 2,
                 "timestamp": "2024-05-02"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-02"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-02"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-02"
-            },
-            {
-                "points": 2,
-                "timestamp": "2024-05-02"
             }
         ]
     },
     {
-        "username": "f",
-        "password": "f",
+        "username": "flygF\u00e5gel",
+        "password": "flygF\u00e5gel",
         "games": [
             {
                 "points": 319,
@@ -175,7 +74,7 @@
         ]
     },
     {
-        "username": "sofie",
+        "username": "Sofie",
         "password": "s",
         "games": [
             {
@@ -185,21 +84,9 @@
         ]
     },
     {
-        "username": "adam",
-        "password": "adam",
+        "username": "Adam",
+        "password": "Adam",
         "games": [
-            {
-                "points": 2,
-                "timestamp": "2024-05-06"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-06"
-            },
-            {
-                "points": 1,
-                "timestamp": "2024-05-06"
-            },
             {
                 "points": 90,
                 "timestamp": "2024-05-06"
@@ -211,128 +98,54 @@
         "password": "123",
         "games": [
             {
-                "points": 0,
-                "timestamp": "2024-05-13"
-            },
-            {
-                "points": 6,
-                "timestamp": "2024-05-13"
-            },
-            {
-                "points": 5,
-                "timestamp": "2024-05-13"
-            },
-            {
-                "points": -1432,
-                "timestamp": "2024-05-13"
-            },
-            {
-                "points": 1,
-                "timestamp": "2024-05-13"
-            },
-            {
                 "points": 628,
                 "timestamp": "2024-05-15"
             },
             {
                 "points": 632,
                 "timestamp": "2024-05-15"
+            }
+        ]
+    },
+    {
+        "username": "Emil",
+        "password": "mil",
+        "games": [
+            {
+                "points": 997,
+                "timestamp": "2024-05-17"
             },
             {
-                "points": 0,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 0,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 6,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 8,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 6,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": 15,
-                "timestamp": "2024-05-15"
-            },
-            {
-                "points": -93,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": 961,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": null,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": null,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": null,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": null,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": null,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": 999,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": 949,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": null,
-                "timestamp": "2024-05-16"
-            },
-            {
-                "points": 979,
-                "timestamp": "2024-05-16"
+                "points": 978,
+                "timestamp": "2024-05-17"
             },
             {
                 "points": 1000,
-                "timestamp": "2024-05-16"
+                "timestamp": "2024-05-17"
             },
             {
-                "points": 1000,
-                "timestamp": "2024-05-16"
+                "points": 996,
+                "timestamp": "2024-05-17"
             },
             {
-                "points": 1000,
-                "timestamp": "2024-05-16"
+                "points": 996,
+                "timestamp": "2024-05-17"
             },
             {
-                "points": 999,
-                "timestamp": "2024-05-16"
+                "points": 994,
+                "timestamp": "2024-05-17"
             },
             {
-                "points": null,
-                "timestamp": "2024-05-16"
+                "points": 991,
+                "timestamp": "2024-05-17"
             },
             {
-                "points": null,
-                "timestamp": "2024-05-16"
+                "points": 997,
+                "timestamp": "2024-05-17"
             },
             {
-                "points": null,
-                "timestamp": "2024-05-16"
+                "points": 997,
+                "timestamp": "2024-05-17"
             }
         ]
     }

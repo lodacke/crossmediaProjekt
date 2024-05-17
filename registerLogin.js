@@ -60,9 +60,7 @@ export async function renderLogin() {
     document.addEventListener("DOMContentLoaded", (event) => {
         const hasInstructionBeenShown = sessionStorage.getItem("instructionShown");
 
-        console.log("HELLO");
         if (!hasInstructionBeenShown) {
-            console.log("JAPP");
             dialog.show()
             dialog.style.display = `block`;
             dialog.setAttribute("id", "instructionsDialog")
@@ -133,7 +131,6 @@ export async function renderRegister() {
             });
 
             let data = await response.json()
-            console.log(data)
 
             if (!response.ok) {
                 userMessage(messageDom, data.message)

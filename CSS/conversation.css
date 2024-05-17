@@ -165,9 +165,11 @@ ion-icon {
     min-width: 55vw;
 }
 
-.nextLevel {
+#nextLevel {
+    padding: 19px 15px;
     border: none;
-    background-color: var(--yellow);
+    color: #151515;
     font-weight: 600;
-    height: fit-content;
+    width: 95%;
+    min-height: 30px;
 }

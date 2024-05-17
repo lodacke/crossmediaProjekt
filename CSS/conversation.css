@@ -161,8 +161,7 @@ ion-icon {
     min-width: fit-content;
     overflow-y: scroll;
     box-shadow: var(--boxShadow);
-    min-width: 45vw;
-    min-width: 55vw;
+    max-width: 75vw;
 }
 
 #nextLevel {

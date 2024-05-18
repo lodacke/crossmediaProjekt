@@ -497,7 +497,7 @@ export async function renderScoreBoard(user) {
 
     if (user) {
         dialog.querySelector("#feedback").innerHTML += `
-        <p id="feedback">Vad tyckte du om upplevelsen? <br> <a href="https://forms.gle/r7nT37fypcSUMhdT7"> Berätta för oss!</a></p>`
+        <p id="feedback">Vad tyckte du om upplevelsen? <br> <a href="https://forms.gle/r7nT37fypcSUMhdT7" target="_blank"> Berätta för oss!</a></p>`
     }
 
     let top3Dom = dialog.querySelector(".top3Users");

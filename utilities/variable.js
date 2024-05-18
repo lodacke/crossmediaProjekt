@@ -18,12 +18,12 @@ export const globalHolder = {
     levelData.push(value);
     this.set(level, levelData);
 
-    if (level === "levelOne" && levelData.length === 5) {
+    if (level === "levelOne" && ["Alex", "Anette", "Fredde", "Mickan", "Ove"].every(name => levelData.includes(name))) {
       this.levels[`${level}_check`] = true; 
       this.levels[`${level}_completed`] = true; 
       localStorage.setItem('levels', JSON.stringify(this.levels));
     }
-    if (level === "levelTwo" && levelData.length === 6) {
+    if (level === "levelTwo" && ["manifest", "Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary"].every(name => levelData.includes(name))) {
       this.levels[`${level}_check`] = true;
       this.levels[`${level}_completed`] = true; 
       localStorage.setItem('levels', JSON.stringify(this.levels));

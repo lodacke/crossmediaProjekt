@@ -309,7 +309,7 @@ export const conversations = {
             option: [
                 {
                     text: "Tvivel om vad?",
-                    lastMessage: "Hon tvivlade på allt! Hela grunden till vår tro... \nÄven om våra tillvägagångssätt kan verka kontroverciella så vet vi alla att de löner sig.\n \n Men gud vad klockan blev mycket! Nu måste jag gå. \n Har en lagning snart."
+                    lastMessage: "Hon tvivlade på allt! Hela grunden till vår tro... \nÄven om våra tillvägagångssätt kan verka kontroversiella så vet vi alla att de löner sig.\n \n Men gud vad klockan blev mycket! Nu måste jag gå. \n Har en lagning snart."
                 },
                 {
                     text: `Vilka är "oss"?`, 

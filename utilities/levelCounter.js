@@ -4,36 +4,38 @@ import { characters } from "../API/characters.js";
 
 
 export async function levelCount() {
+    let firstKeys = ["Alex", "Anette", "Fredde", "Mickan", "Ove"];
+    let secondKeys = ["manifest", "Ludde", "imgFindMyIphone", "imgMeeting", "imgMap", "imgDiary"];
 
     if (globalHolder.levels.levelOne) {
 
-        if (globalHolder.levels.levelOne.length < 5 && !globalHolder.levels.levelOne_check) {
+        if (!firstKeys.every(key => globalHolder.levels.levelOne.includes(key)) && !globalHolder.levels.levelOne_check) { 
             console.log("first scope")
             return levelOne;
             
         }
-        else if (globalHolder.levels.levelOne_completed) {
+        else if (firstKeys.every(key => globalHolder.levels.levelOne.includes(key)) && globalHolder.levels.levelOne_completed) {
             userAlert("levelOne")
             return levelTwo;
         } 
     }
 
     if ( globalHolder.levels.levelOne_check || globalHolder.levels.levelTwo){
-
-        if (globalHolder.levels.levelTwo && globalHolder.levels.levelTwo.length < 6 && !globalHolder.levels.levelTwo_check) {
+        if(!globalHolder.levels.levelTwo){
+            return levelTwo
+        }
+        else if (!secondKeys.every(key => globalHolder.levels.levelTwo.includes(key)) && !globalHolder.levels.levelTwo_check) {
             console.log("second scope")
             return levelTwo;
 
         }
-        else if (globalHolder.levels.levelTwo_completed) {
+        else if (secondKeys.every(key => globalHolder.levels.levelTwo.includes(key)) && globalHolder.levels.levelTwo_completed) {
             findLeader("levelTwo")
             return levelThree;
 
-        }  else if (globalHolder.levels.levelTwo_check ) {
+        }  else if (globalHolder.levels.levelTwo_check) {
             return levelThree
-        } else {
-            return levelTwo
-        }
+        } 
         
        
     }

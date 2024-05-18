@@ -103,7 +103,7 @@ button {
 }
 
 #instructionsDialog {
-    top: 30vh;
+    top: 25vh;
     background-color: #363636;
     box-shadow: var(--boxShadow);
     border: 1px solid black;
@@ -120,14 +120,18 @@ button {
 #instructionsDialog h2 {
     margin-bottom: 0;
     color: var(--yellow);
-    text-align: center;
+    text-align: left;
+    width: 90%;
 }
 
 #instructionsDialog p {
     color: var(--white);
     width: 90%;
     font-size: 18px;
-    text-align: center;
+}
+
+#instructionsDialog p span {
+    font-weight: 700;
 }
 
 #instructionsDialog button {

@@ -69,7 +69,7 @@ export async function renderLogin() {
             dialog.innerHTML = ` 
                 <div>
                     <h2>UPPLEVELSE</h2>
-                    <p>För bäst upplevelse: <br>1. Öppna sidan på Safari (webbläsare) <br>2. Tryck på ikonen till vänster om historik <br>3. Tryck på 'Lägg till i hemskärmen</p>
+                    <p>För bäst upplevelse: <br><span>1.</span> Öppna sidan på Safari (webbläsare) <br><span>2.</span> Tryck på ikonen till vänster om historik <br><span>3.</span> Tryck på 'Lägg till i hemskärmen</p>
                     <button>Got it!</button>
                 </div>  
             `;

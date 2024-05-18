@@ -219,7 +219,7 @@ header #dropArrow {
 }
 
 .temporaryContent>.content p {
-    font-size: 16px;
+    font-size: 18px;
     margin: 0 2vh 1vh 2vh;
 }
 
@@ -234,10 +234,11 @@ header #dropArrow {
     background-color: var(--yellow);
     color: #151515;
     font-size: 16px;
-    padding: 1vh 2.5vh;
+    padding: 1.3vh 3.5vh;
     border-radius: 10px;
     border: 1px solid var(--white);
     box-shadow: var(--boxShadow);
+    font-weight: 600;
 }
 
 
@@ -511,8 +512,13 @@ dialog::backdrop {
     font-size: 14px;
 }
 
+.errorM {
+    margin-top: -3vh;
+}
+
 .optionalCall {
     background-color: #9b9690;
+    color: #151515;
     border-radius: 5px;
     font-size: 16px;
     border: none;
@@ -629,7 +635,6 @@ dialog::backdrop {
 #analogControll div {
     display: flex;
     gap: 10px;
-    width: 95%;
 }
 
 #analogControll .true {
@@ -785,7 +790,7 @@ dialog::backdrop {
     margin-top: auto;
 }
 
-a{
+a {
     color: var(--yellow)
 }
 
@@ -920,10 +925,11 @@ span {
     width: 100%;
     box-shadow: var(--boxShadow);
     align-self: center;
+    border-radius: 10px;
 }
 
 #codeDialog>h2 {
-    margin-top: 3vh;
+    margin-top: 5vh;
 }
 
 .topMess {
@@ -959,7 +965,7 @@ span {
     margin-bottom: 10px;
 }
 
-#codeDialog> .done {
+#codeDialog>.done {
     background-color: var(--yellow);
     color: #151515;
     border-radius: 5px;
@@ -971,10 +977,12 @@ span {
     padding: 1.3vh;
     margin-bottom: 20px;
     align-self: center;
+    box-shadow: var(--boxShadow);
 }
 
-#codeDialog> .return {
-    color: #151515;
+#codeDialog>.return {
+    background-color: #202020;
+    color: #A1A1A1;
     border-radius: 5px;
     font-size: 18px;
     font-weight: 600;
@@ -984,6 +992,7 @@ span {
     padding: 1.3vh;
     margin-bottom: 20px;
     align-self: center;
+    box-shadow: var(--boxShadow);
 }
 
 
@@ -1020,23 +1029,53 @@ span {
 }
 
 @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
-.bounceWinner{
+.bounceWinner {
     animation: jumpUpDown 1.5s ease-in-out;
 }
 
 @keyframes jumpUpDown {
-    0%, 100% { transform: translateY(0); }  
-    20% { transform: translateY(-80px); } 
-    40% { transform: translateY(-13px); }
-    60% { transform: translateY(-30px); }
-    80% { transform: translateY(-2px); } 
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    20% {
+        transform: translateY(-80px);
+    }
+
+    40% {
+        transform: translateY(-13px);
+    }
+
+    60% {
+        transform: translateY(-30px);
+    }
+
+    80% {
+        transform: translateY(-2px);
+    }
 }
 
 .bounce {
@@ -1044,42 +1083,65 @@ span {
 }
 
 @keyframes bounceUpDown {
-    0%, 100% { transform: translateY(0); }  
-    20% { transform: translateY(-70px); } 
-    40% { transform: translateY(0px); }
-    60% { transform: translateY(-20px); }
-    80% { transform: translateY(-2px); } 
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    20% {
+        transform: translateY(-70px);
+    }
+
+    40% {
+        transform: translateY(0px);
+    }
+
+    60% {
+        transform: translateY(-20px);
+    }
+
+    80% {
+        transform: translateY(-2px);
+    }
 }
 
 /* exit game */
 
-#endDialog{
+#endDialog {
     background-color: #3D3B3A;
     width: auto;
     height: auto;
     position: fixed;
     top: 35vh;
     box-shadow: var(--boxShadow);
-    z-index: 100;
-    left: 7vw;
-    right: 7vw;
+    z-index: 500;
+    left: 5%;
+    right: 5%;
     border-radius: 5px;
     padding: 2vh 1vh;
 }
 
-
-#endDialog > div{
-    margin-top: 6vh;
-    display: flex;
-    justify-content: space-around;
+#endDialog h2 {
+    font-weight: 500;
+    color: var(--white);
+    font-size: 20px;
 }
 
-#endDialog > div > button{
+#endDialog>div {
+    margin-top: 3vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+    gap: 15px;
+}
+
+#endDialog>div>button {
     width: 40%;
     padding: 10px;
     font-size: 18px;
     font-weight: 600;
-    background-color: #3D3B3A;
+    background-color: #202020;
     color: #A1A1A1;
     border: none;
     border-radius: 5px;
@@ -1087,3 +1149,7 @@ span {
     box-shadow: var(--boxShadow);
 }
 
+#endDialog div .trueExit {
+    background-color: var(--yellow);
+    color: #151515;
+}

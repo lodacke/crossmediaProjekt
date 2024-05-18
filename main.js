@@ -103,6 +103,7 @@ export async function renderGame() {
 
         dialog.show()
         dialog.setAttribute("id", "endDialog")
+        document.querySelector(".overlay").style.display = `block`;
         dialog.style.display = `block`;
         dialog.innerHTML = `
         <h2>Är du säker på att du vill avsluta spelet?</h2>
@@ -114,13 +115,15 @@ export async function renderGame() {
 
         dialog.querySelector(".trueExit").addEventListener("click", () => {
             dialog.style.display = `none`;
+            document.querySelector(".overlay").style.display = `none`;
             dialog.close()
             window.location.hash = "";
             globalHolder.reset()
-                renderHomepage()
+            renderHomepage()
         })
 
         dialog.querySelector(".falseExit").addEventListener("click", () => {
+            document.querySelector(".overlay").style.display = `none`;
             dialog.style.display = `none`;
         })
     })
@@ -269,6 +272,7 @@ function renderInfo(level, map) {
     });
 
     let container = main.querySelector(".containerTemp");
+    document.querySelector(".overlay").style.display = `block`;
 
     container.innerHTML = `
         <div class="temporaryContent">
@@ -299,6 +303,8 @@ function renderInfo(level, map) {
             case "END":
                 endGame()
         }
+
+        document.querySelector(".overlay").style.display = `none`;
         container.innerHTML = "";
     });
 }
@@ -489,7 +495,7 @@ export async function renderScoreBoard(user) {
         </div>
     `;
 
-    if(user){
+    if (user) {
         dialog.querySelector("#feedback").innerHTML += `
         <p id="feedback">Vad tyckte du om upplevelsen? <br> <a href="https://forms.gle/r7nT37fypcSUMhdT7"> Berätta för oss!</a></p>`
     }
@@ -507,12 +513,12 @@ export async function renderScoreBoard(user) {
 
             let maxPointsA = (a.games && a.games.length > 0) ? Math.min(...a.games.map(game => game.points)) : 0;
             let maxPointsB = (b.games && b.games.length > 0) ? Math.min(...b.games.map(game => game.points)) : 0;
-            return maxPointsA - maxPointsB;
+            return maxPointsB - maxPointsA;
         });
 
         const top3Users = sortedUsers.slice(0., 3);
-        sortedUsers = sortedUsers.slice(3., 8);
-        
+        sortedUsers = sortedUsers.slice(3., 7);
+
         top3Users.forEach((user, index) => {
 
             if (user.games && user.games.length > 0) {

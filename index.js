@@ -1,7 +1,15 @@
 import { renderHomepage } from "./main.js";
 import { renderLogin } from "./registerLogin.js";
-import { globalHolder } from "./utilities/variable.js";
 import { renderGame } from "./main.js";
+
+async function initMap() {
+    window.mapInitialized = false;
+        if (localStorage.getItem("user") && window.location.hash === "#game") {
+        renderGame();
+    }
+}
+
+window.initMap = initMap;
 
 (function () {
    

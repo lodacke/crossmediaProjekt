@@ -47,9 +47,6 @@ export async function levelCount() {
             return levelThree
         }
     }
-
-    return levelOne;
-
 }
 
 // function called as a prompt between level 1 and level 2

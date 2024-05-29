@@ -519,7 +519,7 @@ export async function endGame() {
     endMess.style.display = `block`;
     endMess.innerHTML = `
         <h2>GRATTIS!</h2>
-        <p class="mess">Du har tjänat in ${totalPoints} poäng för att du klarade spelet under ${Math.round(durationInMinutes)} minuter!</p>
+        <p class="mess">Du har hittat Anna vid liv, hon befann sig fastbunden under bryggan. Men eftersom du ringde polisen är hon nu tagen till säkerhet och hela sekten är under utredning. <br> Du klarade spelet under ${Math.round(durationInMinutes)} minuter.</p>
     `;
 
     setTimeout(() => {

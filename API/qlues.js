@@ -147,11 +147,20 @@ export const levelThree =
             "placement": "Leta på baksidan av en skylt."
         },
         {
-            "latitude": 55.61583,
-            "longitude": 12.97398,
+            "latitude": 55.614930,
+            "longitude": 12.970903,
             "name": "codeOrder",
+            "level": "levelThree",
             "function": "addCode",
             "type": "QR",
+            "clue": "Har du klarat av resterande stationer? Ta dig hit och lös koden för att hitta Anna.",
+            "placement": "Sista stationen.",
+        },
+                {
+            "latitude": 55.61583,
+            "longitude": 12.97398,
+            "name": "analogMap",
+            "type": "ANALOG",
             "level": "levelThree",
             "clue": "Har du lyckats knäcka koden eller behöver du hjälp att få allt på rätt plats? ",
             "placement": "För att få hjälp ska du leta på en lyktstolpe.",
